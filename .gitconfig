@@ -1,0 +1,23 @@
+[user]
+        name = Florian Mauracher
+        email = florian_mauracher@genua.de
+
+[alias]
+        b = branch
+        ci = commit
+        co = checkout
+        com = checkout master
+        cp = cherry-pick
+        d = diff
+        dh = diff HEAD
+        f = fetch
+        lcf = diff --name-only HEAD
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        rom = reset --hard origin/master
+        s = status
+        nb = checkout -b
+        webstart = instaweb --httpd=webrick --start
+        webstop = instaweb --httpd=webrick --stop
+        #GZ
+        pl = pull ssh://gerrit/gz.git
+        psh = push ssh://gerrit/gz.git HEAD:refs/for/master
