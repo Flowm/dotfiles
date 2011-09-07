@@ -29,6 +29,7 @@ ln -fs ~/.myconf/.vimrc ~/.vimrc
 
 #.vim
 if [ -d ~/.vim ]
-	then cp ~/.vim ~/.oldconf/
+	then cp -r ~/.vim ~/.oldconf/
+	rm -r ~/.vim/
 fi
 ln -s ~/.myconf/.vim/ ~/.vim
