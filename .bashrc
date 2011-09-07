@@ -15,9 +15,6 @@ case "$OS" in
 	Linux)
 		HOST=`uname -n`
 	;;
-	SunOS)
-		HOST=`hostname`
-	;;
 	*)
 		HOST=`echo $HOSTNAME | sed "s/\([a-z]*\)\..*/\1/"`
 	;;
@@ -54,7 +51,7 @@ shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
-HISTFILESIZE=100000
+HISTFILESIZE=500000
 
 #############################################################################
 # Screen
@@ -69,7 +66,7 @@ shopt -s checkwinsize
 # Promt
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-	debian_chroot=$(cat /etc/debian_chroot)
+	chroot=$(cat /etc/debian_chroot)
 fi
 
 # git
@@ -92,24 +89,24 @@ if [ -n "$color_prompt" ]; then
 		MAGENTA="\[\033[0;35m\]"
 		CYAN="\[\033[0;36m\]"
 		WHITE="\[\033[0;37m\]"
-		LIGHTBLACK="\[\033[1;30m\]"
-		LIGHTRED="\[\033[1;31m\]"
-		LIGHTGREEN="\[\033[1;32m\]"
-		YELLOW="\[\033[1;33m\]"
-		LIGHTBLUE="\[\033[1;34m\]"
-		LIGHTMAGENTA="\[\033[1;35m\]"
-		LIGHTCYAN="\[\033[1;36m\]"
-		LIGHTWHITE="\[\033[1;37m\]"
+		#LIGHT
+		LBLACK="\[\033[1;30m\]"
+		LRED="\[\033[1;31m\]"
+		LGREEN="\[\033[1;32m\]"
+		LYELLOW="\[\033[1;33m\]"
+		LBLUE="\[\033[1;34m\]"
+		LMAGENTA="\[\033[1;35m\]"
+		LCYAN="\[\033[1;36m\]"
+		LWHITE="\[\033[1;37m\]"
+		NOCOLOR="\[\033[0m\]"
 		#Set the promt
-	#	PS1='${debian_chroot:+($debian_chroot)}${LIGHTRED}\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]:\[\033[1;34m\]\w \[\033[00m\]\$ '
-		PS1='${debian_chroot:+($debian_chroot)}\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]:\[\033[1;34m\]\w \[\033[00m\]$(parse_git_branch)$ '
+		PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR}$(parse_git_branch)\$ "
+	#	PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\]$(parse_git_branch)$ "
 	else
-		unset color_prompt
-		PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+		PS1='\u@\h:\w\$ '
 	fi
 else
-	unset color_prompt
-	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+	PS1='\u@\h:\w\$ '
 fi
 
 # Enable color support of ls and also add handy aliases
@@ -194,12 +191,20 @@ fi
 # Admin only
 if [ !$GeNUA ]; then
 	# apt-get Shortcuts
-	alias ags='apt-cache search'
+	alias acs='apt-cache search'
 	alias agu='sudo apt-get update'
-	alias agg='sudo apt-get upgrade'
-	alias agdg='sudo apt-get dist-upgrade'
+	alias agupg='sudo apt-get upgrade'
+	alias agdupg='sudo apt-get dist-upgrade'
 	alias agi='sudo apt-get install'
 	alias agr='sudo apt-get remove'
+	# aptitude Shortcuts
+	alias apt='sudo aptitude'
+	alias apts='sudo aptitude search'
+	alias aptupd='sudo aptitude update'
+	alias aptupg='sudo aptitude upgrade'
+	alias aptdupg='sudo aptitude dist-upgrade'
+	alias apti='sudo aptitude install'
+	alias aptr='sudo aptitude remove'
 fi
 
 #----------------------------------------------------------------------------
