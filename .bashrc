@@ -124,6 +124,9 @@ if ([ -n "$color_prompt" ] && [ -x /usr/bin/dircolors ]); then
     alias egrep='egrep --color=auto'
 fi
 
+# Improved window titles
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+
 #############################################################################
 # Aliases - General
 #
