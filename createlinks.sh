@@ -19,6 +19,7 @@ if [ -f ~/.ssh/config ]
 	then cp ~/.ssh/config ~/.oldconf/
 fi
 mkdir -p ~/.ssh/
+chmod 600 ~/.myconf/.ssh/config
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
 
 #.vimrc
