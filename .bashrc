@@ -100,8 +100,8 @@ if [ -n "$color_prompt" ]; then
 		LWHITE="\[\033[1;37m\]"
 		NOCOLOR="\[\033[0m\]"
 		#Set the promt
-		PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR}$(parse_git_branch)\$ "
-	#	PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\]$(parse_git_branch)$ "
+		PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$(parse_git_branch)\$ "
+		#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(parse_git_branch)\$ "
 	else
 		PS1='\u@\h:\w\$ '
 	fi
