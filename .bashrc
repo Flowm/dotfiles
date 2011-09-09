@@ -122,7 +122,15 @@ if ([ -n "$color_prompt" ] && [ -x /usr/bin/dircolors ]); then
 fi
 
 # Improved window titles
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+#PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
 #############################################################################
 # Aliases - General
