@@ -184,7 +184,7 @@ if [ $GeNUA ]; then
 	alias z200='ssh z200'
 	alias z301='ssh z301'
 	alias firef0x='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
-	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown firefox -no-remote'
+	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown.genua firefox -no-remote'
 fi
 
 #----------------------------------------------------------------------------
