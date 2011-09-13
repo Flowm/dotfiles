@@ -153,6 +153,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # Mixed
+#alias mv='mv -b'
 alias g='git'
 alias mygrep='grep -iIR'
 alias myscp='rsync -e ssh --ipv4 -aiurP'
@@ -164,6 +165,7 @@ alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$
 alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 manswitch () { man $1 | less -p "^ +$2"; }
+say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 
 #############################################################################
 # Aliases - Conditional
