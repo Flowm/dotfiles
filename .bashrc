@@ -183,8 +183,11 @@ if [ $GeNUA ]; then
 	alias sieveedit='SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get fmaurach.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE fmaurach.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 	alias z200='ssh z200'
 	alias z301='ssh z301'
-	alias firef0x='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
 	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown.genua firefox -no-remote'
+	alias firef0x='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
+	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 azchrome'
+	alias gzchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc blackswan gzchrome'
+	alias gzfirefox='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc blackswan gzfirefox'
 fi
 
 #----------------------------------------------------------------------------
