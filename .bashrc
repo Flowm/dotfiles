@@ -163,6 +163,7 @@ alias ssh-CMs='ls ~/.tmp/'
 alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$hip,0,2)).\".\"; print hex(substr(\$hip,2,2)).\".\"; print hex(substr(\$hip,4,2)).\".\"; print hex(substr(\$hip,6,2)).\"\n\";"'
 alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
+alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
 manswitch () { man $1 | less -p "^ +$2"; }
 
 #############################################################################
@@ -221,7 +222,7 @@ fi
 #----------------------------------------------------------------------------
 # Proxys
 if [ $ALL_PROXY ]; then
-	alias curl='curl --socks5 localhost'
+	alias curl='curl --socks4 localhost'
 fi
 
 #----------------------------------------------------------------------------
