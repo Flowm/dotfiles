@@ -1,6 +1,7 @@
 #!/bin/bash
 
 mkdir -p ~/.oldconf
+mkdir -p ~/.tmp
 
 #.bashrc
 if [ -f ~/.bashrc ]
