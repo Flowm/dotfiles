@@ -153,6 +153,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # Mixed
+#alias mv='mv -b'
 alias g='git'
 alias mygrep='grep -iIR'
 alias myscp='rsync -e ssh --ipv4 -aiurP'
@@ -165,6 +166,7 @@ alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}pri
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
 manswitch () { man $1 | less -p "^ +$2"; }
+say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 quietly () { $* 2> /dev/null > /dev/null; }; 
 
 #############################################################################
