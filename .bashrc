@@ -229,6 +229,14 @@ if [ $ALL_PROXY ]; then
 fi
 
 #----------------------------------------------------------------------------
+# FH Rosenheim VPN
+
+alias fh-vpn-ext='sudo vpnc /etc/vpnc/hs-extern.conf'
+alias fh-vpn-int='sudo vpnc /etc/vpnc/hs-intern.conf'
+
+alias fh-vpn-stop='sudo pkill vpnc'
+
+#----------------------------------------------------------------------------
 # Additional aliases if any
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
