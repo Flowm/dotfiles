@@ -155,6 +155,7 @@ alias .....='cd ../../../..'
 # Mixed
 #alias mv='mv -b'
 alias g='git'
+alias j='jiffyi'
 alias mygrep='grep -iIR'
 alias myscp='rsync -e ssh --ipv4 -aiurP'
 alias ssh-CMn='ssh -o ControlMaster=no'
@@ -165,6 +166,7 @@ alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$
 alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
+alias http='python -m SimpleHTTPServer'
 manswitch () { man $1 | less -p "^ +$2"; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 quietly () { $* 2> /dev/null > /dev/null; }; 
@@ -233,7 +235,6 @@ fi
 
 alias fh-vpn-ext='sudo vpnc /etc/vpnc/hs-extern.conf'
 alias fh-vpn-int='sudo vpnc /etc/vpnc/hs-intern.conf'
-
 alias fh-vpn-stop='sudo pkill vpnc'
 
 #----------------------------------------------------------------------------
