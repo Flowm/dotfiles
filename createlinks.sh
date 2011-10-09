@@ -23,6 +23,12 @@ mkdir -p ~/.ssh/
 chmod 600 ~/.myconf/.ssh/config
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
 
+#.tmux.conf
+if [ -f ~/.tmux.conf ]
+	then cp ~/.tmux.conf ~/.oldconf/
+fi
+ln -fs ~/.myconf/.tmux.conf ~/.tmux.conf
+
 #.vimrc
 if [ -f ~/.vimrc ]
 	then cp ~/.vimrc ~/.oldconf/
