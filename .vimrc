@@ -1,69 +1,213 @@
-" Settings
-set hlsearch
-set incsearch
-set laststatus=2
-set list
-set modified
-set nocompatible
-set notitle
-set ruler
-set scroll=11
-set scrolloff=5
-"set shellcmdflag=-ic
-set shiftwidth=8
-set showbreak=>>
-set showcmd
-set showmatch
-set smartindent
-set tabstop=4
-set textwidth=0
-set visualbell
-set wildmenu
-set wildmode=longest,list
-"set wm=1
-set wrapmargin=2
-if version >= 700
-	set spelllang=en_us,de_de
-endif
+" README {
+" vim: set foldmarker={,} foldlevel=0 spell:
+"
+"	That's my personal .vimrc. As quite a lot of efforts went into this,
+"	I would be glad if this was useful for anybody else than me.
+"
+"	And here it is on Github, although there seem to be thousands of
+"	other great .vimrcs there:
+"		https://github.com/flowm/vimrc
+" }
 
-" Syntax off fuer babel.pl
-au BufNewFile,BufReadPre *babel.pl	filetype plugin off
-au BufNewFile,BufReadPre *babel.pl	syn off
-" User Perl syntax highlighting for .gui files
-au BufNewFile,BufRead *.gui set ft=perl
-" Abbreviation for bugzilla link in aeca
-au BufNewFile,BufRead *aegis-*	iabbrev buglink http://bugzilla.genua.de/show_bug.cgi?id
-au BufNewFile,BufRead *aegis-*	set textwidth=72
-au BufNewFile,BufRead *aegis-*	set formatprg=sed\ 's/\\\\n\\\\//g'\|fmt\|sed\ 's/$/\\\\n\\\\/'
-" Textwidth for READMEs
-au BufNewFile,BufRead *.README set textwidth=72
+" Basic {
+	set nocompatible
+	syntax on
+	filetype plugin on
+	filetype indent on
+	behave xterm
+		"More updates
+	set ttyfast
+	"set encoding=utf-8
+" }
 
-" Listchars auf Leerzeichen und Grau als Hintergrundfarbe einstellen
-set listchars=tab:>.,trail:.
-"set listchars=tab:\ \ ,trail:\ 
+" General {
+	" Backup and TMP Files {
+		set backup
+		set backupdir=~/.tmp/.vimbak
+		set directory=~/.tmp/.vimtmp,.
+		set history=1000
+	" }
+	" Tab completion {
+		set wildmenu
+		set wildmode=list:longest,list:full
+		set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+	" }
+	" Searching {
+		set hlsearch
+		set incsearch
+		set ignorecase
+		set smartcase
+	" }
+	" Spelling {
+		set spelllang=en_us,de_de
+	" }
+" }
 
-filetype plugin on
-filetype indent on
-set ttyfast
-syntax on
-behave xterm
+" Appearance and handling {
+	" Theme {
+		colorscheme evening
+		set background=dark
+	" }
+	" Statusbar {
+			"Show the Ruler (if statusbar isn't working)
+		set ruler
+			"Deny vim renaming xterm window
+		set notitle
+			"Don't show line numbers
+		set nonumber
+			"Always show the status bar
+		set laststatus=2
+	" }
+	" Statusline {
+			"Clear the statusline
+		set statusline=
+			"Tail of the filename
+		set statusline=%t\ 
+			"Complete filename
+		"set statusline=%f\ 
+			"File format
+		set statusline+=[%{&fileformat},
+			"File encoding
+		set statusline+=%{strlen(&fenc)?&fenc:&enc}]
+			"Flag
+		set statusline+=%m%r%h%w
+			"Filetype
+		set statusline+=[%Y]
+			"Last modified
+		set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
+			"Left/Right separator
+		set statusline+=%=
+			"Current module name
+		set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ 
+			"HEX value of char
+		"set statusline+=[HEX:0x%2B]\ 
+			"ASCII value of char
+		"set statusline+=[ASCII:%3b]\ 
+			"COL + LIN
+		set statusline+=%-20([COL:%2v][LIN:%3l/%L]%)\ 
+			"Percentage of file
+		set statusline+=[%3p%%]
+	" }
+	" Misc Handling {
+		set scrolloff=5
+			"Bracket matching
+		set showmatch
+			"Show unfinished commands
+		set showcmd
+			"No Bell
+		set noerrorbells visualbell
+	" }
+" }
 
-colorscheme evening
-set background=dark
-" set foldmethod=syntax
+" Text Formatting/Layout {
+	" Whitespace and Tab display {
+		set list
+		set list listchars=tab:>.,trail:.
+		"set list listchars=tab:>.,trail:·
+	" }
+	" Overlong lines display {
+			"Break the line instead of scrolling right
+		set wrap
+			"Margin from the right in which to break a line
+		set wrapmargin=4
+			"Marking newlines
+		set showbreak=>>>
+	" }
+	" Indention {
+			"One Tab per indentation level. 4 column wide Tabs.
+		set smartindent
+			"Size of real Tabs
+		set tabstop=4
+			"Indent amount when using TAB
+		set softtabstop=4
+			"Indent amount when using cindent, >>, ..
+		set shiftwidth=4
+			"Do not expand tabs to spaces
+		set noexpandtab
+	" }
+	" Folding (disabled) {
+		set nofoldenable
+			"Make folding indent sensitive
+		set foldmethod=indent
+	" }
+" }
 
-" Einstellungen fuer LaTeX
-" let g:tex_fold_enabled = 1
-let g:tex_flavor = 'latex'
+" Mappings and functions {
+	" Misc {
+		map <F1> <Esc>
+		imap <F1> <Esc>
+		map <silent> <C-l> :silent nohl<CR>
+		cmap w!! %!sudo tee > /dev/null %
+	" }
+	" Syntax checking {
+		map \spl :w !perl -c %<CR>
+		map \srb :w !ruby -c %<CR>
+		map \sx :w !gcc -fsyntax-only %<CR>
+		map \sjava :w !javac %<CR>
+	" }
+	" <F5>-<F8> {
+		" <F5> Toggle spell checking {
+			map <F5> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" }
+		" <F6> Toggle paste mode {
+			set pastetoggle=<F6>
+		" }
+		" <F7> Toggle whitespace and tab display {
+			function ToggleList()
+				if &list
+					set nolist
+				else
+					set list
+				endif
+			endfunction
+			map <silent> <F7> :call ToggleList() <CR>
+		" }
+		" <F8> Toggle line numbers {
+			function ToggleNumber()
+				if &number
+					set nonumber
+				else
+					set number
+				endif
+			endfunction
+			map <silent> <F8> :call ToggleNumber() <CR>
+		" }
+	" }
+	" HTML encode all vowels with Strg-H {
+		function HtmlEscape()
+			silent s/ö/\&ouml;/eg
+			silent s/ä/\&auml;/eg
+			silent s/ü/\&uuml;/eg
+			silent s/Ö/\&Ouml;/eg
+			silent s/Ä/\&Auml;/eg
+			silent s/Ü/\&Uuml;/eg
+			silent s/ß/\&szlig;/eg
+		endfunction
+		map <silent> <c-h> :call HtmlEscape()<CR>
+	" }
+" }
 
-" Einstellungen fuer perl-support.vim
-let g:Perl_AuthorName = 'Florian Mauracher'
-let g:Perl_AuthorRef  = 'FM'
-let g:Perl_Email      = 'florian.mauracher@genua.de'
-let g:Perl_Company    = 'GeNUA Gesellschaft für Netzwerk - und Unix-Administration mbH'
+" Conditionals {
+	if has('autocmd')
+		au BufRead,BufNewFile *.rb,*.rhtml set tabstop=2
+		au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
+		au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
+		au BufRead,BufNewFile *.rb,*.rhtml set expandtab
+		"Deleting multible spaces at once
+		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
+		au BufNewFile,BufRead *.README set textwidth=72
+		au BufNewFile,BufRead *aegis-*	set textwidth=72
+		"Highlight Lines with more then 74 Columns
+		"augroup vimrc_autocmds
+		"	au BufEnter * highlight OverLength ctermbg=DarkBlue
+		"	au BufEnter * match OverLength /\%74v.*/
+		"augroup END
+	endif
+" }
 
-" Einstellungen fuer perl.vim
-let perl_want_scope_in_variables = 1
-let perl_extended_vars = 1
-let perl_want_scope_in_variables = 1
-let perl_string_as_statement = 1
+" To be tested/integrated {
+	"set mouse=a
+	"set confirm
+	"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
+	"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+" }
