@@ -9,6 +9,7 @@
 	com = checkout master
 	cp = cherry-pick
 	d = diff
+	di = difftool
 	dh = diff HEAD
 	f = fetch
 	lcf = diff --name-only HEAD
@@ -24,3 +25,7 @@
 [github]
 	user = Flowm
 	token = f774a1964bc762031e415d291403e8dc
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
