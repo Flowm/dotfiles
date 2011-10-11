@@ -50,9 +50,9 @@
 	" }
 	" Statusbar {
 			"Show the Ruler (if statusbar isn't working)
-		set ruler
-			"Deny vim renaming xterm window
-		set notitle
+		"set ruler
+			"Renaming xterm window
+		set title
 			"Don't show line numbers
 		set nonumber
 			"Always show the status bar
@@ -108,9 +108,9 @@
 	" Overlong lines display {
 			"Break the line instead of scrolling right
 		set wrap
-			"Margin from the right in which to break a line
-		set wrapmargin=4
-			"Marking newlines
+			"Don't break lines
+		set wrapmargin=0
+			"But continue with a mark in the next line
 		set showbreak=>>>
 	" }
 	" Indention {
