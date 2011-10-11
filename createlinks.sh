@@ -2,6 +2,8 @@
 
 mkdir -p ~/.oldconf
 mkdir -p ~/.tmp
+mkdir -p ~/.tmp/.vimbak
+mkdir -p ~/.tmp/.vimtmp
 
 #.bashrc
 if [ -f ~/.bashrc ]
