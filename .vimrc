@@ -17,6 +17,8 @@
 	behave xterm
 		"More updates
 	set ttyfast
+		"No modeline for security
+	set nomodeline
 	"set encoding=utf-8
 " }
 
@@ -33,10 +35,18 @@
 		set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 	" }
 	" Searching {
+			"Highlightsearch
 		set hlsearch
+			"Start searching with the first Character
 		set incsearch
+			"Ignore Case
 		set ignorecase
+			"Match Case if searchstring starts with uppercase
 		set smartcase
+			"Global search by default
+		set gdefault
+			"Treat more Characters as special(like in perl) when searching (e.g. . *)
+		set magic
 	" }
 	" Spelling {
 		set spelllang=en_us,de_de
@@ -89,6 +99,7 @@
 		set statusline+=[%3p%%]
 	" }
 	" Misc Handling {
+			"Always let 5 lines below and above the cursor on the screen
 		set scrolloff=5
 			"Bracket matching
 		set showmatch
@@ -115,6 +126,7 @@
 	" }
 	" Indention {
 			"One Tab per indentation level. 4 column wide Tabs.
+			"Intelligently detect current indention level
 		set smartindent
 			"Size of real Tabs
 		set tabstop=4
@@ -126,6 +138,7 @@
 		set noexpandtab
 	" }
 	" Folding (disabled) {
+			"Currently disable folding
 		set nofoldenable
 			"Make folding indent sensitive
 		set foldmethod=indent
@@ -134,16 +147,43 @@
 
 " Mappings and functions {
 	" Misc {
-		map <F1> <Esc>
-		imap <F1> <Esc>
+			"Easier escape
+		inoremap <F1> <ESC>
+		nnoremap <F1> <ESC>
+		vnoremap <F1> <ESC>
+		inoremap jj <ESC>
+			"Match brackets key
+		nnoremap <tab> %
+		vnoremap <tab> %
+			"Clear highlight
 		map <silent> <C-l> :silent nohl<CR>
+			"Save as root
 		cmap w!! %!sudo tee > /dev/null %
 	" }
+	" Custom Keyset {
+		let mapleader = ","
+			"Reselect just pasted content
+		nnoremap <leader>v V`]
+			"Split Window and switch over to it
+		nnoremap <leader>w <C-w>v<C-w>l
+	" }
+	" Disable arrow keys {
+		nnoremap <up> <nop>
+		nnoremap <down> <nop>
+		nnoremap <left> <nop>
+		nnoremap <right> <nop>
+		inoremap <up> <nop>
+		inoremap <down> <nop>
+		inoremap <left> <nop>
+		inoremap <right> <nop>
+		nnoremap j gj
+		nnoremap k gk
+	" }
 	" Syntax checking {
-		map \spl :w !perl -c %<CR>
-		map \srb :w !ruby -c %<CR>
-		map \sx :w !gcc -fsyntax-only %<CR>
-		map \sjava :w !javac %<CR>
+		map <leader>spl :w !perl -c %<CR>
+		map <leader>srb :w !ruby -c %<CR>
+		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
+		map <leader>sjava :w !javac %<CR>
 	" }
 	" <F5>-<F8> {
 		" <F5> Toggle spell checking {
@@ -197,11 +237,6 @@
 		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
 		au BufNewFile,BufRead *.README set textwidth=72
 		au BufNewFile,BufRead *aegis-*	set textwidth=72
-		"Highlight Lines with more then 74 Columns
-		"augroup vimrc_autocmds
-		"	au BufEnter * highlight OverLength ctermbg=DarkBlue
-		"	au BufEnter * match OverLength /\%74v.*/
-		"augroup END
 	endif
 " }
 
@@ -210,4 +245,8 @@
 	"set confirm
 	"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
 	"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
+	"au FocusLost * :wa
+		"Column to mark overlong text
+	"set colorcolumn=85
+	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 " }
