@@ -10,12 +10,16 @@
 " }
 
 " Basic {
+		"VIM not VI wanted
 	set nocompatible
+		"Pantogen is used to manage vim plugins
+	call pathogen#infect()
+	call pathogen#helptags()
 	syntax on
-	filetype plugin on
-	filetype indent on
+	filetype plugin indent on
+		"Explicitly define xterm as environment
 	behave xterm
-		"More updates
+		"More screen updates
 	set ttyfast
 		"No modeline for security
 	set nomodeline
