@@ -152,6 +152,9 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+alias cdfh='cd ~/Dropbox/Documents/FH/'
+alias cddc='cd ~/Dropbox/Code/'
+
 # Mixed
 #alias mv='mv -b'
 alias g='git'
@@ -167,9 +170,12 @@ alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}pri
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
 alias http='python -m SimpleHTTPServer'
+alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 manswitch () { man $1 | less -p "^ +$2"; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
-quietly () { $* 2> /dev/null > /dev/null; }; 
+quietly () { $* 2> /dev/null > /dev/null; }
+compile () { gcc -Wall $1.c -lm -o $1 && ./$1; }
+compilec90 () { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 
 #############################################################################
 # Aliases - Conditional
