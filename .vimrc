@@ -24,6 +24,7 @@
 		"No modeline for security
 	set nomodeline
 	"set encoding=utf-8
+	set backspace=indent,eol,start
 " }
 
 " General {
@@ -239,6 +240,8 @@
 		au BufRead,BufNewFile *.rb,*.rhtml set expandtab
 		"Deleting multible spaces at once
 		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
+		au BufNewFile,BufRead *.pde set ft=arduino
+		au BufNewFile,BufRead *.ino set ft=arduino
 		au BufNewFile,BufRead *.README set textwidth=72
 		au BufNewFile,BufRead *aegis-*	set textwidth=72
 	endif
