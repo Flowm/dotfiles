@@ -75,11 +75,11 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 	chroot=$(cat /etc/debian_chroot)
 fi
 
-# git
+# Git
 export MANPATH=/usr/local/git/man:$MANPATH
 function parse_git_branch {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
- }
+}
 
 color_prompt=yes
 
@@ -162,7 +162,7 @@ alias cdfh='cd ~/Dropbox/Documents/FH/'
 alias cddc='cd ~/Dropbox/Code/'
 alias du-h='du -h --max-depth=1 |sort -rh'
 
-# Mixed
+# Own
 #alias mv='mv -b'
 alias h='history'
 alias g='git'
@@ -195,13 +195,20 @@ compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 #############################################################################
 # Aliases - Conditional
 #
-#----------------------------------------------------------------------------
-# Gnome only
-alias open='gnome-open'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+#----------------------------------------------------------------------------
+# Linux Only
+if [ $OS == "Linux" ]; then
+	# Gnome only
+	alias open='gnome-open'
+	
+	# Directory sorting only in gnu ls
+	alias ll='ls -alF --group-directories-first'
+
+	# No more Notify-send in new Ubuntu
+	# Add an "alert" alias for long running commands. Use like so: sleep 1; alert
+	#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+fi
 
 #----------------------------------------------------------------------------
 # G Prod only
@@ -226,7 +233,7 @@ if ([ $GeNUA ] && [ -f ~/.aegis ]); then
 fi
 
 #----------------------------------------------------------------------------
-# Admin only
+# Non GeNUA and probably Admin
 if [ !$GeNUA ]; then
 	# apt-get Shortcuts
 	alias acs='apt-cache search'
@@ -240,9 +247,18 @@ if [ !$GeNUA ]; then
 	alias apts='sudo aptitude search'
 	alias aptupd='sudo aptitude update'
 	alias aptupg='sudo aptitude upgrade'
-	alias aptdupg='sudo aptitude dist-upgrade'
+	alias aptupfg='sudo aptitude full-upgrade'
 	alias apti='sudo aptitude install'
 	alias aptr='sudo aptitude remove'
+
+	# Directory Navigation
+	alias cdfh='cd ~/Dropbox/Documents/FH/'
+	alias cddc='cd ~/Dropbox/Code/'
+
+	# FH Rosenheim VPN
+	alias fh-vpn-ext='sudo vpnc /etc/vpnc/hs-extern.conf'
+	alias fh-vpn-int='sudo vpnc /etc/vpnc/hs-intern.conf'
+	alias fh-vpn-stop='sudo pkill vpnc'
 fi
 
 #----------------------------------------------------------------------------
@@ -250,13 +266,6 @@ fi
 if [ $ALL_PROXY ]; then
 	alias curl='curl --socks4 localhost'
 fi
-
-#----------------------------------------------------------------------------
-# FH Rosenheim VPN
-
-alias fh-vpn-ext='sudo vpnc /etc/vpnc/hs-extern.conf'
-alias fh-vpn-int='sudo vpnc /etc/vpnc/hs-intern.conf'
-alias fh-vpn-stop='sudo pkill vpnc'
 
 #----------------------------------------------------------------------------
 # Additional aliases if any
