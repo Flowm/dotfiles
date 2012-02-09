@@ -52,6 +52,12 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
 HISTFILESIZE=500000
+#unset HISTSIZE
+#unset HISTFILESIZE
+
+export HISTTIMEFORMAT="%s "
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $HOST $$ $USER \
+				"$(history 1)" >> ~/.bash_eternal_history'
 
 #############################################################################
 # Screen
@@ -139,7 +145,7 @@ esac
 export EDITOR=vim
 
 # Some more ls aliases
-alias ll='ls -alF --group-directories-first'
+alias ll='ls -alF --group-directories-first' #TODO: Only Linux
 alias la='ls -Al'
 alias l='ls -CF'
 alias tree='tree -Csu | less -R'
@@ -154,28 +160,37 @@ alias .....='cd ../../../..'
 
 alias cdfh='cd ~/Dropbox/Documents/FH/'
 alias cddc='cd ~/Dropbox/Code/'
+alias du-h='du -h --max-depth=1 |sort -rh'
 
 # Mixed
 #alias mv='mv -b'
+alias h='history'
 alias g='git'
 alias j='jiffyi'
 alias mygrep='grep -iIR'
 alias myscp='rsync -e ssh --ipv4 -aiurP'
-alias ssh-CMn='ssh -o ControlMaster=no'
-alias ssh-CMs='ls ~/.tmp/'
+alias ssh-nCM='ssh -o ControlMaster=no'
+alias ssh-sCM='ls ~/.tmp/'
+alias jsocks='java -DsocksProxyHost=localhost'
 
 #Some nice little scripts
+alias pwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$hip,0,2)).\".\"; print hex(substr(\$hip,2,2)).\".\"; print hex(substr(\$hip,4,2)).\".\"; print hex(substr(\$hip,6,2)).\"\n\";"'
 alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
 alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
 alias http='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
-manswitch () { man $1 | less -p "^ +$2"; }
+alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
+alias openports='netstat -anp --tcp --udp | grep LISTEN'
+manswitch() { man $1 | less -p "^ +$2"; }
+manpdf() { man -t $1 | ps2pdf - $1.pdf; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
-quietly () { $* 2> /dev/null > /dev/null; }
-compile () { gcc -Wall $1.c -lm -o $1 && ./$1; }
-compilec90 () { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
+say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
+#gdu() { t=$(df|awk 'NR!=1{sum+=$2}END{print sum }');sudo du / --max-depth=1|sed '$d'|sort -rn -k1 | awk -v t=$t 'OFMT="%d" {M=64; for (a=0;a<$1;a++){if (a>c){c=a}}br=a/c;b=M*br;for(x=0;x<b;x++){printf "\033[1;31m" "|" "\033[0m"}print " "$2" "(a/t*100)"% total"}'}
+quietly() { $* 2> /dev/null > /dev/null; }
+compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
+compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 
 #############################################################################
 # Aliases - Conditional
@@ -254,5 +269,5 @@ fi
 fi
 
 # This loads RVM into a shell session.
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 [[ -s "/usr/local/lib/rvm" ]] && . "/usr/local/lib/rvm"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
