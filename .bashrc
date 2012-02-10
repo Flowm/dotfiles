@@ -41,6 +41,16 @@ if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
 fi
 
+# Add $HOME/bin/binary to path (binary files only)
+if [ -d "$HOME/bin/binary" ] ; then
+	PATH="$HOME/bin/binary:$PATH"
+fi
+
+# Add $HOME/bin/work to path
+if [ -d "$HOME/bin/work" ] ; then
+	PATH="$HOME/bin/work:$PATH"
+fi
+
 #############################################################################
 # History
 #
@@ -238,6 +248,10 @@ fi
 #----------------------------------------------------------------------------
 # Non GeNUA and probably Admin
 if [ !$GeNUA ]; then
+	# Add $HOME/bin/sudo to path
+	if [ -d "$HOME/bin/sudo" ] ; then
+		PATH="$HOME/bin/sudo:$PATH"
+	fi
 	# apt-get Shortcuts
 	alias acs='apt-cache search'
 	alias agu='sudo apt-get update'
@@ -281,5 +295,15 @@ fi
 fi
 
 # This loads RVM into a shell session.
-[[ -s "/usr/local/lib/rvm" ]] && . "/usr/local/lib/rvm"
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+if [ -s "/usr/local/lib/rvm" ] ; then
+	. "/usr/local/lib/rvm"
+	if [ -d "$HOME/bin/rvm" ] ; then
+		PATH="$HOME/bin/rvm:$PATH"
+	fi
+fi
+if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
+	. "$HOME/.rvm/scripts/rvm"
+	if [ -d "$HOME/bin/rvm" ] ; then
+		PATH="$HOME/bin/rvm:$PATH"
+	fi
+fi
