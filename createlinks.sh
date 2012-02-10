@@ -52,6 +52,8 @@ if [ -d ~/Dropbox/Code/gitted/bin ] ; then
 		rm -r ~/bin/
 	fi
 	ln -fns ~/Dropbox/Code/gitted/bin ~/bin
+	ln -fs ~/Dropbox/Code/gitted/jiffyi/jiffyi.rb ~/bin/jiffyi
+	ln -fs ~/Dropbox/Code/gitted/aussh/aussh.pl ~/bin/aussh
 fi
 
 
