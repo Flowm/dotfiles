@@ -197,7 +197,6 @@ manswitch() { man $1 | less -p "^ +$2"; }
 manpdf() { man -t $1 | ps2pdf - $1.pdf; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
-#gdu() { t=$(df|awk 'NR!=1{sum+=$2}END{print sum }');sudo du / --max-depth=1|sed '$d'|sort -rn -k1 | awk -v t=$t 'OFMT="%d" {M=64; for (a=0;a<$1;a++){if (a>c){c=a}}br=a/c;b=M*br;for(x=0;x<b;x++){printf "\033[1;31m" "|" "\033[0m"}print " "$2" "(a/t*100)"% total"}'}
 quietly() { $* 2> /dev/null > /dev/null; }
 compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
