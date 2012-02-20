@@ -44,3 +44,16 @@ if [ -a ~/.vim ] && !([ -h ~/.vim ])
 	rm -r ~/.vim/
 fi
 ln -fns ~/.myconf/.vim ~/.vim
+
+#BIN
+if [ -d ~/Dropbox/Code/gitted/bin ] ; then
+	if [ -a ~/bin ] && !([ -h ~/bin ])
+		then cp -r ~/bin ~/.tmp/.oldconf/
+		rm -r ~/bin/
+	fi
+	ln -fns ~/Dropbox/Code/gitted/bin ~/bin
+	ln -fs ~/Dropbox/Code/gitted/jiffyi/jiffyi.rb ~/bin/jiffyi
+	ln -fs ~/Dropbox/Code/gitted/aussh/aussh.pl ~/bin/aussh
+fi
+
+
