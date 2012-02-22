@@ -4,8 +4,6 @@
 if [ -n "$PS1" ]; then
 #[ -z "$PS1" ] && return
 
-# VI mode
-set -o vi
 
 #############################################################################
 # Host detection
@@ -71,6 +69,21 @@ HISTFILESIZE=500000
 export HISTTIMEFORMAT="%s "
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $HOST $$ $USER \
 				"$(history 1)" >> ~/.bash_eternal_history'
+
+#############################################################################
+# Behaviour
+#
+# VI mode
+set -o vi
+
+# ^p check for partial match in history
+bind -m vi-insert "\C-p":dynamic-complete-history
+
+# ^n cycle through the list of partial matches
+bind -m vi-insert "\C-n":menu-complete
+
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
 
 #############################################################################
 # Screen
