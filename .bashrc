@@ -4,7 +4,6 @@
 if [ -n "$PS1" ]; then
 #[ -z "$PS1" ] && return
 
-
 #############################################################################
 # Host detection
 #
@@ -84,6 +83,7 @@ bind -m vi-insert "\C-n":menu-complete
 
 # ^l clear screen
 bind -m vi-insert "\C-l":clear-screen
+bind -m vi-command "\C-l":clear-screen
 
 #############################################################################
 # Screen
