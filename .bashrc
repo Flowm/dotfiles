@@ -200,6 +200,7 @@ alias ssh-sCM='ls ~/.tmp/'
 alias jsocks='java -DsocksProxyHost=localhost'
 
 #Some nice little scripts
+alias ping88='ping 8.8.8.8'
 alias pwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$hip,0,2)).\".\"; print hex(substr(\$hip,2,2)).\".\"; print hex(substr(\$hip,4,2)).\".\"; print hex(substr(\$hip,6,2)).\"\n\";"'
 alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'

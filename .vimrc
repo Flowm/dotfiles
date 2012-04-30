@@ -240,6 +240,10 @@
 		au BufRead,BufNewFile *.rb,*.rhtml set expandtab
 		"Deleting multible spaces at once
 		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
+		au BufRead,BufNewFile *.ino set tabstop=2
+		au BufRead,BufNewFile *.ino set softtabstop=2
+		au BufRead,BufNewFile *.ino set shiftwidth=2
+		au BufRead,BufNewFile *.ino set expandtab
 		au BufNewFile,BufRead *.pde set ft=arduino
 		au BufNewFile,BufRead *.ino set ft=arduino
 		au BufNewFile,BufRead *.README set textwidth=72
