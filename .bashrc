@@ -171,7 +171,7 @@ esac
 export EDITOR=vim
 
 # Some more ls aliases
-alias ll='ls -alF --group-directories-first' #TODO: Only Linux
+alias ll='ls -alF'
 alias la='ls -Al'
 alias l='ls -CF'
 alias tree='tree -Csu | less -R'
