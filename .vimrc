@@ -231,6 +231,9 @@
 		map <silent> <c-h> :call HtmlEscape()<CR>
 	" }
 " }
+" Settings for addons {
+	let g:Perl_GlobalTemplateFile='~/.vim/perl-support/templates/Templates'
+" }
 
 " Conditionals {
 	if has('autocmd')
