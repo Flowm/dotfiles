@@ -105,6 +105,7 @@
 	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
+		set scroll=11
 		set scrolloff=5
 			"Bracket matching
 		set showmatch
@@ -191,13 +192,10 @@
 		map <leader>sjava :w !javac %<CR>
 	" }
 	" <F5>-<F8> {
-		" <F5> Toggle spell checking {
-			map <F5> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" <F5> Toggle paste mode {
+			set pastetoggle=<F5>
 		" }
-		" <F6> Toggle paste mode {
-			set pastetoggle=<F6>
-		" }
-		" <F7> Toggle whitespace and tab display {
+		" <F6> Toggle whitespace and tab display {
 			function ToggleList()
 				if &list
 					set nolist
@@ -205,9 +203,9 @@
 					set list
 				endif
 			endfunction
-			map <silent> <F7> :call ToggleList() <CR>
+			map <silent> <F6> :call ToggleList() <CR>
 		" }
-		" <F8> Toggle line numbers {
+		" <F7> Toggle line numbers {
 			function ToggleNumber()
 				if &number
 					set nonumber
@@ -215,7 +213,10 @@
 					set number
 				endif
 			endfunction
-			map <silent> <F8> :call ToggleNumber() <CR>
+			map <silent> <F7> :call ToggleNumber() <CR>
+		" }
+		" <F8> Toggle spell checking {
+			map <F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
 		" }
 	" }
 	" HTML encode all vowels with Strg-H {
@@ -232,25 +233,35 @@
 	" }
 " }
 " Settings for addons {
-	let g:Perl_GlobalTemplateFile='~/.vim/perl-support/templates/Templates'
+	let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
 " }
 
 " Conditionals {
 	if has('autocmd')
+		" Ruby {
 		au BufRead,BufNewFile *.rb,*.rhtml set tabstop=2
 		au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
 		au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
 		au BufRead,BufNewFile *.rb,*.rhtml set expandtab
 		"Deleting multible spaces at once
 		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
+		" }
+		" Perl {
+		au BufRead,BufNewFile *.gui set ft=perl
+		au BufRead,BufNewFile *.pl set tabstop=8
+		au BufRead,BufNewFile *.pl set shiftwidth=8
+		" }
+		" arduino {
+		au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 		au BufRead,BufNewFile *.ino set tabstop=2
 		au BufRead,BufNewFile *.ino set softtabstop=2
 		au BufRead,BufNewFile *.ino set shiftwidth=2
 		au BufRead,BufNewFile *.ino set expandtab
-		au BufNewFile,BufRead *.pde set ft=arduino
-		au BufNewFile,BufRead *.ino set ft=arduino
-		au BufNewFile,BufRead *.README set textwidth=72
-		au BufNewFile,BufRead *aegis-*	set textwidth=72
+		" }
+		" Other dev {
+		au BufRead,BufNewFile *.README set textwidth=72
+		au BufRead,BufNewFile *aegis-* set textwidth=72
+		" }
 	endif
 " }
 
