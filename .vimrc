@@ -10,12 +10,12 @@
 " }
 
 " Basic {
-		"VIM not VI wanted
+		"Use Vim defaults
 	set nocompatible
 		"Pantogen is used to manage vim plugins
 	call pathogen#infect()
 	call pathogen#helptags()
-	syntax on
+	syntax enable
 	filetype plugin indent on
 		"Explicitly define xterm as environment
 	behave xterm
@@ -23,7 +23,11 @@
 	set ttyfast
 		"No modeline for security
 	set nomodeline
+		"No exec
+	set secure
+		"Encoding
 	"set encoding=utf-8
+		"Function of the backspace key
 	set backspace=indent,eol,start
 " }
 
@@ -32,7 +36,8 @@
 		set backup
 		set backupdir=~/.tmp/.vimbak
 		set directory=~/.tmp/.vimtmp,.
-		set history=1000
+		set history=2048
+		set undolevels=2048
 	" }
 	" Tab completion {
 		set wildmenu
@@ -55,6 +60,10 @@
 	" }
 	" Spelling {
 		set spelllang=en_us,de_de
+	" }
+	" Misc {
+		" Only one whitespace after _J_oining after a dot
+		set nojoinspaces
 	" }
 " }
 
@@ -107,6 +116,7 @@
 			"Always let 5 lines below and above the cursor on the screen
 		set scroll=11
 		set scrolloff=5
+		set sidescroll=8
 			"Bracket matching
 		set showmatch
 			"Show unfinished commands
@@ -147,7 +157,7 @@
 			"Currently disable folding
 		set nofoldenable
 			"Make folding indent sensitive
-		set foldmethod=indent
+		set foldmethod=manual
 	" }
 " }
 
@@ -191,7 +201,32 @@
 		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
 		map <leader>sjava :w !javac %<CR>
 	" }
-	" <F5>-<F8> {
+	" <F4>-<F8> {
+		" <F4> Toggle visual highlighting of lines onger than 80 chars {
+			function ToggleColorColumn()
+				if exists('+colorcolumn')
+					if empty(&colorcolumn)
+						if empty(&textwidth)
+							set colorcolumn=81
+						else
+							set colorcolumn=+1
+						endif
+					else
+						set colorcolumn=
+					endif
+				else
+					if !exists('s:color_column')
+						highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+						match OverLength /\%81v.\+/
+						let s:color_column = 1
+					else
+						match OverLength //
+						unlet s:color_column
+					endif
+				endif
+			endfunction
+			map <silent> <F4> :call ToggleColorColumn() <CR>
+		" }
 		" <F5> Toggle paste mode {
 			set pastetoggle=<F5>
 		" }
@@ -249,7 +284,11 @@
 		" Perl {
 		au BufRead,BufNewFile *.gui set ft=perl
 		au BufRead,BufNewFile *.pl set tabstop=8
-		au BufRead,BufNewFile *.pl set shiftwidth=8
+		au BufRead,BufNewFile *.pl set softtabstop=4
+		au BufRead,BufNewFile *.pl set shiftwidth=4
+		au BufRead,BufNewFile *.pl set noexpandtab
+		au BufRead,BufNewFile *.pl set smarttab
+		au BufRead,BufNewFile *.pl set shiftround
 		" }
 		" arduino {
 		au BufRead,BufNewFile *.ino,*.pde set ft=arduino
