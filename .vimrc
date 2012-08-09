@@ -72,6 +72,12 @@
 		colorscheme evening
 		set background=dark
 	" }
+	" Colors {
+		" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
+		" Non-safe Colors, 16-Color-Term:
+		" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
+		"
+	" }
 	" Statusbar {
 			"Show the Ruler (if statusbar isn't working)
 		"set ruler
@@ -97,6 +103,8 @@
 		set statusline+=%m%r%h%w
 			"Filetype
 		set statusline+=[%Y]
+			"Filetype
+		set statusline+=[%{&fo}]
 			"Last modified
 		set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
 			"Left/Right separator
@@ -130,9 +138,12 @@
 	" Whitespace and Tab display {
 		set list
 		set list listchars=tab:>.,trail:.
+		"set listchars=tab:\ \ ,trail:\.
 		"set list listchars=tab:>.,trail:·
 	" }
 	" Overlong lines display {
+			"Don't do newlines automatically
+		set fo-=t
 			"Break the line instead of scrolling right
 		set wrap
 			"Don't break lines
@@ -202,10 +213,11 @@
 		map <leader>sjava :w !javac %<CR>
 	" }
 	" <F4>-<F8> {
-		" <F4> Toggle visual highlighting of lines onger than 80 chars {
+		" <F4> Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
 				if exists('+colorcolumn')
 					if empty(&colorcolumn)
+						highlight ColorColumn ctermbg=red
 						if empty(&textwidth)
 							set colorcolumn=81
 						else
@@ -216,7 +228,7 @@
 					endif
 				else
 					if !exists('s:color_column')
-						highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+						highlight OverLength ctermbg=red ctermfg=white
 						match OverLength /\%81v.\+/
 						let s:color_column = 1
 					else
@@ -268,38 +280,29 @@
 	" }
 " }
 " Settings for addons {
-	let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
+	" perl.vim {
+		let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
+		let perl_want_scope_in_variables = 1
+		let perl_extended_vars = 1
+		let perl_string_as_statement = 1
+	" }
 " }
 
 " Conditionals {
 	if has('autocmd')
-		" Ruby {
-		au BufRead,BufNewFile *.rb,*.rhtml set tabstop=2
-		au BufRead,BufNewFile *.rb,*.rhtml set softtabstop=2
-		au BufRead,BufNewFile *.rb,*.rhtml set shiftwidth=2
-		au BufRead,BufNewFile *.rb,*.rhtml set expandtab
-		"Deleting multible spaces at once
-		au BufRead,BufNewFile *.rb,*.rhtml set smarttab
+		" Filetype Detection {
+			au BufRead,BufNewFile *.gui set ft=perl
+			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 		" }
-		" Perl {
-		au BufRead,BufNewFile *.gui set ft=perl
-		au BufRead,BufNewFile *.pl set tabstop=8
-		au BufRead,BufNewFile *.pl set softtabstop=4
-		au BufRead,BufNewFile *.pl set shiftwidth=4
-		au BufRead,BufNewFile *.pl set noexpandtab
-		au BufRead,BufNewFile *.pl set smarttab
-		au BufRead,BufNewFile *.pl set shiftround
-		" }
-		" arduino {
-		au BufRead,BufNewFile *.ino,*.pde set ft=arduino
-		au BufRead,BufNewFile *.ino set tabstop=2
-		au BufRead,BufNewFile *.ino set softtabstop=2
-		au BufRead,BufNewFile *.ino set shiftwidth=2
-		au BufRead,BufNewFile *.ino set expandtab
+		" Filetype settings {
+			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
+			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
 		" }
 		" Other dev {
-		au BufRead,BufNewFile *.README set textwidth=72
-		au BufRead,BufNewFile *aegis-* set textwidth=72
+			au BufRead,BufNewFile *.README set textwidth=72
+			au BufRead,BufNewFile *aegis-* set textwidth=72
 		" }
 	endif
 " }
