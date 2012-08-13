@@ -77,7 +77,7 @@
 	" Colors {
 		hi Search ctermbg=DarkYellow ctermfg=White
 		" Used by listchars
-		"hi SpecialKey ctermbg=1
+		hi SpecialKey ctermbg=1
 
 		" Some tweaks for the solarized colorscheme
 		hi Identifier ctermfg=6 cterm=bold
@@ -144,7 +144,7 @@
 
 " Text Formatting/Layout {
 	" Whitespace and Tab display {
-		set list
+		set nolist
 		"set list listchars=tab:>.,trail:.
 		set listchars=tab:\ \ ,trail:\.
 		"set list listchars=tab:>.,trail:·
