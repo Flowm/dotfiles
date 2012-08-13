@@ -69,10 +69,18 @@
 
 " Appearance and handling {
 	" Theme {
-		colorscheme evening
+		"colorscheme evening
+		let g:solarized_termcolors=256
+		colorscheme solarized
 		set background=dark
 	" }
 	" Colors {
+		hi Search ctermbg=DarkYellow ctermfg=White
+		" Used by listchars
+		"hi SpecialKey ctermbg=1
+
+		" Some tweaks for the solarized colorscheme
+		hi Identifier ctermfg=6 cterm=bold
 		" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
 		" Non-safe Colors, 16-Color-Term:
 		" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
@@ -137,8 +145,8 @@
 " Text Formatting/Layout {
 	" Whitespace and Tab display {
 		set list
-		set list listchars=tab:>.,trail:.
-		"set listchars=tab:\ \ ,trail:\.
+		"set list listchars=tab:>.,trail:.
+		set listchars=tab:\ \ ,trail:\.
 		"set list listchars=tab:>.,trail:·
 	" }
 	" Overlong lines display {
