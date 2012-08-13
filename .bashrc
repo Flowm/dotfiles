@@ -143,23 +143,24 @@ fi
 
 # Enable color support of ls and also add handy aliases
 if ([ -n "$color_prompt" ] && [ -x /usr/bin/dircolors ]); then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias dir='dir --color=auto'
+	alias vdir='vdir --color=auto'
 
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
 fi
 
 # Improved window titles
 case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
+	xterm*|rxvt*)
+		PS1="\[\e]0;\u@\h: \w\a\]$PS1"
+		export TERM=xterm-256color
+		;;
+	*)
+		;;
 esac
 
 #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
@@ -171,7 +172,7 @@ esac
 export EDITOR=vim
 
 # Some more ls aliases
-alias ll='ls -alF --group-directories-first' #TODO: Only Linux
+alias ll='ls -alF'
 alias la='ls -Al'
 alias l='ls -CF'
 alias tree='tree -Csu | less -R'
@@ -248,12 +249,13 @@ if [ $GeNUA ]; then
 	alias sieveedit='SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get fmaurach.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE fmaurach.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 	#Connections
 	alias sshpf='ssh -t hpf-admin ssh'
+	alias g730='ssh g730'
+	alias g731='ssh g731'
+	alias gkvm='ssh gkvm'
 	#Firefoxes
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
 	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown.genua firefox -no-remote'
 	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
-	alias gzchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc blackswan gzchrome'
-	alias gzfirefox='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc blackswan gzfirefox'
 fi
 
 #----------------------------------------------------------------------------
