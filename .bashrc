@@ -216,7 +216,10 @@ say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
 quietly() { $* 2> /dev/null > /dev/null; }
 compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
+alias junitc='javac -cp .:/usr/share/java/junit4.jar'
+alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
+cmdfu () { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
 
 #############################################################################
 # Aliases - Conditional
@@ -289,9 +292,9 @@ if [ !$GeNUA ]; then
 	alias cddc='cd ~/Dropbox/Code/'
 
 	# FH Rosenheim VPN
-	alias fh-vpn-ext='sudo vpnc /etc/vpnc/hs-extern.conf'
-	alias fh-vpn-int='sudo vpnc /etc/vpnc/hs-intern.conf'
-	alias fh-vpn-stop='sudo pkill vpnc'
+	alias fh-vpn-ext='sudo vpnc-connect /etc/vpnc/hs-extern.conf'
+	alias fh-vpn-int='sudo vpnc-connect /etc/vpnc/hs-intern.conf'
+	alias fh-vpn-stop='sudo vpnc-disconnect'
 fi
 
 #----------------------------------------------------------------------------
@@ -319,6 +322,10 @@ if [ -s "/usr/local/lib/rvm" ] ; then
 fi
 if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
 	. "$HOME/.rvm/scripts/rvm"
+	if [ -d "$HOME/bin/rvm" ] ; then
+		PATH="$HOME/bin/rvm:$PATH"
+		PATH="$HOME/.rvm/bin:$PATH"
+	fi
 	if [ -d "$HOME/bin/rvm" ] ; then
 		PATH="$HOME/bin/rvm:$PATH"
 	fi
