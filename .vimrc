@@ -114,13 +114,13 @@
 			set statusline+=[%Y]
 				"Filetype
 			set statusline+=[%{&fo}]
-			if &columns>80
+			if winwidth(0) > 80
 					"Last modified
 				set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
 			endif
 				"Left/Right separator
 			set statusline+=%=
-			if &columns>95
+			if winwidth(0) > 95
 					"Current module name
 				set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ 
 			endif
@@ -332,4 +332,6 @@
 		"Column to mark overlong text
 	"set colorcolumn=85
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
+	"set statusline+=[%{winnr()}]
+	"set statusline+=[%{winwidth(0)}]
 " }
