@@ -97,36 +97,44 @@
 		set laststatus=2
 	" }
 	" Statusline {
-			"Clear the statusline
-		set statusline=
-			"Tail of the filename
-		set statusline=%t\ 
-			"Complete filename
-		"set statusline=%f\ 
-			"File format
-		set statusline+=[%{&fileformat},
-			"File encoding
-		set statusline+=%{strlen(&fenc)?&fenc:&enc}]
-			"Flag
-		set statusline+=%m%r%h%w
-			"Filetype
-		set statusline+=[%Y]
-			"Filetype
-		set statusline+=[%{&fo}]
-			"Last modified
-		set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
-			"Left/Right separator
-		set statusline+=%=
-			"Current module name
-		set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ 
-			"HEX value of char
-		"set statusline+=[HEX:0x%2B]\ 
-			"ASCII value of char
-		"set statusline+=[ASCII:%3b]\ 
-			"COL + LIN
-		set statusline+=%-20([COL:%2v][LIN:%3l/%L]%)\ 
-			"Percentage of file
-		set statusline+=[%3p%%]
+		function RefreshStatusline()
+				"Clear the statusline
+			set statusline=
+				"Tail of the filename
+			set statusline=%t\ 
+				"Complete filename
+			"set statusline=%f\ 
+				"File format
+			set statusline+=[%{&fileformat},
+				"File encoding
+			set statusline+=%{strlen(&fenc)?&fenc:&enc}]
+				"Flag
+			set statusline+=%m%r%h%w
+				"Filetype
+			set statusline+=[%Y]
+				"Filetype
+			set statusline+=[%{&fo}]
+			if &columns>80
+					"Last modified
+				set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
+			endif
+				"Left/Right separator
+			set statusline+=%=
+			if &columns>95
+					"Current module name
+				set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ 
+			endif
+				"HEX value of char
+			"set statusline+=[HEX:0x%2B]\ 
+				"ASCII value of char
+			"set statusline+=[ASCII:%3b]\ 
+				"COL + LIN
+			set statusline+=%-20([COL:%2v][LIN:%3l/%L]%)\ 
+				"Percentage of file
+			set statusline+=[%3p%%]
+			endfunction
+		call RefreshStatusline()
+		map <silent> <F3> :call RefreshStatusline() <CR>
 	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
