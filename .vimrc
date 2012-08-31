@@ -104,16 +104,18 @@
 			set statusline=%t\ 
 				"Complete filename
 			"set statusline=%f\ 
-				"File format
-			set statusline+=[%{&fileformat},
-				"File encoding
-			set statusline+=%{strlen(&fenc)?&fenc:&enc}]
-				"Flag
-			set statusline+=%m%r%h%w
-				"Filetype
-			set statusline+=[%Y]
-				"Filetype
-			set statusline+=[%{&fo}]
+			if winwidth(0) > 65 
+					"File format
+				set statusline+=[%{&fileformat},
+					"File encoding
+				set statusline+=%{strlen(&fenc)?&fenc:&enc}]
+					"Flag
+				set statusline+=%m%r%h%w
+					"Filetype
+				set statusline+=[%Y]
+					"Filetype
+				set statusline+=[%{&fo}]
+			endif
 			if winwidth(0) > 80
 					"Last modified
 				set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
