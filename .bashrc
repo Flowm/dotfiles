@@ -194,6 +194,7 @@ alias du-h='du -h --max-depth=1 |sort -rh'
 alias h='history'
 alias g='git'
 alias j='jiffyi'
+alias a='ack '
 alias mygrep='grep -iIR'
 alias myscp='rsync -e ssh --ipv4 -aiurP'
 alias ssh-nCM='ssh -o ControlMaster=no'
@@ -263,6 +264,7 @@ fi
 if ([ $GeNUA ] && [ -f ~/.aegis ]); then
 	. ~/.aegis
 	alias c='AEP g2z '
+	alias ack='ack.pl --follow '
 	alias gcd='cd /data/git/fmaurach/gz/'
 fi
 
