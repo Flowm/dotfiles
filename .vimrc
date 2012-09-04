@@ -197,6 +197,7 @@
 		nnoremap <F1> <ESC>
 		vnoremap <F1> <ESC>
 		inoremap jj <ESC>
+		inoremap kk <ESC>
 			"Match brackets key
 		nnoremap <tab> %
 		vnoremap <tab> %
