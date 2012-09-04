@@ -294,6 +294,8 @@
 		endfunction
 		map <silent> <c-h> :call HtmlEscape()<CR>
 	" }
+	" Window functions {
+	" }
 " }
 " Settings for addons {
 	" perl.vim {
@@ -326,11 +328,7 @@
 " To be tested/integrated {
 	"set mouse=a
 	"set confirm
-	"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-	"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 	"au FocusLost * :wa
-		"Column to mark overlong text
-	"set colorcolumn=85
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 	"set statusline+=[%{winnr()}]
 	"set statusline+=[%{winwidth(0)}]
