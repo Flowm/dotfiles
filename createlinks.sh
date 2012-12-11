@@ -23,8 +23,8 @@ if [ -f ~/.ssh/config ]
 	then cp ~/.ssh/config ~/.tmp/.oldconf/
 fi
 mkdir -p ~/.ssh/
-chmod 600 ~/.myconf/.ssh/config
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
+chmod 600 ~/.myconf/.ssh/config
 
 #.tmux.conf
 if [ -f ~/.tmux.conf ]
