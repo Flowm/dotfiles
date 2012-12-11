@@ -184,6 +184,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
 
 alias cdfh='cd ~/Dropbox/Documents/FH/'
 alias cddc='cd ~/Dropbox/Code/'
@@ -191,14 +192,16 @@ alias du-h='du -h --max-depth=1 |sort -rh'
 
 # Own
 #alias mv='mv -b'
-alias h='history'
+alias a='ack'
 alias g='git'
+alias gr='grep -iIR'
+alias gr='gre'
+alias h='history'
 alias j='jiffyi'
-alias a='ack '
-alias mygrep='grep -iIR'
-alias myscp='rsync -e ssh --ipv4 -aiurP'
-alias ssh-nCM='ssh -o ControlMaster=no'
-alias ssh-sCM='ls ~/.tmp/'
+alias v='vim'
+alias rsyncc='rsync -e ssh --ipv4 -aiurP'
+alias ssh-CMn='ssh -o ControlMaster=no'
+alias ssh-CMs='ls ~/.tmp/'
 alias jsocks='java -DsocksProxyHost=localhost'
 
 #Some nice little scripts
@@ -212,7 +215,8 @@ alias http='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias openports='netstat -anp --tcp --udp | grep LISTEN'
-manswitch() { man $1 | less -p "^ +$2"; }
+manswitch() { man $1 | less -p "^ +-$2"; }
+alias mansw='manswitch'
 manpdf() { man -t $1 | ps2pdf - $1.pdf; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
@@ -221,6 +225,7 @@ compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
 alias junitc='javac -cp .:/usr/share/java/junit4.jar'
 alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
+compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu () { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
 
 #############################################################################
@@ -250,8 +255,8 @@ if [ $GeNUA ]; then
 	alias sieveedit='SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get fmaurach.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE fmaurach.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 	#Connections
 	alias sshpf='ssh -t hpf-admin ssh'
-	alias g730='ssh g730'
-	alias g731='ssh g731'
+	alias g730="luit -encoding ISO-8859-15 ssh g730"
+	alias g731="luit -encoding ISO-8859-15 ssh g731"
 	alias gkvm='ssh gkvm'
 	#Firefoxes
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
