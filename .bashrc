@@ -303,9 +303,9 @@ fi
 
 #----------------------------------------------------------------------------
 # Proxys
-if [ $ALL_PROXY ]; then
-	alias curl='curl --socks4 localhost'
-fi
+#if [ $ALL_PROXY ]; then
+	#alias curl='curl --socks4 localhost'
+#fi
 
 #----------------------------------------------------------------------------
 # Additional aliases if any
