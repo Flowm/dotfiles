@@ -232,6 +232,12 @@
 		map <leader>sjava :w !javac %<CR>
 	" }
 	" <F4>-<F8> {
+		" <F2> Paste to grave.io {
+			map <F2> :w !bury -t %<CR>
+		" }
+		" <F4> Toggle paste mode {
+			set pastetoggle=<F4>
+		" }
 		" <F4> Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
 				if exists('+colorcolumn')
@@ -256,10 +262,7 @@
 					endif
 				endif
 			endfunction
-			map <silent> <F4> :call ToggleColorColumn() <CR>
-		" }
-		" <F5> Toggle paste mode {
-			set pastetoggle=<F5>
+			map <silent> <F5> :call ToggleColorColumn() <CR>
 		" }
 		" <F6> Toggle whitespace and tab display {
 			function ToggleList()
@@ -297,6 +300,8 @@
 		endfunction
 		map <silent> <c-h> :call HtmlEscape()<CR>
 	" }
+	" Window functions {
+	" }
 " }
 " Settings for addons {
 	" perl.vim {
@@ -329,11 +334,7 @@
 " To be tested/integrated {
 	"set mouse=a
 	"set confirm
-	"au InsertEnter * hi StatusLine term=reverse ctermbg=5 gui=undercurl guisp=Magenta
-	"au InsertLeave * hi StatusLine term=reverse ctermfg=0 ctermbg=2 gui=bold,reverse
 	"au FocusLost * :wa
-		"Column to mark overlong text
-	"set colorcolumn=85
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 	"set statusline+=[%{winnr()}]
 	"set statusline+=[%{winwidth(0)}]
