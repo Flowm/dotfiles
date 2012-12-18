@@ -19,8 +19,8 @@ ln -fs ~/.myconf/.gitconfig ~/.gitconfig
 
 #.ssh/config
 if [ -f ~/.ssh/config ]
-	mkdir -p ~/.tmp/.oldconf/.ssh
-	then cp ~/.ssh/config ~/.tmp/.oldconf/
+	then mkdir -p ~/.tmp/.oldconf/.ssh
+	cp ~/.ssh/config ~/.tmp/.oldconf/.ssh/
 fi
 mkdir -p ~/.ssh/
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
