@@ -5,6 +5,7 @@
 [alias]
 	b = branch
 	ci = commit
+	cm = commit -m
 	co = checkout
 	com = checkout master
 	cp = cherry-pick
@@ -13,15 +14,15 @@
 	dh = diff HEAD
 	f = fetch
 	lcf = diff --name-only HEAD
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	rom = reset --hard origin/master
 	s = status
 	nb = checkout -b
 	webstart = instaweb --httpd=webrick --start
 	webstop = instaweb --httpd=webrick --stop
 	#GZ
-	pl = pull ssh://gerrit/gz.git
-	psh = push ssh://gerrit/gz.git HEAD:refs/for/master
+	gzpl = pull ssh://gerrit/gz.git
+	gzpsh = push ssh://gerrit/gz.git HEAD:refs/for/master
 [github]
 	user = Flowm
 	token = f774a1964bc762031e415d291403e8dc
