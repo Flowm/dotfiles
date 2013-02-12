@@ -271,6 +271,7 @@ fi
 if ([ $GeNUA ] && [ -f ~/.aegis ]); then
 	. ~/.aegis
 	alias c='AEP g2z '
+	alias ashowd='aed && showd'
 	alias ack='ack.pl --follow -a'
 	alias gcd='cd /data/git/fmaurach/gz/'
 fi
