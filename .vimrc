@@ -184,9 +184,10 @@
 	" }
 	" Folding (disabled) {
 			"Currently disable folding
-		set nofoldenable
+			"set nofoldenable
 			"Make folding indent sensitive
-		set foldmethod=manual
+		set foldmethod=indent
+		set foldlevel=40
 	" }
 " }
 
