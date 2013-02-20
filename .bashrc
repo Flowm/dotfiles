@@ -227,6 +227,21 @@ alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu () { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
+sagent() {
+	AGENTFILE=$HOME/.ssh/.agent.sh
+	if [ -e "$AGENTFILE" ]; then
+		source $AGENTFILE
+		ps -p $SSH_AGENT_PID > /dev/null
+		if [ $? -ne 0 ]; then
+			rm $AGENTFILE
+		fi
+	fi
+	if [ ! -e "$AGENTFILE" ]; then
+		ssh-agent | grep -v echo >&$AGENTFILE
+	fi
+	test -e $AGENTFILE && source $AGENTFILE
+}
+alias kagent="ssh-agent -k"
 
 #############################################################################
 # Aliases - Conditional
