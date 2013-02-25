@@ -110,7 +110,7 @@ function parse_git_branch {
 color_prompt=yes
 
 if [ -n "$color_prompt" ]; then
-	if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	if [ -x /usr/bin/tput ]; then #&& tput setaf 1 >&/dev/null; then
 		# We have color support; assume it's compliant with Ecma-48
 		#Set some colors
 		BLACK="\[\033[0;30m\]"
