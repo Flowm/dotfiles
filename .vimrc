@@ -207,6 +207,14 @@
 			"Save as root
 		cmap w!! %!sudo tee > /dev/null %
 	" }
+	" C&P between files via bufer {
+			"Copy to buffer
+			vnoremap <C-c> :w! ~/.tmp/.vimbak/vimbuffer<CR>
+			nnoremap <C-c> :.w! ~/.tmp/.vimbak/vimbuffer<CR>
+			"Paste from buffer
+			nnoremap <C-p> :r ~/.tmp/.vimbak/vimbuffer<CR>
+			"nnoremap <C-P> :-r ~/.tmp/.vimbak/vimbuffer<CR>
+	" }
 	" Custom Keyset {
 		let mapleader = ","
 			"Reselect just pasted content
