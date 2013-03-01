@@ -29,6 +29,8 @@
 	"set encoding=utf-8
 		"Function of the backspace key
 	set backspace=indent,eol,start
+		"Enable the mouse for scrolling
+	set mouse=n
 " }
 
 " General {
@@ -341,7 +343,6 @@
 " }
 
 " To be tested/integrated {
-	"set mouse=a
 	"set confirm
 	"au FocusLost * :wa
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
