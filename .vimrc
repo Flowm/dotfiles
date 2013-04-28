@@ -30,7 +30,7 @@
 		"Function of the backspace key
 	set backspace=indent,eol,start
 		"Enable the mouse for scrolling
-	set mouse=n
+	"set mouse=n
 " }
 
 " General {
