@@ -140,6 +140,10 @@
 		call RefreshStatusline()
 		map <silent> <F3> :call RefreshStatusline() <CR>
 	" }
+	" Enable the mouse for scrolling only {
+		set mouse=n
+		nnoremap <LeftMouse> <nop>
+	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
 		set scroll=11
