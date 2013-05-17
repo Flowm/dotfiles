@@ -222,7 +222,7 @@
 			"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
 	" }
-	" Disable arrow keys {
+	" Disable arrow keys by default {
 		nnoremap <up> <nop>
 		nnoremap <down> <nop>
 		nnoremap <left> <nop>
@@ -231,8 +231,8 @@
 		inoremap <down> <nop>
 		inoremap <left> <nop>
 		inoremap <right> <nop>
-		nnoremap j gj
-		nnoremap k gk
+		"nnoremap j gj
+		"nnoremap k gk
 	" }
 	" Syntax checking {
 		map <leader>spl :w !perl -c %<CR>
@@ -243,6 +243,28 @@
 	" <F4>-<F8> {
 		" <F2> Paste to grave.io {
 			map <F2> :w !bury -t %<CR>
+		" }
+		" <F3> Toggle the arrow keys {
+			function ToggleArrowKeys()
+				if !exists('s:arrow_keys')
+					unmap <up>
+					unmap <down>
+					unmap <left>
+					unmap <right>
+					let s:arrow_keys = 1
+				else
+					nnoremap <up> <nop>
+					nnoremap <down> <nop>
+					nnoremap <left> <nop>
+					nnoremap <right> <nop>
+					inoremap <up> <nop>
+					inoremap <down> <nop>
+					inoremap <left> <nop>
+					inoremap <right> <nop>
+					unlet s:arrow_keys
+				endif
+			endfunction
+			map <silent> <F3> :call ToggleArrowKeys() <CR>
 		" }
 		" <F4> Toggle paste mode {
 			set pastetoggle=<F4>
