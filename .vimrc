@@ -29,8 +29,6 @@
 	"set encoding=utf-8
 		"Function of the backspace key
 	set backspace=indent,eol,start
-		"Enable the mouse for scrolling
-	"set mouse=n
 " }
 
 " General {
@@ -139,10 +137,6 @@
 			endfunction
 		call RefreshStatusline()
 		map <silent> <F3> :call RefreshStatusline() <CR>
-	" }
-	" Enable the mouse for scrolling only {
-		set mouse=n
-		nnoremap <LeftMouse> <nop>
 	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
@@ -253,7 +247,7 @@
 		" <F4> Toggle paste mode {
 			set pastetoggle=<F4>
 		" }
-		" <F4> Toggle visual highlighting of lines longer than 80 chars {
+		" <F5> Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
 				if exists('+colorcolumn')
 					if empty(&colorcolumn)
