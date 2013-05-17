@@ -189,6 +189,7 @@ alias ......='cd ../../../../..'
 alias cdfh='cd ~/Dropbox/Documents/FH/'
 alias cddc='cd ~/Dropbox/Code/'
 alias du-h='du -h --max-depth=1 |sort -rh'
+alias findh='find . -iname'
 
 # Own
 #alias mv='mv -b'
