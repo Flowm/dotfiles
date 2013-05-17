@@ -282,6 +282,8 @@ if [ $GeNUA ]; then
 	alias g731="luit -encoding ISO-8859-15 ssh g731"
 	alias g740="luit -encoding ISO-8859-15 ssh g740"
 	alias g741="luit -encoding ISO-8859-15 ssh g741"
+	alias g810="luit -encoding ISO-8859-15 ssh g810"
+	alias g811="luit -encoding ISO-8859-15 ssh g811"
 	alias gkvm='ssh gkvm'
 	#Firefoxes
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
