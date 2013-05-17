@@ -309,20 +309,13 @@ if [ !$GeNUA ]; then
 		PATH="$HOME/bin/sudo:$PATH"
 	fi
 	# apt-get Shortcuts
-	alias acs='apt-cache search'
-	alias agu='sudo apt-get update'
-	alias agupg='sudo apt-get upgrade'
-	alias agdupg='sudo apt-get dist-upgrade'
-	alias agi='sudo apt-get install'
-	alias agr='sudo apt-get remove'
-	# aptitude Shortcuts
-	alias apt='sudo aptitude'
-	alias apts='sudo aptitude search'
-	alias aptupd='sudo aptitude update'
-	alias aptupg='sudo aptitude upgrade'
-	alias aptupfg='sudo aptitude full-upgrade'
-	alias apti='sudo aptitude install'
-	alias aptr='sudo aptitude remove'
+	alias ac-s='apt-cache search'
+	alias ag-u='sudo apt-get update'
+	alias ag-upg='sudo apt-get upgrade'
+	alias ag-dupg='sudo apt-get dist-upgrade'
+	alias ag-i='sudo apt-get install'
+	alias ag-r='sudo apt-get remove'
+	alias ag-up='sudo apt-get update && sudo apt-get dist-upgrade'
 
 	# Directory Navigation
 	alias cdfh='cd ~/Dropbox/Documents/FH/'
