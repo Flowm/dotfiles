@@ -240,11 +240,17 @@
 		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
 		map <leader>sjava :w !javac %<CR>
 	" }
-	" <F4>-<F8> {
-		" <F2> Paste to grave.io {
-			map <F2> :w !bury -t %<CR>
+	" <F1>-<F12> {
+		" <F1> Paste to grave.io {
+			map <F1> :w !bury -t % <CR>
 		" }
-		" <F3> Toggle the arrow keys {
+		" <F2> Toggle paste mode {
+			map <silent> <F2> :GitGutterToggle <CR>
+		" }
+		" <F3> Toggle paste mode {
+			map <silent> <F3> :GitGutterLineHighlightsToggle <CR>
+		" }
+		" <F4> Toggle the arrow keys {
 			function ToggleArrowKeys()
 				if !exists('s:arrow_keys')
 					unmap <up>
@@ -264,12 +270,22 @@
 					unlet s:arrow_keys
 				endif
 			endfunction
-			map <silent> <F3> :call ToggleArrowKeys() <CR>
+			map <silent> <F4> :call ToggleArrowKeys() <CR>
 		" }
-		" <F4> Toggle paste mode {
-			set pastetoggle=<F4>
+		" <F5> Toggle paste mode {
+			set pastetoggle=<F5>
 		" }
-		" <F5> Toggle visual highlighting of lines longer than 80 chars {
+		" <F6> Toggle whitespace and tab display {
+			function ToggleList()
+				if &list
+					set nolist
+				else
+					set list
+				endif
+			endfunction
+			map <silent> <F6> :call ToggleList() <CR>
+		" }
+		" <F7> Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
 				if exists('+colorcolumn')
 					if empty(&colorcolumn)
@@ -293,19 +309,9 @@
 					endif
 				endif
 			endfunction
-			map <silent> <F5> :call ToggleColorColumn() <CR>
+			map <silent> <F7> :call ToggleColorColumn() <CR>
 		" }
-		" <F6> Toggle whitespace and tab display {
-			function ToggleList()
-				if &list
-					set nolist
-				else
-					set list
-				endif
-			endfunction
-			map <silent> <F6> :call ToggleList() <CR>
-		" }
-		" <F7> Toggle line numbers {
+		" <F8> Toggle line numbers {
 			function ToggleNumber()
 				if &number
 					set nonumber
@@ -313,10 +319,10 @@
 					set number
 				endif
 			endfunction
-			map <silent> <F7> :call ToggleNumber() <CR>
+			map <silent> <F8> :call ToggleNumber() <CR>
 		" }
-		" <F8> Toggle spell checking {
-			map <F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" <F9> Toggle spell checking {
+			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
 		" }
 	" }
 	" HTML encode all vowels with Strg-H {
@@ -340,6 +346,17 @@
 		let perl_want_scope_in_variables = 1
 		let perl_extended_vars = 1
 		let perl_string_as_statement = 1
+	" }
+	" vim-gitgutter {
+		let g:gitgutter_enabled = 0
+		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
+		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
+		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
+		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
+		nmap <leader>j <Plug>GitGutterNextHunk
+		nmap <leader>k <Plug>GitGutterNextHunk
+		" Decrease amount of executions
+		"let g:gitgutter_eager = 0
 	" }
 " }
 
