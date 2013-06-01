@@ -309,13 +309,9 @@ if [ !$GeNUA ]; then
 		PATH="$HOME/bin/sudo:$PATH"
 	fi
 	# apt-get Shortcuts
-	alias ac-s='apt-cache search'
-	alias ag-u='sudo apt-get update'
-	alias ag-upg='sudo apt-get upgrade'
-	alias ag-dupg='sudo apt-get dist-upgrade'
-	alias ag-i='sudo apt-get install'
-	alias ag-r='sudo apt-get remove'
-	alias ag-up='sudo apt-get update && sudo apt-get dist-upgrade'
+	alias apt-up='sudo apt-get'
+	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
+	alias apt-tdiup='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
 
 	# Directory Navigation
 	alias cdfh='cd ~/Dropbox/Documents/FH/'
