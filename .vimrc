@@ -136,7 +136,6 @@
 			set statusline+=[%3p%%]
 			endfunction
 		call RefreshStatusline()
-		map <silent> <F3> :call RefreshStatusline() <CR>
 	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
@@ -221,6 +220,8 @@
 		nnoremap <leader>v V`]
 			"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
+			"Update the Statusline
+		nnoremap <leader>; :call RefreshStatusline() <CR>
 	" }
 	" Disable arrow keys by default {
 		nnoremap <up> <nop>
@@ -240,7 +241,7 @@
 		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
 		map <leader>sjava :w !javac %<CR>
 	" }
-	" <F1>-<F12> {
+	" <F1>-<F9> {
 		" <F1> Paste to grave.io {
 			map <F1> :w !bury -t % <CR>
 		" }
@@ -354,7 +355,7 @@
 		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
 		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
 		nmap <leader>j <Plug>GitGutterNextHunk
-		nmap <leader>k <Plug>GitGutterNextHunk
+		nmap <leader>k <Plug>GitGutterPrevHunk
 		" Decrease amount of executions
 		"let g:gitgutter_eager = 0
 	" }
