@@ -309,7 +309,7 @@ if [ !$GeNUA ]; then
 		PATH="$HOME/bin/sudo:$PATH"
 	fi
 	# apt-get Shortcuts
-	alias apt-up='sudo apt-get'
+	alias apt-up='sudo apt-get update'
 	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
 	alias apt-tdiup='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
 
