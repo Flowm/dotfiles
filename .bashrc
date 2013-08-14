@@ -218,7 +218,7 @@ alias http='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias openports='netstat -anp --tcp --udp | grep LISTEN'
-alias tcpdumpsel='tcpdump -i eth0 not arp and not stp and not ip proto 112 and not proto 89'
+alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
 manswitch() { man $1 | less -p "^ +-$2"; }
 alias mansw='manswitch'
 manpdf() { man -t $1 | ps2pdf - $1.pdf; }
