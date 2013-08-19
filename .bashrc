@@ -205,7 +205,7 @@ alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/tmp/INC/ --bwlimit=50'
 alias ssh-CMn='ssh -o ControlMaster=no'
 alias ssh-CMs='ls ~/.tmp/'
 alias jsocks='java -DsocksProxyHost=localhost'
-alias todoo='clear && todo'
+alias ctodo='clear && todo'
 
 #Some nice little scripts
 alias ping88='ping 8.8.8.8'
@@ -289,10 +289,13 @@ if [ $GeNUA ]; then
 	alias g811="luit -encoding ISO-8859-15 ssh g811"
 	alias gkvm='ssh gkvm'
 	#Firefoxes
-	alias snowfox='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc snow firefox'
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
 	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown.genua firefox -no-remote'
 	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
+	#snow
+	alias snowfox='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc snow firefox'
+	alias snowvim='ssh -t snow vim'
+	alias snowvimtmp='snowvim tmp.txt'
 fi
 
 #----------------------------------------------------------------------------
