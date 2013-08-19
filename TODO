@@ -1,7 +1,9 @@
 .vimrc:		Global C&P insert before
 .vimrc:		Toggle linewrap
-.vimrc:		Improve whitspace and tab display color
+.vimrc:		Improve whitespace and tab display color
 .vimrc:		Fix statusline length on short terminals
-.bashrc:	Speed optimasation
-.bashrc:	FIX RVM as sudo: $rvm_path (/usr/local/rvm) does not exist.rvm_is_a_shell_function: Befehl nicht gefunden.
-__rvm_teardown: Befehl nicht gefunden.
+.bashrc:	Speed optimization for RPI SD card
+.bashrc:	FIX RVM as sudo: $rvm_path (/usr/local/rvm) does not exist.rvm_is_a_shell_function: Befehl nicht gefunden. __rvm_teardown: Befehl nicht gefunden.
+.vimrc:		Background light/dark toggle
+.bashrc:	Add marks support (http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html)
+.bashrc:	Switch to ZSH someday
