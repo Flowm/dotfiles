@@ -205,14 +205,14 @@ alias ssh-CMs='ls ~/.tmp/'
 alias jsocks='java -DsocksProxyHost=localhost'
 alias ctodo='clear && todo'
 
-#sync
+# Sync
 alias rsyncc='rsync -e ssh --ipv4 -aiurP'
 alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/'
 alias carsync-50='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=50'
 alias carsync-100='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=100'
 alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
 
-#Some nice little scripts
+# Some nice little scripts
 alias ping88='ping 8.8.8.8'
 alias pwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$hip,0,2)).\".\"; print hex(substr(\$hip,2,2)).\".\"; print hex(substr(\$hip,4,2)).\".\"; print hex(substr(\$hip,6,2)).\"\n\";"'
@@ -236,6 +236,8 @@ alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
+
+# SSH Agent attach to running agent
 sagent() {
 	AGENTFILE=$HOME/.ssh/.agent.sh
 	if [ -z "$1" ] || [ "$1" == "-s" ]; then
@@ -258,6 +260,32 @@ sagent() {
 		ssh-agent -k
 	fi
 }
+
+# Marks
+# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+export MARKPATH=$HOME/.marks
+function jump { 
+	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark { 
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark { 
+    rm -i "$MARKPATH/$1"
+}
+function marks {
+	find "$MARKPATH" -type l | while read filename; do
+		printf "%-12s -> %s\n" $(basename ${filename}) $(readlink ${filename})
+	done
+}
+_completemarks() {
+	local curw=${COMP_WORDS[COMP_CWORD]}
+	local wordlist=$(find $MARKPATH -type l -printf "%f\n")
+	COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
+	return 0
+}
+alias j='jump'
+complete -F _completemarks jump j unmark
 
 #############################################################################
 # Aliases - Conditional
