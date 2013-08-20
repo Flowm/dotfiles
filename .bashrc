@@ -200,12 +200,17 @@ alias gr='gre'
 alias h='history'
 alias j='jiffyi'
 alias v='vim'
-alias rsyncc='rsync -e ssh --ipv4 -aiurP'
-alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/tmp/INC/ --bwlimit=50'
 alias ssh-CMn='ssh -o ControlMaster=no'
 alias ssh-CMs='ls ~/.tmp/'
 alias jsocks='java -DsocksProxyHost=localhost'
 alias todoo='clear && todo'
+
+#sync
+alias rsyncc='rsync -e ssh --ipv4 -aiurP'
+alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/'
+alias carsync-50='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=50'
+alias carsync-100='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=100'
+alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
 
 #Some nice little scripts
 alias ping88='ping 8.8.8.8'
