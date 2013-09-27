@@ -1,4 +1,4 @@
-#############################################################################
+	#############################################################################
 #
 # If not running interactively, don't do anything
 if [ -n "$PS1" ]; then
@@ -214,15 +214,14 @@ alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-sh
 
 # Some nice little scripts
 alias ping88='ping 8.8.8.8'
-alias pwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
-alias hex2ip='perl -e "\$hip = sprintf(\"%08s\", \$ARGV[0]); print hex(substr(\$hip,0,2)).\".\"; print hex(substr(\$hip,2,2)).\".\"; print hex(substr(\$hip,4,2)).\".\"; print hex(substr(\$hip,6,2)).\"\n\";"'
-alias ip2hex='perl -e "foreach (split /\\./, \$ARGV[0]) {printf \"%x\", \$_;}print \"\n\";"'
 alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
+alias pwgen-own='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
-alias http='python -m SimpleHTTPServer'
+alias httpserver='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias openports='netstat -anp --tcp --udp | grep LISTEN'
+alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
 alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
 manswitch() { man $1 | less -p "^ +-$2"; }
 alias mansw='manswitch'
@@ -238,6 +237,14 @@ compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
 
 # SSH Agent attach to running agent
+sagentadd() {
+	mykeys=( '~/.ssh/id_rsa' '~/.ssh/id_ecdsa' '~/.ssh/fmaurachprod' '~/.ssh/fmaurachtest' )
+	for key in "${mykeys[@]}"; do
+		if [ -e "$key" ]; then
+			ssh-add $key
+		fi
+	done
+}
 sagent() {
 	AGENTFILE=$HOME/.ssh/.agent.sh
 	if [ -z "$1" ] || [ "$1" == "-s" ]; then
@@ -250,11 +257,12 @@ sagent() {
 		fi
 		if [ ! -e "$AGENTFILE" ]; then
 			ssh-agent | grep -v echo >&$AGENTFILE
+			test -e $AGENTFILE && source $AGENTFILE
+			sagentadd
 		fi
-		test -e $AGENTFILE && source $AGENTFILE
 	fi
 	if [ "$1" == "-a" ]; then
-		ssh-add ~/.ssh/fmaurachprod ~/.ssh/fmaurachtest
+		sagentadd
 	fi
 	if [ "$1" == "-k" ]; then
 		ssh-agent -k
@@ -323,22 +331,20 @@ if [ $GeNUA ]; then
 	alias gkvm='ssh gkvm'
 	#Firefoxes
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
-	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc breakdown.genua firefox -no-remote'
-	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc azubi5 firefox -no-remote'
+	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc breakdown.genua firefox -no-remote'
+	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc azubi5 firefox -no-remote'
 	#snow
-	alias snowfox='ssh -n -f -C -o CompressionLevel=9 -Y -c blowfish-cbc snow firefox'
+	alias snowfox='ssh -n -f -C -o CompressionLevel=9 -Y -c arcfour snow firefox -no-remote'
 	alias snowvim='ssh -t snow vim'
 	alias snowvimtmp='snowvim tmp.txt'
+	alias ashowd='aed && showd'
+	alias ack='ack.pl --follow -a'
 fi
 
 #----------------------------------------------------------------------------
 # G Dev only
 if ([ $GeNUA ] && [ -f ~/.aegis ]); then
 	. ~/.aegis
-	alias c='AEP g2z '
-	alias ashowd='aed && showd'
-	alias ack='ack.pl --follow -a'
-	alias gcd='cd /data/git/fmaurach/gz/'
 fi
 
 #----------------------------------------------------------------------------
@@ -350,8 +356,8 @@ if [ !$GeNUA ]; then
 	fi
 	# apt-get Shortcuts
 	alias apt-up='sudo apt-get update'
-	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
-	alias apt-tdiup='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
+	alias apt-mydiup='sudo apt-get update && sudo apt-get dist-upgrade'
+	alias apt-mytdiup='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
 
 	# Directory Navigation
 	alias cdfh='cd ~/Dropbox/Documents/FH/'
@@ -374,7 +380,6 @@ fi
 if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
-
 #############################################################################
 # Non interactiv shells
 fi
