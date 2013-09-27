@@ -223,6 +223,7 @@ alias httpserver='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias openports='netstat -anp --tcp --udp | grep LISTEN'
+alias openportscan='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
 alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
 manswitch() { man $1 | less -p "^ +-$2"; }
