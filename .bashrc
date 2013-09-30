@@ -241,7 +241,7 @@ cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/s
 
 # SSH Agent attach to running agent
 sagentadd() {
-	mykeys=( '~/.ssh/id_rsa' '~/.ssh/id_ecdsa' '~/.ssh/fmaurachprod' '~/.ssh/fmaurachtest' )
+	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
 	for key in "${mykeys[@]}"; do
 		if [ -e "$key" ]; then
 			ssh-add $key
