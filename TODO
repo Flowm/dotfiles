@@ -7,3 +7,4 @@
 .vimrc:		Background light/dark toggle
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Switch to ZSH someday
+Add all installation notes
