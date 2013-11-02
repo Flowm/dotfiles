@@ -9,3 +9,4 @@
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Switch to ZSH someday
 .vimrc:		Quick colorsceme background switch
+Add all installation notes
