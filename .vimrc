@@ -64,6 +64,9 @@
 	" Misc {
 		" Only one whitespace after _J_oining after a dot
 		set nojoinspaces
+		" Disable autoselection of vim Clipboard
+		set clipboard-=autoselect
+		set guioptions-=a
 	" }
 " }
 
@@ -240,6 +243,11 @@
 		map <leader>srb :w !ruby -c %<CR>
 		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
 		map <leader>sjava :w !javac %<CR>
+	" }
+	" Reminders {
+		"+y (copy)
+		"+x (cut)
+		"+p (paste)
 	" }
 	" <F1>-<F9> {
 		" <F1> Paste to grave.io {
