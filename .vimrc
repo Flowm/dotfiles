@@ -197,7 +197,7 @@
 		nnoremap <F1> <ESC>
 		vnoremap <F1> <ESC>
 		inoremap jj <ESC>
-		inoremap kk <ESC>
+		inoremap ,, <ESC>
 			"Match brackets key
 		nnoremap <tab> %
 		vnoremap <tab> %
@@ -205,14 +205,6 @@
 		map <silent> <C-l> :silent nohl<CR>
 			"Save as root
 		cmap w!! %!sudo tee > /dev/null %
-	" }
-	" C&P between files via bufer {
-			"Copy to buffer
-			vnoremap <C-c> :w! ~/.tmp/.vimbak/vimbuffer<CR>
-			nnoremap <C-c> :.w! ~/.tmp/.vimbak/vimbuffer<CR>
-			"Paste from buffer
-			nnoremap <C-p> :r ~/.tmp/.vimbak/vimbuffer<CR>
-			"nnoremap <C-P> :-r ~/.tmp/.vimbak/vimbuffer<CR>
 	" }
 	" Custom Keyset {
 		let mapleader = ","
@@ -222,6 +214,14 @@
 		nnoremap <leader>w <C-w>v<C-w>l
 			"Update the Statusline
 		nnoremap <leader>; :call RefreshStatusline() <CR>
+	" }
+	" C&P between files via bufer {
+			"Copy to buffer
+		vnoremap <leader>y :w! ~/.tmp/.vimbak/vimbuffer<CR>
+		nnoremap <leader>y :.w! ~/.tmp/.vimbak/vimbuffer<CR>
+			"Paste from buffer
+		nnoremap <leader>p :r ~/.tmp/.vimbak/vimbuffer<CR>
+		nnoremap <leader>P :-r ~/.tmp/.vimbak/vimbuffer<CR>
 	" }
 	" Disable arrow keys by default {
 		nnoremap <up> <nop>
@@ -326,18 +326,6 @@
 			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
 		" }
 	" }
-	" HTML encode all vowels with Strg-H {
-		function HtmlEscape()
-			silent s/ö/\&ouml;/eg
-			silent s/ä/\&auml;/eg
-			silent s/ü/\&uuml;/eg
-			silent s/Ö/\&Ouml;/eg
-			silent s/Ä/\&Auml;/eg
-			silent s/Ü/\&Uuml;/eg
-			silent s/ß/\&szlig;/eg
-		endfunction
-		map <silent> <c-h> :call HtmlEscape()<CR>
-	" }
 	" Window functions {
 	" }
 " }
@@ -386,4 +374,16 @@
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
 	"set statusline+=[%{winnr()}]
 	"set statusline+=[%{winwidth(0)}]
+	" HTML encode all vowels with Strg-H {
+		"function HtmlEscape()
+		"	silent s/ö/\&ouml;/eg
+		"	silent s/ä/\&auml;/eg
+		"	silent s/ü/\&uuml;/eg
+		"	silent s/Ö/\&Ouml;/eg
+		"	silent s/Ä/\&Auml;/eg
+		"	silent s/Ü/\&Uuml;/eg
+		"	silent s/ß/\&szlig;/eg
+		"endfunction
+		"map <silent> <c-h> :call HtmlEscape()<CR>
+	" }
 " }
