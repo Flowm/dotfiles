@@ -1,4 +1,4 @@
-	#############################################################################
+#############################################################################
 #
 # If not running interactively, don't do anything
 if [ -n "$PS1" ]; then
@@ -11,13 +11,26 @@ OS=`uname`
 case "$OS" in
 	OpenBSD) 
 		HOST=`hostname -s`
-	;;
+		color_prompt=yes
+		;;
 	Linux)
 		HOST=`uname -n`
-	;;
+		color_prompt=yes
+		PLATFORM=`uname -m`
+		case "$PLATFORM" in
+			armv6l)
+				slowsys=yes
+				;;
+		esac
+		;;
+	CYGWIN*)
+		HOST=`uname -n`
+		no_prompt=yes
+		;;
 	*)
 		HOST=`echo $HOSTNAME | sed "s/\([a-z]*\)\..*/\1/"`
-	;;
+		color_prompt=yes
+		;;
 esac
 
 #############################################################################
@@ -25,7 +38,7 @@ esac
 #
 USER=`whoami`
 if [ $USER == "fmaurach" ]; then
-	GeNUA="true"
+	genua=yes
 fi
 
 #############################################################################
@@ -39,16 +52,6 @@ fi
 # Add $HOME/bin to path
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
-fi
-
-# Add $HOME/bin/binary to path (binary files only)
-if [ -d "$HOME/bin/binary" ] ; then
-	PATH="$HOME/bin/binary:$PATH"
-fi
-
-# Add $HOME/bin/work to path
-if [ -d "$HOME/bin/work" ] ; then
-	PATH="$HOME/bin/work:$PATH"
 fi
 
 #############################################################################
@@ -65,9 +68,12 @@ HISTFILESIZE=500000
 #unset HISTSIZE
 #unset HISTFILESIZE
 
-export HISTTIMEFORMAT="%s "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $HOST $$ $USER \
+
+if [ -z $slowsys ]; then
+	export HISTTIMEFORMAT="%s "
+	PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $HOST $$ $USER \
 				"$(history 1)" >> ~/.bash_eternal_history'
+fi
 
 #############################################################################
 # Behaviour
@@ -95,19 +101,11 @@ shopt -s checkwinsize
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Promt
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-	chroot=$(cat /etc/debian_chroot)
-fi
-
 # Git
 export MANPATH=/usr/local/git/man:$MANPATH
 function parse_git_branch {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
-
-color_prompt=yes
 
 if [ -n "$color_prompt" ]; then
 	if [ -x /usr/bin/tput ]; then #&& tput setaf 1 >&/dev/null; then
@@ -132,13 +130,19 @@ if [ -n "$color_prompt" ]; then
 		LWHITE="\[\033[1;37m\]"
 		NOCOLOR="\[\033[0m\]"
 		#Set the promt
-		PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$(parse_git_branch)\$ "
-		#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(parse_git_branch)\$ "
+		if [ -z $slowsys ]; then
+			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$(parse_git_branch)\$ "
+			#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(parse_git_branch)\$ "
+		else
+			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$ "
+		fi
 	else
 		PS1='\u@\h:\w\$ '
 	fi
 else
-	PS1='\u@\h:\w\$ '
+	if [ -z "$no_prompt" ]; then
+		PS1='\u@\h:\w\$ '
+	fi
 fi
 
 # Enable color support of ls and also add handy aliases
@@ -210,6 +214,7 @@ alias rsyncc='rsync -e ssh --ipv4 -aiurP'
 alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/'
 alias carsync-50='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=50'
 alias carsync-100='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=100'
+alias carsync-200='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=200'
 alias carsync-500='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
 alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
 alias carsync-usb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
@@ -317,8 +322,9 @@ if [ $OS == "Linux" ]; then
 fi
 
 #----------------------------------------------------------------------------
-# G Prod only
-if [ $GeNUA ]; then
+# G only
+if [ $genua ]; then
+	# G Prod only
 	#General
 	alias ifconfig='/sbin/ifconfig'
 	alias zcheck='zcheck -lx'
@@ -342,21 +348,16 @@ if [ $GeNUA ]; then
 	alias snowvimtmp='snowvim tmp.txt'
 	alias ashowd='aed && showd'
 	alias ack='ack.pl --follow -a'
-fi
 
-#----------------------------------------------------------------------------
-# G Dev only
-if ([ $GeNUA ] && [ -f ~/.aegis ]); then
-	. ~/.aegis
-fi
-
-#----------------------------------------------------------------------------
-# Non GeNUA and probably Admin
-if [ !$GeNUA ]; then
-	# Add $HOME/bin/sudo to path
-	if [ -d "$HOME/bin/sudo" ] ; then
-		PATH="$HOME/bin/sudo:$PATH"
+	#----------------------------------------------------------------------------
+	# G Dev only
+	if ([ $genua ] && [ -f ~/.aegis ]); then
+		. ~/.aegis
 	fi
+
+	#----------------------------------------------------------------------------
+	# Non genua and probably Admin
+else
 	# apt-get Shortcuts
 	alias apt-up='sudo apt-get update'
 	alias apt-mydiup='sudo apt-get update && sudo apt-get dist-upgrade'
@@ -378,11 +379,6 @@ fi
 	#alias curl='curl --socks4 localhost'
 #fi
 
-#----------------------------------------------------------------------------
-# Additional aliases if any
-if [ -f ~/.bash_aliases ]; then
-	. ~/.bash_aliases
-fi
 #############################################################################
 # Non interactiv shells
 fi
