@@ -31,4 +31,5 @@
 [difftool]
 	prompt = false
 [push]
-	default = simple
+	# Change to simple when only using git 2.0
+	default = matching
