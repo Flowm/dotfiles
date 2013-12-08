@@ -231,6 +231,7 @@ alias openports='netstat -anp --tcp --udp | grep LISTEN'
 alias openportscan='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
 alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
+alias fixwwwperm='sudo chown -R www-data:www-data /var/www/'
 manswitch() { man $1 | less -p "^ +-$2"; }
 alias mansw='manswitch'
 manpdf() { man -t $1 | ps2pdf - $1.pdf; }
@@ -246,7 +247,7 @@ cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/s
 
 # SSH Agent attach to running agent
 sagentadd() {
-	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
+	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/oldkeys/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
 	for key in "${mykeys[@]}"; do
 		if [ -e "$key" ]; then
 			ssh-add $key
@@ -306,6 +307,10 @@ complete -F _completemarks jump j unmark
 #############################################################################
 # Aliases - Conditional
 #
+# Host snow Only
+if [ $HOST == "snow" ]; then
+	alias snowaussh='aussh reverse-snow.m && aussh p'
+fi
 
 #----------------------------------------------------------------------------
 # Linux Only
