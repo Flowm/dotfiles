@@ -29,15 +29,23 @@
 		"Function of the backspace key
 	set backspace=indent,eol,start
 " }
-" Vundle {
+
+" Vundle incl Setup {
+	let iCanHazVundle=1
+	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+	if !filereadable(vundle_readme)
+		echo "Installing Vundle.."
+		echo ""
+		silent !mkdir -p ~/.vim/bundle
+		silent !git clone https://github.com/gmarik/vundle '~/.vim/bundle/vundle
+		let iCanHazVundle=0
+	endif
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
 	filetype off
 
-	" Vundle
 	Bundle 'gmarik/vundle'
 
-	" Bundles
 	Bundle 'altercation/vim-colors-solarized'
 	Bundle 'airblade/vim-gitgutter'
 	Bundle 'Lokaltog/vim-easymotion'
@@ -46,6 +54,11 @@
 	Bundle 'jistr/vim-nerdtree-tabs'
 	Bundle 'scrooloose/syntastic'
 
+	if iCanHazVundle == 0
+		echo "Installing Bundles, please ignore key map error messages"
+		echo ""
+		:BundleInstall
+	endif
 	filetype plugin indent on
 " }
 
