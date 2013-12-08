@@ -32,9 +32,21 @@
 " Vundle {
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
+	filetype off
 
-	" let Vundle manage Vundle
+	" Vundle
 	Bundle 'gmarik/vundle'
+
+	" Bundles
+	Bundle 'altercation/vim-colors-solarized'
+	Bundle 'airblade/vim-gitgutter'
+	Bundle 'lokaltog/vim-easymotion'
+	Bundle 'bling/vim-airline'
+	Bundle 'scrooloose/nerdtree'
+	Bundle 'jistr/vim-nerdtree-tabs'
+	Bundle 'scrooloose/syntastic'
+
+	filetype plugin indent on
 " }
 
 " General {
@@ -65,7 +77,7 @@
 		set magic
 	" }
 	" Spelling {
-		set spelllang=en_us,de_de
+		set spelllang=en_us ",de_de
 	" }
 	" Misc {
 		" Only one whitespace after _J_oining after a dot
@@ -78,9 +90,9 @@
 
 " Appearance and handling {
 	" Theme {
-		"colorscheme evening
-		"let g:solarized_termcolors=256
-		"colorscheme solarized
+		colorscheme evening
+		let g:solarized_termcolors=256
+		colorscheme solarized
 		set background=dark
 	" }
 	" Colors {
@@ -300,25 +312,22 @@
 	" Window functions {
 	" }
 " }
-"" Settings for addons {
-"	" perl.vim {
-"		let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
-"		let perl_want_scope_in_variables = 1
-"		let perl_extended_vars = 1
-"		let perl_string_as_statement = 1
-"	" }
-"	" vim-gitgutter {
-"		let g:gitgutter_enabled = 0
-"		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
-"		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
-"		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
-"		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-"		nmap <leader>j <Plug>GitGutterNextHunk
-"		nmap <leader>k <Plug>GitGutterPrevHunk
-"		" Decrease amount of executions
-"		"let g:gitgutter_eager = 0
-"	" }
-"" }
+" Settings for addons {
+	" vim-gitgutter {
+		let g:gitgutter_enabled = 0
+		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
+		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
+		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
+		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
+		nmap <leader>j <Plug>GitGutterNextHunk
+		nmap <leader>k <Plug>GitGutterPrevHunk
+		" Decrease amount of executions
+		"let g:gitgutter_eager = 0
+	" }
+	" Airline {
+		 let g:airline_theme='solarized'
+	" }
+" }
 
 " Conditionals {
 	if has('autocmd')
