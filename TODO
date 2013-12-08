@@ -1,10 +1,8 @@
+.vimrc:		Add funtion to start vimdiff with wildcards
 .vimrc:		Toggle linewrap
 .vimrc:		Improve whitespace and tab display color
-.vimrc:		Fix statusline length on short terminals OR Replace statusline
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	FIX RVM as sudo: $rvm_path (/usr/local/rvm) does not exist.rvm_is_a_shell_function: Befehl nicht gefunden. __rvm_teardown: Befehl nicht gefunden.
-.vimrc:		Background light/dark toggle
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Switch to ZSH someday
-.vimrc:		Quick colorsceme background switch
 Add all installation notes
