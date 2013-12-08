@@ -12,9 +12,6 @@
 " Basic {
 		"Use Vim defaults
 	set nocompatible
-		"Pantogen is used to manage vim plugins
-	call pathogen#infect()
-	call pathogen#helptags()
 	syntax enable
 	filetype plugin indent on
 		"Explicitly define xterm as environment
@@ -73,8 +70,8 @@
 " Appearance and handling {
 	" Theme {
 		"colorscheme evening
-		let g:solarized_termcolors=256
-		colorscheme solarized
+		"let g:solarized_termcolors=256
+		"colorscheme solarized
 		set background=dark
 	" }
 	" Colors {
@@ -337,25 +334,25 @@
 	" Window functions {
 	" }
 " }
-" Settings for addons {
-	" perl.vim {
-		let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
-		let perl_want_scope_in_variables = 1
-		let perl_extended_vars = 1
-		let perl_string_as_statement = 1
-	" }
-	" vim-gitgutter {
-		let g:gitgutter_enabled = 0
-		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
-		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
-		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
-		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-		nmap <leader>j <Plug>GitGutterNextHunk
-		nmap <leader>k <Plug>GitGutterPrevHunk
-		" Decrease amount of executions
-		"let g:gitgutter_eager = 0
-	" }
-" }
+"" Settings for addons {
+"	" perl.vim {
+"		let g:Perl_GlobalTemplateFile=$HOME.'/.vim/bundle/perl-support.vim/perl-support/templates/Templates'
+"		let perl_want_scope_in_variables = 1
+"		let perl_extended_vars = 1
+"		let perl_string_as_statement = 1
+"	" }
+"	" vim-gitgutter {
+"		let g:gitgutter_enabled = 0
+"		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
+"		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
+"		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
+"		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
+"		nmap <leader>j <Plug>GitGutterNextHunk
+"		nmap <leader>k <Plug>GitGutterPrevHunk
+"		" Decrease amount of executions
+"		"let g:gitgutter_eager = 0
+"	" }
+"" }
 
 " Conditionals {
 	if has('autocmd')
