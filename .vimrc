@@ -96,47 +96,6 @@
 			"Always show the status bar
 		set laststatus=2
 	" }
-	" Statusline {
-		function RefreshStatusline()
-				"Clear the statusline
-			set statusline=
-				"Tail of the filename
-			set statusline=%t\ 
-				"Complete filename
-			"set statusline=%f\ 
-			if winwidth(0) > 65 
-					"File format
-				set statusline+=[%{&fileformat},
-					"File encoding
-				set statusline+=%{strlen(&fenc)?&fenc:&enc}]
-					"Flag
-				set statusline+=%m%r%h%w
-					"Filetype
-				set statusline+=[%Y]
-					"Filetype
-				set statusline+=[%{&fo}]
-			endif
-			if winwidth(0) > 80
-					"Last modified
-				set statusline+=%20(%{strftime(\"%d/%m/%y\ -\ %H:%M\")}%)
-			endif
-				"Left/Right separator
-			set statusline+=%=
-			if winwidth(0) > 95
-					"Current module name
-				set statusline+=%{synIDattr(synID(line('.'),col('.'),1),'name')}\ 
-			endif
-				"HEX value of char
-			"set statusline+=[HEX:0x%2B]\ 
-				"ASCII value of char
-			"set statusline+=[ASCII:%3b]\ 
-				"COL + LIN
-			set statusline+=%-20([COL:%2v][LIN:%3l/%L]%)\ 
-				"Percentage of file
-			set statusline+=[%3p%%]
-			endfunction
-		call RefreshStatusline()
-	" }
 	" Misc Handling {
 			"Always let 5 lines below and above the cursor on the screen
 		set scroll=11
@@ -212,8 +171,6 @@
 		nnoremap <leader>v V`]
 			"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
-			"Update the Statusline
-		nnoremap <leader>; :call RefreshStatusline() <CR>
 	" }
 	" C&P between files via bufer {
 			"Copy to buffer
@@ -377,8 +334,6 @@
 	"set confirm
 	"au FocusLost * :wa
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-	"set statusline+=[%{winnr()}]
-	"set statusline+=[%{winwidth(0)}]
 	" HTML encode all vowels with Strg-H {
 		"function HtmlEscape()
 		"	silent s/ö/\&ouml;/eg
