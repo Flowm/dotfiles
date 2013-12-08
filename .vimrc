@@ -12,8 +12,10 @@
 " Basic {
 		"Use Vim defaults
 	set nocompatible
+		"Disable filetype detection for now
+	filetype off
+		"Enable Syntax highlighting
 	syntax enable
-	filetype plugin indent on
 		"Explicitly define xterm as environment
 	behave xterm
 		"More screen updates
@@ -26,6 +28,13 @@
 	"set encoding=utf-8
 		"Function of the backspace key
 	set backspace=indent,eol,start
+" }
+" Vundle {
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc()
+
+	" let Vundle manage Vundle
+	Bundle 'gmarik/vundle'
 " }
 
 " General {
