@@ -40,7 +40,7 @@
 	" Bundles
 	Bundle 'altercation/vim-colors-solarized'
 	Bundle 'airblade/vim-gitgutter'
-	Bundle 'lokaltog/vim-easymotion'
+	Bundle 'Lokaltog/vim-easymotion'
 	Bundle 'bling/vim-airline'
 	Bundle 'scrooloose/nerdtree'
 	Bundle 'jistr/vim-nerdtree-tabs'
