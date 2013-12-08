@@ -103,8 +103,9 @@
 
 " Appearance and handling {
 	" Theme {
-		colorscheme evening
+		"colorscheme evening
 		let g:solarized_termcolors=256
+		" Set colorscheme to solarized
 		colorscheme solarized
 		set background=dark
 	" }
@@ -121,8 +122,6 @@
 		"
 	" }
 	" Statusbar {
-			"Show the Ruler (if statusbar isn't working)
-		"set ruler
 			"Renaming xterm window
 		set title
 			"Don't show line numbers
@@ -156,7 +155,7 @@
 		set fo-=t
 			"Break the line instead of scrolling right
 		set wrap
-			"Don't break lines
+			"Don't stat a new line automatically break lines
 		set wrapmargin=0
 			"But continue with a mark in the next line
 		set showbreak=>>>
@@ -175,7 +174,7 @@
 		set noexpandtab
 	" }
 	" Folding (disabled) {
-			"Currently disable folding
+			"Disable folding
 			"set nofoldenable
 			"Make folding indent sensitive
 		set foldmethod=indent
@@ -186,9 +185,6 @@
 " Mappings and functions {
 	" Misc {
 			"Easier escape
-		inoremap <F1> <ESC>
-		nnoremap <F1> <ESC>
-		vnoremap <F1> <ESC>
 		inoremap jj <ESC>
 		inoremap ,, <ESC>
 			"Match brackets key
@@ -205,6 +201,7 @@
 		nnoremap <leader>v V`]
 			"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
+		nnoremap <leader>w <C-w>h<C-w>l
 	" }
 	" C&P between files via bufer {
 			"Copy to buffer
@@ -226,26 +223,22 @@
 		"nnoremap j gj
 		"nnoremap k gk
 	" }
-	" Syntax checking {
-		map <leader>spl :w !perl -c %<CR>
-		map <leader>srb :w !ruby -c %<CR>
-		map <leader>sgcc :w !gcc -fsyntax-only %<CR>
-		map <leader>sjava :w !javac %<CR>
-	" }
 	" Reminders {
 		"+y (copy)
 		"+x (cut)
 		"+p (paste)
 	" }
-	" <F1>-<F9> {
-		" <F1> Paste to grave.io {
-			map <F1> :w !bury -t % <CR>
-		" }
-		" <F2> Toggle paste mode {
-			map <silent> <F2> :GitGutterToggle <CR>
-		" }
-		" <F3> Toggle paste mode {
-			map <silent> <F3> :GitGutterLineHighlightsToggle <CR>
+	" Functions {
+		" <F3> Toggle backgroud {
+			function ToggleSolarizedBackground()
+				if &background != 'light'
+					colorscheme solarized
+					set background=light
+				else
+					colorscheme solarized
+					set background=dark
+				endif
+			endfunction
 		" }
 		" <F4> Toggle the arrow keys {
 			function ToggleArrowKeys()
@@ -267,10 +260,6 @@
 					unlet s:arrow_keys
 				endif
 			endfunction
-			map <silent> <F4> :call ToggleArrowKeys() <CR>
-		" }
-		" <F5> Toggle paste mode {
-			set pastetoggle=<F5>
 		" }
 		" <F6> Toggle whitespace and tab display {
 			function ToggleList()
@@ -280,7 +269,6 @@
 					set list
 				endif
 			endfunction
-			map <silent> <F6> :call ToggleList() <CR>
 		" }
 		" <F7> Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
@@ -306,7 +294,6 @@
 					endif
 				endif
 			endfunction
-			map <silent> <F7> :call ToggleColorColumn() <CR>
 		" }
 		" <F8> Toggle line numbers {
 			function ToggleNumber()
@@ -316,7 +303,40 @@
 					set number
 				endif
 			endfunction
+		" }
+	" <F1>-<F9> {
+		" <F1> Paste to grave.io {
+			map <F1> :w !bury -t % <CR>
+		" }
+		" <F2> Toggle git diff cloumn {
+			map <silent> <F2> :GitGutterToggle <CR>
+		" }
+		" <F2x> Toggle git diff line highlighting {
+			map <silent> <leader><S-F2> :GitGutterLineHighlightsToggle <CR>
+		" }
+		" <F3> Toggle backgroud {
+			map <silent> <F3> :call ToggleSolarizedBackground() <CR>
+		" }
+		" <F4> Toggle the arrow keys {
+			map <silent> <F4> :call ToggleArrowKeys() <CR>
+		" }
+		" <F4x> Toggle mouse mode {
+			"TODO
+		" }
+		" <F5> Toggle paste mode {
+			set pastetoggle=<F5>
+		" }
+		" <F6> Toggle whitespace and tab display {
+			map <silent> <F6> :call ToggleList() <CR>
+		" }
+		" <F7x> Toggle visual highlighting of lines longer than 80 chars {
+			map <silent> <F7> :call ToggleColorColumn() <CR>
+		" }
+		" <F8> Toggle line numbers {
 			map <silent> <F8> :call ToggleNumber() <CR>
+		" }
+		" <F8x>Toggle line wrap
+			"TODO
 		" }
 		" <F9> Toggle spell checking {
 			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
