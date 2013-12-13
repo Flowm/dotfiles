@@ -46,12 +46,13 @@
 
 	Bundle 'gmarik/vundle'
 
-	Bundle 'altercation/vim-colors-solarized'
 	Bundle 'airblade/vim-gitgutter'
-	Bundle 'Lokaltog/vim-easymotion'
+	Bundle 'altercation/vim-colors-solarized'
 	Bundle 'bling/vim-airline'
-	Bundle 'scrooloose/nerdtree'
 	Bundle 'jistr/vim-nerdtree-tabs'
+	Bundle 'Lokaltog/vim-easymotion'
+	Bundle 'nathanaelkane/vim-indent-guides'
+	Bundle 'scrooloose/nerdtree'
 	Bundle 'scrooloose/syntastic'
 
 	if iCanHazVundle == 0
