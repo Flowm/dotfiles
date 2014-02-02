@@ -9,7 +9,7 @@ if [ -n "$PS1" ]; then
 #
 OS=`uname`
 case "$OS" in
-	OpenBSD) 
+	OpenBSD)
 		HOST=`hostname -s`
 		color_prompt=yes
 		;;
@@ -285,13 +285,13 @@ sagent() {
 # Marks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 export MARKPATH=$HOME/.marks
-function jump { 
+function jump {
 	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
-function mark { 
+function mark {
     mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
 }
-function unmark { 
+function unmark {
     rm -i "$MARKPATH/$1"
 }
 function marks {
@@ -324,10 +324,6 @@ if [ $OS == "Linux" ]; then
 	
 	# Directory sorting only in gnu ls
 	alias ll='ls -alF --group-directories-first'
-
-	# No more Notify-send in new Ubuntu
-	# Add an "alert" alias for long running commands. Use like so: sleep 1; alert
-	#alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 fi
 
 #----------------------------------------------------------------------------
@@ -369,8 +365,8 @@ if [ $genua ]; then
 else
 	# apt-get Shortcuts
 	alias apt-up='sudo apt-get update'
-	alias apt-mydiup='sudo apt-get update && sudo apt-get dist-upgrade'
-	alias apt-mytdiup='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
+	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
+	alias apt-diuptsocks='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
 
 	# Directory Navigation
 	alias cdfh='cd ~/Dropbox/Documents/FH/'
@@ -382,30 +378,6 @@ else
 	alias fh-vpn-stop='sudo vpnc-disconnect'
 fi
 
-#----------------------------------------------------------------------------
-# Proxys
-#if [ $ALL_PROXY ]; then
-	#alias curl='curl --socks4 localhost'
-#fi
-
 #############################################################################
 # Non interactiv shells
-fi
-
-# This loads RVM into a shell session.
-if [ -s "/usr/local/lib/rvm" ] ; then
-	. "/usr/local/lib/rvm"
-	if [ -d "$HOME/bin/rvm" ] ; then
-		PATH="$HOME/bin/rvm:$PATH"
-	fi
-fi
-if [ -s "$HOME/.rvm/scripts/rvm" ] ; then
-	. "$HOME/.rvm/scripts/rvm"
-	if [ -d "$HOME/bin/rvm" ] ; then
-		PATH="$HOME/bin/rvm:$PATH"
-		PATH="$HOME/.rvm/bin:$PATH"
-	fi
-	if [ -d "$HOME/bin/rvm" ] ; then
-		PATH="$HOME/bin/rvm:$PATH"
-	fi
 fi
