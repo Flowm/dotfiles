@@ -1,6 +1,7 @@
 .vimrc:		Add funtion to start vimdiff with wildcards
 .vimrc:		Toggle linewrap
 .vimrc:		Improve whitespace and tab display color
+.ssh/config: Bind LocalForwards to 127.0.0.* addresses
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	FIX RVM as sudo: $rvm_path (/usr/local/rvm) does not exist.rvm_is_a_shell_function: Befehl nicht gefunden. __rvm_teardown: Befehl nicht gefunden.
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
