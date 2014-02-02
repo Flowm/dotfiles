@@ -1,0 +1,13 @@
+#!/bin/bash
+
+apt-get install \
+wavemon powertop \
+pidgin pidgin-otr pidgin-plugin-pack gfire \
+vlc keepass2 gtk-redshift guake gimp \
+flashplugin-installer chromium-browser filezilla virtualbox \
+lm-sensors hddtemp psensor \
+arandr \
+pavucontrol \
+nautilus-dropbox nautilus-open-terminal \
+xpra \
+;
