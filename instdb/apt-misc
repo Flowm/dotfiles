@@ -1,0 +1,15 @@
+#!/bin/bash
+
+apt-get install \
+apt-file \
+autossh \
+build-essential \
+fail2ban \
+latexdiff \
+libssl-dev \
+munin-node \
+nmap \
+python-software-properties \
+tsocks \
+ucspi-tcp \
+;
