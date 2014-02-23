@@ -212,13 +212,10 @@ alias ctodo='clear && todo'
 
 # Sync
 alias rsyncc='rsync -e ssh --ipv4 -aiurP'
-alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/'
-alias carsync-50='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=50'
-alias carsync-100='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=100'
-alias carsync-200='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=200'
-alias carsync-500='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
-alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
-alias carsync-usb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
+alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/'
+alias carsync-doc='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
+alias carsync-towin='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
+alias carsync-tousb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
 
 # Some nice little scripts
 alias ping88='ping 8.8.8.8'
