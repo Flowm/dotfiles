@@ -4,7 +4,9 @@ apt-get install \
 apt-file \
 autossh \
 build-essential \
+devtodo \
 fail2ban \
+ipcalc \
 latexdiff \
 libssl-dev \
 munin-node \

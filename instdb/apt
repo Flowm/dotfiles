@@ -6,13 +6,11 @@ aptitude \
 bash-completion \
 bind9-host \
 curl \
-devtodo \
 dnsutils \
 etckeeper \
 git \
 htop \
 iftop \
-ipcalc \
 lsof \
 man-db \
 mosh \
