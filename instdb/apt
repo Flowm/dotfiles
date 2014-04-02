@@ -18,7 +18,6 @@ dnstop \
 openssh-server \
 passwdqc \
 pv \
-silversearcher-ag \
 slurm \
 tcpdump \
 telnet \

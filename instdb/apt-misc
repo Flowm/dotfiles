@@ -12,6 +12,7 @@ libssl-dev \
 munin-node \
 nmap \
 python-software-properties \
+silversearcher-ag \
 tsocks \
 ucspi-tcp \
 ;
