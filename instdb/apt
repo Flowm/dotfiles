@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install \
+apt-get install -y \
 ack-grep \
 aptitude \
 bash-completion \
@@ -15,7 +15,6 @@ lsof \
 man-db \
 mosh \
 dnstop \
-openssh-server \
 passwdqc \
 pv \
 slurm \
