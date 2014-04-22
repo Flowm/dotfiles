@@ -212,13 +212,10 @@ alias ctodo='clear && todo'
 
 # Sync
 alias rsyncc='rsync -e ssh --ipv4 -aiurP'
-alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/'
-alias carsync-50='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=50'
-alias carsync-100='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=100'
-alias carsync-200='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=200'
-alias carsync-500='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
-alias carsync-win='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
-alias carsync-usb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
+alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/'
+alias carsync-doc='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
+alias carsync-towin='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
+alias carsync-tousb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
 
 # Some nice little scripts
 alias ping88='ping 8.8.8.8'
@@ -376,6 +373,15 @@ else
 	alias fh-vpn-ext='sudo vpnc-connect /etc/vpnc/hs-extern.conf'
 	alias fh-vpn-int='sudo vpnc-connect /etc/vpnc/hs-intern.conf'
 	alias fh-vpn-stop='sudo vpnc-disconnect'
+
+	alias xpra-xterm='xpra attach ssh:ws1.genua:46 --encoding=png'
+	alias xpra-xterm-start='ssh ws1.genua "xpra start :46 --start-child=xterm --exit-with-children"'
+	alias xpra-tnt='xpra attach ssh:ws1.genua:47 --encoding=png'
+	alias xpra-tnt-start='ssh ws1.genua "xpra start :47 --start-child=/share/bin/tnt --exit-with-children"'
+	alias xpra-thunderbird='xpra attach ssh:ws1.genua:48 --encoding=png'
+	alias xpra-thunderbird-start='ssh ws1.genua "xpra start :48 --start-child=thunderbird --exit-with-children"'
+	alias xpra-xchat='xpra attach ssh:ws1.genua:49 --encoding=png'
+	alias xpra-xchat-start='ssh ws1.genua "xpra start :49 --start-child=xchat --exit-with-children"'
 fi
 
 #############################################################################

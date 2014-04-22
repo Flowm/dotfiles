@@ -368,6 +368,7 @@
 		" Filetype Detection {
 			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
+			au BufRead,BufNewFile Vagrantfile* set ft=ruby
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab

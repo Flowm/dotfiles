@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install \
+apt-get install -y \
 wavemon powertop \
 pidgin pidgin-otr pidgin-plugin-pack gfire \
 vlc keepass2 gtk-redshift guake gimp \
@@ -10,4 +10,5 @@ arandr \
 pavucontrol \
 nautilus-dropbox nautilus-open-terminal \
 xpra \
+#mtn moviethumbnailer
 ;

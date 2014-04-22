@@ -1,15 +1,18 @@
 #!/bin/bash
 
-apt-get install \
+apt-get install -y \
 apt-file \
 autossh \
 build-essential \
+devtodo \
 fail2ban \
+ipcalc \
 latexdiff \
 libssl-dev \
 munin-node \
 nmap \
 python-software-properties \
+silversearcher-ag \
 tsocks \
 ucspi-tcp \
 ;

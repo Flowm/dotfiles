@@ -1,26 +1,22 @@
 #!/bin/bash
 
-apt-get install \
+apt-get install -y \
 ack-grep \
 aptitude \
 bash-completion \
 bind9-host \
 curl \
-devtodo \
 dnsutils \
 etckeeper \
 git \
 htop \
 iftop \
-ipcalc \
 lsof \
 man-db \
 mosh \
 dnstop \
-openssh-server \
 passwdqc \
 pv \
-silversearcher-ag \
 slurm \
 tcpdump \
 telnet \
