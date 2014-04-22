@@ -333,7 +333,7 @@ if [ $genua ]; then
 	#General
 	alias ifconfig='/sbin/ifconfig'
 	alias zcheck='zcheck -lx'
-	alias sieveedit='SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get fmaurach.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE fmaurach.siv" kolab >/dev/null && rm -f $SIEVEFILE'
+	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 	#Connections
 	alias sshpf='ssh -t hpf-admin ssh'
 	alias g730="luit -encoding ISO-8859-15 ssh g730"
