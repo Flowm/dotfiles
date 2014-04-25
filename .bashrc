@@ -49,9 +49,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
-# Add $HOME/bin to path
+# Add $HOME/bin and all subdirs to the path
 if [ -d "$HOME/bin" ] ; then
 	PATH="$HOME/bin:$PATH"
+	for d in $(ls -d $HOME/bin/*/); do
+		PATH="${d%%/}:$PATH"
+	done
 fi
 
 #############################################################################
