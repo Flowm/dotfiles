@@ -50,9 +50,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Add $HOME/bin and all subdirs to the path
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
 	PATH="$HOME/bin:$PATH"
-	for d in $(ls -d $HOME/bin/*/); do
+	for d in $(ls -d $HOME/bin/*/ 2>/dev/null); do
 		PATH="${d%%/}:$PATH"
 	done
 fi
@@ -340,7 +340,7 @@ fi
 if [ $OS == "Linux" ]; then
 	# Gnome only
 	alias open='gnome-open'
-	
+
 	# Directory sorting only in gnu ls
 	alias ll='ls -alF --group-directories-first'
 fi
