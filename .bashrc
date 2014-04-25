@@ -390,3 +390,8 @@ fi
 #############################################################################
 # Non interactiv shells
 fi
+
+if [ -d "$HOME/.rvm" ] ; then
+	PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+	source ~/.rvm/scripts/rvm
+fi
