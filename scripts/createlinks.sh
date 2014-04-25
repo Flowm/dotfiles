@@ -1,59 +1,65 @@
 #!/usr/bin/env bash
 
-mkdir -p ~/.tmp/.oldconf
-mkdir -p ~/.tmp
-mkdir -p ~/.tmp/.vimbak
-mkdir -p ~/.tmp/.vimtmp
+TMPDIR="$HOME/.tmp"
+BKUPDIR="$TMPDIR/.oldconf/`date +%Y%m%d%H%M%S`"
+mkdir -p "$BKUPDIR"
+mkdir -p "$TMPDIR/.vimbak"
+mkdir -p "$TMPDIR/.vimtmp"
+
+
 
 #.bashrc
-if [ -f ~/.bashrc ]
-	then cp ~/.bashrc ~/.tmp/.oldconf/
+if [ -f ~/.bashrc ] && !([ -h ~/.bashrc ]); then
+	cp ~/.bashrc "$BKUPDIR/"
 fi
 ln -fs ~/.myconf/.bashrc ~/.bashrc
 
 #.gitconfig
-if [ -f ~/.gitconfig ]
-	then cp ~/.gitconfig ~/.tmp/.oldconf/
+if [ -f ~/.gitconfig ] && !([ -h ~/.gitconfig ]); then
+	cp ~/.gitconfig "$BKUPDIR/"
 fi
 ln -fs ~/.myconf/.gitconfig ~/.gitconfig
 
 #.ssh/config
-if [ -f ~/.ssh/config ]
-	then mkdir -p ~/.tmp/.oldconf/.ssh
-	cp ~/.ssh/config ~/.tmp/.oldconf/.ssh/
+if [ -f ~/.ssh/config ] && !([ -h ~/.ssh/config ]); then
+	mkdir -p "$BKUPDIR/.ssh"
+	cp ~/.ssh/config "$BKUPDIR/.ssh/"
 fi
 mkdir -p ~/.ssh/
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
 chmod 600 ~/.myconf/.ssh/config
 
 #.tmux.conf
-if [ -f ~/.tmux.conf ]
-	then cp ~/.tmux.conf ~/.tmp/.oldconf/
+if [ -f ~/.tmux.conf ] && !([ -h ~/.tmux.conf ]);	then
+	cp ~/.tmux.conf "$BKUPDIR/"
 fi
 ln -fs ~/.myconf/.tmux.conf ~/.tmux.conf
 
 #.vimrc
-if [ -f ~/.vimrc ]
-	then cp ~/.vimrc ~/.tmp/.oldconf/
+if [ -f ~/.vimrc ] && !([ -h ~/.vimrc ]); then
+	cp ~/.vimrc "$BKUPDIR/"
 fi
 ln -fs ~/.myconf/.vimrc ~/.vimrc
 
 #.vim
-if [ -a ~/.vim ] && !([ -h ~/.vim ])
-	then cp -r ~/.vim ~/.tmp/.oldconf/
-	rm -r ~/.vim/
+if [ -d ~/.vim ] && !([ -h ~/.vim ]); then
+	mv ~/.vim "$BKUPDIR/"
 fi
 ln -fns ~/.myconf/.vim ~/.vim
 
 #BIN
-if [ -d ~/Dropbox/Code/gitted/bin ] ; then
-	if [ -a ~/bin ] && !([ -h ~/bin ])
-		then cp -r ~/bin ~/.tmp/.oldconf/
-		rm -r ~/bin/
+if [ -d ~/Dropbox/Code/gitted/bin ]; then
+	if [ -d ~/bin ] && !([ -h ~/bin ]); then
+		mv ~/bin "$BKUPDIR/"
 	fi
-	ln -fns ~/Dropbox/Code/gitted/bin ~/bin
-	ln -fs ~/Dropbox/Code/gitted/jiffyi/jiffyi.rb ~/bin/jiffyi
-	ln -fs ~/Dropbox/Code/gitted/aussh/aussh.pl ~/bin/aussh
+	ln -fns ~/Dropbox/Code/bin ~/bin
 fi
 
-
+rmdir "$BKUPDIR" 2>/dev/null
+if [ $? -ne 0 ]; then
+	echo "Config installed. Old config saved to $BKUPDIR"
+	exit 0
+else
+	echo "Config already installed."
+	exit 1
+fi
