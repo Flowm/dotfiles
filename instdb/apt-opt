@@ -1,18 +1,27 @@
 #!/bin/bash
 
+# apt-base first
+
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+
 apt-get install -y \
 apt-file \
-autossh \
+aptitude \
 build-essential \
 devtodo \
+etckeeper \
 fail2ban \
 ipcalc \
 latexdiff \
 libssl-dev \
+man-db \
 munin-node \
-nmap \
+nginx \
+openssh-client \
+openssh-server \
+pv \
 python-software-properties \
 silversearcher-ag \
 tsocks \
-ucspi-tcp \
 ;

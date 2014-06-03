@@ -10,5 +10,7 @@ arandr \
 pavucontrol \
 nautilus-dropbox nautilus-open-terminal \
 xpra \
+wireshark \
+preload indicator-cpufreq \
 #mtn moviethumbnailer
 ;

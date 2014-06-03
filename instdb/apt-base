@@ -1,26 +1,29 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
+apt-get update
+
 apt-get install -y \
 ack-grep \
-aptitude \
+autossh \
 bash-completion \
 bind9-host \
 curl \
+dnstop \
 dnsutils \
-etckeeper \
 git \
 htop \
 iftop \
 lsof \
-man-db \
 mosh \
-dnstop \
+nmap \
 passwdqc \
-pv \
+pwgen \
 slurm \
 tcpdump \
 telnet \
 tmux \
+ucspi-tcp \
 unp \
 unzip \
 vim \
