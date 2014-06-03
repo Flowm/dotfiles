@@ -27,7 +27,6 @@ if [ -f ~/.ssh/config ] && !([ -h ~/.ssh/config ]); then
 fi
 mkdir -p ~/.ssh/
 ln -fs ~/.myconf/.ssh/config ~/.ssh/config
-chmod 600 ~/.myconf/.ssh/config
 
 #.tmux.conf
 if [ -f ~/.tmux.conf ] && !([ -h ~/.tmux.conf ]);	then
