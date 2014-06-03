@@ -60,5 +60,5 @@ if [ $? -ne 0 ]; then
 	exit 0
 else
 	echo "Config already installed."
-	exit 1
+	exit 0
 fi
