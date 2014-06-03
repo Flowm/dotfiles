@@ -25,7 +25,7 @@
 		"No exec
 	set secure
 		"Encoding
-	"set encoding=utf-8
+	set encoding=utf-8
 		"Function of the backspace key
 	set backspace=indent,eol,start
 " }
