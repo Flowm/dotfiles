@@ -1,0 +1,5 @@
+Vagrant::Config.run do |config|
+  config.vm.share_folder "myconf", "/home/vagrant/.myconf", File.expand_path("~/.myconf"), :mount_options => ["ro"]
+  config.vm.provision "shell", inline: "/home/vagrant/.myconf/scripts/install-base.sh"
+  config.vm.provision "shell", inline: "/home/vagrant/.myconf/scripts/createlinks.sh", privileged: false
+end
