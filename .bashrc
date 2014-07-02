@@ -269,6 +269,7 @@ alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
 compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
+hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 
 # SSH Agent attach to running agent
 sagentadd() {
