@@ -193,6 +193,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
+alias gcd='cd "$(git rev-parse --show-toplevel)"'
 alias cdfh='cd ~/Dropbox/Documents/FH/'
 alias cddc='cd ~/Dropbox/Code/'
 alias du-h='du -h --max-depth=1 |sort -rh'
