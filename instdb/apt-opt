@@ -23,5 +23,7 @@ openssh-server \
 pv \
 python-software-properties \
 silversearcher-ag \
+qrencode \
+lyx \
 tsocks \
 ;
