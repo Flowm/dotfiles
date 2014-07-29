@@ -230,7 +230,7 @@
 		"+p (paste)
 	" }
 	" Functions {
-		" <F3> Toggle backgroud {
+		" Toggle backgroud {
 			function ToggleSolarizedBackground()
 				if &background != 'light'
 					colorscheme solarized
@@ -241,7 +241,7 @@
 				endif
 			endfunction
 		" }
-		" <F4> Toggle the arrow keys {
+		" Toggle the arrow keys {
 			function ToggleArrowKeys()
 				if !exists('s:arrow_keys')
 					unmap <up>
@@ -262,7 +262,7 @@
 				endif
 			endfunction
 		" }
-		" <F6> Toggle whitespace and tab display {
+		" Toggle whitespace and tab display {
 			function ToggleList()
 				if &list
 					set nolist
@@ -271,7 +271,7 @@
 				endif
 			endfunction
 		" }
-		" <F7> Toggle visual highlighting of lines longer than 80 chars {
+		" Toggle visual highlighting of lines longer than 80 chars {
 			function ToggleColorColumn()
 				if exists('+colorcolumn')
 					if empty(&colorcolumn)
@@ -296,7 +296,7 @@
 				endif
 			endfunction
 		" }
-		" <F8> Toggle line numbers {
+		" Toggle line numbers {
 			function ToggleNumber()
 				if &number
 					set nonumber
@@ -305,42 +305,57 @@
 				endif
 			endfunction
 		" }
-	" <F1>-<F9> {
-		" <F1> Paste to grave.io {
-			map <F1> :w !bury -t % <CR>
+		" Toggle line wrap {
+			function ToggleWrap()
+				if &wrap
+					set nowrap
+				else
+					set wrap
+				endif
+			endfunction
 		" }
+	" Function Keys {
+		" Handling
 		" <F2> Toggle git diff cloumn {
 			map <silent> <F2> :GitGutterToggle <CR>
 		" }
-		" <F2x> Toggle git diff line highlighting {
-			map <silent> <leader><S-F2> :GitGutterLineHighlightsToggle <CR>
+		" <L-F2> Toggle git diff line highlighting {
+			map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
 		" }
-		" <F3> Toggle backgroud {
-			map <silent> <F3> :call ToggleSolarizedBackground() <CR>
+		" <F3> Toggle the arrow keys {
+			map <silent> <F3> :call ToggleArrowKeys() <CR>
 		" }
-		" <F4> Toggle the arrow keys {
-			map <silent> <F4> :call ToggleArrowKeys() <CR>
-		" }
-		" <F4x> Toggle mouse mode {
+		" <L-F3> Toggle mouse mode {
 			"TODO
 		" }
-		" <F5> Toggle paste mode {
-			set pastetoggle=<F5>
+		" <F4> Toggle paste mode {
+			set pastetoggle=<F4>
 		" }
-		" <F6> Toggle whitespace and tab display {
-			map <silent> <F6> :call ToggleList() <CR>
+		" Desing
+		" <F5> Toggle whitespace and tab display {
+			map <silent> <F5> :call ToggleList() <CR>
 		" }
-		" <F7x> Toggle visual highlighting of lines longer than 80 chars {
-			map <silent> <F7> :call ToggleColorColumn() <CR>
+		" <L-F5> Toggle visual highlighting of lines longer than 80 chars {
+			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
 		" }
-		" <F8> Toggle line numbers {
-			map <silent> <F8> :call ToggleNumber() <CR>
+		" <F6>Toggle line wrap
+			map <silent> <F6> :call ToggleWrap() <CR>
 		" }
-		" <F8x>Toggle line wrap
-			"TODO
+		" <L-F6> Toggle line numbers {
+			map <silent> <leader><F6> :call ToggleNumber() <CR>
+		" }
+		" <F7> Toggle backgroud {
+			map <silent> <F7> :call ToggleSolarizedBackground() <CR>
 		" }
 		" <F9> Toggle spell checking {
 			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" }
+		" Functions
+		" <F10> Paste to grave.io {
+			map <F10> :w !bury -t % <CR>
+		" }
+		" <F12> Display all custom keybindings {
+			map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
 		" }
 	" }
 	" Window functions {
