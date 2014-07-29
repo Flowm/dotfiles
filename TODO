@@ -1,7 +1,9 @@
 .vimrc:		Add funtion to start vimdiff with wildcards
-.vimrc:		Toggle linewrap
 .vimrc:		Improve whitespace and tab display color
+.vimrc:		Toggle setrelative numbers
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Switch to ZSH someday
+.bashrc:	Add alias to view syslog with vim (optionally with refresh)
+.bashrc:	Source sagent on startup
