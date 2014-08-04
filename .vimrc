@@ -20,8 +20,8 @@
 	behave xterm
 		"More screen updates
 	set ttyfast
-		"No modeline for security
-	set nomodeline
+		"Enable modelines, secured by ciaranm/securemodelines
+	set modeline
 		"No exec
 	set secure
 		"Encoding
@@ -54,6 +54,7 @@
 	Bundle 'nathanaelkane/vim-indent-guides'
 	Bundle 'scrooloose/nerdtree'
 	Bundle 'scrooloose/syntastic'
+	Bundle 'ciaranm/securemodelines'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
