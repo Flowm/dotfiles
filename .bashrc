@@ -337,6 +337,11 @@ complete -F _completemarks jump j unmark
 # Host snow Only
 if [ $HOST == "snow" ]; then
 	alias snowaussh='aussh reverse-snow.m && aussh p'
+
+	# FH Rosenheim VPN
+	alias fh-vpn-ext='sudo vpnc-connect /etc/vpnc/hs-extern.conf'
+	alias fh-vpn-int='sudo vpnc-connect /etc/vpnc/hs-intern.conf'
+	alias fh-vpn-stop='sudo vpnc-disconnect'
 fi
 
 #----------------------------------------------------------------------------
@@ -350,50 +355,51 @@ if [ $OS == "Linux" ]; then
 fi
 
 #----------------------------------------------------------------------------
-# G only
+# genua only
 if [ $genua ]; then
+	# Fixes for wierd global config
+	# /etc/bash.bashrc breaks colors in git: export LESS='-i'
+	unset LESS
+
 	# G Prod only
 	#General
 	alias ifconfig='/sbin/ifconfig'
 	alias zcheck='zcheck -lx'
 	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
+	alias ack='ack.pl --follow -a'
+
 	#Connections
-	alias sshpf='ssh -t hpf-admin ssh'
 	alias g730="luit -encoding ISO-8859-15 ssh g730"
 	alias g731="luit -encoding ISO-8859-15 ssh g731"
 	alias g740="luit -encoding ISO-8859-15 ssh g740"
 	alias g741="luit -encoding ISO-8859-15 ssh g741"
 	alias g810="luit -encoding ISO-8859-15 ssh g810"
 	alias g811="luit -encoding ISO-8859-15 ssh g811"
-	alias gkvm='ssh gkvm'
-	#Firefoxes
+	alias g820="luit -encoding ISO-8859-15 ssh g820"
+	alias g821="luit -encoding ISO-8859-15 ssh g821"
+
+	# Firefoxes
 	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
 	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc breakdown.genua firefox -no-remote'
-	alias azchrome='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc azubi5 firefox -no-remote'
-	#snow
-	alias snowfox='ssh -n -f -C -o CompressionLevel=9 -Y -c arcfour snow firefox -no-remote'
+
+	# snow
 	alias snowvim='ssh -t snow vim'
 	alias snowvimtmp='snowvim tmp.txt'
-	alias ashowd='aed && showd'
-	alias ack='ack.pl --follow -a'
 
 	#----------------------------------------------------------------------------
 	# G Dev only
 	if ([ $genua ] && [ -f ~/.aegis ]); then
 		. ~/.aegis
+		alias ashowd='aed && showd'
 	fi
 
-	#----------------------------------------------------------------------------
-	# Non genua and probably Admin
-else
-	# FH Rosenheim VPN
-	alias fh-vpn-ext='sudo vpnc-connect /etc/vpnc/hs-extern.conf'
-	alias fh-vpn-int='sudo vpnc-connect /etc/vpnc/hs-intern.conf'
-	alias fh-vpn-stop='sudo vpnc-disconnect'
+#----------------------------------------------------------------------------
+# Configuration which is certainly not relevant for genua
+#else
 fi
 
 #############################################################################
-# Non interactiv shells
+# Non interactive shells
 fi
 
 if [ -d "$HOME/.rvm" ] ; then
