@@ -1,12 +1,14 @@
 " README {
 " vim: set foldmarker={,} foldlevel=0 spell:
 "
-"	That's my personal .vimrc. As quite a lot of efforts went into this,
-"	I would be glad if this was useful for anybody else than me.
+"	This is my personal vim configuration. As quite a lot of effort went into
+"	this, I would be glad if this was useful for anybody else than me.
 "
-"	And here it is on Github, although there seem to be thousands of
-"	other great .vimrcs there:
-"		https://github.com/flowm/vimrc
+"	Feel free to ask question or reuse any useful parts.
+"
+"	Also published on Github, although there seem to be thousands of other
+"	great .vimrc there:
+"		https://github.com/Flowm/vimrc
 " }
 
 " Basic {
@@ -317,6 +319,7 @@
 				endif
 			endfunction
 		" }
+	" }
 	" Function Keys {
 		" Handling:
 		" <F2> Toggle git diff cloumn
@@ -348,8 +351,6 @@
 		" <F12> Display all custom keybindings
 			map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
 	" }
-	" Window functions {
-	" }
 " }
 " Settings for addons {
 	" vim-gitgutter {
@@ -380,7 +381,7 @@
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
 			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
-		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8
+		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
