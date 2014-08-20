@@ -28,6 +28,8 @@
 	set secure
 		"Encoding
 	set encoding=utf-8
+		"Remove splash screen
+	set shortmess+=I
 		"Function of the backspace key
 	set backspace=indent,eol,start
 " }
@@ -304,8 +306,21 @@
 		" Toggle line numbers {
 			function ToggleNumber()
 				if &number
+					set norelativenumber
 					set nonumber
 				else
+					set norelativenumber
+					set number
+				endif
+			endfunction
+		" }
+		" Toggle relative line numbers {
+			function ToggleRelNumber()
+				if &relativenumber
+					set norelativenumber
+					set nonumber
+				else
+					set relativenumber
 					set number
 				endif
 			endfunction
@@ -337,12 +352,14 @@
 			map <silent> <F5> :call ToggleList() <CR>
 		" <L-F5> Toggle visual highlighting of lines longer than 80 chars
 			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
-		" <F6> Toggle line wrap
-			map <silent> <F6> :call ToggleWrap() <CR>
-		" <L-F6> Toggle line numbers
-			map <silent> <leader><F6> :call ToggleNumber() <CR>
-		" <F7> Toggle background
-			map <silent> <F7> :call ToggleSolarizedBackground() <CR>
+		" <F6> Toggle line numbers
+			map <silent> <F6> :call ToggleNumber() <CR>
+		" <L-F6> Toggle relative line numbers
+			map <silent> <leader><F6> :call ToggleRelNumber() <CR>
+		" <F7> Toggle line wrap
+			map <silent> <F7> :call ToggleWrap() <CR>
+		" <F8> Toggle background
+			map <silent> <F8> :call ToggleSolarizedBackground() <CR>
 		" <F9> Toggle spell checking
 			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
 		" Functions:
