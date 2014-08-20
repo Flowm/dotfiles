@@ -10,9 +10,9 @@
 " }
 
 " Basic {
-		"Use Vim defaults
+		"Use vim defaults
 	set nocompatible
-		"Disable filetype detection for now
+		"Disable filetype detection during init
 	filetype off
 		"Enable Syntax highlighting
 	syntax enable
@@ -30,7 +30,7 @@
 	set backspace=indent,eol,start
 " }
 
-" Vundle incl Setup {
+" Vundle with automatic setup {
 	let iCanHazVundle=1
 	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 	if !filereadable(vundle_readme)
@@ -42,7 +42,6 @@
 	endif
 	set rtp+=~/.vim/bundle/vundle/
 	call vundle#rc()
-	filetype off
 
 	Bundle 'gmarik/vundle'
 
@@ -65,7 +64,7 @@
 " }
 
 " General {
-	" Backup and TMP Files {
+	" Backup and temporary files {
 		set backup
 		set backupdir=~/.tmp/.vimbak
 		set directory=~/.tmp/.vimtmp,.
@@ -80,24 +79,24 @@
 	" Searching {
 			"Highlightsearch
 		set hlsearch
-			"Start searching with the first Character
+			"Start searching with the first character
 		set incsearch
-			"Ignore Case
+			"Ignore case
 		set ignorecase
-			"Match Case if searchstring starts with uppercase
+			"Match case if searchstring starts with uppercase
 		set smartcase
 			"Global search by default
 		set gdefault
-			"Treat more Characters as special(like in perl) when searching (e.g. . *)
+			"Treat more characters as special (like in perl) when searching (e.g. . *)
 		set magic
 	" }
 	" Spelling {
 		set spelllang=en_us ",de_de
 	" }
 	" Misc {
-		" Only one whitespace after _J_oining after a dot
+			" Only one whitespace after _J_oining after a dot
 		set nojoinspaces
-		" Disable autoselection of vim Clipboard
+			" Disable autoselection of vim clipboard
 		set clipboard-=autoselect
 		set guioptions-=a
 	" }
@@ -105,23 +104,25 @@
 
 " Appearance and handling {
 	" Theme {
-		"colorscheme evening
+			" Use a portable version of solarized (no terminal adjustments needed)
 		let g:solarized_termcolors=256
-		" Set colorscheme to solarized
+			" Set colorscheme to solarized
 		colorscheme solarized
+			" Use the dark version of solarized
 		set background=dark
+			" Previous used colorscheme
+		"colorscheme evening
 	" }
 	" Colors {
 		hi Search ctermbg=DarkYellow ctermfg=White
-		" Used by listchars
+			" Used by listchars
 		hi SpecialKey ctermbg=1
 
-		" Some tweaks for the solarized colorscheme
+			" Some tweaks for the solarized colorscheme
 		hi Identifier ctermfg=6 cterm=bold
-		" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
-		" Non-safe Colors, 16-Color-Term:
-		" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
-		"
+			" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
+			" Non-safe Colors, 16-Color-Term:
+			" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
 	" }
 	" Statusbar {
 			"Renaming xterm window
@@ -176,11 +177,12 @@
 		set noexpandtab
 	" }
 	" Folding (disabled) {
-			"Disable folding
-			"set nofoldenable
+			"Disable folding completely
+		"set nofoldenable
+			"Disable folding in the initial view
+		set foldlevel=40
 			"Make folding indent sensitive
 		set foldmethod=indent
-		set foldlevel=40
 	" }
 " }
 
@@ -205,7 +207,7 @@
 		nnoremap <leader>w <C-w>v<C-w>l
 		nnoremap <leader>w <C-w>h<C-w>l
 	" }
-	" C&P between files via bufer {
+	" C&P between files via a tempfile {
 			"Copy to buffer
 		vnoremap <leader>y :w! ~/.tmp/.vimbak/vimbuffer<CR>
 		nnoremap <leader>y :.w! ~/.tmp/.vimbak/vimbuffer<CR>
@@ -231,7 +233,7 @@
 		"+p (paste)
 	" }
 	" Functions {
-		" Toggle backgroud {
+		" Toggle background {
 			function ToggleSolarizedBackground()
 				if &background != 'light'
 					colorscheme solarized
@@ -316,48 +318,35 @@
 			endfunction
 		" }
 	" Function Keys {
-		" Handling
-		" <F2> Toggle git diff cloumn {
+		" Handling:
+		" <F2> Toggle git diff cloumn
 			map <silent> <F2> :GitGutterToggle <CR>
-		" }
-		" <L-F2> Toggle git diff line highlighting {
+		" <L-F2> Toggle git diff line highlighting
 			map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
-		" }
-		" <F3> Toggle the arrow keys {
+		" <F3> Toggle the arrow keys
 			map <silent> <F3> :call ToggleArrowKeys() <CR>
-		" }
-		" <L-F3> Toggle mouse mode {
+		" <L-F3> Toggle mouse mode
 			"TODO
-		" }
-		" <F4> Toggle paste mode {
+		" <F4> Toggle paste mode
 			set pastetoggle=<F4>
-		" }
-		" Desing
-		" <F5> Toggle whitespace and tab display {
+		" Desing:
+		" <F5> Toggle whitespace and tab display
 			map <silent> <F5> :call ToggleList() <CR>
-		" }
-		" <L-F5> Toggle visual highlighting of lines longer than 80 chars {
+		" <L-F5> Toggle visual highlighting of lines longer than 80 chars
 			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
-		" }
 		" <F6> Toggle line wrap
 			map <silent> <F6> :call ToggleWrap() <CR>
-		" }
-		" <L-F6> Toggle line numbers {
+		" <L-F6> Toggle line numbers
 			map <silent> <leader><F6> :call ToggleNumber() <CR>
-		" }
-		" <F7> Toggle backgroud {
+		" <F7> Toggle background
 			map <silent> <F7> :call ToggleSolarizedBackground() <CR>
-		" }
-		" <F9> Toggle spell checking {
+		" <F9> Toggle spell checking
 			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
-		" }
-		" Functions
-		" <F10> Paste to grave.io {
+		" Functions:
+		" <F10> Paste to grave.io
 			map <F10> :w !bury -t % <CR>
-		" }
-		" <F12> Display all custom keybindings {
+		" <F12> Display all custom keybindings
 			map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
-		" }
 	" }
 	" Window functions {
 	" }
@@ -381,7 +370,7 @@
 
 " Conditionals {
 	if has('autocmd')
-		" Filetype Detection {
+		" Filetype detection {
 			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
