@@ -230,8 +230,8 @@ alias carsync-tousb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/ca
 
 # XPRA Stuff
 alias xpra-xterm='xpra attach ssh:ws1.genua:46 --encoding=png'
-alias xpra-xterm-local='xpra attach :46 --encoding=png'
 alias xpra-xterm-start='ssh ws1.genua "xpra start :46 --start-child=xterm --exit-with-children"'
+alias xpra-xterm-local='xpra attach :46 --encoding=png'
 alias xpra-tnt='xpra attach ssh:ws1.genua:47 --encoding=png'
 alias xpra-tnt-start='ssh ws1.genua "xpra start :47 --start-child=/share/bin/tnt --exit-with-children"'
 alias xpra-tnt-local='xpra attach :47 --encoding=png'
