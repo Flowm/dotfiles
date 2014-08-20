@@ -4,32 +4,37 @@
 
 [alias]
 	b = branch
+	d = diff
+	f = fetch
+	l = log --oneline
+	s = status
+	br = branch
 	ci = commit
 	cm = commit -m
 	co = checkout
 	com = checkout master
 	cp = cherry-pick
-	d = diff
-	di = difftool
 	dh = diff HEAD
-	f = fetch
+	dih = diff HEAD
+	di = difftool
 	lcf = diff --name-only HEAD
 	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	rom = reset --hard origin/master
-	s = status
-	nb = checkout -b
+	#nb = checkout -b
+	#rom = reset --hard origin/master
+	st = status
 	webstart = instaweb --httpd=webrick --start
 	webstop = instaweb --httpd=webrick --stop
-	#GZ
-	gzpl = pull ssh://gerrit/gz.git
-	gzpsh = push ssh://gerrit/gz.git HEAD:refs/for/master
+
 [github]
 	user = Flowm
 	token = f774a1964bc762031e415d291403e8dc
+
 [diff]
 	tool = vimdiff
+
 [difftool]
 	prompt = false
+
 [push]
 	# Change to simple when only using git 2.0
 	default = matching

@@ -339,7 +339,7 @@
 		" <L-F5> Toggle visual highlighting of lines longer than 80 chars {
 			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
 		" }
-		" <F6>Toggle line wrap
+		" <F6> Toggle line wrap
 			map <silent> <F6> :call ToggleWrap() <CR>
 		" }
 		" <L-F6> Toggle line numbers {
@@ -391,6 +391,7 @@
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
 			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
+		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
