@@ -2,11 +2,9 @@
 
 case "$1" in
     i*)
-		git update-index --assume-unchanged .vim/bundle/perl-support.vim/perl-support/templates/Templates
 		git update-index --assume-unchanged .gitconfig
         ;;
     t*)
-		git update-index --no-assume-unchanged .vim/bundle/perl-support.vim/perl-support/templates/Templates
 		git update-index --no-assume-unchanged .gitconfig
         ;;
     *)
