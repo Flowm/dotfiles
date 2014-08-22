@@ -317,11 +317,11 @@
 		" Toggle relative line numbers {
 			function ToggleRelNumber()
 				if &relativenumber
-					set norelativenumber
 					set nonumber
+					set norelativenumber
 				else
-					set relativenumber
 					set number
+					set relativenumber
 				endif
 			endfunction
 		" }
