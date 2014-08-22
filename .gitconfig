@@ -9,25 +9,22 @@
 	l = log --oneline
 	s = status
 	br = branch
+	ca = commit --amend
 	ci = commit
 	cm = commit -m
 	co = checkout
 	com = checkout master
 	cp = cherry-pick
 	dh = diff HEAD
-	dih = diff HEAD
+	dih = difftool HEAD
 	di = difftool
 	lcf = diff --name-only HEAD
 	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	#nb = checkout -b
-	#rom = reset --hard origin/master
+	nb = checkout -b
+	rom = reset --hard origin/master
 	st = status
 	webstart = instaweb --httpd=webrick --start
 	webstop = instaweb --httpd=webrick --stop
-
-[github]
-	user = Flowm
-	token = f774a1964bc762031e415d291403e8dc
 
 [diff]
 	tool = vimdiff
