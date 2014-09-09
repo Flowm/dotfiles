@@ -16,10 +16,10 @@
 	com = checkout master
 	cp = cherry-pick
 	dh = diff HEAD
-	dih = difftool HEAD
 	di = difftool
+	dih = difftool HEAD
 	lcf = diff --name-only
-	lcfh = diff --name-only HEAD
+	lcfh = diff --name-only HEAD^
 	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	nb = checkout -b
 	rom = reset --hard origin/master
@@ -36,3 +36,6 @@
 [push]
 	# Change to simple when only using git 2.0
 	default = matching
+
+[color]
+	ui = auto
