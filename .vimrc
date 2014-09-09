@@ -392,6 +392,7 @@
 			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
+			au BufRead,BufNewFile *.grub set ft=cfg
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
