@@ -1,5 +1,6 @@
 .vimrc:		Add funtion to start vimdiff with wildcards
 .vimrc:		Improve whitespace and tab display color
+.tmux:		Fix clipboard integration
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
