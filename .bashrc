@@ -173,6 +173,49 @@ esac
 #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
 #############################################################################
+# Auth Agents
+#
+# GPG Agent
+if [ -f "${HOME}/.gnupg/gpg-agent-info-$HOST" ]; then
+	. "${HOME}/.gnupg/gpg-agent-info-$HOST"
+	export GPG_AGENT_INFO
+	#export SSH_AUTH_SOCK
+fi
+
+# SSH Agent attach to running agent
+sagentadd() {
+	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/oldkeys/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
+	for key in "${mykeys[@]}"; do
+		if [ -e "$key" ]; then
+			ssh-add $key
+		fi
+	done
+}
+sagent() {
+	AGENTFILE=$HOME/.ssh/.agent.sh
+	if [ -z "$1" ] || [ "$1" == "-s" ]; then
+		if [ -e "$AGENTFILE" ]; then
+			source $AGENTFILE
+			ps -p $SSH_AGENT_PID > /dev/null
+			if [ $? -ne 0 ]; then
+				rm $AGENTFILE
+			fi
+		fi
+		if [ ! -e "$AGENTFILE" ]; then
+			ssh-agent | grep -v echo >&$AGENTFILE
+			test -e $AGENTFILE && source $AGENTFILE
+			sagentadd
+		fi
+	fi
+	if [ "$1" == "-a" ]; then
+		sagentadd
+	fi
+	if [ "$1" == "-k" ]; then
+		ssh-agent -k
+	fi
+}
+
+#############################################################################
 # Aliases - General
 #
 
@@ -271,39 +314,6 @@ compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
-
-# SSH Agent attach to running agent
-sagentadd() {
-	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/oldkeys/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
-	for key in "${mykeys[@]}"; do
-		if [ -e "$key" ]; then
-			ssh-add $key
-		fi
-	done
-}
-sagent() {
-	AGENTFILE=$HOME/.ssh/.agent.sh
-	if [ -z "$1" ] || [ "$1" == "-s" ]; then
-		if [ -e "$AGENTFILE" ]; then
-			source $AGENTFILE
-			ps -p $SSH_AGENT_PID > /dev/null
-			if [ $? -ne 0 ]; then
-				rm $AGENTFILE
-			fi
-		fi
-		if [ ! -e "$AGENTFILE" ]; then
-			ssh-agent | grep -v echo >&$AGENTFILE
-			test -e $AGENTFILE && source $AGENTFILE
-			sagentadd
-		fi
-	fi
-	if [ "$1" == "-a" ]; then
-		sagentadd
-	fi
-	if [ "$1" == "-k" ]; then
-		ssh-agent -k
-	fi
-}
 
 # Marks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html

@@ -10,3 +10,5 @@
 .bashrc:	Get full file path
 .bashrc:	cdf chang dir to filepath
 .bashrc:	Fix tab completion for aliases
+.bashrc:	ethernal_history grep
+.bashrc:	ethernal_history timstamp translation
