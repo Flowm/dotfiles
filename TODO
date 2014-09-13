@@ -7,8 +7,6 @@
 .bashrc:	Switch to ZSH someday
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
 .bashrc:	Source sagent on startup
-.bashrc:	Get full file path
-.bashrc:	cdf chang dir to filepath
 .bashrc:	Fix tab completion for aliases
 .bashrc:	ethernal_history grep
 .bashrc:	ethernal_history timstamp translation

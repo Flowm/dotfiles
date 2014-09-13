@@ -227,7 +227,7 @@ alias la='ls -alF'
 alias l='ls -1F'
 alias tree='tree -Csu | less -R'
 
-# Verzeichnisnavigation
+# Directory navigation
 #alias .='pwd' #RLY STUPID ALIAS
 alias cd..='cd ..'
 alias ..='cd ..'
@@ -239,6 +239,8 @@ alias ......='cd ../../../../..'
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
 alias du-h='du -h --max-depth=1 |sort -rh'
 alias findh='find . -iname'
+alias fpath='readlink -f'
+cdf() { cd $(dirname $1); }
 
 # Own
 #alias mv='mv -b'
