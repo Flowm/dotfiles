@@ -222,9 +222,9 @@ sagent() {
 export EDITOR=vim
 
 # Some more ls aliases
-alias ll='ls -alF'
-alias la='ls -Al'
-alias l='ls -CF'
+alias ll='ls -Al'
+alias la='ls -alF'
+alias l='ls -1F'
 alias tree='tree -Csu | less -R'
 
 # Verzeichnisnavigation
@@ -237,8 +237,6 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
-alias cdfh='cd ~/Dropbox/Documents/FH/'
-alias cddc='cd ~/Dropbox/Code/'
 alias du-h='du -h --max-depth=1 |sort -rh'
 alias findh='find . -iname'
 
@@ -246,11 +244,10 @@ alias findh='find . -iname'
 #alias mv='mv -b'
 alias a='ack'
 alias g='git'
-alias gr='grep -iIR'
-alias gr='gre'
 alias h='history'
 alias j='jiffyi'
 alias v='vim'
+alias gr='grep -iIR'
 alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias vsyslog='view /var/log/syslog'
 alias tsyslog='tail -f /var/log/syslog'
@@ -285,35 +282,33 @@ alias xpra-xchat='xpra attach ssh:ws1.genua:49 --encoding=png'
 alias xpra-xchat-start='ssh ws1.genua "xpra start :49 --start-child=xchat --exit-with-children"'
 alias xpra-xchat-local='xpra attach :49 --encoding=png'
 
-# Some nice little scripts
-alias ping88='ping 8.8.8.8'
-alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
-alias pwgen-own='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
-alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,1433,2222,2249,7778,8080,9999 --randomize-hosts'
+# Some useful aliases and functions
 alias httpserver='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
-alias checksocks1080='curl --socks5-hostname localhost:1080 frcy.org/static/iq/1080'
-alias checksocks1081='curl --socks5-hostname localhost:1081 frcy.org/static/iq/1081'
-alias checksocks='checksocks1080 ; checksocks1081'
-alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
-alias openports='netstat -anp --tcp --udp | grep LISTEN'
-alias openportscan='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
+alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,2222,8080,8888,9999,22022 --randomize-hosts'
+alias openportscan='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
+alias openports='netstat -anp --tcp --udp | grep LISTEN'
+alias ping88='ping 8.8.8.8'
 alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
+
+alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
+alias pwgen-own='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
+alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias fixwwwperm='sudo chown -R www-data:www-data /var/www/'
+
 manswitch() { man $1 | less -p "^ +-$2"; }
-alias mansw='manswitch'
 manpdf() { man -t $1 | ps2pdf - $1.pdf; }
 say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
 say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
-quietly() { $* 2> /dev/null > /dev/null; }
-compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
-alias junitc='javac -cp .:/usr/share/java/junit4.jar'
-alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
-compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
-compilecpp() { g++ -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
 cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
+
+alias junitc='javac -cp .:/usr/share/java/junit4.jar'
+alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
+compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
+compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
+compilecpp() { g++ -Wall $1.c -lm -o $1 && ./$1; }
 
 # Marks
 # http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
@@ -376,7 +371,6 @@ if [ $genua ]; then
 	alias ifconfig='/sbin/ifconfig'
 	alias zcheck='zcheck -lx'
 	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
-	alias ack='ack.pl --follow -a'
 
 	#Connections
 	alias g730="luit -encoding ISO-8859-15 ssh g730"
