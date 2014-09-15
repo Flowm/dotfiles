@@ -176,13 +176,23 @@ esac
 # Auth Agents
 #
 # GPG Agent
-if [ -f "${HOME}/.gnupg/gpg-agent-info-$HOST" ]; then
-	. "${HOME}/.gnupg/gpg-agent-info-$HOST"
+if [ -f "$HOME/.gnupg/gpg-agent-info-$HOST" ]; then
+	. "$HOME/.gnupg/gpg-agent-info-$HOST"
 	export GPG_AGENT_INFO
-	#export SSH_AUTH_SOCK
 fi
 
-# SSH Agent attach to running agent
+# SSH Agent
+
+# Fix Agent for tmux
+if [ ! -S "$SSH_AUTH_SOCK" ] && readlink -e "$HOME/.ssh/agent_sock" >/dev/null; then
+	export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
+else
+	if [ ! -S $(readlink -e "$HOME/.ssh/agent_sock" >/dev/null) ] && [ -S "$SSH_AUTH_SOCK" ]; then
+		ln -fs "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+	fi
+fi
+
+# Attach to running Agent
 sagentadd() {
 	mykeys=( "$HOME/.ssh/id_rsa" "$HOME/.ssh/oldkeys/id_rsa" "$HOME/.ssh/id_ecdsa" "$HOME/.ssh/fmaurachprod" "$HOME/.ssh/fmaurachtest" )
 	for key in "${mykeys[@]}"; do
