@@ -184,11 +184,15 @@ fi
 # SSH Agent
 
 # Fix Agent for tmux
-if [ ! -S "$SSH_AUTH_SOCK" ] && readlink -e "$HOME/.ssh/agent_sock" >/dev/null; then
-	export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
-else
-	if [ ! -S $(readlink -e "$HOME/.ssh/agent_sock" >/dev/null) ] && [ -S "$SSH_AUTH_SOCK" ]; then
+agent=$(readlink -e "$HOME/.ssh/agent_sock")
+if [ -S "$SSH_AUTH_SOCK" ]; then
+	# save file i f wrong
+	if [ $? -ne 0 ] || [ ! -S "$agent" ]; then
 		ln -fs "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
+	fi
+else
+   	if [ $? -eq 0 ]; then
+		export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 	fi
 fi
 
