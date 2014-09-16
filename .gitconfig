@@ -18,12 +18,12 @@
 	dh = diff HEAD
 	di = difftool
 	dih = difftool HEAD
-	lcf = diff --name-only
-	lcfh = diff --name-only HEAD^
+	lcf = diff-tree --no-commit-id --name-only -r HEAD
+	lcfs = diff-tree --no-commit-id --name-only -r
 	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	nb = checkout -b
 	rom = reset --hard origin/master
-	st = status
+	st = stash
 	webstart = instaweb --httpd=webrick --start
 	webstop = instaweb --httpd=webrick --stop
 
