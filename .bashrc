@@ -52,6 +52,9 @@ fi
 # Use current version of git bash completion
 if [ -f ~/.myconf/contrib/git-completion.bash ] && ! shopt -oq posix; then
 	. ~/.myconf/contrib/git-completion.bash
+	if [ -f ~/.myconf/contrib/git-prompt.sh ]; then
+		. ~/.myconf/contrib/git-prompt.sh
+	fi
 fi
 
 # Add $HOME/bin and all subdirs to the path
