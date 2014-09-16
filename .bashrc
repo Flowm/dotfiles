@@ -49,6 +49,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
 fi
 
+# Use current version of git bash completion
+if [ -f ~/.myconf/contrib/git-completion.bash ] && ! shopt -oq posix; then
+	. ~/.myconf/contrib/git-completion.bash
+fi
+
 # Add $HOME/bin and all subdirs to the path
 if [ -d "$HOME/bin" ]; then
 	PATH="$HOME/bin:$PATH"
@@ -106,9 +111,6 @@ shopt -s checkwinsize
 
 # Git
 export MANPATH=/usr/local/git/man:$MANPATH
-function parse_git_branch {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
-}
 
 if [ -n "$color_prompt" ]; then
 	if [ -x /usr/bin/tput ]; then #&& tput setaf 1 >&/dev/null; then
@@ -134,8 +136,8 @@ if [ -n "$color_prompt" ]; then
 		NOCOLOR="\[\033[0m\]"
 		#Set the promt
 		if [ -z $slowsys ]; then
-			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$(parse_git_branch)\$ "
-			#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(parse_git_branch)\$ "
+			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR}\$(__git_ps1) \$ "
+			#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(__git_ps1)\$ "
 		else
 			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR} \$ "
 		fi
@@ -256,10 +258,13 @@ alias findh='find . -iname'
 alias fpath='readlink -f'
 cdf() { cd $(dirname $1); }
 
+# git alias and fix completion
+alias g='git'
+__git_complete g _git 
+
 # Own
 #alias mv='mv -b'
 alias a='ack'
-alias g='git'
 alias h='history'
 alias j='jiffyi'
 alias v='vim'
