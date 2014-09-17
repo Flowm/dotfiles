@@ -8,24 +8,24 @@
 	f = fetch
 	l = log --oneline
 	s = status
-	br = branch
-	ca = commit --amend
-	ci = commit
-	cm = commit -m
-	co = checkout
+	br  = branch
+	ca  = commit --amend
+	ci  = commit
+	cm  = commit -m
+	co  = checkout
 	com = checkout master
-	cp = cherry-pick
-	dh = diff HEAD
-	di = difftool
+	cp  = cherry-pick
+	dh  = diff HEAD
+	di  = difftool
 	dih = difftool HEAD
-	lcf = diff-tree --no-commit-id --name-only -r HEAD
-	lcfs = diff-tree --no-commit-id --name-only -r
-	lg = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	nb = checkout -b
-	rom = reset --hard origin/master
-	st = stash
+	lcf = diff-tree --no-commit-id --name-only -r
+	lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgs = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	nb  = checkout -b
+	st  = stash
+	resetom  = reset --hard origin/master
 	webstart = instaweb --httpd=webrick --start
-	webstop = instaweb --httpd=webrick --stop
+	webstop  = instaweb --httpd=webrick --stop
 
 [diff]
 	tool = vimdiff
