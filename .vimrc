@@ -58,6 +58,7 @@
 	Bundle 'scrooloose/nerdtree'
 	Bundle 'scrooloose/syntastic'
 	Bundle 'ciaranm/securemodelines'
+	Bundle "sudar/vim-arduino-syntax"
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
