@@ -10,20 +10,19 @@ apt-file \
 aptitude \
 build-essential \
 devtodo \
-etckeeper \
+dnstop \
 fail2ban \
 ipcalc \
 latexdiff \
 libssl-dev \
-man-db \
+lyx \
 munin-node \
 nginx \
 openssh-client \
 openssh-server \
 pv \
 python-software-properties \
-silversearcher-ag \
 qrencode \
-lyx \
+silversearcher-ag \
 tsocks \
 ;

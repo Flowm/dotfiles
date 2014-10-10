@@ -9,12 +9,14 @@ autossh \
 bash-completion \
 bind9-host \
 curl \
-dnstop \
 dnsutils \
+etckeeper \
+gatling \
 git \
 htop \
 iftop \
 lsof \
+man-db \
 mosh \
 nmap \
 passwdqc \
