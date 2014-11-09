@@ -1,0 +1,202 @@
+" README {
+" vim: set foldmarker={,} foldlevel=0 spell:
+"
+"	This is my personal vim configuration. As quite a lot of effort went into
+"	this, I would be glad if this was useful for anybody else than me.
+"
+"	Feel free to ask question or reuse any useful parts.
+"
+"	Also published on Github, although there seem to be thousands of other
+"	great .vimrc there:
+"		https://github.com/Flowm/vimrc
+" }
+
+" Basic {
+		"Use vim defaults
+	set nocompatible
+		"Disable filetype detection during init
+	filetype off
+		"Enable Syntax highlighting
+	syntax enable
+		"Explicitly define xterm as environment
+	behave xterm
+		"More screen updates
+	set ttyfast
+		"Enable modelines, secured by ciaranm/securemodelines
+	set modeline
+		"No exec
+	set secure
+		"Encoding
+	set encoding=utf-8
+		"Remove splash screen
+	set shortmess+=I
+		"Function of the backspace key
+	set backspace=indent,eol,start
+" }
+
+" Vundle with automatic setup {
+	let iCanHazVundle=1
+	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+	if !filereadable(vundle_readme)
+		echo "Installing Vundle.."
+		echo ""
+		silent !mkdir -p ~/.vim/bundle
+		silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+		let iCanHazVundle=0
+	endif
+	set rtp+=~/.vim/bundle/vundle/
+	call vundle#rc()
+
+	Bundle 'gmarik/vundle'
+
+	Bundle 'airblade/vim-gitgutter'
+	Bundle 'altercation/vim-colors-solarized'
+	Bundle 'bling/vim-airline'
+	Bundle 'ciaranm/securemodelines'
+
+	if iCanHazVundle == 0
+		echo "Installing Bundles, please ignore key map error messages"
+		echo ""
+		:BundleInstall
+	endif
+	filetype plugin indent on
+" }
+
+" General {
+	" Backup and temporary files {
+		set backup
+		set backupdir=~/.tmp/.vimbak
+		set directory=~/.tmp/.vimtmp,.
+		set history=2048
+		set undolevels=2048
+	" }
+	" Tab completion {
+		set wildmenu
+		set wildmode=list:longest,list:full
+		set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+	" }
+	" Searching {
+			"Highlightsearch
+		set hlsearch
+			"Start searching with the first character
+		set incsearch
+			"Ignore case
+		set ignorecase
+			"Match case if searchstring starts with uppercase
+		set smartcase
+			"Global search by default
+		set gdefault
+			"Treat more characters as special (like in perl) when searching (e.g. . *)
+		set magic
+	" }
+	" Spelling {
+		set spelllang=en_us ",de_de
+	" }
+	" Misc {
+			" Only one whitespace after _J_oining after a dot
+		set nojoinspaces
+			" Disable autoselection of vim clipboard
+		set clipboard-=autoselect
+		set guioptions-=a
+	" }
+" }
+
+" Appearance and handling {
+	" Theme {
+			" Use a portable version of solarized (no terminal adjustments needed)
+		let g:solarized_termcolors=256
+			" Set colorscheme to solarized
+		colorscheme solarized
+			" Use the dark version of solarized
+		set background=dark
+			" Previous used colorscheme
+		"colorscheme evening
+	" }
+	" Colors {
+		hi Search ctermbg=DarkYellow ctermfg=White
+			" Used by listchars
+		hi SpecialKey ctermbg=1
+
+			" Some tweaks for the solarized colorscheme
+		hi Identifier ctermfg=6 cterm=bold
+			" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
+			" Non-safe Colors, 16-Color-Term:
+			" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
+	" }
+	" Statusbar {
+			"Renaming xterm window
+		set title
+			"Don't show line numbers
+		set nonumber
+			"Always show the status bar
+		set laststatus=2
+	" }
+	" Misc Handling {
+			"Always let 5 lines below and above the cursor on the screen
+		set scroll=11
+		set scrolloff=5
+		set sidescroll=8
+			"Bracket matching
+		set showmatch
+			"Show unfinished commands
+		set showcmd
+			"No Bell
+		set noerrorbells visualbell
+	" }
+" }
+
+" Text Formatting/Layout {
+	" Whitespace and Tab display {
+		set nolist
+		"set list listchars=tab:>.,trail:.
+		set listchars=tab:\ \ ,trail:\.
+		"set list listchars=tab:>.,trail:·
+	" }
+	" Overlong lines display {
+			"Don't do newlines automatically
+		set fo-=t
+			"Break the line instead of scrolling right
+		set wrap
+			"Don't stat a new line automatically break lines
+		set wrapmargin=0
+			"But continue with a mark in the next line
+		set showbreak=>>>
+	" }
+	" Indention {
+			"One Tab per indentation level. 4 column wide Tabs.
+			"Intelligently detect current indention level
+		set smartindent
+			"Size of real Tabs
+		set tabstop=4
+			"Indent amount when using TAB
+		set softtabstop=4
+			"Indent amount when using cindent, >>, ..
+		set shiftwidth=4
+			"Do not expand tabs to spaces
+		set noexpandtab
+	" }
+	" Folding (disabled) {
+			"Disable folding completely
+		"set nofoldenable
+			"Disable folding in the initial view
+		set foldlevel=40
+			"Make folding indent sensitive
+		set foldmethod=indent
+	" }
+" Settings for addons {
+	" vim-gitgutter {
+		let g:gitgutter_enabled = 0
+		highlight SignColumn ctermfg=239 ctermbg=235 guifg=Yellow
+		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
+		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
+		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
+		nmap <leader>j <Plug>GitGutterNextHunk
+		nmap <leader>k <Plug>GitGutterPrevHunk
+		" Decrease amount of executions
+		"let g:gitgutter_eager = 0
+	" }
+	" Airline {
+		 let g:airline_theme='solarized'
+	" }
+" }
+" }
