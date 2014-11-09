@@ -389,6 +389,8 @@
 
 " Conditionals {
 	if has('autocmd')
+		augroup testgroup
+		autocmd!
 		" Filetype detection {
 			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
@@ -398,18 +400,21 @@
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-		    au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
-		    au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
+			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
+			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
+			au FileType cpp		set tabstop=4 shiftwidth=4 noexpandtab smarttab autoindent
+			"au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
 			au BufRead,BufNewFile *aegis-* set textwidth=72
 		" }
+		augroup END
 	endif
 " }
 
 " To be tested/integrated {
+	let g:syntastic_arduino_checkers=['']
 	"set confirm
 	"au FocusLost * :wa
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
