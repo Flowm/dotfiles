@@ -13,5 +13,6 @@ xpra \
 xclip \
 wireshark \
 preload indicator-cpufreq \
+pandoc \
 #mtn moviethumbnailer
 ;

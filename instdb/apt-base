@@ -8,6 +8,7 @@ ack-grep \
 autossh \
 bash-completion \
 bind9-host \
+cu \
 curl \
 dnsutils \
 etckeeper \

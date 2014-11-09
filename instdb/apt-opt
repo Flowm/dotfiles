@@ -8,6 +8,7 @@ apt-get update
 apt-get install -y \
 apt-file \
 aptitude \
+arp-scan \
 build-essential \
 devtodo \
 dnstop \
