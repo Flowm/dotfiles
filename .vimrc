@@ -110,6 +110,7 @@
 " Appearance and handling {
 	" Theme {
 			" Use a portable version of solarized (no terminal adjustments needed)
+		let t_Co=256
 		let g:solarized_termcolors=256
 			" Set colorscheme to solarized
 		colorscheme solarized
@@ -367,7 +368,7 @@
 		" <F10> Paste to grave.io
 			map <F10> :w !bury -t % <CR>
 		" <F12> Display all custom keybindings
-			map <F12> :!egrep '" <(L-)?F[1-9][1-2]?> ' ~/.vimrc <CR>
+			map <F12> :!egrep '" <(L-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
 	" }
 " }
 " Settings for addons {
