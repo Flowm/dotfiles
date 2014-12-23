@@ -162,8 +162,8 @@
 	" Overlong lines display {
 			"Don't do newlines automatically
 		set fo-=t
-			"Break the line instead of scrolling right
-		set wrap
+			"Scroll right by default instead of breaking the line
+		set nowrap
 			"Don't stat a new line automatically break lines
 		set wrapmargin=0
 			"But continue with a mark in the next line
