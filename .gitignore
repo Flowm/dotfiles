@@ -6,3 +6,4 @@
 .vim/bundle/*
 
 tmp/
+.ssh/config-compatible
