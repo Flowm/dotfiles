@@ -19,10 +19,12 @@
 	di  = difftool
 	dih = difftool HEAD
 	lcf = diff-tree --no-commit-id --name-only -r
-	lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lgs = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	lcfh= diff-tree --no-commit-id --name-only -r HEAD
+	lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	lgl = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	nb  = checkout -b
 	st  = stash
+	stp  = stash pop
 	resetom  = reset --hard origin/master
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
