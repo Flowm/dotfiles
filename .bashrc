@@ -295,17 +295,17 @@ alias carsync-towin='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-
 alias carsync-tousb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
 
 # XPRA Stuff
-alias xpra-xterm='xpra attach ssh:ws1.genua:46 --encoding=png'
-alias xpra-xterm-start='ssh ws1.genua "xpra start :46 --start-child=xterm --exit-with-children"'
-alias xpra-xterm-local='xpra attach :46 --encoding=png'
-alias xpra-tnt='xpra attach ssh:ws1.genua:47 --encoding=png'
-alias xpra-tnt-start='ssh ws1.genua "xpra start :47 --start-child=/share/bin/tnt --exit-with-children"'
+alias xpra-xterm='xpra attach ssh:ws1.g:45 --encoding=png'
+alias xpra-xterm-start='ssh ws1.g "xpra start :45 --start-child=xterm --exit-with-children"'
+alias xpra-xterm-local='xpra attach :45 --encoding=png'
+alias xpra-tnt='xpra attach ssh:ws1.g:47 --encoding=png'
+alias xpra-tnt-start='ssh ws1.g "xpra start :47 --start-child=/share/bin/tnt --exit-with-children"'
 alias xpra-tnt-local='xpra attach :47 --encoding=png'
-alias xpra-thunderbird='xpra attach ssh:ws1.genua:48 --encoding=png'
-alias xpra-thunderbird-start='ssh ws1.genua "xpra start :48 --start-child=thunderbird --exit-with-children"'
+alias xpra-thunderbird='xpra attach ssh:ws1.g:48 --encoding=png'
+alias xpra-thunderbird-start='ssh ws1.g "xpra start :48 --start-child=thunderbird --exit-with-children"'
 alias xpra-thunderbird-local='xpra attach :48 --encoding=png'
-alias xpra-xchat='xpra attach ssh:ws1.genua:49 --encoding=png'
-alias xpra-xchat-start='ssh ws1.genua "xpra start :49 --start-child=xchat --exit-with-children"'
+alias xpra-xchat='xpra attach ssh:ws1.g:49 --encoding=png'
+alias xpra-xchat-start='ssh ws1.g "xpra start :49 --start-child=xchat --exit-with-children"'
 alias xpra-xchat-local='xpra attach :49 --encoding=png'
 
 # Some useful aliases and functions
