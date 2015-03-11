@@ -52,13 +52,17 @@
 	Bundle 'airblade/vim-gitgutter'
 	Bundle 'altercation/vim-colors-solarized'
 	Bundle 'bling/vim-airline'
-	Bundle 'jistr/vim-nerdtree-tabs'
 	Bundle 'Lokaltog/vim-easymotion'
 	Bundle 'nathanaelkane/vim-indent-guides'
 	Bundle 'scrooloose/nerdtree'
-	Bundle 'scrooloose/syntastic'
+	Bundle 'jistr/vim-nerdtree-tabs'
 	Bundle 'ciaranm/securemodelines'
+	Bundle 'benmills/vimux'
+
+	" Syntax
+	Bundle 'scrooloose/syntastic'
 	Bundle "sudar/vim-arduino-syntax"
+	Bundle 'vim-scripts/LanguageTool'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
@@ -96,7 +100,7 @@
 		set magic
 	" }
 	" Spelling {
-		set spelllang=en_us ",de_de
+		set spelllang=de_de,en_us
 	" }
 	" Misc {
 			" Only one whitespace after _J_oining after a dot
@@ -340,35 +344,42 @@
 	" Function Keys {
 		" Handling:
 		" <F2> Toggle git diff cloumn
-			map <silent> <F2> :GitGutterToggle <CR>
+			map <silent><F2> :GitGutterToggle <CR>
 		" <L-F2> Toggle git diff line highlighting
-			map <silent> <leader><F2> :GitGutterLineHighlightsToggle <CR>
+			map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>
 		" <F3> Toggle the arrow keys
-			map <silent> <F3> :call ToggleArrowKeys() <CR>
+			map <silent><F3> :call ToggleArrowKeys() <CR>
 		" <L-F3> Toggle mouse mode
 			"TODO
 		" <F4> Toggle paste mode
 			set pastetoggle=<F4>
 		" Desing:
 		" <F5> Toggle whitespace and tab display
-			map <silent> <F5> :call ToggleList() <CR>
+			map <silent><F5> :call ToggleList() <CR>
 		" <L-F5> Toggle visual highlighting of lines longer than 80 chars
-			map <silent> <leader><F5> :call ToggleColorColumn() <CR>
+			map <silent><leader><F5> :call ToggleColorColumn() <CR>
 		" <F6> Toggle line numbers
-			map <silent> <F6> :call ToggleNumber() <CR>
+			map <silent><F6> :call ToggleNumber() <CR>
 		" <L-F6> Toggle relative line numbers
-			map <silent> <leader><F6> :call ToggleRelNumber() <CR>
+			map <silent><leader><F6> :call ToggleRelNumber() <CR>
 		" <F7> Toggle line wrap
-			map <silent> <F7> :call ToggleWrap() <CR>
-		" <F8> Toggle background
-			map <silent> <F8> :call ToggleSolarizedBackground() <CR>
-		" <F9> Toggle spell checking
-			map <F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+			map <silent><F7> :call ToggleWrap() <CR>
+		" <L-F7> Toggle background
+			map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>
+		" <F8> Toggle spell checking
+			map <silent><F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" vimux:
+		" <F9> vimux RunCommand make
+			map <silent><F9> :VimuxRunCommand("make") <CR>
+		" <L-F9> vimux CloseRunner
+			map <silent><leader><F9> :VimuxCloseRunner <CR>
+		" <F10> vimux RunCommandPromt
+			map <silent><F10> :VimuxPromptCommand <CR>
 		" Functions:
-		" <F10> Paste to grave.io
-			map <F10> :w !bury -t % <CR>
+		" <F11> Paste to grave.io
+			map <F11> :w !bury -t % <CR>
 		" <F12> Display all custom keybindings
-			map <F12> :!egrep '" <(L-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
+			map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
 	" }
 " }
 " Settings for addons {
@@ -385,6 +396,9 @@
 	" }
 	" Airline {
 		 let g:airline_theme='solarized'
+	" }
+	" LanguageTool {
+		let g:languagetool_jar='$HOME/bin/share/LanguageTool-2.8/languagetool-commandline.jar'
 	" }
 " }
 
