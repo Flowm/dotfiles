@@ -3,6 +3,7 @@
 .vimrc:		Look through https://github.com/bling/dotvim
 .vimrc:		Switch to https://github.com/Shougo/neobundle.vim for faster startup
 .vimrc:		Enable F keybindings when useful in insert mode and visual mode
+.vimrc:		Add NERDCommenter
 .tmux:		Fix clipboard integration
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 .bashrc:	Speed optimization for RPI SD card

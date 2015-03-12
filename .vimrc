@@ -38,37 +38,40 @@
 	let iCanHazVundle=1
 	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 	if !filereadable(vundle_readme)
-		echo "Installing Vundle.."
+		echo "Installing Vundle..."
 		echo ""
 		silent !mkdir -p ~/.vim/bundle
 		silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
 		let iCanHazVundle=0
 	endif
-	set rtp+=~/.vim/bundle/vundle/
-	call vundle#rc()
+	set rtp+=~/.vim/bundle/vundle
+	call vundle#begin()
 
-	Bundle 'gmarik/vundle'
+	Plugin 'gmarik/vundle'
 
-	Bundle 'airblade/vim-gitgutter'
-	Bundle 'altercation/vim-colors-solarized'
-	Bundle 'bling/vim-airline'
-	Bundle 'Lokaltog/vim-easymotion'
-	Bundle 'nathanaelkane/vim-indent-guides'
-	Bundle 'scrooloose/nerdtree'
-	Bundle 'jistr/vim-nerdtree-tabs'
-	Bundle 'ciaranm/securemodelines'
-	Bundle 'benmills/vimux'
+	Plugin 'airblade/vim-gitgutter'
+	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'bling/vim-airline'
+	Plugin 'Lokaltog/vim-easymotion'
+	Plugin 'nathanaelkane/vim-indent-guides'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'jistr/vim-nerdtree-tabs'
+	Plugin 'ciaranm/securemodelines'
+	Plugin 'benmills/vimux'
 
-	" Syntax
-	Bundle 'scrooloose/syntastic'
-	Bundle "sudar/vim-arduino-syntax"
-	Bundle 'vim-scripts/LanguageTool'
+	Plugin 'scrooloose/syntastic'
+	Plugin 'sudar/vim-arduino-syntax'
+
+	Plugin 'LanguageTool'
+	Plugin 'loremipsum'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
 		echo ""
 		:BundleInstall
 	endif
+
+	call vundle#end()
 	filetype plugin indent on
 " }
 
