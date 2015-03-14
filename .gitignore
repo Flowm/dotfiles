@@ -1,9 +1,4 @@
 *~
 .*.swp
 
-.vim/.vim
-.vim/.netrwhist
-.vim/bundle/*
-
 tmp/
-.ssh/config-compatible
