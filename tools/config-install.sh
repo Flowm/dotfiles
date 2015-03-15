@@ -22,7 +22,6 @@ for d in ".vim" ".zsh"; do
 	echo "$tmp_dir"
 	ln -fs "$tmp_dir" "$targt_dir/"
 done
-ln -dfs "$conf_dir/contrib/antigen" "$conf_tmp/.zsh/"
 
 echo "Link all files and folders in subdirectories of conf_home"
 for d in $(find "$conf_home/" -mindepth 1 -maxdepth 1 -type d); do
@@ -32,6 +31,9 @@ for d in $(find "$conf_home/" -mindepth 1 -maxdepth 1 -type d); do
 	find "$d" -mindepth 1 -maxdepth 1 -exec ln -dfs {} "$new_dir/" \;
 done
 
+$conf_dir/tools/config-genfallback.sh
+
 echo "Initializing submodules"
 cd "$conf_dir"
 git submodule update --init --recursive
+ln -dfs "$conf_dir/contrib/antigen" "$conf_tmp/.zsh/"

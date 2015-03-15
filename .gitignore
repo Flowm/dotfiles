@@ -2,3 +2,4 @@
 .*.swp
 
 tmp/
+home/.ssh/config-compatible
