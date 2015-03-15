@@ -29,6 +29,9 @@
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
 
+[core]
+	pager = less -RFX
+
 [diff]
 	tool = vimdiff
 
