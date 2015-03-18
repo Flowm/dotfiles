@@ -24,6 +24,7 @@ antigen bundle zsh-users/zsh-completions src
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle rupa/z
+antigen bundle chrissicool/zsh-256color
 
 if [[ -n "%OSX" ]]; then
 	antigen bundle brew
@@ -38,8 +39,14 @@ antigen apply
 # Plugin config
 ########################################################################
 
+# Display red dots when waiting for compltion
+COMPLETION_WAITING_DOTS="true"
+
 # Don't overwrite the title
 DISABLE_AUTO_TITLE="true"
+
+# Show command execution time after given number of seconds.
+REPORTTIME=30
 
 ########################################################################
 # Own

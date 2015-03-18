@@ -4,11 +4,16 @@
 .vimrc:		Switch to https://github.com/Shougo/neobundle.vim for faster startup
 .vimrc:		Enable F keybindings when useful in insert mode and visual mode
 .vimrc:		Add NERDCommenter
+
 .tmux:		Fix clipboard integration
+
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
+
+.zsh:		Fix PATH for bin directory without subfolders
+.zsh:		Casesensitive search
+
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
-.bashrc:	Switch to ZSH someday
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
 .bashrc:	Source sagent on startup
 .bashrc:	Fix tab completion for aliases
