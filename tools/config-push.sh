@@ -35,7 +35,7 @@ for host in "${myhosts[@]}"; do
 	if [ !$NOACTION ]; then
 		rsync -av --delete ~/.myconf/ $host:.myconf/
 		if [ $SETLINKS ]; then
-			ssh $host ".myconf/scripts/createlinks.sh"
+			ssh $host ".myconf/tools/config-install.sh"
 		fi
 	fi
 	echo

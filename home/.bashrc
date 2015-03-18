@@ -4,6 +4,12 @@
 if [ -n "$PS1" ]; then
 #[ -z "$PS1" ] && return
 
+# ZSH!
+if which zsh >/dev/null; then
+	zsh
+	exit
+fi
+
 #############################################################################
 # Host detection
 #

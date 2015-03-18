@@ -7,3 +7,15 @@ alias h='history'
 alias g='git'
 
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
+
+########################################################################
+# Conditional Aliases
+########################################################################
+
+if [[ -n "$MC_WORK" ]]; then
+	autoload bashcompinit
+	bashcompinit
+	if [ -f /usr/local/bin/l4profile.sh ] ; then
+		. /usr/local/bin/l4profile.sh
+	fi
+fi

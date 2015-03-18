@@ -26,7 +26,7 @@ antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle rupa/z
 antigen bundle chrissicool/zsh-256color
 
-if [[ -n "%OSX" ]]; then
+if [[ -n "$OSX" ]]; then
 	antigen bundle brew
 	antigen bundle osx
 fi
