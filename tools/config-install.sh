@@ -28,7 +28,7 @@ for d in $(find "$conf_home/" -mindepth 1 -maxdepth 1 -type d); do
 	new_dir="$targt_dir/$(basename $d)"
 	mkdir -p "$new_dir"
 	find "$d" -mindepth 1 -maxdepth 1
-	find "$d" -mindepth 1 -maxdepth 1 -exec ln -dfs {} "$new_dir/" \;
+	find "$d" -mindepth 1 -maxdepth 1 -exec ln -nfs {} "$new_dir/" \;
 done
 
 $conf_dir/tools/config-genfallback.sh
@@ -36,4 +36,4 @@ $conf_dir/tools/config-genfallback.sh
 echo "Initializing submodules"
 cd "$conf_dir"
 git submodule update --init --recursive
-ln -dfs "$conf_dir/contrib/antigen" "$conf_tmp/.zsh/"
+ln -nfs "$conf_dir/contrib/antigen" "$conf_tmp/.zsh/"
