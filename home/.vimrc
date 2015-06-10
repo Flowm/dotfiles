@@ -78,8 +78,8 @@
 " General {
 	" Backup and temporary files {
 		set backup
-		set backupdir=~/.tmp/.vimbak
-		set directory=~/.tmp/.vimtmp,.
+		set backupdir=~/.myconf/tmp/.vimbak
+		set directory=~/.myconf/tmp/.vimtmp,.
 		set history=2048
 		set undolevels=2048
 	" }
@@ -103,7 +103,7 @@
 		set magic
 	" }
 	" Spelling {
-		set spelllang=de_de,en_us
+		set spelllang=de,en
 	" }
 	" Misc {
 			" Only one whitespace after _J_oining after a dot
@@ -222,11 +222,11 @@
 	" }
 	" C&P between files via a tempfile {
 			"Copy to buffer
-		vnoremap <leader>y :w! ~/.tmp/.vimbak/vimbuffer<CR>
-		nnoremap <leader>y :.w! ~/.tmp/.vimbak/vimbuffer<CR>
+		vnoremap <leader>y :w! ~/.myconf/tmp/.vimbak/vimbuffer<CR>
+		nnoremap <leader>y :.w! ~/.myconf/tmp/.vimbak/vimbuffer<CR>
 			"Paste from buffer
-		nnoremap <leader>p :r ~/.tmp/.vimbak/vimbuffer<CR>
-		nnoremap <leader>P :-r ~/.tmp/.vimbak/vimbuffer<CR>
+		nnoremap <leader>p :r ~/.myconf/tmp/.vimbak/vimbuffer<CR>
+		nnoremap <leader>P :-r ~/.myconf/tmp/.vimbak/vimbuffer<CR>
 	" }
 	" Disable arrow keys by default {
 		nnoremap <up> <nop>
@@ -368,6 +368,7 @@
 		" <F7> Toggle line wrap
 			map <silent><F7> :call ToggleWrap() <CR>
 		" <L-F7> Toggle background
+			call togglebg#map("<leader><F7>")
 			map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>
 		" <F8> Toggle spell checking
 			map <silent><F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
