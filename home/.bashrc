@@ -4,10 +4,15 @@
 if [ -n "$PS1" ]; then
 #[ -z "$PS1" ] && return
 
-# ZSH!
-if which zsh >/dev/null; then
-	zsh
-	exit
+# ZSH?
+MY_SHELL=
+if [ -x /bin/zsh ] && [ ! -e $HOME/.bsh ] ; then
+  MY_SHELL=/bin/zsh
+fi
+if [ -n "$MY_SHELL" ]; then
+  case $- in
+    *i*) SHELL=$MY_SHELL; export SHELL; exec "$MY_SHELL";;
+  esac
 fi
 
 #############################################################################
