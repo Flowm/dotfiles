@@ -4,11 +4,11 @@ SETLINKS=
 NOACTION=
 myhosts=(
 		'azubi1'
-		'dev'
+		'srv'
 		'g741'
+		'z501'
 		'gkvm'
 		'hpf-admin'
-		'unifi'
 		)
 
 while [ $# -gt 0 ]; do

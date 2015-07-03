@@ -4,13 +4,20 @@
 .vimrc:		Switch to https://github.com/Shougo/neobundle.vim for faster startup
 .vimrc:		Enable F keybindings when useful in insert mode and visual mode
 .vimrc:		Add NERDCommenter
+.vimrc:		Install Ansi.ESC vimball " Installing Vimball plugins when using Pathogen"
 
 .tmux:		Fix clipboard integration
 
+.gitconfig:	Use different mail depending on username
+
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 
+.shcfg:		Fix tmux ssh agent
+.shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
+
 .zsh:		Fix PATH for bin directory without subfolders
-.zsh:		Casesensitive search
+.zsh:		Casesensitive search and completion
+.zsh:		Merge bash config and use shared config when possible
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
@@ -19,3 +26,5 @@
 .bashrc:	Fix tab completion for aliases
 .bashrc:	ethernal_history grep
 .bashrc:	ethernal_history timstamp translation
+
+tools:		Don't push tmp folder!

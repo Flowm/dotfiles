@@ -28,6 +28,8 @@
 	resetom  = reset --hard origin/master
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
+	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+	psh = push origin HEAD:refs/for/master
 
 [core]
 	pager = less -RFX

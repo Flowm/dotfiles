@@ -16,6 +16,6 @@ if [[ -n "$MC_WORK" ]]; then
 	autoload bashcompinit
 	bashcompinit
 	if [ -f /usr/local/bin/l4profile.sh ] ; then
-		. /usr/local/bin/l4profile.sh
+		source /usr/local/bin/l4profile.sh
 	fi
 fi

@@ -430,6 +430,12 @@
 		" }
 		augroup END
 	endif
+	" Host based indention settings {
+	if hostname() == "dev"
+		set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1
+		set shiftwidth=2
+		set tabstop=8
+	endif
 " }
 
 " To be tested/integrated {
