@@ -18,6 +18,11 @@
 .zsh:		Fix PATH for bin directory without subfolders
 .zsh:		Casesensitive search and completion
 .zsh:		Merge bash config and use shared config when possible
+.zsh:		Fix PATH for bin directory without subfolders
+.zsh:		Casesensitive search/ completion
+.zsh:		Don't share last history entry
+.zsh:		Import most used bash functions. like hl
+.zsh:		Use push+popd
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
