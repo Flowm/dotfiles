@@ -12,21 +12,19 @@
 
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 
-.shcfg:		Fix tmux ssh agent
+.shcfg:		Merge bash config and use shared config when possible
+.shcfg:		Fix PATH for bin directory without subfolders
+.shcfg:		Fix tmux ssh agent (source sagent on startup)
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
 
-.zsh:		Fix PATH for bin directory without subfolders
-.zsh:		Merge bash config and use shared config when possible
-.zsh:		Fix PATH for bin directory without subfolders
-.zsh:		Import most used bash functions. like hl
 .zsh:		Use push+popd
+.zsh:		Add ethernal_history
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
-.bashrc:	Source sagent on startup
 .bashrc:	Fix tab completion for aliases
-.bashrc:	ethernal_history grep
-.bashrc:	ethernal_history timstamp translation
+.bashrc:	Add ethernal_history grep
+.bashrc:	ethernal_history grep timstamp translation
 
 tools:		Don't push tmp folder!
