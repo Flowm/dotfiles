@@ -5,6 +5,22 @@
 [ -e "${HOME}/.zsh/.env" ] && source "${HOME}/.zsh/.env"
 
 ########################################################################
+# Plugin config
+########################################################################
+
+# Use case-sensitive completion.
+CASE_SENSITIVE="true"
+
+# Display red dots when waiting for compltion
+COMPLETION_WAITING_DOTS="true"
+
+# Don't overwrite the title
+DISABLE_AUTO_TITLE="true"
+
+# Show command execution time after given number of seconds.
+REPORTTIME=30
+
+########################################################################
 # Antigen config
 ########################################################################
 
@@ -34,19 +50,6 @@ fi
 antigen theme jreese
 
 antigen apply
-
-########################################################################
-# Plugin config
-########################################################################
-
-# Display red dots when waiting for compltion
-COMPLETION_WAITING_DOTS="true"
-
-# Don't overwrite the title
-DISABLE_AUTO_TITLE="true"
-
-# Show command execution time after given number of seconds.
-REPORTTIME=30
 
 ########################################################################
 # Own
