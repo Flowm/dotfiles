@@ -19,6 +19,7 @@
 
 .zsh:		Use push+popd
 .zsh:		Add ethernal_history
+.zsh:		Eval vi keybindings (bindkey -v)
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)

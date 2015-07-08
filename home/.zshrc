@@ -20,6 +20,10 @@ DISABLE_AUTO_TITLE="true"
 # Show command execution time after given number of seconds.
 REPORTTIME=30
 
+# Long history
+export HISTSIZE=100000
+export SAVEHIST=$HISTSIZE
+
 ########################################################################
 # Antigen config
 ########################################################################
@@ -57,6 +61,9 @@ antigen apply
 
 [ -e "${HOME}/.zsh/.aliases" ] && source "${HOME}/.zsh/.aliases"
 
+########################################################################
+# Keybindings
+########################################################################
 # Local history on arrow keys
 if [[ "${terminfo[kpp]}" != "" ]]; then
 	bindkey "${terminfo[kpp]}" up-line-or-local-history;
