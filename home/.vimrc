@@ -116,23 +116,20 @@
 
 " Appearance and handling {
 	" Theme {
-			" Use a portable version of solarized (no terminal adjustments needed)
-		let t_Co=256
-		let g:solarized_termcolors=256
-			" Set colorscheme to solarized
-		colorscheme solarized
 			" Use the dark version of solarized
 		set background=dark
-			" Previous used colorscheme
-		"colorscheme evening
+			" Set colorscheme to solarized
+		colorscheme solarized
+			" Use a portable version of solarized (no terminal adjustments needed)
+		"let t_Co=256
+		"let g:solarized_termcolors=256
 	" }
-	" Colors {
-		hi Search ctermbg=DarkYellow ctermfg=White
+	" Color tweaks {
 			" Used by listchars
-		hi SpecialKey ctermbg=1
+		"hi Search ctermbg=DarkYellow ctermfg=White
+		hi SpecialKey ctermbg=4
 
-			" Some tweaks for the solarized colorscheme
-		hi Identifier ctermfg=6 cterm=bold
+		"hi Identifier ctermfg=6 cterm=bold
 			" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
 			" Non-safe Colors, 16-Color-Term:
 			" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
@@ -399,7 +396,11 @@
 		"let g:gitgutter_eager = 0
 	" }
 	" Airline {
-		 let g:airline_theme='solarized'
+		let g:airline_theme='solarized'
+	" }
+	" vimux {
+		"let g:VimuxOrientation = "h"
+		"let g:VimuxHeight = "40"
 	" }
 	" LanguageTool {
 		let g:languagetool_jar='$HOME/bin/share/LanguageTool-2.8/languagetool-commandline.jar'
@@ -441,6 +442,10 @@
 " To be tested/integrated {
 	let g:syntastic_cpp_compiler_options = '-std=c++11'
 	let g:syntastic_arduino_checkers=['']
+	let g:syntastic_quiet_messages = {
+		\ "regex": '\$\\times\$ may look prettier here',
+		\ "!level": "errors" }
+	"LaTex warning in BA
 	"set confirm
 	"au FocusLost * :wa
 	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
