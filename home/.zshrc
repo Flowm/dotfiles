@@ -56,3 +56,26 @@ antigen apply
 ########################################################################
 
 [ -e "${HOME}/.zsh/.aliases" ] && source "${HOME}/.zsh/.aliases"
+
+# Local history on arrow keys
+if [[ "${terminfo[kpp]}" != "" ]]; then
+	bindkey "${terminfo[kpp]}" up-line-or-local-history;
+fi
+if [[ "${terminfo[knp]}" != "" ]]; then
+	bindkey "${terminfo[knp]}" down-line-or-local-history;
+fi
+bindkey "^[[1;5A" up-line-or-history    # [CTRL] + Cursor up
+bindkey "^[[1;5B" down-line-or-history  # [CTRL] + Cursor down
+
+up-line-or-local-history() {
+    zle set-local-history 1
+    zle up-line-or-history
+    zle set-local-history 0
+}
+zle -N up-line-or-local-history
+down-line-or-local-history() {
+    zle set-local-history 1
+    zle down-line-or-history
+    zle set-local-history 0
+}
+zle -N down-line-or-local-history

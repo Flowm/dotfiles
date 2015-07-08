@@ -18,7 +18,6 @@
 .zsh:		Fix PATH for bin directory without subfolders
 .zsh:		Merge bash config and use shared config when possible
 .zsh:		Fix PATH for bin directory without subfolders
-.zsh:		Don't share last history entry
 .zsh:		Import most used bash functions. like hl
 .zsh:		Use push+popd
 
