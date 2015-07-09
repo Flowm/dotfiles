@@ -2,4 +2,5 @@
 .*.swp
 
 tmp/
+history/
 home/.ssh/config-compatible

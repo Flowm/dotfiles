@@ -16,9 +16,9 @@ if [ -n "$MY_SHELL" ]; then
   esac
 fi
 
-# Shared code
-[ -e "${HOME}/.zsh/.env" ] && source "${HOME}/.zsh/.env"
-[ -e "${HOME}/.zsh/.aliases" ] && source "${HOME}/.zsh/.aliases"
+# Shared config
+[ -e "${HOME}/.shcfg/.env" ] && source "${HOME}/.shcfg/.env"
+[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
 
 ########################################################################
 # Completion

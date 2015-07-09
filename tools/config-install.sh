@@ -5,10 +5,10 @@ if [ $# -ne 0 ]; then
 	set -x
 fi
 
-
 conf_dir="$HOME/.myconf"
 conf_home="$conf_dir/home"
 conf_tmp="$conf_dir/tmp"
+conf_hist="$conf_dir/history"
 targt_dir="$HOME"
 
 echo "Link all files in conf_home"
@@ -34,6 +34,8 @@ done
 mkdir -p $conf_tmp/.vimbak
 mkdir -p $conf_tmp/.vimtmp
 $conf_dir/tools/config-genfallback.sh
+
+mkdir -p $conf_hist
 
 echo "Initializing submodules"
 cd "$conf_dir"

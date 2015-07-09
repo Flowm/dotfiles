@@ -2,8 +2,9 @@
 # General
 ########################################################################
 
-# Environment detection
-[ -e "${HOME}/.zsh/.env" ] && source "${HOME}/.zsh/.env"
+# Shared config
+[ -e "${HOME}/.shcfg/.env" ] && source "${HOME}/.shcfg/.env"
+[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
 
 ########################################################################
 # Plugin config
@@ -59,12 +60,6 @@ fi
 antigen theme jreese
 
 antigen apply
-
-########################################################################
-# Own
-########################################################################
-
-[ -e "${HOME}/.zsh/.aliases" ] && source "${HOME}/.zsh/.aliases"
 
 ########################################################################
 # Keybindings
