@@ -25,5 +25,3 @@
 .bashrc:	Fix tab completion for aliases
 .bashrc:	Add ethernal_history grep
 .bashrc:	ethernal_history grep timstamp translation
-
-tools:		Don't push tmp folder!
