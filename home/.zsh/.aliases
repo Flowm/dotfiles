@@ -4,18 +4,87 @@
 
 alias a='ack-grep'
 alias h='history'
+alias v='vim'
 alias g='git'
 
+alias gr='grep -iIR'
+
 alias gcd='cd "$(git rev-parse --show-toplevel)"'
+alias du-h='du -h --max-depth=1 |sort -rh'
+alias findh='find . -iname'
+
+alias vless='/usr/share/vim/vim74/macros/less.sh'
+alias vsyslog='view /var/log/syslog'
+alias tsyslog='tail -f /var/log/syslog'
+alias jsocks='java -DsocksProxyHost=localhost'
+
+alias ssh-nCM='ssh -o ControlMaster=no'
+alias ssh-nPW='ssh -o KbdInteractiveAuthentication=no'
+alias ssh-nKY='ssh -o PubkeyAuthentication=no'
+
+alias httpserver='python -m SimpleHTTPServer'
+alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
+alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
+alias openports='netstat -antp --udp | grep LISTEN'
+alias ping88='ping 8.8.8.8'
+alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
+
+alias myip='curl ipecho.net/plain;echo'
+alias myports='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
+alias mynmap='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,2222,8080,8888,9999,22022 --randomize-hosts'
+alias mytcpdump='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
+alias myrsync='rsync -e ssh --ipv4 -rltiuP'
+alias myrsynca='rsync -e ssh --ipv4 -aiurP'
+alias mypwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
+alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 
 ########################################################################
-# Conditional Aliases
+# Funcs
 ########################################################################
 
-if [[ -n "$MC_WORK" ]]; then
-	autoload bashcompinit
-	bashcompinit
-	if [ -f /usr/local/bin/l4profile.sh ] ; then
-		source /usr/local/bin/l4profile.sh
+cdf() { cd $(dirname $1); }
+hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
+
+########################################################################
+# Aliases Conditional
+########################################################################
+
+if [ -n "$MC_WORK" ]; then
+	# Fixes for wierd global config
+	# /etc/bash.bashrc breaks colors in git: export LESS='-i'
+	unset LESS
+
+	# PRD
+	alias zcheck='zcheck -lx'
+	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
+
+	#Connections
+	alias g841="luit -encoding ISO-8859-15 ssh g821"
+
+	# Misc
+	alias ifconfig='/sbin/ifconfig'
+	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
+	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc breakdown.genua firefox -no-remote'
+
+	#----------------------------------------------------------------------------
+	# G Dev only
+	if [ -n "$MC_ZSH" ]; then
+		if [ -f /usr/local/bin/l4profile.sh ]; then
+			autoload bashcompinit
+			bashcompinit
+			source /usr/local/bin/l4profile.sh
+		fi
+	fi
+
+	if [ -f ~/.aegis ]; then
+		. ~/.aegis
+		alias ashowd='aed && showd'
 	fi
 fi
+
+if [ -n "$MC_LINUX" ]; then
+	alias apt-up='sudo apt-get update'
+	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
+	alias apt-diuptsocks='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
+fi
+

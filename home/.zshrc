@@ -2,6 +2,7 @@
 # General
 ########################################################################
 
+# Environment detection
 [ -e "${HOME}/.zsh/.env" ] && source "${HOME}/.zsh/.env"
 
 ########################################################################
@@ -19,6 +20,10 @@ DISABLE_AUTO_TITLE="true"
 
 # Show command execution time after given number of seconds.
 REPORTTIME=30
+
+########################################################################
+# History
+########################################################################
 
 # Long history
 export HISTSIZE=100000

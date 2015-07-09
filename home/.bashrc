@@ -1,10 +1,11 @@
-#############################################################################
-#
+########################################################################
+# General
+########################################################################
+
 # If not running interactively, don't do anything
 if [ -n "$PS1" ]; then
-#[ -z "$PS1" ] && return
 
-# ZSH?
+# Start zsh?
 MY_SHELL=
 if [ -x /bin/zsh ] && [ ! -e $HOME/.bsh ] ; then
   MY_SHELL=/bin/zsh
@@ -15,46 +16,14 @@ if [ -n "$MY_SHELL" ]; then
   esac
 fi
 
-#############################################################################
-# Host detection
-#
-OS=`uname`
-case "$OS" in
-	OpenBSD)
-		HOST=`hostname -s`
-		color_prompt=yes
-		;;
-	Linux)
-		HOST=`uname -n`
-		color_prompt=yes
-		PLATFORM=`uname -m`
-		case "$PLATFORM" in
-			armv6l)
-				slowsys=yes
-				;;
-		esac
-		;;
-	CYGWIN*)
-		HOST=`uname -n`
-		no_prompt=yes
-		;;
-	*)
-		HOST=`echo $HOSTNAME | sed "s/\([a-z]*\)\..*/\1/"`
-		color_prompt=yes
-		;;
-esac
+# Shared code
+[ -e "${HOME}/.zsh/.env" ] && source "${HOME}/.zsh/.env"
+[ -e "${HOME}/.zsh/.aliases" ] && source "${HOME}/.zsh/.aliases"
 
-#############################################################################
-# Username detection
-#
-USER=`whoami`
-if [ $USER == "fmaurach" ]; then
-	genua=yes
-fi
+########################################################################
+# Completion
+########################################################################
 
-#############################################################################
-# General
-#
 # Activate bash_completion
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 	. /etc/bash_completion
@@ -67,39 +36,21 @@ if [ -f ~/.myconf/contrib/git-completion.bash ] && ! shopt -oq posix; then
 		. ~/.myconf/contrib/git-prompt.sh
 	fi
 fi
+__git_complete g _git
 
-# Add $HOME/bin and all subdirs to the path
-if [ -d "$HOME/bin" ]; then
-	PATH="$HOME/bin:$PATH"
-	for d in $(ls -d $HOME/bin/*/ 2>/dev/null); do
-		PATH="${d%%/}:$PATH"
-	done
-fi
-
-#############################################################################
+########################################################################
 # History
-#
+########################################################################
+
 HISTCONTROL=ignoredups:ignorespace
 
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=500000
-#unset HISTSIZE
-#unset HISTFILESIZE
-
-
-if [ -z $slowsys ]; then
-	export HISTTIMEFORMAT="%s "
-	PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo $HOST $$ $USER \
-				"$(history 1)" >> ~/.bash_eternal_history'
-fi
-
-#############################################################################
+########################################################################
 # Behaviour
-#
+########################################################################
+
 # VI mode
 set -o vi
 
@@ -113,9 +64,10 @@ bind -m vi-insert "\C-n":menu-complete
 bind -m vi-insert "\C-l":clear-screen
 bind -m vi-command "\C-l":clear-screen
 
-#############################################################################
+########################################################################
 # Screen
-#
+########################################################################
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -123,9 +75,7 @@ shopt -s checkwinsize
 # Make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Git
-export MANPATH=/usr/local/git/man:$MANPATH
-
+color_prompt=yes
 if [ -n "$color_prompt" ]; then
 	if [ -x /usr/bin/tput ]; then #&& tput setaf 1 >&/dev/null; then
 		# We have color support; assume it's compliant with Ecma-48
@@ -149,7 +99,7 @@ if [ -n "$color_prompt" ]; then
 		LWHITE="\[\033[1;37m\]"
 		NOCOLOR="\[\033[0m\]"
 		#Set the promt
-		if [ -z $slowsys ]; then
+		if [ -z $MC_SLOWSYS ]; then
 			PS1="${LRED}\u${NOCOLOR}@${LGREEN}\h${NOCOLOR}: ${LBLUE}\w${NOCOLOR}\$(__git_ps1) \$ "
 			#PS1="\[\033[1;31m\]\u\[\033[0m\]@\[\033[1;32m\]\h\[\033[0m\]: \[\033[1;34m\]\w \[\033[00m\] \$(__git_ps1)\$ "
 		else
@@ -188,12 +138,13 @@ esac
 
 #PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD}\007"'
 
-#############################################################################
+########################################################################
 # Auth Agents
-#
+########################################################################
+
 # GPG Agent
-if [ -f "$HOME/.gnupg/gpg-agent-info-$HOST" ]; then
-	. "$HOME/.gnupg/gpg-agent-info-$HOST"
+if [ -f "$HOME/.gnupg/gpg-agent-info-$MC_HOST" ]; then
+	. "$HOME/.gnupg/gpg-agent-info-$MC_HOST"
 	export GPG_AGENT_INFO
 fi
 
@@ -201,7 +152,7 @@ fi
 
 # Fix Agent for tmux
 if [ -e "$HOME/.ssh/agent_sock" ]; then
-	agent=$(readlink -f "$HOME/.ssh/agent_sock")
+	agent="$HOME/.ssh/agent_sock"
 fi
 if [ -S "$SSH_AUTH_SOCK" ]; then
 	# save file i f wrong
@@ -209,7 +160,7 @@ if [ -S "$SSH_AUTH_SOCK" ]; then
 		ln -fs "$SSH_AUTH_SOCK" "$HOME/.ssh/agent_sock"
 	fi
 else
-   	if [ $? -eq 0 ]; then
+	if [ $? -eq 0 ]; then
 		export SSH_AUTH_SOCK="$HOME/.ssh/agent_sock"
 	fi
 fi
@@ -247,11 +198,9 @@ sagent() {
 	fi
 }
 
-#############################################################################
-# Aliases - General
-#
-
-export EDITOR=vim
+########################################################################
+# Aliases - Bash only
+########################################################################
 
 # Some more ls aliases
 alias ll='ls -Al'
@@ -260,7 +209,6 @@ alias l='ls -1F'
 alias tree='tree -Csu | less -R'
 
 # Directory navigation
-#alias .='pwd' #RLY STUPID ALIAS
 alias cd..='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -268,35 +216,9 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
-alias gcd='cd "$(git rev-parse --show-toplevel)"'
-alias du-h='du -h --max-depth=1 |sort -rh'
-alias findh='find . -iname'
-alias fpath='readlink -f'
-cdf() { cd $(dirname $1); }
-
-# git alias and fix completion
-alias g='git'
-__git_complete g _git 
-
-# Own
-#alias mv='mv -b'
-alias a='ack'
-alias h='history'
-alias j='jiffyi'
-alias v='vim'
-alias gr='grep -iIR'
-alias vless='/usr/share/vim/vim74/macros/less.sh'
-alias vsyslog='view /var/log/syslog'
-alias tsyslog='tail -f /var/log/syslog'
-alias ssh-CMn='ssh -o ControlMaster=no'
-alias ssh-CMs='ls ~/.tmp/'
-alias jsocks='java -DsocksProxyHost=localhost'
-alias ctodo='clear && todo'
-
-# apt-get Shortcuts
-alias apt-up='sudo apt-get update'
-alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
-alias apt-diuptsocks='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
+########################################################################
+# TODO: Old stuff, move to script with options
+########################################################################
 
 # Sync
 alias rsyncc='rsync -e ssh --ipv4 -aiurP'
@@ -326,129 +248,9 @@ alias xpras-evince='xpra attach ssh:snow.ext:43 --encoding=png'
 alias xpras-evince-start='ssh snow.ext "xpra start :43 --start-child=evince --exit-with-children"'
 alias xpras-evince-local='xpra attach :43 --encoding=png'
 
-# Some useful aliases and functions
-alias httpserver='python -m SimpleHTTPServer'
-alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
-alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
-alias myip='curl ipecho.net/plain;echo'
-alias myports='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
-alias nmapult='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,2222,8080,8888,9999,22022 --randomize-hosts'
-alias openports='netstat -anp --tcp --udp | grep LISTEN'
-alias ping88='ping 8.8.8.8'
-alias tcpdumpsu='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
-
-alias most='history | awk '\''{print $2}'\'' | awk '\''BEGIN{FS="|"}{print $1}'\'' | sort | uniq -c | sort -n | tail -n 20 | sort -nr'
-alias pwgen-own='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
-alias pwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
-alias fixwwwperm='sudo chown -R www-data:www-data /var/www/'
-
-manswitch() { man $1 | less -p "^ +-$2"; }
-manpdf() { man -t $1 | ps2pdf - $1.pdf; }
-say() { mplayer "http://translate.google.com/translate_tts?q=$1"; }
-say2() { if [[ "${1}" =~ -[a-z]{2} ]]; then local lang=${1#-}; local text="${*#$1}"; else local lang=${LANG%_*}; local text="$*";fi; mplayer "http://translate.google.com/translate_tts?ie=UTF-8&tl=${lang}&q=${text}" &> /dev/null ; }
-cmdfu() { curl -Ls "commandlinefu.com/commands/matching/$1/`echo -n $1|base64`/sort-by-votes/plaintext"| sed '1,2d;s/^#.*/&/g'; }
-hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
-
-alias junitc='javac -cp .:/usr/share/java/junit4.jar'
-alias junit='java -cp .:/usr/share/java/junit4.jar org.junit.runner.JUnitCore'
-compile() { gcc -Wall $1.c -lm -o $1 && ./$1; }
-compilec90() { gcc -Wall $1.c -std=c90 -lm -o $1 && ./$1; }
-compilecpp() { g++ -Wall $1.c -lm -o $1 && ./$1; }
-
-# Marks
-# http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
-export MARKPATH=$HOME/.marks
-function jump {
-	cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
-}
-function mark {
-    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
-}
-function unmark {
-    rm -i "$MARKPATH/$1"
-}
-function marks {
-	find "$MARKPATH" -type l | while read filename; do
-		printf "%-12s -> %s\n" $(basename ${filename}) $(readlink ${filename})
-	done
-}
-_completemarks() {
-	local curw=${COMP_WORDS[COMP_CWORD]}
-	local wordlist=$(find $MARKPATH -type l -printf "%f\n")
-	COMPREPLY=($(compgen -W '${wordlist[@]}' -- "$curw"))
-	return 0
-}
-alias j='jump'
-complete -F _completemarks jump j unmark
-
-#############################################################################
-# Aliases - Conditional
-#
-# Host snow Only
-if [ $HOST == "snow" ]; then
-	alias snowaussh='aussh reverse-snow.m && aussh p'
-
-	# FH Rosenheim VPN
-	alias fh-vpn-ext='sudo vpnc-connect /etc/vpnc/hs-extern.conf'
-	alias fh-vpn-int='sudo vpnc-connect /etc/vpnc/hs-intern.conf'
-	alias fh-vpn-stop='sudo vpnc-disconnect'
-fi
-
-#----------------------------------------------------------------------------
-# Linux Only
-if [ $OS == "Linux" ]; then
-	# Gnome only
-	alias open='gnome-open'
-
-	# Directory sorting only in gnu ls
-	alias ll='ls -alF --group-directories-first'
-fi
-
-#----------------------------------------------------------------------------
-# genua only
-if [ $genua ]; then
-	# Fixes for wierd global config
-	# /etc/bash.bashrc breaks colors in git: export LESS='-i'
-	unset LESS
-
-	# G Prod only
-	#General
-	alias ifconfig='/sbin/ifconfig'
-	alias zcheck='zcheck -lx'
-	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
-
-	#Connections
-	alias g730="luit -encoding ISO-8859-15 ssh g730"
-	alias g731="luit -encoding ISO-8859-15 ssh g731"
-	alias g740="luit -encoding ISO-8859-15 ssh g740"
-	alias g741="luit -encoding ISO-8859-15 ssh g741"
-	alias g810="luit -encoding ISO-8859-15 ssh g810"
-	alias g811="luit -encoding ISO-8859-15 ssh g811"
-	alias g820="luit -encoding ISO-8859-15 ssh g820"
-	alias g821="luit -encoding ISO-8859-15 ssh g821"
-
-	# Firefoxes
-	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
-	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc breakdown.genua firefox -no-remote'
-
-	# snow
-	alias snowvim='ssh -t snow vim'
-	alias snowvimtmp='snowvim tmp.txt'
-
-	#----------------------------------------------------------------------------
-	# G Dev only
-	if ([ $genua ] && [ -f ~/.aegis ]); then
-		. ~/.aegis
-		alias ashowd='aed && showd'
-	fi
-
-#----------------------------------------------------------------------------
-# Configuration which is certainly not relevant for genua
-#else
-fi
-
-#############################################################################
+########################################################################
 # Non interactive shells
+########################################################################
 fi
 
 if [ -d "$HOME/.rvm" ] ; then

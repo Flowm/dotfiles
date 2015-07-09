@@ -12,13 +12,11 @@
 
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 
-.shcfg:		Merge bash config and use shared config when possible
 .shcfg:		Fix PATH for bin directory without subfolders
 .shcfg:		Fix tmux ssh agent (source sagent on startup)
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
 
 .zsh:		Use push+popd
-.zsh:		Add ethernal_history
 .zsh:		Eval vi keybindings (bindkey -v)
 
 .bashrc:	Speed optimization for RPI SD card
