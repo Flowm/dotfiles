@@ -116,13 +116,13 @@
 
 " Appearance and handling {
 	" Theme {
-			" Use the dark version of solarized
-		set background=dark
+			" Use a portable version of solarized (no terminal adjustments needed)
+		let t_Co=256
+		let g:solarized_termcolors=256
 			" Set colorscheme to solarized
 		colorscheme solarized
-			" Use a portable version of solarized (no terminal adjustments needed)
-		"let t_Co=256
-		"let g:solarized_termcolors=256
+			" Use the dark version of solarized
+		set background=dark
 	" }
 	" Color tweaks {
 			" Used by listchars

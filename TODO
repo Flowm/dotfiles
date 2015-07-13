@@ -5,6 +5,7 @@
 .vimrc:		Enable F keybindings when useful in insert mode and visual mode
 .vimrc:		Add NERDCommenter
 .vimrc:		Install Ansi.ESC vimball " Installing Vimball plugins when using Pathogen"
+.vimrc:		Solarized color fallback depending on terminal
 
 .tmux:		Fix clipboard integration
 
