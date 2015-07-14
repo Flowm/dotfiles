@@ -22,14 +22,18 @@
 	lcfh= diff-tree --no-commit-id --name-only -r HEAD
 	lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
 	lgl = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lp  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	lpl = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	nb  = checkout -b
 	st  = stash
-	stp  = stash pop
-	resetom  = reset --hard origin/master
+	stp = stash pop
+	psh = push origin HEAD:refs/for/master
+	rom = reset origin/master
+	rhom= reset --hard origin/master
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
-	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
-	psh = push origin HEAD:refs/for/master
+	pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+	gz-psh   = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
 
 [core]
 	pager = less -RFX
