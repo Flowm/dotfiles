@@ -13,6 +13,7 @@
 
 .ssh/config: Bind LocalForwards to 127.0.0.* addresses
 
+.shcfg:		All locales to en-us
 .shcfg:		Fix PATH for bin directory without subfolders
 .shcfg:		Fix tmux ssh agent (source sagent on startup)
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`

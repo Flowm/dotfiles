@@ -36,6 +36,7 @@ mkdir -p $conf_tmp/.vimtmp
 $conf_dir/tools/config-genfallback.sh
 
 mkdir -p $conf_hist
+chmod -R 700 $conf_hist
 
 echo "Initializing submodules"
 cd "$conf_dir"

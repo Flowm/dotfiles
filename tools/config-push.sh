@@ -6,7 +6,7 @@ myhosts=(
 		'azubi1'
 		'srv'
 		'g741'
-		'z501'
+		'z502'
 		'gkvm'
 		'hpf-admin'
 		)
