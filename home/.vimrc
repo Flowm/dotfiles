@@ -116,9 +116,11 @@
 
 " Appearance and handling {
 	" Theme {
-			" Use a portable version of solarized (no terminal adjustments needed)
-		let t_Co=256
-		let g:solarized_termcolors=256
+			" Use a portable version of solarized in all terminals except iterm
+		if $LC_TERM != 'iterm'
+			let t_Co=256
+			let g:solarized_termcolors=256
+		endif
 			" Set colorscheme to solarized
 		colorscheme solarized
 			" Use the dark version of solarized
