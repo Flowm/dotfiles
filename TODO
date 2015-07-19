@@ -16,6 +16,8 @@
 .shcfg:		Fix PATH for bin directory without subfolders
 .shcfg:		Fix tmux ssh agent (source sagent on startup)
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
+.shcfg:		Add ethernal_history grep
+.shcfg:		Fix existing ethernal_history with: :%s/flow\t[0-9]* /flow\t/cg
 
 .zsh:		Use push+popd
 .zsh:		Eval vi keybindings (bindkey -v)
@@ -24,5 +26,3 @@
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
 .bashrc:	Fix tab completion for aliases
-.bashrc:	Add ethernal_history grep
-.bashrc:	ethernal_history grep timstamp translation
