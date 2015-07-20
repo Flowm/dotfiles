@@ -62,6 +62,21 @@ antigen theme jreese
 antigen apply
 
 ########################################################################
+# ZSH config
+########################################################################
+
+# No terminal bell
+setopt nobeep
+# change dir without cd
+setopt autocd
+# Make cd behave like pushd
+setopt autopushd
+# Ignore duplicate paths on pushd
+setopt pushdignoredups
+# Print exit value on fail
+setopt printexitvalue
+
+########################################################################
 # Keybindings
 ########################################################################
 # Local history on arrow keys
