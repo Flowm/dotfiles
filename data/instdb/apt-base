@@ -5,28 +5,21 @@ apt-get update
 
 apt-get install -y \
 ack-grep \
-autossh \
 bash-completion \
 bind9-host \
-cu \
 curl \
 dnsutils \
 etckeeper \
 gatling \
 git \
 htop \
-iftop \
 lsof \
 man-db \
 mosh \
-nmap \
-passwdqc \
-pwgen \
 slurm \
 tcpdump \
 telnet \
 tmux \
-ucspi-tcp \
 unp \
 unzip \
 vim \
