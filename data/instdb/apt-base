@@ -13,6 +13,7 @@ etckeeper \
 gatling \
 git \
 htop \
+iotop \
 lsof \
 man-db \
 mosh \
@@ -24,5 +25,6 @@ unp \
 unzip \
 vim \
 wget \
+whois \
 zsh \
 ;
