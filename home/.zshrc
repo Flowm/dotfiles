@@ -44,6 +44,7 @@ antigen bundle extract
 antigen bundle history
 antigen bundle mosh
 antigen bundle rsync
+antigen bundle rbenv
 
 antigen bundle command-not-found
 antigen bundle zsh-users/zsh-completions src
