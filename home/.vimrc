@@ -421,6 +421,7 @@
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType yaml	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
 			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
