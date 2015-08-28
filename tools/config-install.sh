@@ -1,9 +1,22 @@
 #!/usr/bin/env bash
 set -eu
 
-if [ $# -ne 0 ]; then
-	set -x
-fi
+usage() { echo "Usage: $0 [-ndh]" 1>&2; exit 1; }
+
+while getopts ":ldh" o; do
+    case $o in
+        l)
+			linkonly=true;
+			;;
+        d)
+			debug=true; set -x
+			;;
+        *)
+			usage
+			;;
+	esac
+done
+shift $(($OPTIND - 1))
 
 conf_dir="$HOME/.myconf"
 conf_home="$conf_dir/home"
