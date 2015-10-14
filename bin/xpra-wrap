@@ -1,0 +1,54 @@
+#!/usr/local/bin/bash
+set -eu
+
+usage() { echo "Usage: $0 [-sadh] xterm,tnt,firefox,thunderbird" 1>&2; exit 1; }
+
+mode=attach
+host="ws1.g"
+declare -A display
+display["xterm"]=45
+display["tnt"]=46
+display["firefox"]=47
+display["thunderbird"]=48
+display["xchat"]=49
+
+while getopts ":sadh:" o; do
+    case $o in
+        s)
+			mode=start;
+			;;
+        a)
+			mode=attach;
+			;;
+        h)
+			host=$OPTARG;
+			;;
+        d)
+			debug=true; set -x
+			;;
+        *)
+			usage
+			;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+if [ "$#" -ne 1 ]; then
+	usage
+fi
+programm=$1
+if [ ! ${display["$programm"]+abc} ]; then
+	usage
+fi
+
+echo "xpra $mode $host:${display["$programm"]}"
+case "$mode" in
+	"start")
+		ssh $host "xpra start :${display["$programm"]} --start-child=$programm --exit-with-children"
+		;;
+	"attach")
+		xpra attach ssh:$host:${display["$programm"]} --encoding=png
+		;;
+esac
+
+exit
