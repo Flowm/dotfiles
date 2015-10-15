@@ -37,17 +37,22 @@ if [ "$#" -ne 1 ]; then
 	usage
 fi
 programm=$1
-if [ ! ${display["$programm"]+abc} ]; then
+port=50
+if [ ${display["$programm"]+abc} ]; then
+	port=${display["$programm"]}
+elif [ ${display["${programm##*/}"]+abc} ]; then
+	port=${display["${programm##*/}"]}
+else
 	usage
 fi
 
-echo "xpra $mode $host:${display["$programm"]}"
+echo "xpra $mode $host:$port $programm"
 case "$mode" in
 	"start")
-		ssh $host "xpra start :${display["$programm"]} --start-child=$programm --exit-with-children"
+		ssh $host "xpra start :$port --start-child=$programm --exit-with-children"
 		;;
 	"attach")
-		xpra attach ssh:$host:${display["$programm"]} --encoding=png
+		xpra attach ssh:$host:$port --encoding=png
 		;;
 esac
 
