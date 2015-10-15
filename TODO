@@ -6,23 +6,19 @@
 .vimrc:		Add NERDCommenter
 .vimrc:		Install Ansi.ESC vimball " Installing Vimball plugins when using Pathogen"
 
-.tmux:		Fix clipboard integration
-
 .gitconfig:	Use different mail depending on username
 
-.ssh/config: Bind LocalForwards to 127.0.0.* addresses
+.ssh:		Bind LocalForwards to 127.0.0.* addresses
 
 .shcfg:		All locales to en-us
-.shcfg:		Fix PATH for bin directory without subfolders
-.shcfg:		Fix tmux ssh agent (source sagent on startup)
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
 .shcfg:		Add ethernal_history grep
 .shcfg:		Fix existing ethernal_history with: :%s/flow\t[0-9]* /flow\t/cg
 
+.zsh:		Use plain omz instead of antigen
 .zsh:		Use push+popd
 .zsh:		Eval vi keybindings (bindkey -v)
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
-.bashrc:	Fix tab completion for aliases
