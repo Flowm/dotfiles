@@ -1,27 +1,47 @@
 #!/usr/local/bin/bash
+# Hombrew path to bash version 4+
+
 set -eu
 
-usage() { echo "Usage: $0 [-sadh] xterm,tnt,firefox,thunderbird" 1>&2; exit 1; }
+usage() {
+	echo "xpra-wrapper to quickly start and attach xpra sessions with a single programm"
+	echo
+	echo "Usage: $0 [-sad] [-h host] [-e encoding] xterm,tnt,firefox,thunderbird,xchat"
+	echo "Example:"
+	echo "	# Start a xpra server with firefox"
+	echo "	$0 -s firefox"
+	echo "	# Connect to the xpra server where firefox is already running"
+	echo "	$0 firefox"
+	exit 1
+}
 
-mode=attach
-host="ws1.g"
 declare -A display
 display["xterm"]=45
 display["tnt"]=46
 display["firefox"]=47
 display["thunderbird"]=48
 display["xchat"]=49
+debug=false
+mode="attach"
+host="ws1.g"
+port=""
+programm=""
+encoding="png"
 
-while getopts ":sadh:" o; do
+
+while getopts ":sadh:e:" o; do
     case $o in
         s)
-			mode=start;
+			mode="start";
 			;;
         a)
-			mode=attach;
+			mode="attach";
 			;;
         h)
 			host=$OPTARG;
+			;;
+        e)
+			encoding=$OPTARG;
 			;;
         d)
 			debug=true; set -x
@@ -33,11 +53,11 @@ while getopts ":sadh:" o; do
 done
 shift $(($OPTIND - 1))
 
-if [ "$#" -ne 1 ]; then
+if [ "$#" -eq 1 ]; then
+	programm=$1
+else
 	usage
 fi
-programm=$1
-port=50
 if [ ${display["$programm"]+abc} ]; then
 	port=${display["$programm"]}
 elif [ ${display["${programm##*/}"]+abc} ]; then
@@ -52,7 +72,7 @@ case "$mode" in
 		ssh $host "xpra start :$port --start-child=$programm --exit-with-children"
 		;;
 	"attach")
-		xpra attach ssh:$host:$port --encoding=png
+		xpra attach ssh:$host:$port --encoding=$encoding
 		;;
 esac
 
