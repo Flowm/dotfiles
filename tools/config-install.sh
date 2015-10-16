@@ -19,26 +19,30 @@ done
 shift $(($OPTIND - 1))
 
 conf_dir="$HOME/.myconf"
+conf_bin="$conf_dir/bin"
 conf_home="$conf_dir/home"
 conf_tmp="$conf_dir/tmp"
 conf_hist="$conf_dir/history"
-targt_dir="$HOME"
+target_dir="$HOME"
 
 echo "Link all files in conf_home"
 find "$conf_home" -mindepth 1 -maxdepth 1 -type f
-find "$conf_home" -mindepth 1 -maxdepth 1 -type f -exec ln -fs {} "$targt_dir/" \;
+find "$conf_home" -mindepth 1 -maxdepth 1 -type f -exec ln -fs {} "$target_dir/" \;
+
+echo "Link myconf bin"
+ln -nfs "$conf_bin" "$target_dir/bin/myconf"
 
 echo "Create tmp dirs and link"
 for d in ".vim" ".zsh"; do
 	tmp_dir="$conf_tmp/$d"
 	mkdir -p "$tmp_dir"
 	echo "$tmp_dir"
-	ln -fs "$tmp_dir" "$targt_dir/"
+	ln -fs "$tmp_dir" "$target_dir/"
 done
 
 echo "Link all files and folders in subdirectories of conf_home"
 for d in $(find "$conf_home" -mindepth 1 -maxdepth 1 -type d); do
-	new_dir="$targt_dir/$(basename $d)"
+	new_dir="$target_dir/$(basename $d)"
 	mkdir -p "$new_dir"
 	find "$d" -mindepth 1 -maxdepth 1
 	find "$d" -mindepth 1 -maxdepth 1 -exec ln -nfs {} "$new_dir/" \;
