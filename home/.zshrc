@@ -39,7 +39,7 @@ source "$HOME/.zsh/antigen/antigen.zsh"
 
 antigen use oh-my-zsh
 
-antigen bundle colored-man
+antigen bundle colored-man-pages
 antigen bundle extract
 antigen bundle history
 antigen bundle mosh
