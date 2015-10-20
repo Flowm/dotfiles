@@ -30,6 +30,7 @@ find "$conf_home" -mindepth 1 -maxdepth 1 -type f
 find "$conf_home" -mindepth 1 -maxdepth 1 -type f -exec ln -fs {} "$target_dir/" \;
 
 echo "Link myconf bin"
+mkdir -p "$target_dir/bin/"
 ln -nfs "$conf_bin" "$target_dir/bin/myconf"
 
 echo "Create tmp dirs and link"
