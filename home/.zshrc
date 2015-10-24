@@ -9,7 +9,7 @@
 ########################################################################
 
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/.shcfg/omz-custom
+export ZSH_CUSTOM=$HOME/.shcfg/.omz-custom
 
 ZSH_THEME="jreese"
 
@@ -44,13 +44,12 @@ plugins=(
 	mosh
 	rsync
 	command-not-found
+	zsh-syntax-highlighting
+	z
 )
 if [[ -n "$MC_OSX" ]]; then
 	plugins[$(($#plugins+1))]=osx
 fi
-
-#TODO:
-#zsh-users/zsh-syntax-highlighting
 
 source $ZSH/oh-my-zsh.sh
 

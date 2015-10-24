@@ -1,3 +1,9 @@
 [submodule "contrib/oh-my-zsh"]
 	path = contrib/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "home/.shcfg/.omz-custom/plugins/zsh-syntax-highlighting"]
+	path = home/.shcfg/.omz-custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "home/.shcfg/.omz-custom/plugins/z"]
+	path = home/.shcfg/.omz-custom/plugins/z
+	url = https://github.com/rupa/z.git
