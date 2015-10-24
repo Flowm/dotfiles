@@ -16,7 +16,6 @@
 .shcfg:		Add ethernal_history grep
 .shcfg:		Fix existing ethernal_history with: :%s/flow\t[0-9]* /flow\t/cg
 
-.zsh:		Use plain omz instead of antigen
 .zsh:		Use push+popd
 .zsh:		Eval vi keybindings (bindkey -v)
 
