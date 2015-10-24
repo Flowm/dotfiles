@@ -34,7 +34,7 @@ mkdir -p "$target_dir/bin/"
 ln -nfs "$conf_bin" "$target_dir/bin/myconf"
 
 echo "Create tmp dirs and link"
-for d in ".vim" ".zsh"; do
+for d in ".vim"; do
 	tmp_dir="$conf_tmp/$d"
 	mkdir -p "$tmp_dir"
 	echo "$tmp_dir"
@@ -59,4 +59,4 @@ chmod -R 700 $conf_hist
 echo "Initializing submodules"
 cd "$conf_dir"
 git submodule update --init --recursive
-ln -nfs "$conf_dir/contrib/antigen" "$conf_tmp/.zsh/"
+ln -nfs "$conf_dir/contrib/oh-my-zsh" "$target_dir/.oh-my-zsh"

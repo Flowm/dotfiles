@@ -2,9 +2,16 @@
 # General
 ########################################################################
 
-# Shared config
 [ -e "${HOME}/.shcfg/.env" ] && source "${HOME}/.shcfg/.env"
-[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
+
+########################################################################
+# OMZ config
+########################################################################
+
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_CUSTOM=$HOME/.shcfg/omz-custom
+
+ZSH_THEME="jreese"
 
 ########################################################################
 # Plugin config
@@ -22,45 +29,30 @@ DISABLE_AUTO_TITLE="true"
 # Show command execution time after given number of seconds.
 REPORTTIME=30
 
-########################################################################
-# History
-########################################################################
-
 # Long history
 export HISTSIZE=100000
 export SAVEHIST=$HISTSIZE
 
 ########################################################################
-# Antigen config
+# Plugins
 ########################################################################
 
-ADOTDIR=$HOME/.zsh/antigen-bundles
-source "$HOME/.zsh/antigen/antigen.zsh"
-
-antigen use oh-my-zsh
-
-antigen bundle colored-man-pages
-antigen bundle extract
-antigen bundle history
-antigen bundle mosh
-antigen bundle rsync
-antigen bundle rbenv
-
-antigen bundle command-not-found
-antigen bundle zsh-users/zsh-completions src
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle rupa/z
-antigen bundle chrissicool/zsh-256color
-
-if [[ -n "$OSX" ]]; then
-	antigen bundle brew
-	antigen bundle osx
+plugins=(
+	colored-man-pages
+	extract
+	rbenv
+	mosh
+	rsync
+	command-not-found
+)
+if [[ -n "$MC_OSX" ]]; then
+	plugins[$(($#plugins+1))]=osx
 fi
 
-antigen theme jreese
+#TODO:
+#zsh-users/zsh-syntax-highlighting
 
-antigen apply
+source $ZSH/oh-my-zsh.sh
 
 ########################################################################
 # ZSH config
@@ -74,8 +66,12 @@ setopt autocd
 setopt autopushd
 # Ignore duplicate paths on pushd
 setopt pushdignoredups
-# Print exit value on fail
-setopt printexitvalue
+
+########################################################################
+# Aliases
+########################################################################
+
+[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
 
 ########################################################################
 # Keybindings
