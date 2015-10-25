@@ -39,13 +39,14 @@ export SAVEHIST=$HISTSIZE
 
 plugins=(
 	colored-man-pages
-	extract
-	rbenv
-	mosh
-	rsync
 	command-not-found
-	zsh-syntax-highlighting
+	extract
+	mosh
+	rbenv
+	rsync
 	z
+	zsh-256color
+	zsh-syntax-highlighting
 )
 if [[ -n "$MC_OSX" ]]; then
 	plugins[$(($#plugins+1))]=osx
