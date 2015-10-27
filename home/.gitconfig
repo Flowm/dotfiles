@@ -1,20 +1,21 @@
 [user]
 	name = Florian Mauracher
 	email = florian.mauracher@gmx.net
-
 [alias]
 	b = branch
+	c  = commit
 	d = diff
 	f = fetch
 	l = log --oneline
 	s = status
 	br  = branch
 	ca  = commit --amend
-	ci  = commit
+	cf  = commit --fixup
 	cm  = commit -m
 	co  = checkout
 	com = checkout master
 	cp  = cherry-pick
+	dc  = diff --cached
 	dh  = diff HEAD
 	di  = difftool
 	dih = difftool HEAD
@@ -34,19 +35,16 @@
 	webstop  = instaweb --httpd=webrick --stop
 	pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
 	gz-psh   = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
-
+[color]
+	ui = auto
 [core]
 	pager = less -RFX
-
 [diff]
 	tool = vimdiff
-
 [difftool]
 	prompt = false
-
 [push]
 	# Change to simple when only using git 2.0
 	default = matching
-
-[color]
-	ui = auto
+[rebase]
+	autosquash = true
