@@ -55,7 +55,9 @@ done
 
 mkdir -p $conf_tmp/.vimbak
 mkdir -p $conf_tmp/.vimtmp
-$conf_dir/tools/config-genfallback.sh
+
+# Don't use fallback configs for now
+#$conf_dir/tools/config-genfallback.sh
 
 mkdir -p $conf_hist
 chmod -R 700 $conf_hist
