@@ -25,6 +25,10 @@ conf_tmp="$conf_dir/tmp"
 conf_hist="$conf_dir/history"
 target_dir="$HOME"
 
+echo "Mark als scripts as executable"
+chmod +x $conf_dir/tools/*
+chmod +x $conf_bin/*
+
 echo "Link all files in conf_home"
 find "$conf_home" -mindepth 1 -maxdepth 1 -type f
 find "$conf_home" -mindepth 1 -maxdepth 1 -type f -exec ln -fs {} "$target_dir/" \;
