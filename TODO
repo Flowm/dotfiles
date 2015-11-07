@@ -10,6 +10,7 @@
 .gitconfig:	Add global gitignore with .DS_STORE files
 
 .ssh:		Bind LocalForwards to 127.0.0.* addresses
+.ssh:		Remove all obsolete forwardings
 
 .shcfg:		All locales to en-us
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
@@ -18,7 +19,10 @@
 
 .zsh:		Use push+popd
 .zsh:		Eval vi keybindings (bindkey -v)
+.zsh:		Fix history up+down
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
+
+general:	Keep all downloaded files in myconf folder for easier sync
