@@ -18,8 +18,6 @@
 .shcfg:		Fix existing ethernal_history with: :%s/flow\t[0-9]* /flow\t/cg
 
 .zsh:		Use push+popd
-.zsh:		Eval vi keybindings (bindkey -v)
-.zsh:		Fix history up+down
 
 .bashrc:	Speed optimization for RPI SD card
 .bashrc:	Add z support (https://github.com/rupa/z) or (https://github.com/clvv/fasd)

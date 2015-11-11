@@ -44,6 +44,7 @@ plugins=(
 	mosh
 	rbenv
 	rsync
+	vi-mode
 	z
 	zsh-256color
 	zsh-syntax-highlighting
@@ -76,25 +77,20 @@ setopt pushdignoredups
 ########################################################################
 # Keybindings
 ########################################################################
-# Local history on arrow keys
-if [[ "${terminfo[kpp]}" != "" ]]; then
-	bindkey "${terminfo[kpp]}" up-line-or-local-history;
-fi
-if [[ "${terminfo[knp]}" != "" ]]; then
-	bindkey "${terminfo[knp]}" down-line-or-local-history;
-fi
-bindkey "^[[1;5A" up-line-or-history    # [CTRL] + Cursor up
-bindkey "^[[1;5B" down-line-or-history  # [CTRL] + Cursor down
 
-up-line-or-local-history() {
-    zle set-local-history 1
-    zle up-line-or-history
-    zle set-local-history 0
+# Only use the local history for the arrow keys
+up-line-or-local-search() {
+	zle set-local-history 1
+	zle up-line-or-search
+	zle set-local-history 0
 }
-zle -N up-line-or-local-history
-down-line-or-local-history() {
-    zle set-local-history 1
-    zle down-line-or-history
-    zle set-local-history 0
+zle -N up-line-or-local-search
+down-line-or-local-search() {
+	zle set-local-history 1
+	zle down-line-or-search
+	zle set-local-history 0
 }
-zle -N down-line-or-local-history
+zle -N down-line-or-local-search
+
+bindkey '^[[A' up-line-or-local-search
+bindkey '^[[B' down-line-or-local-search
