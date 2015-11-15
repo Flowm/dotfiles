@@ -49,16 +49,16 @@
 
 	Plugin 'gmarik/vundle'
 
+	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'bling/vim-airline'
-	Plugin 'Lokaltog/vim-easymotion'
-	Plugin 'scrooloose/nerdtree'
-	Plugin 'jistr/vim-nerdtree-tabs'
-	Plugin 'ciaranm/securemodelines'
 	Plugin 'benmills/vimux'
-	Plugin 'scrooloose/syntastic'
+	Plugin 'bling/vim-airline'
+	Plugin 'ciaranm/securemodelines'
+	Plugin 'jistr/vim-nerdtree-tabs'
 	Plugin 'loremipsum'
+	Plugin 'scrooloose/nerdtree'
+	Plugin 'scrooloose/syntastic'
 
 	Plugin 'sudar/vim-arduino-syntax'
 	Plugin 'avakhov/vim-yaml'
@@ -390,8 +390,8 @@
 		highlight GitGutterAdd ctermfg=2 ctermbg=235 guifg=#009900
 		highlight GitGutterChange ctermfg=3 ctermbg=235 guifg=#bbbb00
 		highlight GitGutterDelete ctermfg=1 ctermbg=235 guifg=#ff2222
-		nmap <leader>j <Plug>GitGutterNextHunk
-		nmap <leader>k <Plug>GitGutterPrevHunk
+		nmap <leader>j <Plug>GitGutterNextHunk<CR>
+		nmap <leader>k <Plug>GitGutterPrevHunk<CR>
 		" Decrease amount of executions
 		"let g:gitgutter_eager = 0
 	" }
@@ -402,8 +402,8 @@
 		"let g:VimuxOrientation = "h"
 		"let g:VimuxHeight = "40"
 	" }
-	" LanguageTool {
-		let g:languagetool_jar='$HOME/bin/share/LanguageTool-2.8/languagetool-commandline.jar'
+	" NERDtree {
+		nmap <leader>n <Plug>NERDTreeTabsToggle<CR>
 	" }
 " }
 
