@@ -2,12 +2,12 @@
 " vim: set foldmarker={,} foldlevel=0 spell:
 "
 "	This is my personal vim configuration. As quite a lot of effort went into
-"	this, I would be glad if this was useful for anybody else than me.
+"	it, I would be glad if this was useful for anybody else than me.
 "
 "	Feel free to ask question or reuse any useful parts.
 "
-"	Also published on Github, although there seem to be thousands of other
-"	great .vimrc there:
+"	I also periodically sync my current vimrc to Github, so feel free to grab
+"	the current version from there:
 "		https://github.com/Flowm/vimrc
 " }
 
@@ -49,19 +49,17 @@
 
 	Plugin 'gmarik/vundle'
 
-	Plugin 'Lokaltog/vim-easymotion'
-	Plugin 'airblade/vim-gitgutter'
-	Plugin 'altercation/vim-colors-solarized'
-	Plugin 'benmills/vimux'
 	Plugin 'bling/vim-airline'
 	Plugin 'ciaranm/securemodelines'
-	Plugin 'jistr/vim-nerdtree-tabs'
-	Plugin 'loremipsum'
+	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'scrooloose/nerdtree'
+	Plugin 'jistr/vim-nerdtree-tabs'
+	Plugin 'benmills/vimux'
+	Plugin 'airblade/vim-gitgutter'
+	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
-
 	Plugin 'sudar/vim-arduino-syntax'
-	Plugin 'avakhov/vim-yaml'
+	Plugin 'loremipsum'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
@@ -101,7 +99,7 @@
 		set magic
 	" }
 	" Spelling {
-		set spelllang=de,en
+		set spelllang=en,de
 	" }
 	" Misc {
 			" Only one whitespace after _J_oining after a dot
@@ -236,11 +234,6 @@
 		inoremap <right> <nop>
 		"nnoremap j gj
 		"nnoremap k gk
-	" }
-	" Reminders {
-		"+y (copy)
-		"+x (cut)
-		"+p (paste)
 	" }
 	" Functions {
 		" Toggle background {
@@ -405,6 +398,12 @@
 	" NERDtree {
 		nmap <leader>n <Plug>NERDTreeTabsToggle<CR>
 	" }
+	" syntastic {
+		let g:syntastic_cpp_compiler_options = '-std=c++11'
+		let g:syntastic_arduino_checkers=['']
+		let g:syntastic_quiet_messages = {
+			\ "!level": "errors" }
+	" }
 " }
 
 " Conditionals {
@@ -412,7 +411,6 @@
 		augroup testgroup
 		autocmd!
 		" Filetype detection {
-			au BufRead,BufNewFile *.gui set ft=perl
 			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
 			au BufRead,BufNewFile *.grub set ft=cfg
@@ -423,7 +421,6 @@
 			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
 			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
 			au FileType cpp		set tabstop=4 shiftwidth=4 noexpandtab smarttab autoindent
-			"au FileType cpp     set cinoptions=>4,n-2,{2,^-2,:2,=2,g0,h2,p5,t0,+2,(0,u0,w1,m1 shiftwidth=2 tabstop=8 "}
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
@@ -440,25 +437,4 @@
 " }
 
 " To be tested/integrated {
-	let g:syntastic_cpp_compiler_options = '-std=c++11'
-	let g:syntastic_arduino_checkers=['']
-	let g:syntastic_quiet_messages = {
-		\ "regex": '\$\\times\$ may look prettier here',
-		\ "!level": "errors" }
-	"LaTex warning in BA
-	"set confirm
-	"au FocusLost * :wa
-	"hi ColorColumn ctermbg=lightgrey guibg=lightgrey
-	" HTML encode all vowels with Strg-H {
-		"function HtmlEscape()
-		"	silent s/ö/\&ouml;/eg
-		"	silent s/ä/\&auml;/eg
-		"	silent s/ü/\&uuml;/eg
-		"	silent s/Ö/\&Ouml;/eg
-		"	silent s/Ä/\&Auml;/eg
-		"	silent s/Ü/\&Uuml;/eg
-		"	silent s/ß/\&szlig;/eg
-		"endfunction
-		"map <silent> <c-h> :call HtmlEscape()<CR>
-	" }
 " }
