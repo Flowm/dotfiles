@@ -174,6 +174,7 @@
 	" Indention {
 			"One Tab per indentation level. 4 column wide Tabs.
 			"Intelligently detect current indention level
+		set autoindent
 		set smartindent
 			"Size of real Tabs
 		set tabstop=4
@@ -417,10 +418,11 @@
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType python	set tabstop=4 softtabstop=4 shiftwidth=4 expandtab textwidth=79
 			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab autoindent
-			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab autoindent
-			au FileType cpp		set tabstop=4 shiftwidth=4 noexpandtab smarttab autoindent
+			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab
+			au FileType cpp		set tabstop=4 shiftwidth=4 noexpandtab smarttab
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
