@@ -24,3 +24,6 @@
 .bashrc:	Add alias to view syslog with vim (optionally with refresh)
 
 general:	Keep all downloaded files in myconf folder for easier sync
+
+tools:		Add old changes to xpra-wrap with generic programm handling
+tools:		Add backup function
