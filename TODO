@@ -16,6 +16,7 @@
 .shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
 .shcfg:		Add ethernal_history grep
 .shcfg:		Fix existing ethernal_history with: :%s/flow\t[0-9]* /flow\t/cg
+.shcfg:		Add ssh-copy-id replacement function: cat ~/.ssh/id_rsa.pub | ssh gnb 'mkdir -p .ssh; cat >> .ssh/authorized_keys'
 
 .zsh:		Use push+popd
 

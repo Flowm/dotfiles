@@ -175,7 +175,6 @@
 			"One Tab per indentation level. 4 column wide Tabs.
 			"Intelligently detect current indention level
 		set autoindent
-		set smartindent
 			"Size of real Tabs
 		set tabstop=4
 			"Indent amount when using TAB
