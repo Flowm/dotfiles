@@ -46,7 +46,8 @@ cdf() { cd $(dirname $1); }
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 
 mc-grep() { grep -i "$1" ~/.myconf/history/${HOST}_eternal_history | tail -n40 | grep "$1"; }
-mc-sshcopyid() { cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh; cat >> .ssh/authorized_keys' }
+mc-sshcopyid() { cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh; cat >> .ssh/authorized_keys'; }
+mc-ts() { date +%F-%H-%M-%S; }
 
 ########################################################################
 # Aliases Conditional

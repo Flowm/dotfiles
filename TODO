@@ -11,12 +11,6 @@
 
 .ssh:		Bind LocalForwards to 127.0.0.* addresses
 
-.shcfg:		All locales to en-us
-.shcfg:		Automatic fallback for locales from de to en
-.shcfg:		Add timestamp shortcut `date +%F-%H-%M-%S`-desc.log`
-
-.zsh:		Use push+popd
-
 general:	Keep all downloaded files in myconf folder for easier sync
 
 tools:		Add old changes to xpra-wrap with generic programm handling
