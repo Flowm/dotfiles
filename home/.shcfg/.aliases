@@ -45,6 +45,8 @@ alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pa
 cdf() { cd $(dirname $1); }
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 
+mc-grep() { grep -i "$1" ~/.myconf/history/${HOST}_eternal_history | tail -n40 | grep "$1"; }
+
 ########################################################################
 # Aliases Conditional
 ########################################################################
