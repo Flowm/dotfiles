@@ -17,6 +17,9 @@ ZSH_THEME="jreese"
 # Plugin config
 ########################################################################
 
+# Disable oh-my-zsh autoupdate
+DISABLE_AUTO_UPDATE="true"
+
 # Use case-sensitive completion.
 CASE_SENSITIVE="true"
 
