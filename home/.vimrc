@@ -1,5 +1,5 @@
 " README {
-" vim: set foldmarker={,} foldlevel=0 spell:
+" vim: set foldmarker={,} foldlevel=0:
 "
 "	This is my personal vim configuration. As quite a lot of effort went into
 "	it, I would be glad if this was useful for anybody else than me.
@@ -426,6 +426,7 @@
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
 			au BufRead,BufNewFile *aegis-* set textwidth=72
+			au BufRead,BufNewFile *_eternal_history set tabstop=8
 		" }
 		augroup END
 	endif
