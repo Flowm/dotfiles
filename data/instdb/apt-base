@@ -5,8 +5,10 @@ apt-get update
 
 apt-get install -y \
 ack-grep \
+arp-scan \
 bash-completion \
 bind9-host \
+build-essential \
 curl \
 dnsutils \
 etckeeper \
@@ -17,6 +19,11 @@ iotop \
 lsof \
 man-db \
 mosh \
+nmap \
+openssh-client \
+openssh-server \
+passwdqc \
+silversearcher-ag \
 slurm \
 tcpdump \
 telnet \

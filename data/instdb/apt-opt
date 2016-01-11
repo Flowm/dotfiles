@@ -8,9 +8,7 @@ apt-get update
 apt-get install -y \
 apt-file \
 aptitude \
-arp-scan \
 autossh \
-build-essential \
 cu \
 devtodo \
 dnstop \
@@ -22,10 +20,6 @@ libssl-dev \
 lyx \
 munin-node \
 nginx \
-nmap \
-openssh-client \
-openssh-server \
-passwdqc \
 pv \
 pwgen \
 python-software-properties \
