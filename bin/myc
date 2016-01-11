@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -eu
+
+usage() { echo "Usage: $0 [-ndh]" 1>&2; exit 1; }
+
+while getopts ":ibldh" opt; do
+    case $opt in
+        i)
+			INST=true;
+			;;
+        b)
+			BASE=true;
+			;;
+        l)
+			LOG=true;
+			;;
+        d)
+			DEBUG=true; set -x
+			;;
+        *)
+			usage
+			;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+conf_dir="$HOME/.myconf"
+conf_bin="$conf_dir/bin"
+conf_hist="$conf_dir/history"
+conf_tools="$conf_dir/tools"
+backup_host="veldt"
+
+if [ ${INST:-} ]; then
+	echo "Installing myconf"
+	${conf_tools}/config-install.sh
+fi
+if [ ${BASE:-} ]; then
+	echo "Installing base software"
+	${conf_dir}/data/instdb/apt-base.sh
+fi
+if [ ${LOG:-} ]; then
+	echo "Pushing history to backup srv"
+	date=$(date +%F-%H-%M-%S)
+	host=$(hostname)
+	for file in ${conf_hist}/*; do
+		base=$(basename "${file}")
+		scp "$file" veldt:"~/backup/history/${base}.new"
+		ssh veldt "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
+	done
+	ssh veldt "cd ~/backup/history && git commit -m \"${host} - ${date}\""
+fi
