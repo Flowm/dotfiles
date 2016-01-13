@@ -1,0 +1,15 @@
+Promt command:
+on alfred_script(q)
+	run script "
+		on run {q}
+			tell application \":Applications:iTerm.app\"
+				create window with default profile
+				select first window
+				activate
+				tell the first window
+					tell current session to write text q
+				end tell
+			end tell
+		end run
+	" with parameters {q}
+end alfred_script
