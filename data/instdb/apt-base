@@ -5,7 +5,6 @@ apt-get update
 
 apt-get install -y \
 ack-grep \
-arp-scan \
 bash-completion \
 bind9-host \
 build-essential \
