@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 set -eu
 
-usage() { echo "Usage: $0 [-ndh]" 1>&2; exit 1; }
+usage() {
+	echo -e "Usage: $0 [-pibldh]" 1>&2
+	echo -e "\t-p Print clone command" 1>&2
+	echo -e "\t-i Insall config" 1>&2
+	echo -e "\t-b Install base packages" 1>&2
+	echo -e "\t-l Backup logs" 1>&2
+	exit 1
+}
 
-while getopts ":ibldh" opt; do
+while getopts ":pibldh" opt; do
     case $opt in
+        p)
+			PRINT=true;
+			;;
         i)
 			INST=true;
 			;;
@@ -30,6 +40,9 @@ conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
 backup_host="veldt"
 
+if [ ${PRINT:-} ]; then
+	cat ${conf_dir}/data/instdb/myconf
+fi
 if [ ${INST:-} ]; then
 	echo "Installing myconf"
 	${conf_tools}/config-install.sh
