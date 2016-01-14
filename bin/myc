@@ -49,7 +49,7 @@ if [ ${INST:-} ]; then
 fi
 if [ ${BASE:-} ]; then
 	echo "Installing base software"
-	${conf_dir}/data/instdb/apt-base
+	sudo ${conf_dir}/data/instdb/apt-base
 fi
 if [ ${LOG:-} ]; then
 	echo "Pushing history to backup srv"
