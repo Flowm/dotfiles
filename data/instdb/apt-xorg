@@ -2,17 +2,23 @@
 
 apt-get install -y \
 wavemon powertop \
-pidgin pidgin-otr pidgin-plugin-pack gfire \
-vlc keepass2 gtk-redshift guake gimp \
-flashplugin-installer chromium-browser filezilla virtualbox \
-lm-sensors hddtemp psensor \
+pidgin pidgin-otr pidgin-plugin-pack \
+vlc \
+gtk-redshift \
+guake \
+gimp \
+chromium-browser \
+virtualbox \
 arandr \
-pavucontrol \
 nautilus-dropbox nautilus-open-terminal \
 xpra \
 xclip \
 wireshark \
-preload indicator-cpufreq \
-pandoc \
-#mtn moviethumbnailer
+preload \
 ;
+#lm-sensors hddtemp psensor \
+#pavucontrol \
+#pandoc \
+#indicator-cpufreq \
+#filezilla \
+#mtn \
