@@ -37,6 +37,7 @@ alias myrsync='rsync -e ssh --ipv4 -rltiuP'
 alias myrsynca='rsync -e ssh --ipv4 -aiurP'
 alias mypwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
+alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896x1200" -gone "newrez default"'
 
 ########################################################################
 # Funcs
