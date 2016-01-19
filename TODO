@@ -7,7 +7,6 @@
 .vimrc:		Install Ansi.ESC vimball " Installing Vimball plugins when using Pathogen"
 
 .gitconfig:	Use different mail depending on username
-.gitconfig:	Add global gitignore with .DS_STORE files
 
 .ssh:		Bind LocalForwards to 127.0.0.* addresses
 

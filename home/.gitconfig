@@ -39,6 +39,7 @@
 	ui = auto
 [core]
 	pager = less -RFX
+	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
 [difftool]
