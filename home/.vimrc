@@ -49,7 +49,8 @@
 
 	Plugin 'gmarik/vundle'
 
-	Plugin 'bling/vim-airline'
+	Plugin 'vim-airline/vim-airline'
+	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'ciaranm/securemodelines'
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'scrooloose/nerdtree'
