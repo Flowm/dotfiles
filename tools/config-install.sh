@@ -66,3 +66,6 @@ echo "Initializing submodules"
 cd "$conf_dir"
 git submodule update --init --recursive
 ln -nfs "$conf_dir/contrib/oh-my-zsh" "$target_dir/.oh-my-zsh"
+
+echo "Install vundle"
+vim -E -c "silent PluginInstall" -c "qall" &> /dev/null || true
