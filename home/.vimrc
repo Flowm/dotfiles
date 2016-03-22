@@ -60,10 +60,10 @@
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'kien/ctrlp.vim'
-	Plugin 'sudar/vim-arduino-syntax'
 	Plugin 'loremipsum'
 	if hostname() == "flake"
 		Plugin 'Valloric/YouCompleteMe'
+		Plugin 'sudar/vim-arduino-syntax'
 	    Plugin 'kballard/vim-swift'
 	endif
 
@@ -409,6 +409,9 @@
 		let g:syntastic_arduino_checkers=['']
 		let g:syntastic_quiet_messages = {
 			\ "!level": "errors" }
+	" }
+	" YouCompleteMe {
+		"let g:loaded_youcompleteme = 1
 	" }
 " }
 
