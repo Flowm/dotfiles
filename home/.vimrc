@@ -59,8 +59,13 @@
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
+	Plugin 'kien/ctrlp.vim'
 	Plugin 'sudar/vim-arduino-syntax'
 	Plugin 'loremipsum'
+	if hostname() == "flake"
+		Plugin 'Valloric/YouCompleteMe'
+	    Plugin 'kballard/vim-swift'
+	endif
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
