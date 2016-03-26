@@ -1,16 +1,8 @@
-.vimrc:		Add funtion to start vimdiff with wildcards
 .vimrc:		Improve whitespace and tab display color
-.vimrc:		Look through https://github.com/bling/dotvim
 .vimrc:		Switch to https://github.com/Shougo/neobundle.vim for faster startup
-.vimrc:		Enable F keybindings when useful in insert mode and visual mode
-.vimrc:		Add NERDCommenter
-.vimrc:		Install Ansi.ESC vimball " Installing Vimball plugins when using Pathogen"
 
 .gitconfig:	Use different mail depending on username
 
 .ssh:		Bind LocalForwards to 127.0.0.* addresses
 
-general:	Keep all downloaded files in myconf folder for easier sync
-
 tools:		Add old changes to xpra-wrap with generic programm handling
-tools:		Add backup function
