@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cd /opt/homebrew-cask/Caskroom/xpra/latest/Xpra.app/Contents/MacOS
+./Xpra "$@"
