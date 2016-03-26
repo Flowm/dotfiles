@@ -47,6 +47,7 @@ plugins=(
 	mosh
 	rbenv
 	rsync
+	vagrant
 	vi-mode
 	z
 	zsh-256color
