@@ -53,6 +53,7 @@
 	Plugin 'vim-airline/vim-airline-themes'
 	Plugin 'ciaranm/securemodelines'
 	Plugin 'altercation/vim-colors-solarized'
+	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'jistr/vim-nerdtree-tabs'
 	Plugin 'benmills/vimux'
@@ -60,6 +61,7 @@
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'kien/ctrlp.vim'
+	Plugin 'berdandy/ansiesc.vim'
 	Plugin 'loremipsum'
 	if hostname() == "flake"
 		Plugin 'Valloric/YouCompleteMe'
