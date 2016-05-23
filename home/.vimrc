@@ -63,10 +63,10 @@
 	Plugin 'kien/ctrlp.vim'
 	Plugin 'berdandy/ansiesc.vim'
 	Plugin 'loremipsum'
-	if hostname() == "flake"
+	if hostname() == "flake" || hostname() == "snow"
 		Plugin 'Valloric/YouCompleteMe'
 		Plugin 'sudar/vim-arduino-syntax'
-	    Plugin 'kballard/vim-swift'
+		Plugin 'kballard/vim-swift'
 	endif
 
 	if iCanHazVundle == 0
