@@ -60,7 +60,7 @@
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
-	Plugin 'kien/ctrlp.vim'
+	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'berdandy/ansiesc.vim'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "snow"
