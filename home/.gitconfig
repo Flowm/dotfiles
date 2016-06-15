@@ -42,6 +42,7 @@
 	excludesfile = ~/.gitignore
 [diff]
 	tool = vimdiff
+	compactionHeuristic = true
 [difftool]
 	prompt = false
 [push]
@@ -49,3 +50,5 @@
 	default = matching
 [rebase]
 	autosquash = true
+[interactive]
+	diffFilter = diff-highlight
