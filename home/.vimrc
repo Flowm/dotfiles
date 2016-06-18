@@ -407,6 +407,8 @@
 	" }
 	" NERDtree {
 		nmap <leader>n <Plug>NERDTreeTabsToggle<CR>
+		let g:NERDTreeQuitOnOpen = 0
+		let g:nerdtree_tabs_open_on_gui_startup = 0
 	" }
 	" syntastic {
 		let g:syntastic_cpp_compiler_options = '-std=c++11'
