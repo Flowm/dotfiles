@@ -218,7 +218,7 @@
 		cmap w!! %!sudo tee > /dev/null %
 	" }
 	" Custom Keyset {
-		let mapleader = " "
+		let mapleader = ","
 			"Reselect just pasted content
 		nnoremap <leader>v V`]
 			"Split Window and switch over to it
