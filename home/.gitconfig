@@ -47,7 +47,7 @@
 	prompt = false
 [push]
 	# Change to simple when only using git 2.0
-	default = matching
+	default = current
 [rebase]
 	autosquash = true
 [interactive]
