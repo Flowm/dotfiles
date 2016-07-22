@@ -117,8 +117,10 @@
 			" Disable autoselection of vim clipboard
 		set clipboard-=autoselect
 		set guioptions-=a
-			" Use a useful encryption
-		set cryptmethod=blowfish2
+			" Use the best available cryptmethod
+		if has("patch-7.4.399")
+			set cryptmethod=blowfish2
+		endif
 	" }
 " }
 
