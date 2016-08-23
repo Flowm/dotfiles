@@ -52,3 +52,5 @@
 	autosquash = true
 [interactive]
 	diffFilter = diff-highlight
+[merge]
+	conflictstyle = diff3
