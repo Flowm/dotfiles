@@ -47,6 +47,7 @@ alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896
 cdf() { cd $(dirname $1); }
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 
+mc-agrep() { ssh veldt "cd backup/history && git grep -i \"$1\" | tail -n40"; }
 mc-grep() { grep -i "$1" ~/.myconf/history/${HOST}_eternal_history | tail -n40 | grep "$1"; }
 mc-sshcopyid() { cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh; cat >> .ssh/authorized_keys'; }
 mc-ts() { date +%F-%H-%M-%S; }
