@@ -55,3 +55,4 @@
 	diffFilter = diff-highlight
 [merge]
 	conflictstyle = diff3
+	tool = vimdiff
