@@ -252,12 +252,12 @@
 	" Functions {
 		" Toggle background {
 			function ToggleSolarizedBackground()
-				if &background != 'light'
-					colorscheme solarized
+				if &background == 'dark'
 					set background=light
-				else
 					colorscheme solarized
+				else
 					set background=dark
+					colorscheme solarized
 				endif
 			endfunction
 		" }
@@ -356,10 +356,9 @@
 			map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>
 		" <F3> Toggle the arrow keys
 			map <silent><F3> :call ToggleArrowKeys() <CR>
-		" <L-F3> Toggle mouse mode
-			"TODO
 		" <F4> Toggle paste mode
 			set pastetoggle=<F4>
+
 		" Desing:
 		" <F5> Toggle whitespace and tab display
 			map <silent><F5> :call ToggleList() <CR>
@@ -371,19 +370,16 @@
 			map <silent><leader><F6> :call ToggleRelNumber() <CR>
 		" <F7> Toggle line wrap
 			map <silent><F7> :call ToggleWrap() <CR>
-		" <L-F7> Toggle background
-			call togglebg#map("<leader><F7>")
-			map <silent><leader><F7> :call ToggleSolarizedBackground() <CR>
-		" <F8> Toggle spell checking
-			map <silent><F8> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
-		" vimux:
-		" <F9> vimux RunCommand make
-			map <silent><F9> :VimuxRunCommand("make") <CR>
-		" <L-F9> vimux CloseRunner
-			map <silent><leader><F9> :VimuxCloseRunner <CR>
-		" <F10> vimux RunCommandPromt
-			map <silent><F10> :VimuxPromptCommand <CR>
-		" Functions:
+		" <F8> Toggle background
+			map <silent><F8> :call ToggleSolarizedBackground() <CR>
+
+		" Features:
+		" <F9> Toggle spell checking
+			map <silent><F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" <F10> vimux RunCommand make
+			map <silent><F10> :VimuxRunCommand("make") <CR>
+		" <L-F10> vimux RunCommandPromt
+			map <silent><leader><F10> :VimuxPromptCommand <CR>
 		" <F11> Paste to grave.io
 			map <F11> :w !bury -t % <CR>
 		" <F12> Display all custom keybindings
