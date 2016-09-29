@@ -7,7 +7,6 @@ myhosts=(
 		'srv'
 		'g741'
 		'z502'
-		'gkvm'
 		'hpf-admin'
 		)
 
