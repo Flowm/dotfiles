@@ -3,21 +3,23 @@
 	email = florian.mauracher@gmx.net
 [alias]
 	b = branch
-	c  = commit
+	c = commit
 	d = diff
 	f = fetch
 	l = log --oneline
 	s = status
-	br  = branch
 	ca  = commit --amend
 	cf  = commit --fixup
+	cs  = commit --squash
 	cm  = commit -m
 	co  = checkout
+	cob = checkout -b
 	com = checkout master
 	cp  = cherry-pick
 	dc  = diff --cached
 	dh  = diff HEAD
 	di  = difftool
+	dic = difftool --cached
 	dih = difftool HEAD
 	lcf = diff-tree --no-commit-id --name-only -r
 	lcfh= diff-tree --no-commit-id --name-only -r HEAD
@@ -26,10 +28,10 @@
 	lgr = log --grep
 	lp  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
 	lpl = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	nb  = checkout -b
 	st  = stash
 	stp = stash pop
 	psh = push origin HEAD:refs/for/master
+	rbom= rebase origin/master
 	rom = reset origin/master
 	rhom= reset --hard origin/master
 	webstart = instaweb --httpd=webrick --start
