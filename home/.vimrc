@@ -58,6 +58,7 @@
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'jistr/vim-nerdtree-tabs'
 	Plugin 'benmills/vimux'
+	Plugin 'airblade/vim-gitgutter'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'vim-scripts/ReplaceWithRegister'
@@ -350,6 +351,10 @@
 	" }
 	" Function Keys {
 		" Handling:
+		" <F2> Toggle git diff cloumn
+			map <silent><F2> :GitGutterToggle <CR>
+		" <L-F2> Toggle git diff line highlighting
+			map <silent><leader><F2> :GitGutterLineHighlightsToggle <CR>
 		" <F3> Toggle the arrow keys
 			map <silent><F3> :call ToggleArrowKeys() <CR>
 		" <F4> Toggle paste mode
