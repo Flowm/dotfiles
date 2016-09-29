@@ -29,6 +29,7 @@
 	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	puo  = push -u origin
 	rbom = rebase origin/master
+	riom = rebase -i origin/master
 	rom  = reset origin/master
 	s    = status
 	st   = stash
