@@ -2,42 +2,46 @@
 	name = Florian Mauracher
 	email = florian.mauracher@gmx.net
 [alias]
-	b = branch
-	c = commit
-	d = diff
-	f = fetch
-	l = log --oneline
-	s = status
-	ca  = commit --amend
-	cf  = commit --fixup
-	cs  = commit --squash
-	cm  = commit -m
-	co  = checkout
-	cob = checkout -b
-	com = checkout master
-	cp  = cherry-pick
-	dc  = diff --cached
-	dh  = diff HEAD
-	di  = difftool
-	dic = difftool --cached
-	dih = difftool HEAD
-	lcf = diff-tree --no-commit-id --name-only -r
-	lcfh= diff-tree --no-commit-id --name-only -r HEAD
-	lg  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
-	lgl = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lgr = log --grep
-	lp  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
-	lpl = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	st  = stash
-	stp = stash pop
-	psh = push origin HEAD:refs/for/master
-	rbom= rebase origin/master
-	rom = reset origin/master
-	rhom= reset --hard origin/master
+	a    = add
+	b    = branch
+	c    = commit
+	ca   = commit --amend
+	cf   = commit --fixup
+	cs   = commit --squash
+	cm   = commit --message
+	co   = checkout
+	cob  = checkout -b
+	com  = checkout master
+	cp   = cherry-pick
+	d    = diff
+	dc   = diff --cached
+	dh   = diff HEAD
+	di   = difftool
+	dic  = difftool --cached
+	dih  = difftool HEAD
+	f    = fetch
+	g    = grep
+	l    = log --oneline
+	lg   = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	lgl  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lgr  = log --grep
+	lp   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	puo  = push -u origin
+	rbom = rebase origin/master
+	rom  = reset origin/master
+	s    = status
+	st   = stash
+	stp  = stash pop
+	# Utils
+	lcf  = diff-tree --no-commit-id --name-only -r
+	lcfh = diff-tree --no-commit-id --name-only -r HEAD
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
 	pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
-	gz-psh   = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
+	# Gerrit
+	ge-psh = push origin HEAD:refs/for/master
+	gz-psh = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
 [color]
 	ui = auto
 [core]
