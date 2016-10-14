@@ -64,3 +64,5 @@
 	conflictstyle = diff3
 	tool = vimdiff
 	renamelimit = 500000
+[rerere]
+	enabled = true
