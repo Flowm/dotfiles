@@ -4,6 +4,7 @@
 [alias]
 	a    = add
 	b    = branch
+	br   = branch
 	c    = commit
 	ca   = commit --amend
 	cf   = commit --fixup
@@ -27,10 +28,14 @@
 	lgr  = log --grep
 	lp   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
 	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	p    = push
 	puo  = push -u origin
-	rbom = rebase origin/master
-	riom = rebase -i origin/master
-	rom  = reset origin/master
+	rb   = rebase
+	rbo  = rebase origin/master
+	rbi  = rebase -i
+	rbio = rebase -i origin/master
+	rs   = reset
+	rso  = reset origin/master
 	s    = status
 	st   = stash
 	stp  = stash pop
