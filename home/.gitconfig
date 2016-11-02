@@ -4,7 +4,7 @@
 [alias]
 	a    = add
 	b    = branch
-	br   = branch
+	br   = branch --sort=-committerdate
 	c    = commit
 	ca   = commit --amend
 	cf   = commit --fixup
