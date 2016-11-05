@@ -22,6 +22,7 @@ nmap \
 openssh-client \
 openssh-server \
 passwdqc \
+rdfind \
 silversearcher-ag \
 slurm \
 tcpdump \
