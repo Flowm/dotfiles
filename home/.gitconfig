@@ -68,6 +68,6 @@
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
-	renamelimit = 500000
+	renamelimit = 50000
 [rerere]
 	enabled = true
