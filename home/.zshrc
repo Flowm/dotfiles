@@ -85,19 +85,21 @@ setopt pushdignoredups
 # Only use the local history for the arrow keys
 up-line-or-local-search() {
 	zle set-local-history 1
-	zle up-line-or-search
+	zle up-line-or-history
 	zle set-local-history 0
 }
-zle -N up-line-or-local-search
+zle -N up-line-or-local-history
 down-line-or-local-search() {
 	zle set-local-history 1
-	zle down-line-or-search
+	zle down-line-or-history
 	zle set-local-history 0
 }
-zle -N down-line-or-local-search
+zle -N down-line-or-local-history
 
-bindkey '^[[A' up-line-or-local-search
-bindkey '^[[B' down-line-or-local-search
+bindkey '^[[A' up-line-or-local-history
+bindkey '^[[B' down-line-or-local-history
+bindkey '^[[1;5A' up-line-or-history
+bindkey '^[[1;5B' down-line-or-history
 bindkey '^r' history-incremental-search-backward
 
 # Last argument of previous command with ESC.
