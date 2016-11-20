@@ -99,3 +99,6 @@ zle -N down-line-or-local-search
 bindkey '^[[A' up-line-or-local-search
 bindkey '^[[B' down-line-or-local-search
 bindkey '^r' history-incremental-search-backward
+
+# Last argument of previous command with ESC.
+bindkey -M viins '\e.' insert-last-word
