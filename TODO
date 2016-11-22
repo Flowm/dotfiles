@@ -1,8 +1,0 @@
-.vimrc:		Improve whitespace and tab display color
-.vimrc:		Switch to https://github.com/Shougo/neobundle.vim for faster startup
-
-.gitconfig:	Use different mail depending on username
-
-.ssh:		Bind LocalForwards to 127.0.0.* addresses
-
-tools:		Add old changes to xpra-wrap with generic programm handling
