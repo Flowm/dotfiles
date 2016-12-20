@@ -36,6 +36,7 @@
 	rbio = rebase -i origin/master
 	rs   = reset
 	rso  = reset origin/master
+	rsho = reset --hard origin/master
 	s    = status
 	st   = stash
 	stp  = stash pop
