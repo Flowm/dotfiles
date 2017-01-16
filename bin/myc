@@ -2,15 +2,17 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-pibldh]" 1>&2
+	echo -e "Usage: $0 [-pibldh] [-rg pattern]" 1>&2
 	echo -e "\t-p Print clone command" 1>&2
 	echo -e "\t-i Insall config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
 	echo -e "\t-l Backup logs" 1>&2
+	echo -e "\t-g Grep logs with pattern" 1>&2
+	echo -e "\t-r Use remote logs for grep" 1>&2
 	exit 1
 }
 
-while getopts ":pibldh" opt; do
+while getopts ":piblg:rdh" opt; do
     case $opt in
         p)
 			PRINT=true;
@@ -23,6 +25,12 @@ while getopts ":pibldh" opt; do
 			;;
         l)
 			LOG=true;
+			;;
+        g)
+			GREP=$OPTARG;
+			;;
+        r)
+			REMOTE=true;
 			;;
         d)
 			DEBUG=true; set -x
@@ -57,8 +65,15 @@ if [ ${LOG:-} ]; then
 	host=$(hostname)
 	for file in ${conf_hist}/*; do
 		base=$(basename "${file}")
-		scp "$file" veldt:"~/backup/history/${base}.new"
-		ssh veldt "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
+		scp "$file" $backup_host:"~/backup/history/${base}.new"
+		ssh $backup_host "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
 	done
-	ssh veldt "cd ~/backup/history && git commit -m \"${host} - ${date}\""
+	ssh $backup_host "cd ~/backup/history && git commit -m \"${host} - ${date}\""
+fi
+if [ ${GREP:-} ]; then
+	if [ ${REMOTE:-} ]; then
+		ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n | less -FX
+	else
+		grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX
+	fi
 fi
