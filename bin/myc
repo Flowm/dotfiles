@@ -13,29 +13,29 @@ usage() {
 }
 
 while getopts ":piblg:rdh" opt; do
-    case $opt in
-        p)
+	case $opt in
+		p)
 			PRINT=true;
 			;;
-        i)
+		i)
 			INST=true;
 			;;
-        b)
+		b)
 			BASE=true;
 			;;
-        l)
+		l)
 			LOG=true;
 			;;
-        g)
+		g)
 			GREP=$OPTARG;
 			;;
-        r)
+		r)
 			REMOTE=true;
 			;;
-        d)
+		d)
 			DEBUG=true; set -x
 			;;
-        *)
+		*)
 			usage
 			;;
 	esac
