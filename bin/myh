@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+set -eu
+
+usage() {
+	echo -e "Usage: $0 [-b] [-g pattern] [-r]" 1>&2
+	echo -e "\t-b Backup logs" 1>&2
+	echo -e "\t-g Grep logs with pattern" 1>&2
+	echo -e "\t-r Use remote logs for grep" 1>&2
+	exit 1
+}
+
+while getopts ":bg:rdh" opt; do
+	case $opt in
+		b)
+			BACKUP=true;
+			;;
+		g)
+			GREP=$OPTARG;
+			;;
+		r)
+			REMOTE=true;
+			;;
+		d)
+			DEBUG=true; set -x
+			;;
+		*)
+			usage
+			;;
+	esac
+done
+shift $(($OPTIND - 1))
+
+conf_dir="$HOME/.myconf"
+conf_hist="$conf_dir/history"
+backup_host="veldt"
+
+if [ ${BACKUP:-} ]; then
+	echo "Pushing history to backup srv"
+	date=$(date +%F-%H-%M-%S)
+	host=$(hostname)
+	for file in ${conf_hist}/*; do
+		base=$(basename "${file}")
+		scp "$file" $backup_host:"~/backup/history/${base}.new"
+		ssh $backup_host "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
+	done
+	ssh $backup_host "cd ~/backup/history && git commit -m \"${host} - ${date}\""
+fi
+
+if [ ${GREP:-} ]; then
+	if [ ${REMOTE:-} ]; then
+		ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n | less -FX
+	else
+		grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX
+	fi
+fi

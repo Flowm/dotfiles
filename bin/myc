@@ -2,17 +2,14 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-pibldh] [-rg pattern]" 1>&2
+	echo -e "Usage: $0 [-pib]" 1>&2
 	echo -e "\t-p Print clone command" 1>&2
-	echo -e "\t-i Insall config" 1>&2
+	echo -e "\t-i Install config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
-	echo -e "\t-l Backup logs" 1>&2
-	echo -e "\t-g Grep logs with pattern" 1>&2
-	echo -e "\t-r Use remote logs for grep" 1>&2
 	exit 1
 }
 
-while getopts ":piblg:rdh" opt; do
+while getopts ":pibdh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
@@ -22,15 +19,6 @@ while getopts ":piblg:rdh" opt; do
 			;;
 		b)
 			BASE=true;
-			;;
-		l)
-			LOG=true;
-			;;
-		g)
-			GREP=$OPTARG;
-			;;
-		r)
-			REMOTE=true;
 			;;
 		d)
 			DEBUG=true; set -x
@@ -46,34 +34,17 @@ conf_dir="$HOME/.myconf"
 conf_bin="$conf_dir/bin"
 conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
-backup_host="veldt"
 
 if [ ${PRINT:-} ]; then
 	cat ${conf_dir}/data/instdb/myconf
 fi
+
 if [ ${INST:-} ]; then
 	echo "Installing myconf"
 	${conf_tools}/config-install.sh
 fi
+
 if [ ${BASE:-} ]; then
 	echo "Installing base software"
 	sudo ${conf_dir}/data/instdb/apt-base
-fi
-if [ ${LOG:-} ]; then
-	echo "Pushing history to backup srv"
-	date=$(date +%F-%H-%M-%S)
-	host=$(hostname)
-	for file in ${conf_hist}/*; do
-		base=$(basename "${file}")
-		scp "$file" $backup_host:"~/backup/history/${base}.new"
-		ssh $backup_host "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
-	done
-	ssh $backup_host "cd ~/backup/history && git commit -m \"${host} - ${date}\""
-fi
-if [ ${GREP:-} ]; then
-	if [ ${REMOTE:-} ]; then
-		ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n | less -FX
-	else
-		grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX
-	fi
 fi
