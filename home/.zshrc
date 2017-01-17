@@ -12,6 +12,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_CUSTOM=$HOME/.shcfg/.omz-custom
 
 ZSH_THEME="jreese"
+#ZSH_THEME="avit"
 
 ########################################################################
 # Plugin config
