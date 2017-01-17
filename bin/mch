@@ -2,20 +2,16 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-b] [-g pattern] [-r]" 1>&2
+	echo -e "Usage: $0 [-br] [pattern]" 1>&2
 	echo -e "\t-b Backup logs" 1>&2
-	echo -e "\t-g Grep logs with pattern" 1>&2
-	echo -e "\t-r Use remote logs for grep" 1>&2
+	echo -e "\t-r Use remote logs to grep for pattern" 1>&2
 	exit 1
 }
 
-while getopts ":bg:rdh" opt; do
+while getopts ":brdh" opt; do
 	case $opt in
 		b)
 			BACKUP=true;
-			;;
-		g)
-			GREP=$OPTARG;
 			;;
 		r)
 			REMOTE=true;
@@ -46,7 +42,13 @@ if [ ${BACKUP:-} ]; then
 	ssh $backup_host "cd ~/backup/history && git commit -m \"${host} - ${date}\""
 fi
 
-if [ ${GREP:-} ]; then
+if [ $# -eq 0 ]; then
+	[ ${BACKUP:-} ] || usage
+	exit
+fi
+GREP=$1
+
+if [ -n "$GREP" ]; then
 	if [ ${REMOTE:-} ]; then
 		ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n | less -FX
 	else
