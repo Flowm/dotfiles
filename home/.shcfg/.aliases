@@ -94,5 +94,11 @@ if [ -n "$MC_LINUX" ]; then
 	alias apt-up='sudo apt-get update'
 	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
 	alias apt-diuptsocks='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
+
+	if [ "$MC_DIST_ID_LIKE" = "debian" ]; then
+		if [ "$MC_DIST_ID" != "ubuntu" ]; then
+			alias ifconfig='/sbin/ifconfig'
+		fi
+	fi
 fi
 
