@@ -2,17 +2,21 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-pib]" 1>&2
+	echo -e "Usage: $0 [-puib]" 1>&2
 	echo -e "\t-p Print clone command" 1>&2
+	echo -e "\t-u Update config" 1>&2
 	echo -e "\t-i Install config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
 	exit 1
 }
 
-while getopts ":pibdh" opt; do
+while getopts ":puibdh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
+			;;
+		u)
+			UPDATE=true;
 			;;
 		i)
 			INST=true;
@@ -37,6 +41,10 @@ conf_tools="$conf_dir/tools"
 
 if [ ${PRINT:-} ]; then
 	cat ${conf_dir}/data/instdb/myconf
+fi
+
+if [ ${UPDATE:-} ]; then
+	cd ${conf_dir} && git pull --ff-only
 fi
 
 if [ ${INST:-} ]; then
