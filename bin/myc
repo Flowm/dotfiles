@@ -44,7 +44,7 @@ if [ ${PRINT:-} ]; then
 fi
 
 if [ ${UPDATE:-} ]; then
-	cd ${conf_dir} && git pull --ff-only
+	cd ${conf_dir} && git pull --ff-only && git submodule update
 fi
 
 if [ ${INST:-} ]; then
