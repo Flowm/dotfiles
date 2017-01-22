@@ -63,13 +63,12 @@
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'vim-scripts/ReplaceWithRegister'
 	Plugin 'scrooloose/syntastic'
+	Plugin 'sheerun/vim-polyglot'
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'berdandy/ansiesc.vim'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "snow"
 		Plugin 'Valloric/YouCompleteMe'
-		Plugin 'sudar/vim-arduino-syntax'
-		Plugin 'kballard/vim-swift'
 	endif
 
 	if iCanHazVundle == 0
@@ -427,7 +426,6 @@
 		augroup testgroup
 		autocmd!
 		" Filetype detection {
-			au BufRead,BufNewFile *.ino,*.pde set ft=arduino
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
 			au BufRead,BufNewFile *.grub set ft=cfg
 		" }
