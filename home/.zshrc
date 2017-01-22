@@ -42,14 +42,15 @@ export SAVEHIST=$HISTSIZE
 ########################################################################
 
 plugins=(
+	vi-mode # Load vi-mode first
 	colored-man-pages
 	command-not-found
 	extract
+	history-substring-search
 	mosh
 	rbenv
 	rsync
 	vagrant
-	vi-mode
 	z
 	zsh-256color
 	zsh-syntax-highlighting
@@ -72,6 +73,8 @@ setopt autocd
 setopt autopushd
 # Ignore duplicate paths on pushd
 setopt pushdignoredups
+# Ignore back to back duplicates in history search
+setopt hist_find_no_dups
 
 ########################################################################
 # Aliases
@@ -84,24 +87,33 @@ setopt pushdignoredups
 ########################################################################
 
 # Only use the local history for the arrow keys
-up-line-or-local-search() {
+up-line-or-local-history() {
 	zle set-local-history 1
-	zle up-line-or-history
+	zle history-substring-search-up
 	zle set-local-history 0
 }
 zle -N up-line-or-local-history
-down-line-or-local-search() {
+down-line-or-local-history() {
 	zle set-local-history 1
-	zle down-line-or-history
+	zle history-substring-search-down
 	zle set-local-history 0
 }
 zle -N down-line-or-local-history
 
+# Search local history on Arrow Up/Down
+bindkey "${terminfo[kcuu1]}" up-line-or-local-history
+bindkey "${terminfo[kcud1]}" down-line-or-local-history
 bindkey '^[[A' up-line-or-local-history
 bindkey '^[[B' down-line-or-local-history
-bindkey '^[[1;5A' up-line-or-history
-bindkey '^[[1;5B' down-line-or-history
-bindkey '^r' history-incremental-search-backward
+
+# Search global history on PgUp/PgDown and vicmd k/j
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^[[5~' history-substring-search-up
+bindkey '^[[6~' history-substring-search-down
+
+# Allow pattern search with Ctrl-r
+bindkey "^r" history-incremental-pattern-search-backward
 
 # Last argument of previous command with ESC.
 bindkey -M viins '\e.' insert-last-word
