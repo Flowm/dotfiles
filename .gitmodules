@@ -10,3 +10,7 @@
 [submodule "home/.shcfg/.omz-custom/plugins/zsh-256color"]
 	path = home/.shcfg/.omz-custom/plugins/zsh-256color
 	url = https://github.com/chrissicool/zsh-256color.git
+[submodule "home/.ssh"]
+	path = home/.ssh
+	url = ssh://flow@mauracher.eu/home/flow/.git/.ssh.git
+	branch = master
