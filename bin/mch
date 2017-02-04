@@ -8,13 +8,20 @@ usage() {
 	exit 1
 }
 
-while getopts ":brdh" opt; do
+TAILN=10
+while getopts ":brln:dh" opt; do
 	case $opt in
 		b)
 			BACKUP=true;
 			;;
 		r)
 			REMOTE=true;
+			;;
+		l)
+			LESST=true;
+			;;
+		n)
+			TAILN=$OPTARG;
 			;;
 		d)
 			DEBUG=true; set -x
@@ -46,12 +53,18 @@ if [ $# -eq 0 ]; then
 	[ ${BACKUP:-} ] || usage
 	exit
 fi
-GREP=$1
 
+GREP=$1
+OUT=""
 if [ -n "$GREP" ]; then
 	if [ ${REMOTE:-} ]; then
-		ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n | less -FX
+		OUT=$(ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n)
 	else
-		grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX
+		OUT=$(grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n)
+	fi
+	if [ ${LESST:-} ]; then
+		less -FX <<< """$OUT"""
+	else
+		tail -n $TAILN <<< """$OUT"""
 	fi
 fi
