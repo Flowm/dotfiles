@@ -17,7 +17,6 @@ alias findh='find . -iname'
 alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias vsyslog='view /var/log/syslog'
 alias tsyslog='tail -f /var/log/syslog'
-alias jsocks='java -DsocksProxyHost=localhost'
 
 alias ssh-nCM='ssh -o ControlMaster=no'
 alias ssh-nPW='ssh -o KbdInteractiveAuthentication=no'
@@ -66,16 +65,8 @@ if [ -n "$MC_WORK" ]; then
 	alias zcheck='zcheck -lx'
 	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 
-	#Connections
-	alias g841="luit -encoding ISO-8859-15 ssh g821"
-
-	# Misc
-	alias ifconfig='/sbin/ifconfig'
-	alias hpfox='ssh hpf-admin -N -D 1080 & firefox -P hpfsocks -no-remote'
-	alias firedown='ssh -n -f -C -o CompressionLevel=9 -Y -c aes128-cbc breakdown.genua firefox -no-remote'
-
 	#----------------------------------------------------------------------------
-	# G Dev only
+	# Dev only
 	if [ -n "$MC_ZSH" ]; then
 		if [ -f /usr/local/bin/l4profile.sh ]; then
 			autoload bashcompinit
@@ -91,14 +82,9 @@ if [ -n "$MC_WORK" ]; then
 fi
 
 if [ -n "$MC_LINUX" ]; then
-	alias apt-up='sudo apt-get update'
-	alias apt-diup='sudo apt-get update && sudo apt-get dist-upgrade'
-	alias apt-diuptsocks='sudo tsocks apt-get update && sudo tsocks apt-get dist-upgrade'
-
 	if [ "$MC_DIST_ID_LIKE" = "debian" ]; then
 		if [ "$MC_DIST_ID" != "ubuntu" ]; then
 			alias ifconfig='/sbin/ifconfig'
 		fi
 	fi
 fi
-
