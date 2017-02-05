@@ -10,5 +10,5 @@ Repository for managing and distributing my personal dotfiles across various uni
 
 ## Setup
 ```
-cd && git clone git@github.com:Flowm/myconf.git && ~/.myconf/bin/myc -i
+cd && git clone git@github.com:Flowm/myconf.git ~/.myconf && ~/.myconf/bin/myc -i
 ```
