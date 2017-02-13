@@ -27,6 +27,7 @@ host="ws1.g"
 port=""
 programm=""
 encoding="png"
+local_xpra="xpra-osx"
 
 
 while getopts ":sadh:e:" o; do
@@ -72,7 +73,7 @@ case "$mode" in
 		ssh $host "xpra start :$port --start-child=$programm --exit-with-children"
 		;;
 	"attach")
-		xpra attach ssh:$host:$port --encoding=$encoding
+		$local_xpra attach ssh:$host:$port --encoding=$encoding
 		;;
 esac
 
