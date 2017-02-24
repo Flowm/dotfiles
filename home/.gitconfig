@@ -40,6 +40,7 @@
 	s    = status
 	st   = stash
 	stp  = stash pop
+	devs =  shortlog -sne
 	# Utils
 	lcf  = diff-tree --no-commit-id --name-only -r
 	lcfh = diff-tree --no-commit-id --name-only -r HEAD
