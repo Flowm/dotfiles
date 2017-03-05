@@ -2,9 +2,11 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-br] [pattern]" 1>&2
+	echo -e "Usage: $0 [-br] [-ln num] [pattern]" 1>&2
 	echo -e "\t-b Backup logs" 1>&2
 	echo -e "\t-r Use remote logs to grep for pattern" 1>&2
+	echo -e "\t-l Invoke less with the resuls" 1>&2
+	echo -e "\t-n Maximum number of result lines" 1>&2
 	exit 1
 }
 

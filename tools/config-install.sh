@@ -56,10 +56,10 @@ echo "Setup ethernal history folder"
 mkdir -p $conf_hist
 chmod -R 700 $conf_hist
 
-echo "Initializing submodules"
+echo "Initialize submodules"
 cd "$conf_dir"
 git submodule update --init --recursive
 ln -nfs "$conf_dir/contrib/oh-my-zsh" "$target_dir/.oh-my-zsh"
 
-echo "Install vundle"
+echo "Install vim vundle plugins"
 vim -E -c "silent PluginInstall" -c "qall" &> /dev/null || true
