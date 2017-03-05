@@ -6,11 +6,12 @@ usage() {
 	echo -e "\t-p Print clone command" 1>&2
 	echo -e "\t-u Update config" 1>&2
 	echo -e "\t-i Install config" 1>&2
+	echo -e "\t-e Install extra config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
 	exit 1
 }
 
-while getopts ":puibdh" opt; do
+while getopts ":puiebdh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
@@ -20,6 +21,9 @@ while getopts ":puibdh" opt; do
 			;;
 		i)
 			INST=true;
+			;;
+		e)
+			EXTRA=true;
 			;;
 		b)
 			BASE=true;
@@ -36,6 +40,7 @@ shift $(($OPTIND - 1))
 
 conf_dir="$HOME/.myconf"
 conf_bin="$conf_dir/bin"
+conf_home="$conf_dir/home"
 conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
 
@@ -44,15 +49,20 @@ if [ ${PRINT:-} ]; then
 fi
 
 if [ ${UPDATE:-} ]; then
-	cd ${conf_dir} && git pull --ff-only && git submodule update
+	cd ${conf_dir} && git pull --ff-only && git submodule update --init --recursive
+fi
+
+if [ ${EXTRA:-} ]; then
+	echo "Install extra config"
+	git -C "$conf_home/.ssh" pull --ff-only || git clone flow@mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
 fi
 
 if [ ${INST:-} ]; then
-	echo "Installing myconf"
+	echo "Install config"
 	${conf_tools}/config-install.sh
 fi
 
 if [ ${BASE:-} ]; then
-	echo "Installing base software"
+	echo "Install base software"
 	sudo ${conf_dir}/data/instdb/apt-base
 fi
