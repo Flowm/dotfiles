@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 myhosts=('jiffy' 'btcpi.m' 'pi.m' 'snow.m')
 

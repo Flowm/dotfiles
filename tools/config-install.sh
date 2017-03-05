@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
 set -eu
 
-usage() { echo "Usage: $0 [-ndh]" 1>&2; exit 1; }
+usage() { echo "Usage: $0 [-dh]" 1>&2; exit 1; }
 
-while getopts ":ldh" o; do
-    case $o in
-        l)
-			linkonly=true;
-			;;
-        d)
+while getopts ":dh" o; do
+	case $o in
+		d)
 			debug=true; set -x
 			;;
-        *)
+		*)
 			usage
 			;;
 	esac
@@ -25,7 +22,7 @@ conf_tmp="$conf_dir/tmp"
 conf_hist="$conf_dir/history"
 target_dir="$HOME"
 
-echo "Mark als scripts as executable"
+echo "Fix permissions of scripts folder"
 chmod +x $conf_dir/tools/*
 chmod +x $conf_bin/*
 
@@ -44,6 +41,8 @@ for d in ".vim"; do
 	echo "$tmp_dir"
 	ln -fs "$tmp_dir" "$target_dir/"
 done
+mkdir -p $conf_tmp/.vimbak
+mkdir -p $conf_tmp/.vimtmp
 
 echo "Link all files and folders in subdirectories of conf_home"
 for d in $(find "$conf_home" -mindepth 1 -maxdepth 1 -type d); do
@@ -53,12 +52,7 @@ for d in $(find "$conf_home" -mindepth 1 -maxdepth 1 -type d); do
 	find "$d" -mindepth 1 -maxdepth 1 -exec ln -nfs {} "$new_dir/" \;
 done
 
-mkdir -p $conf_tmp/.vimbak
-mkdir -p $conf_tmp/.vimtmp
-
-# Don't use fallback configs for now
-#$conf_dir/tools/config-genfallback.sh
-
+echo "Setup ethernal history folder"
 mkdir -p $conf_hist
 chmod -R 700 $conf_hist
 
