@@ -65,7 +65,7 @@
 	Plugin 'scrooloose/syntastic'
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'berdandy/ansiesc.vim'
+	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "snow"
 		Plugin 'Valloric/YouCompleteMe'
