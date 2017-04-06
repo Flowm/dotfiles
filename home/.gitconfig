@@ -74,4 +74,4 @@
 	tool = vimdiff
 	renamelimit = 50000
 [rerere]
-	enabled = true
+	enabled = false
