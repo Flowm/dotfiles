@@ -8,7 +8,7 @@ set disassembly-flavor intel
 # Style
 ################################################################################
 
-set pagination on
+set pagination off
 set print demangle on
 set print asm-demangle off
 set print pretty on
@@ -61,7 +61,7 @@ define ps
 		# x86_64
 		printf "\n"
 		echo \033[32m
-		x/5i $pc
+		x/6i $pc
 		echo \033[0m
 		printf "\n"
 		printf "rdi%16lx rsi%16lx rdx%16lx rcx%16lx\n", $rdi, $rsi, $rdx, $rcx
@@ -76,12 +76,14 @@ define ps
 		printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 4),  *((long*)$sp + 5),  *((long*)$sp + 6),  *((long*)$sp + 7)
 		printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 8),  *((long*)$sp + 9),  *((long*)$sp + 10), *((long*)$sp + 11)
 		printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 12), *((long*)$sp + 13), *((long*)$sp + 14), *((long*)$sp + 15)
+		printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 16), *((long*)$sp + 17), *((long*)$sp + 18), *((long*)$sp + 19)
+		printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 20), *((long*)$sp + 21), *((long*)$sp + 22), *((long*)$sp + 23)
 		printf "\n"
 	else
 		# x86
 		printf "\n"
 		echo \033[32m
-		x/5i $pc
+		x/6i $pc
 		echo \033[0m
 		printf "\n"
 		printf "eax: %8x      ebx: %8x      ecx: %8x      edx: %8x\n", $eax, $ebx, $ecx, $edx
