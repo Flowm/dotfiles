@@ -32,6 +32,16 @@ set history expansion on
 # Funcs
 ################################################################################
 
+define np
+	n
+	x/10i $rip
+end
+
+define nps
+	n
+	ps
+end
+
 define nip
 	ni
 	x/10i $rip
