@@ -1,3 +1,17 @@
-e scr.wheel=false
-e stack.bytes=false
-e stack.size=114
+# Solarized theme
+eco solarized
+
+# Use UTF-8 to show cool arrows that do not look like crap :)
+e scr.utf8 = true
+
+# Show comments at right of disassembly if they fit in screen
+e asm.cmtright = true
+
+# Display stack and register values on top of disasembly view (visual mode)
+e cmd.stack = true
+
+# Size of stack hexdump
+#e stack.size = 114
+
+# Show bytes instead of values in stack
+#e stack.bytes = false
