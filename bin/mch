@@ -62,7 +62,7 @@ if [ -n "$GREP" ]; then
 	if [ ${REMOTE:-} ]; then
 		OUT=$(ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n)
 	else
-		OUT=$(grep -ri "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n)
+		OUT=$(grep -ari "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n)
 	fi
 	if [ ${LESST:-} ]; then
 		less -FX <<< """$OUT"""
