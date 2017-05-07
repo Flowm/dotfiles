@@ -15,7 +15,7 @@ set print pretty on
 set print array on
 set print object on
 set print vtbl on
-set print symbol-filename on
+set print symbol-filename off
 set prompt \001\033[32m\002gdb>>\001\033[0m\002 
 
 ################################################################################
