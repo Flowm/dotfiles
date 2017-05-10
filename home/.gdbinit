@@ -124,3 +124,8 @@ end
 define hook-quit
 	set confirm off
 end
+
+################################################################################
+# Ext
+################################################################################
+source /home/vagrant/.local/lib/python2.7/site-packages/voltron/entry.py
