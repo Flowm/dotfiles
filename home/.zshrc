@@ -50,6 +50,7 @@ plugins=(
 	mosh
 	rbenv
 	rsync
+	tmuxinator
 	vagrant
 	z
 	zsh-256color
