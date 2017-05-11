@@ -5,19 +5,23 @@ usage() {
 	echo -e "Usage: $0 [-puib]" 1>&2
 	echo -e "\t-p Print clone command" 1>&2
 	echo -e "\t-u Update config" 1>&2
+	echo -e "\t-s Update submodules" 1>&2
 	echo -e "\t-i Install config" 1>&2
 	echo -e "\t-e Install extra config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
 	exit 1
 }
 
-while getopts ":puiebdh" opt; do
+while getopts ":pusiebdh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
 			;;
 		u)
 			UPDATE=true;
+			;;
+		s)
+			SUBUP=true;
 			;;
 		i)
 			INST=true;
@@ -49,7 +53,11 @@ if [ ${PRINT:-} ]; then
 fi
 
 if [ ${UPDATE:-} ]; then
-	cd ${conf_dir} && git pull --ff-only && git submodule update --init --recursive
+	cd ${conf_dir} && git pull --ff-only
+fi
+
+if [ ${SUBUP:-} ]; then
+	cd ${conf_dir} && git submodule update --init --recursive
 fi
 
 if [ ${EXTRA:-} ]; then
