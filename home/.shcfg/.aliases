@@ -10,6 +10,7 @@ alias t='tmux new-session -A -s 0'
 
 alias gr='grep -iIR'
 alias vimo='vim -O'
+alias mux='tmuxinator'
 
 alias du-h='du -h --max-depth=1 |sort -rh'
 alias findh='find . -iname'
