@@ -216,6 +216,8 @@
 			"Match brackets key
 		nnoremap <tab> %
 		vnoremap <tab> %
+			"Search for selected text in visual mode with //
+		vnoremap // y/\V<C-R>"<CR>
 			"Clear highlight
 		map <silent> <C-l> :silent nohl<CR>
 			"Save as root
