@@ -6,7 +6,11 @@
 set disassembly-flavor intel
 
 # ASLR
-set disable-randomization on
+set disable-randomization off
+
+set confirm off
+set verbose off
+set backtrace past-main on
 
 ################################################################################
 # Style
@@ -21,6 +25,7 @@ set print object on
 set print vtbl on
 set print symbol-filename off
 set prompt \001\033[32m\002gdb>>\001\033[0m\002 
+set output-radix 0x10
 
 ################################################################################
 # History
@@ -129,9 +134,9 @@ end
 # Hooks
 ################################################################################
 
-define hook-stop
-	#x/1i $pc
-end
+#define hook-stop
+#	x/1i $pc
+#end
 
 # Don't promt on exit
 define hook-quit
@@ -141,4 +146,5 @@ end
 ################################################################################
 # Ext
 ################################################################################
-source /home/vagrant/.local/lib/python2.7/site-packages/voltron/entry.py
+source ~/.local/lib/python2.7/site-packages/voltron/entry.py
+source ~/dev/peda/peda.py
