@@ -146,5 +146,5 @@ end
 ################################################################################
 # Ext
 ################################################################################
-source ~/.local/lib/python2.7/site-packages/voltron/entry.py
+#source ~/.local/lib/python2.7/site-packages/voltron/entry.py
 source ~/dev/peda/peda.py
