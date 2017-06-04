@@ -37,15 +37,21 @@ windows:
         - vim *.c
         - vim *.py
   - gdb:
-      layout: da82,204x49,0,0{102x49,0,0[102x35,0,0,1,102x6,0,36,8,102x6,0,43,3],101x49,103,0[101x22,103,0,4,101x26,103,23,5]}
+      layout: 5efa,204x49,0,0{108x49,0,0,10,95x49,109,0[95x24,109,0,11,95x24,109,25,13]}
       panes:
         - dbgrun -p 137<%= @args[0] %> vuln
-        - voltron v dis
         - 
-        - voltron v reg
-        - voltron v m --reg rsp -d
+        - 
   - r2:
       layout: f164,204x49,0,0[204x38,0,0,2,204x10,0,39,8]
       panes:
-        - dbgrun -r -p 237<%= @args[0] %> vuln
+        - radare2 vuln
         -
+#  - gdb:
+#      layout: da82,204x49,0,0{102x49,0,0[102x35,0,0,1,102x6,0,36,8,102x6,0,43,3],101x49,103,0[101x22,103,0,4,101x26,103,23,5]}
+#      panes:
+#        - dbgrun -p 137<%= @args[0] %> vuln
+#        - voltron v dis
+#        - 
+#        - voltron v reg
+#        - voltron v m --reg rsp -d
