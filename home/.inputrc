@@ -1,0 +1,49 @@
+# Include default inputrc
+$include /etc/inputrc
+
+# VI mode
+set editing-mode vi
+
+# No bell
+set bell-style none
+
+# Show completion options immediately
+set show-all-if-ambiguous on
+
+$if mode=vi
+#------------------------------------------------------------------------------
+# vi-command
+#------------------------------------------------------------------------------
+set keymap vi-command
+
+# Incremental history search on arrow up/down
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+j:history-search-forward
+k:history-search-backward
+
+# Yank previous args
+"yn": yank-nth-arg
+"yl": yank-last-arg
+
+#------------------------------------------------------------------------------
+# vi-insert
+#------------------------------------------------------------------------------
+set keymap vi-insert
+
+# Incremental history search on arrow up/down
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# Cycle through completion options
+"\C-k": menu-complete
+"\C-j": menu-complete-backward
+
+# Movement
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-l": clear-screen
+"\C-k": kill-line
+"\C-x": kill-whole-line
+
+$endif
