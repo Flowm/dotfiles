@@ -146,5 +146,16 @@ end
 ################################################################################
 # Ext
 ################################################################################
-#source ~/.local/lib/python2.7/site-packages/voltron/entry.py
-source ~/dev/peda/peda.py
+source ~/.gdb/peda/peda.py
+source ~/.gdb/Pwngdb/pwngdb.py
+source ~/.gdb/Pwngdb/angelheap/gdbinit.py
+
+################################################################################
+# Ext hooks
+################################################################################
+define hook-run
+python
+import angelheap
+angelheap.init_angelheap()
+end
+end
