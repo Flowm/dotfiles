@@ -1,7 +1,7 @@
 # Include default inputrc
 $include /etc/inputrc
 
-# VI mode
+# Use vi mode
 set editing-mode vi
 
 # No bell
@@ -10,40 +10,77 @@ set bell-style none
 # Show completion options immediately
 set show-all-if-ambiguous on
 
+###############################################################################
+# vi mode
+###############################################################################
 $if mode=vi
 #------------------------------------------------------------------------------
 # vi-command
 #------------------------------------------------------------------------------
 set keymap vi-command
 
-# Incremental history search on arrow up/down
-"\e[A":history-search-backward
-"\e[B":history-search-forward
-j:history-search-forward
-k:history-search-backward
-
 # Yank previous args
 "yn": yank-nth-arg
 "yl": yank-last-arg
 
-#------------------------------------------------------------------------------
-# vi-insert
-#------------------------------------------------------------------------------
-set keymap vi-insert
+# Incremental history search on j/k
+j:history-search-forward
+k:history-search-backward
 
 # Incremental history search on arrow up/down
 "\e[A":history-search-backward
 "\e[B":history-search-forward
-
-# Cycle through completion options
-"\C-k": menu-complete
-"\C-j": menu-complete-backward
 
 # Movement
 "\C-a": beginning-of-line
 "\C-e": end-of-line
 "\C-l": clear-screen
 "\C-k": kill-line
+
+# Clear line if C-c is unavailable
 "\C-x": kill-whole-line
 
+#------------------------------------------------------------------------------
+# vi-insert
+#------------------------------------------------------------------------------
+set keymap vi-insert
+
+# Cycle through completion options
+"\C-k": menu-complete
+"\C-j": menu-complete-backward
+
+# Incremental history search on arrow up/down
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# Movement
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-l": clear-screen
+"\C-k": kill-line
+
+# Clear line if C-c is unavailable
+"\C-x": kill-whole-line
+$endif
+
+###############################################################################
+# emacs mode (unused fallback)
+###############################################################################
+$if mode=emacs
+# Cycle through completion options
+"\C-k": menu-complete
+"\C-j": menu-complete-backward
+
+# Incremental history search on arrow up/down
+"\e[A":history-search-backward
+"\e[B":history-search-forward
+
+# Movement
+"\C-a": beginning-of-line
+"\C-e": end-of-line
+"\C-l": clear-screen
+"\C-k": kill-line
+
+# Clear line if C-c is unavailable
+"\C-x": kill-whole-line
 $endif
