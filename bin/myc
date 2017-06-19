@@ -2,17 +2,17 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-puib]" 1>&2
+	echo -e "Usage: $0 [-puib] -c [opts]" 1>&2
 	echo -e "\t-p Print clone command" 1>&2
 	echo -e "\t-u Update config" 1>&2
 	echo -e "\t-s Update submodules" 1>&2
 	echo -e "\t-i Install config" 1>&2
-	echo -e "\t-e Install extra config" 1>&2
 	echo -e "\t-b Install base packages" 1>&2
+    echo -e "\t-c Config opts (extra, tmux)" 1>&2
 	exit 1
 }
 
-while getopts ":pusiebdh" opt; do
+while getopts ":pusibc:dh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
@@ -26,11 +26,11 @@ while getopts ":pusiebdh" opt; do
 		i)
 			INST=true;
 			;;
-		e)
-			EXTRA=true;
-			;;
 		b)
 			BASE=true;
+			;;
+		c)
+			CONFOPTS=$OPTARG;
 			;;
 		d)
 			DEBUG=true; set -x
@@ -60,11 +60,6 @@ if [ ${SUBUP:-} ]; then
 	cd ${conf_dir} && git submodule update --init --recursive
 fi
 
-if [ ${EXTRA:-} ]; then
-	echo "Install extra config"
-	git -C "$conf_home/.ssh" pull --ff-only || git clone flow@mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
-fi
-
 if [ ${INST:-} ]; then
 	echo "Install config"
 	${conf_tools}/config-install.sh
@@ -73,4 +68,14 @@ fi
 if [ ${BASE:-} ]; then
 	echo "Install base software"
 	sudo ${conf_dir}/data/instdb/apt-base
+fi
+
+if [ ${CONFOPTS:-} ]; then
+    if [ "$CONFOPTS" == "extra" ]; then
+        echo "Install extra config"
+        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
+    elif [ "$CONFOPTS" == "tmux" ]; then
+        echo "Configure tmux autoattach"
+        touch ~/.myc-tmuxa
+    fi
 fi
