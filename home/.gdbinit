@@ -24,7 +24,7 @@ set print array on
 set print object on
 set print vtbl on
 set print symbol-filename off
-set prompt \001\033[32m\002gdb>>\001\033[0m\002 
+set prompt \001\033[32m\002gdb>>\001\033[0m\002\040
 set output-radix 0x10
 
 ################################################################################
@@ -144,18 +144,26 @@ define hook-quit
 end
 
 ################################################################################
-# Ext
+# Plugins
 ################################################################################
 source ~/.gdb/peda/peda.py
 source ~/.gdb/Pwngdb/pwngdb.py
 source ~/.gdb/Pwngdb/angelheap/gdbinit.py
 
 ################################################################################
-# Ext hooks
+# Plugin hooks
 ################################################################################
 define hook-run
 python
 import angelheap
 angelheap.init_angelheap()
 end
+end
+
+################################################################################
+# Plugin Funcs
+################################################################################
+define hh
+	heapinfo
+	parseheap
 end
