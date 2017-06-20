@@ -166,4 +166,7 @@ end
 define hh
 	heapinfo
 	parseheap
+    x/10gx (long)&main_arena + 0x58
 end
+
+dir /usr/src/glibc/glibc-2.19/malloc
