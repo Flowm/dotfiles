@@ -34,7 +34,7 @@ DISABLE_AUTO_TITLE="true"
 REPORTTIME=30
 
 # Long history
-export HISTSIZE=100000
+export HISTSIZE=400000
 export SAVEHIST=$HISTSIZE
 
 ########################################################################
