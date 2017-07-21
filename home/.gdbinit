@@ -50,40 +50,6 @@ set logging on
 # Funcs
 ################################################################################
 
-define np
-    n
-    x/10i $rip
-end
-
-define nps
-    n
-    ps
-end
-
-define nip
-    ni
-    x/10i $rip
-end
-
-define nips
-    ni
-    ps
-end
-
-define sip
-    si
-    x/10i $rip
-end
-
-define sips
-    si
-    ps
-end
-
-define ip
-    x/10i $rip
-end
-
 define ps
     if sizeof(void*) == 8
         # x86_64
@@ -130,22 +96,57 @@ document ps
     Dump the current stack.
 end
 
+define np
+    n
+    x/10i $rip
+end
+
+define nps
+    n
+    ps
+end
+
+define nip
+    ni
+    x/10i $rip
+end
+
+define nips
+    ni
+    ps
+end
+
+define sip
+    si
+    x/10i $rip
+end
+
+define sips
+    si
+    ps
+end
+
+define ip
+    x/10i $rip
+end
+
 ################################################################################
 # Hooks
 ################################################################################
-
-#define hook-stop
-#    x/1i $pc
-#end
 
 # Don't promt on exit
 define hook-quit
     set confirm off
 end
 
+#define hook-stop
+#    x/1i $pc
+#end
+
 ################################################################################
 # Plugins
 ################################################################################
+
 source ~/.gdb/peda/peda.py
 source ~/.gdb/Pwngdb/pwngdb.py
 source ~/.gdb/Pwngdb/angelheap/gdbinit.py
@@ -153,6 +154,7 @@ source ~/.gdb/Pwngdb/angelheap/gdbinit.py
 ################################################################################
 # Plugin hooks
 ################################################################################
+
 define hook-run
     python
     import angelheap
@@ -169,4 +171,10 @@ define hh
     x/10gx (long)&main_arena + 0x58
 end
 
-dir /usr/src/glibc/glibc-2.19/malloc
+################################################################################
+# Includes
+################################################################################
+
+# GNU Libc debug
+# sudo apt install glibc-source && cd /usr/src/glibc && sudo unp /usr/src/glibc/glibc-2.19.tar.xz
+#dir /usr/src/glibc/glibc-2.19/malloc
