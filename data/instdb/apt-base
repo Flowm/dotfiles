@@ -1,37 +1,35 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get update
+apt update
 
-apt-get install -y \
-ack-grep \
-bash-completion \
-bind9-host \
-build-essential \
-curl \
-dnsutils \
-etckeeper \
-gatling \
-git \
-htop \
-iotop \
-lsof \
-man-db \
-mosh \
-nmap \
-openssh-client \
-openssh-server \
-passwdqc \
-rdfind \
-silversearcher-ag \
-slurm \
-tcpdump \
-telnet \
-tmux \
-unp \
-unzip \
-vim \
-wget \
-whois \
-zsh \
+apt install -y \
+    bash-completion \
+    bind9-host \
+    build-essential \
+    curl \
+    dnsutils \
+    etckeeper \
+    git \
+    htop \
+    iotop \
+    lsof \
+    man-db \
+    mosh \
+    nmap \
+    openssh-client \
+    openssh-server \
+    passwdqc \
+    silversearcher-ag \
+    silversearcher-ag \
+    slurm \
+    tcpdump \
+    telnet \
+    tmux \
+    unp \
+    unzip \
+    vim \
+    wget \
+    whois \
+    zsh \
 ;

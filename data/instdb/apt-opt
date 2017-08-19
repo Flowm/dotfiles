@@ -1,31 +1,31 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # apt-base first
 
 export DEBIAN_FRONTEND=noninteractive
-apt-get update
+apt update
 
-apt-get install -y \
-apt-file \
-aptitude \
-arp-scan \
-autossh \
-cu \
-devtodo \
-dnstop \
-fail2ban \
-iftop \
-ipcalc \
-latexdiff \
-libssl-dev \
-lyx \
-munin-node \
-nginx \
-pv \
-pwgen \
-python-software-properties \
-qrencode \
-silversearcher-ag \
-tsocks \
-ucspi-tcp \
+apt install -y \
+    apt-file \
+    arp-scan \
+    autossh \
+    cu \
+    devtodo \
+    dnstop \
+    fail2ban \
+    gatling \
+    iftop \
+    ipcalc \
+    latexdiff \
+    libssl-dev \
+    lyx \
+    munin-node \
+    nginx \
+    pv \
+    pwgen \
+    python-software-properties \
+    qrencode \
+    rdfind \
+    tsocks \
+    ucspi-tcp \
 ;

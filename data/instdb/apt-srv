@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # apt-base first
 
@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update
 
 apt-get install -y \
-dnsmasq \
-iptables \
-netstat-nat \
+    dnsmasq \
+    iptables \
+    netstat-nat \
 ;
