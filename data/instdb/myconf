@@ -1,1 +1,1 @@
-cd && git clone ssh://flow@mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -i
+cd && git clone ssh://flow@mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -i -c extra
