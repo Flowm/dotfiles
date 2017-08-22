@@ -11,6 +11,7 @@ usage() {
     exit 1
 }
 
+EXTRA_CONF=( "" )
 while getopts ":pusic:dh" opt; do
     case $opt in
         p)
@@ -26,7 +27,7 @@ while getopts ":pusic:dh" opt; do
             INST=true;
             ;;
         c)
-            CONFOPTS=$OPTARG;
+            EXTRA_CONF+=("$OPTARG")
             ;;
         d)
             DEBUG=true; set -x
@@ -37,6 +38,7 @@ while getopts ":pusic:dh" opt; do
     esac
 done
 shift $(($OPTIND - 1))
+
 
 conf_dir="$HOME/.myconf"
 conf_bin="$conf_dir/bin"
@@ -56,18 +58,18 @@ if [ ${SUBUP:-} ]; then
     cd ${conf_dir} && git submodule update --init --recursive
 fi
 
-if [ ${CONFOPTS:-} ]; then
-    if [ "$CONFOPTS" == "extra" ]; then
+for CONF in "${EXTRA_CONF[@]}"; do
+    if [ "$CONF" == "extra" ]; then
         echo "Install extra config"
         git -C "$conf_home/.ssh" pull --ff-only || git clone flow@mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
-    elif [ "$CONFOPTS" == "tmux" ]; then
+    elif [ "$CONF" == "tmux" ]; then
         echo "Configure tmux autoattach"
         touch ~/.myc-tmuxa
-    elif [ "$CONFOPTS" == "apt-base" ]; then
+    elif [ "$CONF" == "apt-base" ]; then
         echo "Install base software"
         sudo ${conf_dir}/data/instdb/apt-base
     fi
-fi
+done
 
 if [ ${INST:-} ]; then
     echo "Install config"
