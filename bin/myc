@@ -2,39 +2,39 @@
 set -eu
 
 usage() {
-	echo -e "Usage: $0 [-puib] -c [opts]" 1>&2
-	echo -e "\t-p Print clone command" 1>&2
-	echo -e "\t-u Update config" 1>&2
-	echo -e "\t-s Update submodules" 1>&2
-	echo -e "\t-i Install config" 1>&2
-	echo -e "\t-c Config opts (extra, tmux, apt-base)" 1>&2
-	exit 1
+    echo -e "Usage: $0 [-puib] -c [opts]" 1>&2
+    echo -e "\t-p Print clone command" 1>&2
+    echo -e "\t-u Update config" 1>&2
+    echo -e "\t-s Update submodules" 1>&2
+    echo -e "\t-i Install config" 1>&2
+    echo -e "\t-c Config opts (extra, tmux, apt-base)" 1>&2
+    exit 1
 }
 
 while getopts ":pusic:dh" opt; do
-	case $opt in
-		p)
-			PRINT=true;
-			;;
-		u)
-			UPDATE=true;
-			;;
-		s)
-			SUBUP=true;
-			;;
-		i)
-			INST=true;
-			;;
-		c)
-			CONFOPTS=$OPTARG;
-			;;
-		d)
-			DEBUG=true; set -x
-			;;
-		*)
-			usage
-			;;
-	esac
+    case $opt in
+        p)
+            PRINT=true;
+            ;;
+        u)
+            UPDATE=true;
+            ;;
+        s)
+            SUBUP=true;
+            ;;
+        i)
+            INST=true;
+            ;;
+        c)
+            CONFOPTS=$OPTARG;
+            ;;
+        d)
+            DEBUG=true; set -x
+            ;;
+        *)
+            usage
+            ;;
+    esac
 done
 shift $(($OPTIND - 1))
 
@@ -45,15 +45,15 @@ conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
 
 if [ ${PRINT:-} ]; then
-	cat ${conf_dir}/data/instdb/myconf
+    cat ${conf_dir}/data/instdb/myconf
 fi
 
 if [ ${UPDATE:-} ]; then
-	cd ${conf_dir} && git pull --ff-only
+    cd ${conf_dir} && git pull --ff-only
 fi
 
 if [ ${SUBUP:-} ]; then
-	cd ${conf_dir} && git submodule update --init --recursive
+    cd ${conf_dir} && git submodule update --init --recursive
 fi
 
 if [ ${CONFOPTS:-} ]; then
@@ -70,6 +70,6 @@ if [ ${CONFOPTS:-} ]; then
 fi
 
 if [ ${INST:-} ]; then
-	echo "Install config"
-	${conf_tools}/config-install.sh
+    echo "Install config"
+    ${conf_tools}/config-install.sh
 fi
