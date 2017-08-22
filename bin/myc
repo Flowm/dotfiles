@@ -2,20 +2,20 @@
 set -eu
 
 usage() {
-    echo -e "Usage: $0 [-puib] -c [opts]" 1>&2
-    echo -e "\t-p Print clone command" 1>&2
+    echo -e "Usage: $0 [-iusp] -c [opts]" 1>&2
+    echo -e "\t-i Install config" 1>&2
     echo -e "\t-u Update config" 1>&2
     echo -e "\t-s Update submodules" 1>&2
-    echo -e "\t-i Install config" 1>&2
+    echo -e "\t-p Print clone command" 1>&2
     echo -e "\t-c Config opts (extra, tmux, apt-base)" 1>&2
     exit 1
 }
 
 EXTRA_CONF=( "" )
-while getopts ":pusic:dh" opt; do
+while getopts ":iuspc:dh" opt; do
     case $opt in
-        p)
-            PRINT=true;
+        i)
+            INST=true;
             ;;
         u)
             UPDATE=true;
@@ -23,8 +23,8 @@ while getopts ":pusic:dh" opt; do
         s)
             SUBUP=true;
             ;;
-        i)
-            INST=true;
+        p)
+            PRINT=true;
             ;;
         c)
             EXTRA_CONF+=("$OPTARG")
@@ -46,16 +46,16 @@ conf_home="$conf_dir/home"
 conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
 
-if [ ${PRINT:-} ]; then
-    cat ${conf_dir}/data/instdb/myconf
-fi
-
 if [ ${UPDATE:-} ]; then
     cd ${conf_dir} && git pull --ff-only
 fi
 
 if [ ${SUBUP:-} ]; then
     cd ${conf_dir} && git submodule update --init --recursive
+fi
+
+if [ ${PRINT:-} ]; then
+    cat ${conf_dir}/data/instdb/myconf
 fi
 
 for CONF in "${EXTRA_CONF[@]}"; do
