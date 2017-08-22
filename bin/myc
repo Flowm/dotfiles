@@ -7,12 +7,11 @@ usage() {
 	echo -e "\t-u Update config" 1>&2
 	echo -e "\t-s Update submodules" 1>&2
 	echo -e "\t-i Install config" 1>&2
-	echo -e "\t-b Install base packages" 1>&2
-    echo -e "\t-c Config opts (extra, tmux)" 1>&2
+	echo -e "\t-c Config opts (extra, tmux, apt-base)" 1>&2
 	exit 1
 }
 
-while getopts ":pusibc:dh" opt; do
+while getopts ":pusic:dh" opt; do
 	case $opt in
 		p)
 			PRINT=true;
@@ -25,9 +24,6 @@ while getopts ":pusibc:dh" opt; do
 			;;
 		i)
 			INST=true;
-			;;
-		b)
-			BASE=true;
 			;;
 		c)
 			CONFOPTS=$OPTARG;
@@ -60,11 +56,6 @@ if [ ${SUBUP:-} ]; then
 	cd ${conf_dir} && git submodule update --init --recursive
 fi
 
-if [ ${BASE:-} ]; then
-	echo "Install base software"
-	sudo ${conf_dir}/data/instdb/apt-base
-fi
-
 if [ ${CONFOPTS:-} ]; then
     if [ "$CONFOPTS" == "extra" ]; then
         echo "Install extra config"
@@ -72,6 +63,9 @@ if [ ${CONFOPTS:-} ]; then
     elif [ "$CONFOPTS" == "tmux" ]; then
         echo "Configure tmux autoattach"
         touch ~/.myc-tmuxa
+    elif [ "$CONFOPTS" == "apt-base" ]; then
+        echo "Install base software"
+        sudo ${conf_dir}/data/instdb/apt-base
     fi
 fi
 
