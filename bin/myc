@@ -60,11 +60,6 @@ if [ ${SUBUP:-} ]; then
 	cd ${conf_dir} && git submodule update --init --recursive
 fi
 
-if [ ${INST:-} ]; then
-	echo "Install config"
-	${conf_tools}/config-install.sh
-fi
-
 if [ ${BASE:-} ]; then
 	echo "Install base software"
 	sudo ${conf_dir}/data/instdb/apt-base
@@ -78,4 +73,9 @@ if [ ${CONFOPTS:-} ]; then
         echo "Configure tmux autoattach"
         touch ~/.myc-tmuxa
     fi
+fi
+
+if [ ${INST:-} ]; then
+	echo "Install config"
+	${conf_tools}/config-install.sh
 fi
