@@ -37,7 +37,7 @@ shift $(($OPTIND - 1))
 
 conf_dir="$HOME/.myconf"
 conf_hist="$conf_dir/history"
-backup_host="veldt"
+backup_host="veldt.mauracher.eu"
 
 if [ ${BACKUP:-} ]; then
 	echo "Pushing history to backup srv"

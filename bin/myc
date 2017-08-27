@@ -61,7 +61,7 @@ fi
 for CONF in "${EXTRA_CONF[@]}"; do
     if [ "$CONF" == "extra" ]; then
         echo "Install extra config"
-        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
+        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
     elif [ "$CONF" == "tmux" ]; then
         echo "Configure tmux autoattach"
         touch ~/.myc-tmuxa
