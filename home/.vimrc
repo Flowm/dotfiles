@@ -165,6 +165,8 @@
 		set showcmd
 			"No Bell
 		set noerrorbells visualbell
+			"Search tags file in current dir and all parent dir
+		set tags=./tags;/
 	" }
 " }
 
