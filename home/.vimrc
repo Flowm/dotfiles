@@ -432,6 +432,7 @@
 		" Filetype detection {
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
 			au BufRead,BufNewFile *.grub set ft=cfg
+			au BufRead,BufNewFile *.ts set ft=typescript
 		" }
 		" Filetype settings {
 			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
