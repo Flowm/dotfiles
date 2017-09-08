@@ -68,7 +68,7 @@
 [rebase]
 	autosquash = true
 [interactive]
-	diffFilter = diff-highlight
+	#diffFilter = diff-highlight
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
