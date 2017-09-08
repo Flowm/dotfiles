@@ -67,7 +67,7 @@
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
-	if hostname() == "flake" || hostname() == "snow"
+	if hostname() == "flake" || hostname() == "app"
 		Plugin 'Valloric/YouCompleteMe'
 	endif
 
