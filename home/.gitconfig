@@ -29,6 +29,7 @@
 	lp   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
 	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	p    = push
+	pf   = push --force-with-lease
 	puo  = push -u origin
 	pl   = pull
 	rb   = rebase
