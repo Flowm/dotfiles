@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+export http{,s}_proxy=http://192.168.223.2:8888
+
+dnf update
+
+dnf install -y \
+  htop \
+  sqlite \
+  tmux \
+  unp \
+  vim \
+  zsh \
+  qtcreator qt5 libpciaccess-dev  \
+  ;
+
+systemctl enable sshd
+systemctl start sshd
