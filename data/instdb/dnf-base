@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-export http{,s}_proxy=http://192.168.223.2:8888
-
 dnf update
 
 dnf install -y \
@@ -11,7 +9,7 @@ dnf install -y \
   unp \
   vim \
   zsh \
-  qtcreator qt5 libpciaccess-dev  \
+  qtcreator qt5 libpciaccess-devel \
   ;
 
 systemctl enable sshd
