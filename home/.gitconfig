@@ -66,16 +66,16 @@
 	compactionHeuristic = true
 [difftool]
 	prompt = false
-[push]
-	# Change to simple when only using git 2.0
-	default = current
-[rebase]
-	autosquash = true
 [interactive]
 	#diffFilter = diff-highlight
 [merge]
 	conflictstyle = diff3
 	tool = vimdiff
 	renamelimit = 50000
+[push]
+	# Change to simple when only using git 2.0
+	default = current
+[rebase]
+	autosquash = true
 [rerere]
 	enabled = false
