@@ -65,6 +65,7 @@
 	Plugin 'scrooloose/syntastic'
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'ctrlpvim/ctrlp.vim'
+	Plugin 'majutsushi/tagbar'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "app"
@@ -413,6 +414,9 @@
 		nmap <leader>n <Plug>NERDTreeTabsToggle<CR>
 		let g:NERDTreeQuitOnOpen = 0
 		let g:nerdtree_tabs_open_on_gui_startup = 0
+	" }
+	" Tagbar {
+		nnoremap <silent> <leader>b :TagbarToggle<CR>
 	" }
 	" syntastic {
 		let g:syntastic_cpp_compiler_options = '-std=c++11'
