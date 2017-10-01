@@ -3,10 +3,11 @@
 ########################################################################
 
 alias a='ack-grep'
-alias h='history'
-alias v='vim'
 alias g='git'
+alias h='history'
+alias m='make'
 alias t='tmux new-session -A -s 0'
+alias v='vim'
 
 alias gr='grep -iIR'
 alias vimo='vim -O'
