@@ -30,6 +30,8 @@
 	lgr  = log --grep
 	lp   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
 	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lol  = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	p    = push
 	pf   = push --force-with-lease
 	puo  = push -u origin
@@ -57,6 +59,10 @@
 	ge-psh = push origin HEAD:refs/for/master
 	gz-psh = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
 [color]
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 	ui = auto
 [core]
 	pager = less -RFX
