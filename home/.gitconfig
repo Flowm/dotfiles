@@ -45,6 +45,8 @@
 	rso  = reset origin/master
 	rsho = reset --hard origin/master
 	s    = status
+	sm   = submodule
+	smu  = submodule update --init --recursive
 	st   = stash
 	stp  = stash pop
 	devs =  shortlog -sne
