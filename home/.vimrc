@@ -137,10 +137,7 @@
 		set background=dark
 	" }
 	" Color tweaks {
-			" Used by listchars
 		"hi Search ctermbg=DarkYellow ctermfg=White
-		hi SpecialKey ctermbg=4
-
 		"hi Identifier ctermfg=6 cterm=bold
 			" 0 black, 1 darkred, 2 darkgreen, 3 darkyellow, 4 darkblue, 5 darkmagenta, 6 darkcyan, 7 grey
 			" Non-safe Colors, 16-Color-Term:
@@ -173,9 +170,8 @@
 " Text Formatting/Layout {
 	" Whitespace and Tab display {
 		set nolist
-		"set list listchars=tab:>.,trail:.
-		set listchars=tab:\ \ ,trail:\.
-		"set list listchars=tab:>.,trail:�
+		set listchars=tab:»\ ,nbsp:␣,trail:·,extends:›,precedes:‹
+		"hi SpecialKey ctermbg=4
 	" }
 	" Overlong lines display {
 			"Don't do newlines automatically
@@ -201,10 +197,10 @@
 		set expandtab
 	" }
 	" Indention shortcuts {
-		nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
-		nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
-		nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
-		nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+		nmap \t :set noexpandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+		nmap \T :set noexpandtab tabstop=8 shiftwidth=4 softtabstop=4<CR>
+		nmap \s :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+		nmap \S :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 	" }
 	" Folding (disabled) {
 			"Disable folding completely
