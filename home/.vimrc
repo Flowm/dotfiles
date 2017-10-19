@@ -22,8 +22,8 @@
 	behave xterm
 		"More screen updates
 	set ttyfast
-		"Enable modelines, secured by ciaranm/securemodelines
-	set modeline
+		"Disable modelines
+	set nomodeline
 		"No exec
 	set secure
 		"Encoding
@@ -51,7 +51,6 @@
 
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'ciaranm/securemodelines'
 	Plugin 'editorconfig/editorconfig-vim'
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'scrooloose/nerdcommenter'
