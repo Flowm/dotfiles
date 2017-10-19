@@ -199,7 +199,13 @@
 			"Indent amount when using cindent, >>, ..
 		set shiftwidth=4
 			"Do not expand tabs to spaces
-		set noexpandtab
+		set expandtab
+	" }
+	" Indention shortcuts {
+		nmap \t :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+		nmap \T :set expandtab tabstop=8 shiftwidth=8 softtabstop=4<CR>
+		nmap \M :set noexpandtab tabstop=8 softtabstop=4 shiftwidth=4<CR>
+		nmap \m :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 	" }
 	" Folding (disabled) {
 			"Disable folding completely
@@ -439,12 +445,7 @@
 			au BufRead,BufNewFile *.ts set ft=typescript
 		" }
 		" Filetype settings {
-			au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-			au FileType python	set tabstop=4 softtabstop=4 shiftwidth=4 expandtab textwidth=79
-			au FileType perl	set tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab smarttab shiftround
-			au FileType arduino	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
-			au FileType html	set tabstop=4 shiftwidth=4 nosmarttab
-			au FileType cpp		set tabstop=4 shiftwidth=4 noexpandtab smarttab
+			"au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
