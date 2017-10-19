@@ -2,7 +2,7 @@
 # General
 ########################################################################
 
-[ -e "${HOME}/.shcfg/.env" ] && source "${HOME}/.shcfg/.env"
+[ -e "${HOME}/.shcfg/env" ] && source "${HOME}/.shcfg/env"
 
 ########################################################################
 # OMZ config
@@ -81,7 +81,7 @@ setopt hist_find_no_dups
 # Aliases
 ########################################################################
 
-[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
+[ -e "${HOME}/.shcfg/aliases" ] && source "${HOME}/.shcfg/aliases"
 
 ########################################################################
 # Keybindings

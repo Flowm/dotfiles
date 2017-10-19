@@ -59,34 +59,34 @@ mc-ts() { date +%F-%H-%M-%S; }
 ########################################################################
 
 if [ -n "$MC_WORK" ]; then
-	# Fixes for wierd global config
-	# /etc/bash.bashrc breaks colors in git: export LESS='-i'
-	unset LESS
+    # Fixes for wierd global config
+    # /etc/bash.bashrc breaks colors in git: export LESS='-i'
+    unset LESS
 
-	# PRD
-	alias zcheck='zcheck -lx'
-	alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
+    # PRD
+    alias zcheck='zcheck -lx'
+    alias sieveedit='PASSWORD=`ssh-askpass` && SIEVEFILE=`mktemp` && sieveshell --password=$PASSWORD -exec="get $USER.siv $SIEVEFILE" kolab >/dev/null && vim $SIEVEFILE && sieveshell --password=$PASSWORD -exec="put $SIEVEFILE $USER.siv" kolab >/dev/null && rm -f $SIEVEFILE'
 
-	#----------------------------------------------------------------------------
-	# Dev only
-	if [ -n "$MC_ZSH" ]; then
-		if [ -f /usr/local/bin/l4profile.sh ]; then
-			autoload bashcompinit
-			bashcompinit
-			source /usr/local/bin/l4profile.sh
-		fi
-	fi
+    #----------------------------------------------------------------------------
+    # Dev only
+    if [ -n "$MC_ZSH" ]; then
+        if [ -f /usr/local/bin/l4profile.sh ]; then
+            autoload bashcompinit
+            bashcompinit
+            source /usr/local/bin/l4profile.sh
+        fi
+    fi
 
-	if [ -f ~/.aegis ]; then
-		. ~/.aegis
-		alias ashowd='aed && showd'
-	fi
+    if [ -f ~/.aegis ]; then
+        . ~/.aegis
+        alias ashowd='aed && showd'
+    fi
 fi
 
 if [ -n "$MC_LINUX" ]; then
-	if [ "$MC_DIST_ID_LIKE" = "debian" ]; then
-		if [ "$MC_DIST_ID" != "ubuntu" ]; then
-			alias ifconfig='/sbin/ifconfig'
-		fi
-	fi
+    if [ "$MC_DIST_ID_LIKE" = "debian" ]; then
+        if [ "$MC_DIST_ID" != "ubuntu" ]; then
+            alias ifconfig='/sbin/ifconfig'
+        fi
+    fi
 fi

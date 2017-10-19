@@ -4,55 +4,55 @@
 
 MC_OS=`uname`
 case "$MC_OS" in
-	Linux)
-		MC_LINUX=1
-		MC_GNU_USERLAND=1
-		MC_HOST=`uname -n`
-		MC_PLATFORM=`uname -m`
-		case "$MC_PLATFORM" in
-			armv6l)
-				MC_SLOWSYS=1
-				;;
-		esac
-		MC_DIST_ID=$(grep ^ID= /etc/lsb-release 2>&1 | cut -d= -f2)
-		MC_DIST_ID_LIKE=$(grep ^ID_LIKE= /etc/lsb-release 2>&1 | cut -d= -f2)
-		;;
-	Darwin)
-		MC_OSX=1
-		MC_HOST=`hostname -s`
-		;;
-	CYGWIN*)
-		MC_CYGWIN=1
-		MC_HOST=`uname -n`
-		;;
-	OpenBSD)
-		MC_OPENBSD=1
-		MC_HOST=`hostname -s`
-		;;
-	*)
-		MC_HOST=`echo $HOSTNAME | sed "s/\([a-z]*\)\..*/\1/"`
-		;;
+    Linux)
+        MC_LINUX=1
+        MC_GNU_USERLAND=1
+        MC_HOST=`uname -n`
+        MC_PLATFORM=`uname -m`
+        case "$MC_PLATFORM" in
+            armv6l)
+                MC_SLOWSYS=1
+                ;;
+        esac
+        MC_DIST_ID=$(grep ^ID= /etc/lsb-release 2>&1 | cut -d= -f2)
+        MC_DIST_ID_LIKE=$(grep ^ID_LIKE= /etc/lsb-release 2>&1 | cut -d= -f2)
+        ;;
+    Darwin)
+        MC_OSX=1
+        MC_HOST=`hostname -s`
+        ;;
+    CYGWIN*)
+        MC_CYGWIN=1
+        MC_HOST=`uname -n`
+        ;;
+    OpenBSD)
+        MC_OPENBSD=1
+        MC_HOST=`hostname -s`
+        ;;
+    *)
+        MC_HOST=`echo $HOSTNAME | sed "s/\([a-z]*\)\..*/\1/"`
+        ;;
 esac
 
 MC_USER=`whoami`
 case "$MC_USER" in
-	fmaurach)
-		MC_WORK=1
-		;;
-	flow)
-		MC_PRIV=1
-		;;
+    fmaurach)
+        MC_WORK=1
+        ;;
+    flow)
+        MC_PRIV=1
+        ;;
 esac
 
 # SHELL
 if [ -n "$ZSH_VERSION" ]; then
-	MC_SHELL="zsh"
-	MC_ZSH=1
+    MC_SHELL="zsh"
+    MC_ZSH=1
 elif [ -n "$BASH_VERSION" ]; then
-	MC_SHELL="bash"
-	MC_BASH=1
+    MC_SHELL="bash"
+    MC_BASH=1
 else
-	MC_SHELL=$(ps h -p $$ -o args='' | cut -f1 -d' ')
+    MC_SHELL=$(ps h -p $$ -o args='' | cut -f1 -d' ')
 fi
 
 ########################################################################
@@ -63,17 +63,17 @@ export EDITOR="vim"
 
 # Add $HOME/bin and all subdirs to the path
 if [ -d "$HOME/bin" ]; then
-	for d in "$HOME"/bin/*; do
-		if [ -d "$d" ]; then
-			PATH="${d%%/}:$PATH"
-		fi
-	done
-	PATH="$HOME/bin:$PATH"
+    for d in "$HOME"/bin/*; do
+        if [ -d "$d" ]; then
+            PATH="${d%%/}:$PATH"
+        fi
+    done
+    PATH="$HOME/bin:$PATH"
 fi
 
 # Append $HOME/.local/bin to path
 if [ -d "$HOME/.local/bin" ]; then
-	PATH="$PATH:$HOME/.local/bin"
+    PATH="$PATH:$HOME/.local/bin"
 fi
 
 # Locale settings. Force en_US.UTF-8 instead of smart detection for now
@@ -82,7 +82,7 @@ export LANG=en_US.UTF-8
 #[ -z "$LANG" ] && [ "$(locale -a | grep en_US.UTF-8)" ] && export LANG="en_US.UTF-8"
 
 if [ -n "$MC_OSX" ] && [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-	export LC_TERM="iterm"
+    export LC_TERM="iterm"
 fi
 
 ########################################################################
@@ -91,13 +91,13 @@ fi
 
 # Handle ssh-agent startup if ~/.myc-sagent exists
 if [ -e $HOME/.myc-sagent ] && ! pgrep -u $USER ssh-agent >/dev/null; then
-	eval $(ssh-agent -s)
-	ssh-add
+    eval $(ssh-agent -s)
+    ssh-add
 fi
 
 # Fix symlink for tmux
 if [ -S "$SSH_AUTH_SOCK" ] && [ ! -h "$SSH_AUTH_SOCK" ]; then
-	ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
@@ -107,12 +107,12 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 # Attach tmux immediately if ~/.myc-tmuxa exists
 if [ -e $HOME/.myc-tmuxa ] && [ -z "$TMUX" ]; then
-	# Also detach immediately if ~/.myc-tmuxad exists
-	if [ -e $HOME/.myc-tmuxad ]; then
-		tmux new-session -A -s 0 && sleep 1 && exit
-	else
-		tmux new-session -A -s 0
-	fi
+    # Also detach immediately if ~/.myc-tmuxad exists
+    if [ -e $HOME/.myc-tmuxad ]; then
+        tmux new-session -A -s 0 && sleep 1 && exit
+    else
+        tmux new-session -A -s 0
+    fi
 fi
 
 ########################################################################
@@ -125,20 +125,20 @@ export SAVEHIST=$HISTSIZE
 
 # Additionally log history to file
 if [ -z "$MC_SLOWSYS" ]; then
-	export MC_HISTFILE=~/.myconf/history/$(date +%Y)_${MC_HOST}_eternal_history
-	(umask 077; touch $MC_HISTFILE)
+    export MC_HISTFILE=~/.myconf/history/$(date +%Y)_${MC_HOST}_eternal_history
+    (umask 077; touch $MC_HISTFILE)
 
-	if [ "$MC_BASH" ]; then
-		_log_hist() {
-			([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t$(history 1 | sed 's/^ *[0-9]* *//')" >> $MC_HISTFILE &)
-		}
-		PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; } _log_hist"
-	fi
-	if [ "$MC_ZSH" ]; then
-		preexec() {
-			([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t${1}" >> $MC_HISTFILE &)
-		}
-	fi
+    if [ "$MC_BASH" ]; then
+        _log_hist() {
+            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t$(history 1 | sed 's/^ *[0-9]* *//')" >> $MC_HISTFILE &)
+        }
+        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; } _log_hist"
+    fi
+    if [ "$MC_ZSH" ]; then
+        preexec() {
+            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t${1}" >> $MC_HISTFILE &)
+        }
+    fi
 fi
 
 ########################################################################
@@ -147,22 +147,22 @@ fi
 
 TIGRESS_HOME="/opt/tigress-unstable"
 if [ -d "$TIGRESS_HOME" ]; then
-	export TIGRESS_HOME
-	export PATH=$PATH:$TIGRESS_HOME
+    export TIGRESS_HOME
+    export PATH=$PATH:$TIGRESS_HOME
 fi
 
 TEXBIN_PATH="/Library/TeX/texbin"
 if [ -d "$TEXBIN_PATH" ]; then
-	export PATH=$PATH:$TEXBIN_PATH
+    export PATH=$PATH:$TEXBIN_PATH
 fi
 
 LLVM_PATH="/usr/local/opt/llvm/bin"
 if [ -d "$LLVM_PATH" ]; then
-	export PATH=$PATH:$LLVM_PATH
+    export PATH=$PATH:$LLVM_PATH
 fi
 
 MOTERUNNER_PATH="/opt/moterunner/linux64/bin"
 if [ -d "$MOTERUNNER_PATH" ]; then
-	export PATH=$PATH:$MOTERUNNER_PATH
-	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MOTERUNNER_PATH
+    export PATH=$PATH:$MOTERUNNER_PATH
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MOTERUNNER_PATH
 fi
