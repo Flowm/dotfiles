@@ -1,1 +1,1 @@
-cd && git clone ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -i -c extra
+cd && git clone ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -ie ssh -c tmuxa

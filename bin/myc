@@ -7,12 +7,14 @@ usage() {
     echo -e "\t-u Update config" 1>&2
     echo -e "\t-s Update submodules" 1>&2
     echo -e "\t-p Print clone command" 1>&2
-    echo -e "\t-c Config opts (extra, tmux, apt-base)" 1>&2
+    echo -e "\t-c Config settings (sagent, tmuxa, tmuxad)" 1>&2
+    echo -e "\t-e Extra config opts (ssh, apt-base)" 1>&2
     exit 1
 }
 
-EXTRA_CONF=( "" )
-while getopts ":iuspc:dh" opt; do
+MYC_CONF=( "" )
+MYC_EXTRA=( "" )
+while getopts ":iuspc:e:dh" opt; do
     case $opt in
         i)
             INST=true;
@@ -27,7 +29,10 @@ while getopts ":iuspc:dh" opt; do
             PRINT=true;
             ;;
         c)
-            EXTRA_CONF+=("$OPTARG")
+            MYC_CONF+=("$OPTARG")
+            ;;
+        e)
+            MYC_EXTRA+=("$OPTARG")
             ;;
         d)
             DEBUG=true; set -x
@@ -58,14 +63,25 @@ if [ ${PRINT:-} ]; then
     cat ${conf_dir}/data/instdb/myconf
 fi
 
-for CONF in "${EXTRA_CONF[@]}"; do
-    if [ "$CONF" == "extra" ]; then
-        echo "Install extra config"
-        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
-    elif [ "$CONF" == "tmux" ]; then
+for CONF in "${MYC_CONF[@]}"; do
+    if [ "$CONF" == "sagent" ]; then
+        echo "Configure ssh-agent autostart"
+        touch ~/.myc-sagent
+    elif [ "$CONF" == "tmuxa" ]; then
         echo "Configure tmux autoattach"
         touch ~/.myc-tmuxa
-    elif [ "$CONF" == "apt-base" ]; then
+    elif [ "$CONF" == "tmuxad" ]; then
+        echo "Configure tmux autoattach and detach"
+        touch ~/.myc-tmuxa
+        touch ~/.myc-tmuxad
+    fi
+done
+
+for EXTRA in "${MYC_EXTRA[@]}"; do
+    if [ "$EXTRA" == "ssh" ]; then
+        echo "Install ssh config"
+        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
+    elif [ "$EXTRA" == "apt-base" ]; then
         echo "Install base software"
         sudo ${conf_dir}/data/instdb/apt-base
     fi
