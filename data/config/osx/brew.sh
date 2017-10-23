@@ -15,6 +15,9 @@ brewapps=(
     cmake
     coreutils
     git
+    git-cal
+    git-standup
+    git-quick-stats
     gource
     htop
     jq
