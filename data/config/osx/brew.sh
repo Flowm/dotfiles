@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
+set -eu
+
+action=install
+#action=upgrade
 
 echo "Installing brew apps"
 brewapps=(
     arp-scan
+    avr-gcc
+    avrdude
     bash
     boost
     carthage
     cmake
+    coreutils
     git
-    htop-osx
+    gource
+    htop
     jq
-    mobile-shell
+    mosh
     mtr
+    pandoc
     picocom
     rename
     the_silver_searcher
@@ -22,7 +31,7 @@ brewapps=(
     youtube-dl
     zsh
 )
-brew install ${brewapps[@]}
+brew $action ${brewapps[@]}
 
 echo "Installing brew cask apps"
 brewcaskapps=(
@@ -39,7 +48,6 @@ brewcaskapps=(
     firefox
     flux
     google-chrome
-    gource
     handbrake
     istat-menus
     iterm2
@@ -50,6 +58,7 @@ brewcaskapps=(
     reflector
     skim
     skype
+    slack
     spotify
     steam
     synergy
