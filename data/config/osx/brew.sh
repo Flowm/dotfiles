@@ -80,5 +80,6 @@ brewfonts=(
     font-yanone-kaffeesatz
     font-inconsolata
     font-droid-serif
+    font-source-code-pro
 )
-brew install ${brewfonts[@]}
+brew cask install ${brewfonts[@]}
