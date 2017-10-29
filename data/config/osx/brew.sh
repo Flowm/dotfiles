@@ -26,6 +26,7 @@ brewapps=(
     pandoc
     picocom
     rename
+    sl
     the_silver_searcher
     tmux
     unp
