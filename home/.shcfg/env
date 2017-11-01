@@ -76,6 +76,13 @@ if [ -d "$HOME/.local/bin" ]; then
     PATH="$PATH:$HOME/.local/bin"
 fi
 
+if [ -n "$MC_PRIV" ]; then
+    LOCAL_SBIN_PATH="/usr/local/sbin"
+    if [ -d "$LOCAL_SBIN_PATH" ]; then
+        export PATH=$PATH:$LOCAL_SBIN_PATH
+    fi
+fi
+
 # Locale settings. Force en_US.UTF-8 instead of smart detection for now
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
