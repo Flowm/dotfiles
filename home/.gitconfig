@@ -5,6 +5,7 @@
 	a    = add
 	au   = add -u
 	b    = branch
+	ba   = branch -a
 	br   = branch --sort=-committerdate
 	c    = commit
 	ca   = commit --amend
