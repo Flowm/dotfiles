@@ -81,6 +81,8 @@ for EXTRA in "${MYC_EXTRA[@]}"; do
     if [ "$EXTRA" == "ssh" ]; then
         echo "Install ssh config"
         git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
+        chmod 700 $HOME/.ssh
+        chmod 600 $HOME/.ssh/config
     elif [ "$EXTRA" == "apt-base" ]; then
         echo "Install base software"
         sudo ${conf_dir}/data/instdb/apt-base
