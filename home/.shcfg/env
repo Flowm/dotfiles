@@ -14,6 +14,9 @@ case "$MC_OS" in
                 MC_SLOWSYS=1
                 ;;
         esac
+        if grep -q Microsoft /proc/version; then
+            MC_WSL=1
+        fi
         MC_DIST_ID=$(grep ^ID= /etc/lsb-release 2>&1 | cut -d= -f2)
         MC_DIST_ID_LIKE=$(grep ^ID_LIKE= /etc/lsb-release 2>&1 | cut -d= -f2)
         ;;
@@ -90,6 +93,10 @@ export LANG=en_US.UTF-8
 
 if [ -n "$MC_OSX" ] && [ "$TERM_PROGRAM" = "iTerm.app" ]; then
     export LC_TERM="iterm"
+fi
+
+if [ -n "$MC_WSL" ]; then
+    unsetopt BG_NICE
 fi
 
 ########################################################################
