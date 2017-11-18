@@ -41,10 +41,10 @@ set history expansion on
 # Logging
 ################################################################################
 
-set logging file ~/.gdb_log
-set logging overwrite off
-set logging redirect off
-set logging on
+#set logging file ~/.gdb_log
+#set logging overwrite off
+#set logging redirect off
+#set logging on
 
 ################################################################################
 # Funcs
@@ -149,22 +149,22 @@ end
 
 source ~/.gdb/peda/peda.py
 source ~/.gdb/Pwngdb/pwngdb.py
-source ~/.gdb/Pwngdb/angelheap/gdbinit.py
+#source ~/.gdb/Pwngdb/angelheap/gdbinit.py
 
 ################################################################################
 # Plugin hooks
 ################################################################################
 
-define hook-run
-    python
-    import angelheap
-    angelheap.init_angelheap()
-end
-end
+#define hook-run
+#    python
+#    import angelheap
+#    angelheap.init_angelheap()
+#end
 
 ################################################################################
 # Plugin Funcs
 ################################################################################
+
 define hh
     heapinfo
     parseheap
