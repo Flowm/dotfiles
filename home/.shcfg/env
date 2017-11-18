@@ -168,6 +168,12 @@ if [ -d "$LLVM_PATH" ]; then
     export PATH=$PATH:$LLVM_PATH
 fi
 
+RBENV_PATH="$HOME/.rbenv/bin"
+if [ -d "$RBENV_PATH" ]; then
+    export PATH=$PATH:$RBENV_PATH
+    eval "$(rbenv init -)"
+fi
+
 MOTERUNNER_PATH="/opt/moterunner/linux64/bin"
 if [ -d "$MOTERUNNER_PATH" ]; then
     export PATH=$PATH:$MOTERUNNER_PATH
