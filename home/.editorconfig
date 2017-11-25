@@ -75,3 +75,8 @@ indent_style = space
 [*.php]
 indent_size = 4
 indent_style = space
+
+# Custom
+[*_eternal_history]
+indent_size = 8
+indent_style = tab
