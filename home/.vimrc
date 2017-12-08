@@ -365,7 +365,7 @@
 		" <F4> Toggle paste mode
 			set pastetoggle=<F4>
 
-		" Desing:
+		" Design:
 		" <F5> Toggle whitespace and tab display
 			map <silent><F5> :call ToggleList() <CR>
 		" <L-F5> Toggle visual highlighting of lines longer than 80 chars
@@ -386,10 +386,14 @@
 			map <silent><F10> :VimuxRunCommand("make") <CR>
 		" <L-F10> vimux RunCommandPromt
 			map <silent><leader><F10> :VimuxPromptCommand <CR>
-		" <F11> Paste to grave.io
-			map <F11> :w !bury -t % <CR>
-		" <F12> Display all custom keybindings
+		" <F11> Display all custom keybindings
 			map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
+
+		" Leader mapping:
+		" <L-m> VimuxRunLastCommand
+			map <silent><leader>m :VimuxRunLastCommand <CR>
+		" <L-M> VimuxPromptCommand
+			map <silent><leader>M :VimuxPromptCommand <CR>
 	" }
 " }
 " Settings for addons {
