@@ -89,4 +89,8 @@ if [ -n "$MC_LINUX" ]; then
             alias ifconfig='/sbin/ifconfig'
         fi
     fi
+    if [ -n "$MC_PRIV" ]; then
+        alias s='systemctl'
+        alias j='journalctl'
+    fi
 fi
