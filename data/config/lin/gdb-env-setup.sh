@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -eux
+set -ux
 
 BIN_DIR=~/bin/dbg
 GIT_DIR=~/.gdb
@@ -32,5 +32,5 @@ sudo apt install \
 
 # pwntools
 sudo apt install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential
-pip install --upgrade pip
-pip install --upgrade pwntools
+sudo pip install --upgrade pip
+sudo pip install --upgrade pwntools
