@@ -9,8 +9,11 @@ alias m='make'
 alias t='tmux new-session -A -s 0'
 alias v='vim'
 
-alias gr='grep -iIR'
+alias vo='vim -o *'
+alias vO='vim -O *'
 alias vimo='vim -O'
+
+alias gr='grep -iIR'
 alias mux='tmuxinator'
 
 alias du-h='du -h --max-depth=1 |sort -rh'
