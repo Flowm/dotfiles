@@ -51,6 +51,7 @@
 	sm   = submodule
 	smu  = submodule update --init --recursive
 	st   = stash
+	sti  = stash --keep-index
 	stp  = stash pop
 	devs =  shortlog -sne
 	# Utils
