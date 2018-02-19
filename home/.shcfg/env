@@ -199,3 +199,11 @@ if [ -d "$MOTERUNNER_PATH" ]; then
     export PATH=$PATH:$MOTERUNNER_PATH
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MOTERUNNER_PATH
 fi
+
+########################################################################
+# Host specific
+########################################################################
+
+if [ "$MC_HOST" = "spirit" ]; then
+    export TERM="xterm-color"
+fi

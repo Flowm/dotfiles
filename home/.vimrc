@@ -51,7 +51,6 @@
 
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
-	Plugin 'editorconfig/editorconfig-vim'
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'scrooloose/nerdtree'
@@ -69,6 +68,9 @@
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "app"
 		Plugin 'Valloric/YouCompleteMe'
+	endif
+	if hostname() != "spirit"
+		Plugin 'editorconfig/editorconfig-vim'
 	endif
 
 	if iCanHazVundle == 0
