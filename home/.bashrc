@@ -17,8 +17,8 @@ if [ -n "$MY_SHELL" ]; then
 fi
 
 # Shared config
-[ -e "${HOME}/.shcfg/.env" ] && source "${HOME}/.shcfg/.env"
-[ -e "${HOME}/.shcfg/.aliases" ] && source "${HOME}/.shcfg/.aliases"
+[ -e "${HOME}/.shcfg/env" ] && source "${HOME}/.shcfg/env"
+[ -e "${HOME}/.shcfg/aliases" ] && source "${HOME}/.shcfg/aliases"
 
 ########################################################################
 # Completion
@@ -217,27 +217,6 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 
 ########################################################################
-# TODO: Old stuff, move to script with options
-########################################################################
-
-# Sync
-alias rsyncc='rsync -e ssh --ipv4 -aiurP'
-alias carsync='rsync -e ssh --ipv4 -aiurPL carsten:fm/'
-alias carsync-doc='rsync -e ssh --ipv4 -aiurPL carsten:fm/ ~/Documents/carsync/ --bwlimit=500'
-alias carsync-towin='rsync -rltiuP ~/Documents/carsync/ /run/user/flow/gvfs/smb-share:server=nowhere,share=inc/carsync'
-alias carsync-tousb='rsync -rltiuP ~/Documents/carsync/ /media/flow/FastStick/carsync'
-
-########################################################################
 # Non interactive shells
 ########################################################################
-fi
-
-if [ -d "$HOME/.rvm" ] ; then
-	PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-	source ~/.rvm/scripts/rvm
-fi
-if [ -d "$HOME/.rbenv" ] ; then
-	export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-	export PATH="$HOME/.rbenv/bin:$PATH"
-	eval "$(rbenv init -)"
 fi
