@@ -6,6 +6,7 @@ alias a='ack-grep'
 alias g='git'
 alias h='history'
 alias m='make'
+alias s='sudo systemctl'
 alias t='tmux new-session -A -s 0'
 alias v='vim'
 
