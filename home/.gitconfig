@@ -63,9 +63,6 @@
 	webstart = instaweb --httpd=webrick --start
 	webstop  = instaweb --httpd=webrick --stop
 	pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
-	# Gerrit
-	ge-psh = push origin HEAD:refs/for/master
-	gz-psh = "!f() { b=${1-gz52}; git push ssh://gerrit/gz.git HEAD:refs/for/$b; }; f"
 [color]
 	branch = auto
 	diff = auto
