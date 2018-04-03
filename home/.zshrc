@@ -44,11 +44,9 @@ export SAVEHIST=$HISTSIZE
 plugins=(
 	vi-mode # Load vi-mode first
 	colored-man-pages
-	command-not-found
 	extract
 	history-substring-search
 	mosh
-	rbenv
 	rsync
 	tmuxinator
 	vagrant
