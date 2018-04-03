@@ -39,11 +39,14 @@ alias myip='curl ipecho.net/plain;echo'
 alias myports='for p in {1..1024}; do nc -vzw0 open.zorinaq.com $p 2>/dev/null ; if [ $? -eq 0 ]; then echo $p; fi; done'
 alias mynmap='sudo nmap --spoof-mac Cisco --data-length 9 -f -v -n -O -sS -sV -oA ~/.tmp/scan/nmap --log-errors -append-output -p T:1-1024,2222,8080,8888,9999,22022 --randomize-hosts'
 alias mytcpdump='sudo tcpdump not arp and not stp and not ip proto 112 and not proto 89'
-alias myrsync='rsync -e ssh --ipv4 -rltiuP'
-alias myrsynca='rsync -e ssh --ipv4 -aiurP'
 alias mypwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896x1200" -gone "newrez default"'
+
+alias rsync-copy="rsync -avzhP"
+alias rsync-move="rsync -avzhP --remove-source-files"
+alias rsync-update="rsync -avzuhP"
+alias rsync-synchronize="rsync -avzuhP --delete"
 
 ########################################################################
 # Funcs

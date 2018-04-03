@@ -47,7 +47,6 @@ plugins=(
 	extract
 	history-substring-search
 	mosh
-	rsync
 	tmuxinator
 	vagrant
 	z
