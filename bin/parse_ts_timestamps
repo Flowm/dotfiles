@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+import sys
+SLOW_THRESHOLD = 0.001
+
+
+def parse_line(raw_line):
+    line = raw_line.strip()
+    timestr, content = line.split(' ', 1)
+    time = float(timestr)
+    return time, content
+
+
+def main(filename):
+    with open(filename) as f:
+        start_ts, prev_line = parse_line(f.readline())
+        prev_line_ts = start_ts
+
+        for line in f.readlines():
+            if len(line) == 0 or line == "\n":
+                continue
+
+            try:
+                ts, content = parse_line(line)
+            except ValueError:
+                continue
+            diff = ts - prev_line_ts
+            if diff > SLOW_THRESHOLD:
+                print("%f %f %s" % (ts-start_ts, diff, prev_line))
+            prev_line_ts = ts
+            prev_line = content
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])
