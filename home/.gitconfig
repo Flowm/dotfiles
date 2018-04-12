@@ -9,6 +9,7 @@
 	br   = branch --sort=-committerdate
 	c    = commit
 	ca   = commit --amend
+	cane = commit --amend --no-edit
 	cf   = commit --fixup
 	cs   = commit --squash
 	cm   = commit --message
