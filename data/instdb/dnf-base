@@ -9,7 +9,6 @@ dnf install -y \
   unp \
   vim \
   zsh \
-  qtcreator qt5 libpciaccess-devel \
   ;
 
 systemctl enable sshd
