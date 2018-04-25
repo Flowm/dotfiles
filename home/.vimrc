@@ -228,6 +228,9 @@
 		map <silent> <C-l> :silent nohl<CR>
 			"Save as root
 		cmap w!! %!sudo tee > /dev/null %
+			"Single line diffput and diffget
+		vnoremap <silent> dp :diffput<cr>:diffupdate<cr>
+		vnoremap <silent> dg :diffget<cr>:diffupdate<cr>
 	" }
 	" Custom Keyset {
 		let mapleader = ","
