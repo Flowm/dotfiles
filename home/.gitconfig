@@ -23,6 +23,7 @@
 	di   = difftool
 	dic  = difftool --cached
 	dih  = difftool HEAD
+	dw   = diff --word-diff
 	f    = fetch
 	fp   = fetch --prune
 	g    = !exec git
