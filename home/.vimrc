@@ -229,9 +229,6 @@
 		map <silent> <C-l> :silent nohl<CR>
 			"Save as root
 		cmap w!! %!sudo tee > /dev/null %
-			"Single line diffput and diffget
-		vnoremap <silent> dp :diffput<cr>:diffupdate<cr>
-		vnoremap <silent> dg :diffget<cr>:diffupdate<cr>
 	" }
 	" Custom Keyset {
 		let mapleader = ","
@@ -240,6 +237,9 @@
 			"Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
 		nnoremap <leader>w <C-w>h<C-w>l
+			"Single line diffput and diffget
+		vnoremap <silent> <leader>dp :diffput<cr>:diffupdate<cr>
+		vnoremap <silent> <leader>do :diffget<cr>:diffupdate<cr>
 	" }
 	" C&P between files via a tempfile {
 			"Copy to buffer
