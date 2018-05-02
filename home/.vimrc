@@ -64,6 +64,7 @@
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'majutsushi/tagbar'
+	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "app"
