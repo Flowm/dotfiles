@@ -2,14 +2,6 @@
 # General
 ################################################################################
 
-if sizeof(void*) != 2
-    # Pretty syntax
-    set disassembly-flavor intel
-
-    # ASLR
-    set disable-randomization off
-end
-
 set confirm off
 set verbose off
 set backtrace past-main on
@@ -47,6 +39,25 @@ set history expansion on
 #set logging overwrite off
 #set logging redirect off
 #set logging on
+
+################################################################################
+# Target specific
+################################################################################
+
+if sizeof(void*) != 2
+    # Pretty syntax
+    set disassembly-flavor intel
+
+    # ASLR
+    set disable-randomization off
+else
+    # msp430
+    set remoteaddresssize 64
+    set remotetimeout 999999
+    set remote memory-write-packet-size 512
+    set remote memory-read-packet-size 512
+    target remote localhost:2000
+end
 
 ################################################################################
 # Funcs
