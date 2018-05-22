@@ -2,11 +2,13 @@
 # General
 ################################################################################
 
-# Pretty syntax
-set disassembly-flavor intel
+if sizeof(void*) != 2
+    # Pretty syntax
+    set disassembly-flavor intel
 
-# ASLR
-set disable-randomization off
+    # ASLR
+    set disable-randomization off
+end
 
 set confirm off
 set verbose off
@@ -73,7 +75,8 @@ define ps
         printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 16), *((long*)$sp + 17), *((long*)$sp + 18), *((long*)$sp + 19)
         printf "  %#018lx %#018lx %#018lx %#018lx\n", *((long*)$sp + 20), *((long*)$sp + 21), *((long*)$sp + 22), *((long*)$sp + 23)
         printf "\n"
-    else
+    end
+    if sizeof(void*) == 4
         # x86
         printf "\n"
         echo \033[32m
@@ -88,6 +91,25 @@ define ps
         printf "  %#010x %#010x %#010x %#010x\n", *((int*)$sp + 4),  *((int*)$sp + 5),  *((int*)$sp + 6),  *((int*)$sp + 7)
         printf "  %#010x %#010x %#010x %#010x\n", *((int*)$sp + 8),  *((int*)$sp + 9),  *((int*)$sp + 10), *((int*)$sp + 11)
         printf "  %#010x %#010x %#010x %#010x\n", *((int*)$sp + 12), *((int*)$sp + 13), *((int*)$sp + 14), *((int*)$sp + 15)
+        printf "\n"
+    end
+    if sizeof(void*) == 2
+        # msp430
+        printf "\n"
+        echo \033[32m
+        x/6i $pc
+        echo \033[0m
+        printf "\n"
+        printf "pc: %8lx    sp: %8lx    sr: %8lx    cg: %8lx\n", $pc,  $sp,  $sr,  $cg
+        printf "r4: %8lx    r5: %8lx    r6: %8lx    r7: %8lx\n", $r4,  $r5,  $r6,  $r7
+        printf "r8: %8lx    r9: %8lx    r10:%8lx    r11:%8lx\n", $r8,  $r9,  $r10, $r11
+        printf "r12:%8lx    r13:%8lx    r14:%8lx    r15:%8lx\n", $r12, $r13, $r14, $r15
+        printf "\n"
+        printf "  %#08lx %#08lx %#08lx %#08lx\n", *((int*)$sp - 8),  *((int*)$sp - 7),  *((int*)$sp - 6),  *((int*)$sp - 5)
+        printf "  %#08lx %#08lx %#08lx %#08lx\n", *((int*)$sp - 4),  *((int*)$sp - 3),  *((int*)$sp - 2),  *((int*)$sp - 1)
+        printf "=>%#08lx %#08lx %#08lx %#08lx\n", *((int*)$sp + 0),  *((int*)$sp + 1),  *((int*)$sp + 2),  *((int*)$sp + 3)
+        printf "  %#08lx %#08lx %#08lx %#08lx\n", *((int*)$sp + 4),  *((int*)$sp + 5),  *((int*)$sp + 6),  *((int*)$sp + 7)
+        printf "  %#08lx %#08lx %#08lx %#08lx\n", *((int*)$sp + 8),  *((int*)$sp + 9),  *((int*)$sp + 10), *((int*)$sp + 11)
         printf "\n"
     end
 end
@@ -147,8 +169,8 @@ end
 # Plugins
 ################################################################################
 
-source ~/.gdb/peda/peda.py
-source ~/.gdb/Pwngdb/pwngdb.py
+#source ~/.gdb/peda/peda.py
+#source ~/.gdb/Pwngdb/pwngdb.py
 #source ~/.gdb/Pwngdb/angelheap/gdbinit.py
 
 ################################################################################
