@@ -172,6 +172,13 @@ fi
 # Program specific
 ########################################################################
 
+GOPATH="$HOME/Dev/go"
+if [ -d "$GOPATH" ]; then
+    export GOPATH
+    export GOBIN=$GOPATH/bin
+    export PATH=$PATH:$GOPATH/bin
+fi
+
 TIGRESS_HOME="/opt/tigress-unstable"
 if [ -d "$TIGRESS_HOME" ]; then
     export TIGRESS_HOME
