@@ -179,12 +179,6 @@ if [ -d "$GOPATH" ]; then
     export PATH=$PATH:$GOPATH/bin
 fi
 
-TIGRESS_HOME="/opt/tigress-unstable"
-if [ -d "$TIGRESS_HOME" ]; then
-    export TIGRESS_HOME
-    export PATH=$PATH:$TIGRESS_HOME
-fi
-
 TEXBIN_PATH="/Library/TeX/texbin"
 if [ -d "$TEXBIN_PATH" ]; then
     export PATH=$PATH:$TEXBIN_PATH
@@ -199,12 +193,6 @@ RBENV_PATH="$HOME/.rbenv/bin"
 if [ -d "$RBENV_PATH" ]; then
     export PATH=$PATH:$RBENV_PATH
     eval "$(rbenv init -)"
-fi
-
-MOTERUNNER_PATH="/opt/moterunner/linux64/bin"
-if [ -d "$MOTERUNNER_PATH" ]; then
-    export PATH=$PATH:$MOTERUNNER_PATH
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MOTERUNNER_PATH
 fi
 
 ########################################################################
