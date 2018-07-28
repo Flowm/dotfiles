@@ -6,36 +6,57 @@ action=install
 
 echo "Installing brew apps"
 brewapps=(
+    ansible
     arp-scan
     avr-gcc
     avrdude
     bash
     boost
     carthage
+    cask-repair
     cmake
     coreutils
+    cppcheck
+    ctags
+    direnv
+    dos2unix
     git
     git-cal
-    git-standup
     git-quick-stats
+    git-standup
+    gnu-sed
+    go
     gource
+    hr
     htop
+    iftop
     jq
+    macvim
     mosh
+    mosquitto
+    mspdebug
     mtr
+    nmap
+    node
     pandoc
     picocom
+    pv
+    radare2
     rename
     sl
+    sshuttle
+    stlink
+    telnet
     the_silver_searcher
     tmux
     unp
     watch
     wget
+    xz
     youtube-dl
     zsh
 )
-brew $action ${brewapps[@]}
+brew $action "${brewapps[@]}"
 
 echo "Installing brew cask apps"
 brewcaskapps=(
@@ -46,34 +67,37 @@ brewcaskapps=(
     arduino
     arq
     bettertouchtool
+    coconutbattery
+    coolterm
     dash
     dropbox
-    filezilla
+    eagle
     firefox
     flux
+    google-backup-and-sync
     google-chrome
     handbrake
     istat-menus
     iterm2
+    jqbx
     mactex
-    macvim
     obs
     papers
-    reflector
+    postman
+    raindropio
+    saleae-logic
     skim
     skype
     slack
     spotify
     steam
-    synergy
-    teamspeak-client
     texpad
     tigervnc-viewer
-    vagrant
-    virtualbox
+    visual-paradigm-ce
+    visual-studio-code
     vlc
 )
-brew cask install ${brewcaskapps[@]}
+brew cask install "${brewcaskapps[@]}"
 
 echo "Installing brew fonts"
 brew tap caskroom/fonts
@@ -83,4 +107,4 @@ brewfonts=(
     font-droid-serif
     font-source-code-pro
 )
-brew cask install ${brewfonts[@]}
+brew cask install "${brewfonts[@]}"
