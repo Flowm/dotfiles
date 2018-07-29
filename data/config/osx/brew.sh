@@ -5,15 +5,13 @@ action=install
 #action=upgrade
 
 echo "Installing brew apps"
-brewapps=(
+brew_apps=(
     ansible
     arp-scan
-    avr-gcc
     avrdude
     bash
     boost
     carthage
-    cask-repair
     cmake
     coreutils
     cppcheck
@@ -56,10 +54,10 @@ brewapps=(
     youtube-dl
     zsh
 )
-brew $action "${brewapps[@]}"
+brew $action "${brew_apps[@]}"
 
 echo "Installing brew cask apps"
-brewcaskapps=(
+brew_cask=(
     1password
     aerial
     alfred
@@ -85,10 +83,8 @@ brewcaskapps=(
     papers
     postman
     raindropio
-    saleae-logic
     skim
     skype
-    slack
     spotify
     steam
     texpad
@@ -97,14 +93,23 @@ brewcaskapps=(
     visual-studio-code
     vlc
 )
-brew cask install "${brewcaskapps[@]}"
+brew cask install "${brew_cask[@]}"
+
+echo "Installing brew cask driver apps"
+brew tap homebrew/cask-drivers
+brew_cask_drivers=(
+    saleae-logic
+)
+brew cask install "${brew_cask_drivers[@]}"
+
+echo "Installing brew cask repair"
+brew install vitorgalvao/tiny-scripts/cask-repair
 
 echo "Installing brew fonts"
 brew tap caskroom/fonts
-brewfonts=(
+brew_fonts=(
     font-yanone-kaffeesatz
     font-inconsolata
-    font-droid-serif
     font-source-code-pro
 )
-brew cask install "${brewfonts[@]}"
+brew cask install "${brew_fonts[@]}"
