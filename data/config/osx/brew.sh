@@ -68,6 +68,7 @@ brew_cask=(
     coconutbattery
     coolterm
     dash
+    discord
     dropbox
     eagle
     firefox
@@ -75,9 +76,11 @@ brew_cask=(
     google-backup-and-sync
     google-chrome
     handbrake
+    intel-power-gadget
     istat-menus
     iterm2
     jqbx
+    ledger-live
     mactex
     obs
     papers
