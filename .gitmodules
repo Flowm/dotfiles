@@ -12,4 +12,4 @@
 	url = https://github.com/chrissicool/zsh-256color.git
 [submodule "home/.shcfg/.omz-custom/plugins/zsh-iterm-touchbar"]
 	path = home/.shcfg/.omz-custom/plugins/zsh-iterm-touchbar
-	url = https://github.com/iam4x/zsh-iterm-touchbar.git
+	url = https://github.com/Flowm/zsh-iterm-touchbar.git
