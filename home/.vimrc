@@ -401,6 +401,14 @@
 		" <L-M> VimuxPromptCommand
 			map <silent><leader>M :VimuxPromptCommand <CR>
 	" }
+	" Touchbar labels for MacBook
+	if $LC_TERM == 'iterm' && executable("touchbar-set")
+		function Update_touchbar()
+			let file_name = expand('%:t')
+			silent execute '!touchbar-set 1 "📃' file_name '"'
+		endfunction
+		autocmd VimEnter,WinEnter,BufWinEnter,BufUnload * call Update_touchbar()
+	endif
 " }
 " Settings for addons {
 	" vim-gitgutter {

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+pecho() {
+  if [ -n "$TMUX" ]; then
+    echo -ne "\ePtmux;\e$*\e\\"
+  else
+    echo -ne $*
+  fi
+}
+
+function _clearTouchbar() {
+  pecho "\033]1337;PopKeyLabels\a"
+}
+
+function setKey() {
+  local key=$1
+  local label=$2
+  local action=$3
+  local silent=$4
+
+  pecho "\033]1337;SetKeyLabel=F${key}=${label}\a"
+}
+
+function clearKey() {
+  local key=$1
+  pecho "\033]1337;SetKeyLabel=F${key}=F${key}\a"
+}
+
+setKey "$@"
