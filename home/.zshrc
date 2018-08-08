@@ -55,6 +55,8 @@ plugins=(
 )
 if [[ -n "$MC_OSX" ]]; then
 	plugins[$(($#plugins+1))]=osx
+fi
+if [[ "$LC_TERM" == "iterm" ]]; then
 	plugins[$(($#plugins+1))]=zsh-iterm-touchbar
 fi
 
