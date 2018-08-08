@@ -219,6 +219,7 @@
 	" Misc {
 			"Easier escape
 		inoremap jj <ESC>
+		inoremap jk <ESC>
 		inoremap ,, <ESC>
 			"Match brackets key
 		nnoremap <tab> %
