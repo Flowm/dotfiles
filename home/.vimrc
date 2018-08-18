@@ -67,7 +67,7 @@
 	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
-	if hostname() == "flake" || hostname() == "app"
+	if hostname() == "flake" || hostname() == "mars" || hostname() == "app"
 		Plugin 'Valloric/YouCompleteMe'
 	endif
 	if hostname() != "spirit"
