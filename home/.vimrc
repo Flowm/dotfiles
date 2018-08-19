@@ -446,6 +446,9 @@
 	" }
 	" YouCompleteMe {
 		"let g:loaded_youcompleteme = 1
+		let g:ycm_show_diagnostics_ui = 1
+		let g:ycm_enable_diagnostic_signs = 0
+		let g:ycm_enable_diagnostic_highlighting = 0
 	" }
 " }
 
@@ -463,7 +466,6 @@
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
-			au BufRead,BufNewFile *aegis-* set textwidth=72
 			au BufRead,BufNewFile *_eternal_history set tabstop=8
 		" }
 		augroup END
