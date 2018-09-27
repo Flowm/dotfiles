@@ -15,11 +15,13 @@ brew_apps=(
     cmake
     coreutils
     cppcheck
+    cscope
     ctags
     direnv
     dos2unix
     git
     git-cal
+    git-lfs
     git-quick-stats
     git-standup
     gnu-sed
@@ -30,6 +32,7 @@ brew_apps=(
     iftop
     jq
     macvim
+    mercurial
     mosh
     mosquitto
     mspdebug
@@ -53,6 +56,7 @@ brew_apps=(
     xz
     youtube-dl
     zsh
+    zstd
 )
 brew $action "${brew_apps[@]}"
 
@@ -60,6 +64,7 @@ echo "Installing brew cask apps"
 brew_cask=(
     1password
     aerial
+    airflow
     alfred
     appcleaner
     arduino
@@ -69,10 +74,12 @@ brew_cask=(
     coolterm
     dash
     discord
+    drawio
     dropbox
     eagle
     firefox
     flux
+    gcc-arm-embedded
     google-backup-and-sync
     google-chrome
     handbrake
@@ -84,17 +91,22 @@ brew_cask=(
     mactex
     obs
     papers
+    parallels
     postman
     raindropio
+    sequel-pro
     skim
     skype
     spotify
     steam
+    suspicious-package
     texpad
     tigervnc-viewer
     visual-paradigm-ce
     visual-studio-code
     vlc
+    wireshark
+    zotero
 )
 brew cask install "${brew_cask[@]}"
 
