@@ -59,7 +59,6 @@
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'Lokaltog/vim-easymotion'
-	Plugin 'vim-scripts/ReplaceWithRegister'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'ctrlpvim/ctrlp.vim'
