@@ -36,6 +36,10 @@ defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 
+# Expand print panel by default
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
@@ -74,10 +78,7 @@ defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryCli
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
-
-# Disable auto-correct
-defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain InitialKeyRepeat -int 12
 
 # Stop iTunes from responding to the keyboard media keys
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
@@ -100,6 +101,9 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # Finder: show path bar
 #defaults write com.apple.finder ShowPathbar -bool true
 
+# Display full POSIX path as Finder window title
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
 # Keep folders on top when sorting by name
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
@@ -118,7 +122,7 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-chflags nohidden /Volumes
+sudo chflags nohidden /Volumes
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
@@ -157,6 +161,8 @@ sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
 
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 # Enable “Do Not Track”
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
@@ -198,6 +204,16 @@ defaults write com.apple.commerce AutoUpdate -bool true
 
 # Prevent Photos from opening automatically when devices are plugged in
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
+
+###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Disable smart quotes as it’s annoying for messages that contain code
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 ###############################################################################
 # Kill affected applications                                                  #
