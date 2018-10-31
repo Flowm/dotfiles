@@ -95,7 +95,7 @@ if [ -n "$MC_LINUX" ]; then
         fi
     fi
     if [ -n "$MC_PRIV" ]; then
-        alias s='systemctl'
-        alias j='journalctl'
+        alias sctl='systemctl'
+        alias jctl='journalctl'
     fi
 fi
