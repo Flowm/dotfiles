@@ -67,7 +67,7 @@
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "mars" || hostname() == "app"
-		Plugin 'Valloric/YouCompleteMe'
+		Plugin 'ycm-core/YouCompleteMe'
 	endif
 	if hostname() != "spirit"
 		Plugin 'editorconfig/editorconfig-vim'
