@@ -28,6 +28,7 @@ alias ssh-nKY='ssh -o PubkeyAuthentication=no'
 
 alias httpserver='python -m SimpleHTTPServer'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
+alias httptest-hetzner='wget speed.hetzner.de/100MB.bin -O /dev/null'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
 alias openports='netstat -antp --udp | grep LISTEN'
 alias ping88='ping 8.8.8.8'
