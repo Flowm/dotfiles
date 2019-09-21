@@ -36,18 +36,18 @@
 
 " Vundle with automatic setup {
 	let iCanHazVundle=1
-	let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+	let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
 	if !filereadable(vundle_readme)
 		echo "Installing Vundle..."
 		echo ""
 		silent !mkdir -p ~/.vim/bundle
-		silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+		silent !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 		let iCanHazVundle=0
 	endif
-	set rtp+=~/.vim/bundle/vundle
+	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
 
-	Plugin 'gmarik/vundle'
+	Plugin 'VundleVim/Vundle.vim'
 
 	Plugin 'vim-airline/vim-airline'
 	Plugin 'vim-airline/vim-airline-themes'
