@@ -80,6 +80,7 @@ done
 for EXTRA in "${MYC_EXTRA[@]}"; do
     if [ "$EXTRA" == "ssh" ]; then
         echo "Install ssh config"
+        git -C "$conf_home" remote set-url origin ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git
         git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
         chmod 700 $HOME/.ssh || true
         chmod 600 $HOME/.ssh/config || true
