@@ -120,6 +120,9 @@ brew cask install "${brew_cask_drivers[@]}"
 echo "Installing brew cask repair"
 brew install vitorgalvao/tiny-scripts/cask-repair
 
+echo "Installing brew-cask-upgrade"
+brew tap buo/cask-upgrade
+
 echo "Installing brew fonts"
 brew tap caskroom/fonts
 brew_fonts=(
