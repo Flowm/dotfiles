@@ -61,6 +61,7 @@
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'scrooloose/syntastic'
 	Plugin 'sheerun/vim-polyglot'
+	Plugin 'posva/vim-vue'
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'majutsushi/tagbar'
 	Plugin 'chrisbra/csv.vim'
@@ -438,7 +439,7 @@
 		nnoremap <silent> <leader>b :TagbarToggle<CR>
 	" }
 	" syntastic {
-		let g:syntastic_cpp_compiler_options = '-std=c++11'
+		let g:syntastic_cpp_compiler_options = '-std=c++14'
 		let g:syntastic_arduino_checkers=['']
 		let g:syntastic_quiet_messages = {
 			\ "!level": "errors" }
@@ -449,6 +450,9 @@
 		let g:ycm_enable_diagnostic_signs = 0
 		let g:ycm_enable_diagnostic_highlighting = 0
 	" }
+	" vim-vue {
+        let html_no_rendering = 1
+    " }
 " }
 
 " Conditionals {
