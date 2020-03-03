@@ -116,6 +116,20 @@ fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
 ########################################################################
+# SSH hostname in tmux window name
+########################################################################
+
+ssh() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        tmux rename-window "$(echo $* | awk '{for(i=1; i<=NF; i++) {if($i !~ /^-/) print $i}}')"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
+    fi
+}
+
+########################################################################
 # Autoattach tmux
 ########################################################################
 
