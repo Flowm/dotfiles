@@ -68,7 +68,7 @@
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "mars" || hostname() == "app"
-		Plugin 'ycm-core/YouCompleteMe'
+		"Plugin 'ycm-core/YouCompleteMe'
 	endif
 	if hostname() != "spirit"
 		Plugin 'editorconfig/editorconfig-vim'
@@ -121,7 +121,7 @@
 		set clipboard-=autoselect
 		set guioptions-=a
 			" Use the best available cryptmethod
-		if has("patch-7.4.399")
+		if has("patch-7.4.399") && !has("nvim")
 			set cryptmethod=blowfish2
 		endif
 	" }
