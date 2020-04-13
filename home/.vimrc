@@ -66,6 +66,7 @@
 	Plugin 'majutsushi/tagbar'
 	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
+	Plugin 'ajh17/VimCompletesMe'
 	Plugin 'loremipsum'
 	if hostname() == "flake" || hostname() == "mars" || hostname() == "app"
 		"Plugin 'ycm-core/YouCompleteMe'
@@ -451,8 +452,8 @@
 		let g:ycm_enable_diagnostic_highlighting = 0
 	" }
 	" vim-vue {
-        let html_no_rendering = 1
-    " }
+		let html_no_rendering = 1
+	" }
 " }
 
 " Conditionals {
