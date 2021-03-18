@@ -1,110 +1,113 @@
 [user]
-	name = Florian Mauracher
-	email = flo@mauracher.eu
+    name = Florian Mauracher
+    email = flo@mauracher.eu
 [alias]
-	a    = add
-	au   = add -u
-	b    = branch
-	ba   = branch -a
-	br   = branch --sort=-committerdate
-	c    = commit
-	ca   = commit --amend
-	cane = commit --amend --no-edit
-	cf   = commit --fixup
-	cs   = commit --squash
-	cm   = commit --message
-	co   = checkout
-	cob  = checkout -b
-	cod  = checkout develop
-	com  = checkout master
-	cp   = cherry-pick
-	d    = diff
-	dc   = diff --cached
-	dh   = diff HEAD
-	di   = difftool
-	dic  = difftool --cached
-	dih  = difftool HEAD
-	dw   = diff --word-diff
-	f    = fetch
-	fp   = fetch --prune
-	g    = !exec git
-	gr   = grep
-	git  = !exec git
-	l    = log --oneline
-	lg   = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -10
-	lgl  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lgla = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ai) %C(bold blue)<%an>%Creset' --abbrev-commit
-	lgp  = log -p
-	lgr  = log --grep
-	lp   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
-	lpl  = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	lpx  = log --pretty=format:'%s'
-	lol  = log --graph --decorate --pretty=oneline --abbrev-commit
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	p    = push
-	pf   = push --force-with-lease
-	puo  = push -u origin
-	pl   = pull
-	pr   = pull --rebase
-	rb   = rebase
-	rba  = rebase --abort
-	rbc  = rebase --continue
-	rbo  = rebase origin/master
-	rbi  = rebase -i
-	rbio = rebase -i origin/master
-	rs   = reset
-	rso  = reset origin/master
-	rsho = reset --hard origin/master
-	s    = status
-	sm   = submodule
-	smu  = submodule update --init --recursive
-	st   = stash
-	sti  = stash --keep-index
-	stp  = stash pop
-	devs =  shortlog -sne
-	# Utils
-	lcf  = diff-tree --no-commit-id --name-only -r
-	lcfh = diff-tree --no-commit-id --name-only -r HEAD
-	alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
-	cleanup = !git branch --merged | egrep -v '(^\\*|master|develop|dev)' | xargs git branch -d
-	webstart = instaweb --httpd=webrick --start
-	webstop  = instaweb --httpd=webrick --stop
-	pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+    a     = add
+    au    = add -u
+    b     = branch
+    ba    = branch -a
+    br    = branch --sort=-committerdate
+    c     = commit
+    ca    = commit --amend
+    cane  = commit --amend --no-edit
+    cf    = commit --fixup
+    cs    = commit --squash
+    cm    = commit --message
+    co    = checkout
+    cob   = checkout -b
+    cod   = checkout develop
+    com   = checkout master
+    cp    = cherry-pick
+    d     = diff
+    dc    = diff --cached
+    dh    = diff HEAD
+    di    = difftool
+    dic   = difftool --cached
+    dih   = difftool HEAD
+    dw    = diff --word-diff
+    f     = fetch
+    fp    = fetch --prune
+    g     = !exec git
+    gr    = grep
+    git   = !exec git
+    l     = log --oneline
+    lg    = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -10
+    lgl   = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgla  = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%ai) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lgp   = log -p
+    lgr   = log --grep
+    lp    = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+    lpl   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lpx   = log --pretty=format:'%s'
+    lol   = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola  = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    p     = push
+    pf    = push --force-with-lease
+    puo   = push -u origin
+    pl    = pull
+    plr   = pull --rebase
+    rb    = rebase
+    rba   = rebase --abort
+    rbc   = rebase --continue
+    rbod  = rebase origin/develop
+    rbom  = rebase origin/master
+    rbi   = rebase -i
+    rbiod = rebase -i origin/develop
+    rbiom = rebase -i origin/master
+    rs    = reset
+    rsom  = reset origin/master
+    rshod = reset --hard origin/develop
+    rshom = reset --hard origin/master
+    s     = status
+    sm    = submodule
+    smu   = submodule update --init --recursive
+    st    = stash
+    sti   = stash --keep-index
+    stp   = stash pop
+    devs  =  shortlog -sne
+    # Utils
+    lcf  = diff-tree --no-commit-id --name-only -r
+    lcfh = diff-tree --no-commit-id --name-only -r HEAD
+    alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
+    cleanup = !git branch --merged | egrep -v '(^\\*|master|main|develop|dev)' | xargs git branch -d
+    webstart = instaweb --httpd=webrick --start
+    webstop  = instaweb --httpd=webrick --stop
+    pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
-	ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+    ui = auto
 [core]
-	pager = less -RFX
-	excludesfile = ~/.gitignore
+    pager = less -RFX
+    excludesfile = ~/.gitignore
 [diff]
-	tool = vimdiff
-	compactionHeuristic = true
+    tool = vimdiff
+    compactionHeuristic = true
 [difftool]
-	prompt = false
+    prompt = false
 [interactive]
-	#diffFilter = diff-highlight
+    #diffFilter = diff-highlight
 [merge]
-	conflictstyle = diff3
-	tool = vimdiff
-	renamelimit = 50000
+    conflictstyle = diff3
+    tool = vimdiff
+    renamelimit = 50000
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [push]
-	# Change to simple when only using git 2.0
-	default = current
+    # Change to simple when only using git 2.0
+    default = current
 [rebase]
-	autosquash = true
+    autosquash = true
 [rerere]
-	enabled = false
+    enabled = false
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [pull]
-	ff = only
+    ff = only
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
