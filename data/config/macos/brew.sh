@@ -8,49 +8,39 @@ echo "Installing brew apps"
 brew_apps=(
     ansible
     arp-scan
-    avrdude
-    bash
-    boost
-    carthage
-    cmake
+    bpytop
     coreutils
-    cppcheck
-    cscope
-    ctags
     direnv
     dos2unix
     git
     git-cal
     git-lfs
     git-quick-stats
-    git-standup
     gnu-sed
     go
     gource
-    hr
     htop
     iftop
     jq
-    macvim
-    mercurial
     mosh
     mosquitto
-    mspdebug
     mtr
     nmap
     node
     pandoc
     picocom
     pv
+    pwgen
     radare2
     rename
+    rsync
     sl
     sshuttle
-    stlink
+    tac
     telnet
-    the_silver_searcher
     tmux
     unp
+    vim
     watch
     wget
     xz
@@ -62,47 +52,44 @@ brew $action "${brew_apps[@]}"
 
 echo "Installing brew cask apps"
 brew_cask=(
-    1password
     aerial
-    airflow
+    airserver
     alfred
     appcleaner
-    arduino
     arq
+    balenaetcher
+    betaflight-configurator
     bettertouchtool
     coconutbattery
-    coolterm
+    cyberduck
     dash
     discord
+    docker
     drawio
     dropbox
-    eagle
     firefox
     flux
-    gcc-arm-embedded
-    google-backup-and-sync
     google-chrome
+    google-drive-file-stream
+    grandperspective
+    hand-mirror
     handbrake
-    intel-power-gadget
     istat-menus
     iterm2
     jqbx
     ledger-live
-    mactex
     obs
-    papers
+    panoply
     parallels
     postman
+    qgis
     raindropio
-    sequel-pro
     skim
-    skype
     spotify
     steam
     suspicious-package
     texpad
     tigervnc-viewer
-    visual-paradigm-ce
     visual-studio-code
     vlc
     wireshark
@@ -117,11 +104,11 @@ brew_cask_drivers=(
 )
 brew cask install "${brew_cask_drivers[@]}"
 
-echo "Installing brew cask repair"
-brew install vitorgalvao/tiny-scripts/cask-repair
-
-echo "Installing brew-cask-upgrade"
-brew tap buo/cask-upgrade
+#echo "Installing brew cask repair"
+#brew install vitorgalvao/tiny-scripts/cask-repair
+#
+#echo "Installing brew-cask-upgrade"
+#brew tap buo/cask-upgrade
 
 echo "Installing brew fonts"
 brew tap caskroom/fonts
