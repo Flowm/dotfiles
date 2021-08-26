@@ -10,6 +10,3 @@
 [submodule "home/.shcfg/.omz-custom/plugins/zsh-256color"]
 	path = home/.shcfg/.omz-custom/plugins/zsh-256color
 	url = https://github.com/chrissicool/zsh-256color.git
-[submodule "home/.shcfg/.omz-custom/plugins/zsh-iterm-touchbar"]
-	path = home/.shcfg/.omz-custom/plugins/zsh-iterm-touchbar
-	url = https://github.com/Flowm/zsh-iterm-touchbar.git
