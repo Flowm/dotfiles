@@ -25,6 +25,7 @@ brew_apps=(
     mosh
     mosquitto
     mtr
+    ncdu
     nmap
     node
     pandoc
@@ -36,7 +37,6 @@ brew_apps=(
     rsync
     sl
     sshuttle
-    tac
     telnet
     tmux
     unp
@@ -72,7 +72,6 @@ brew_cask=(
     google-chrome
     google-drive-file-stream
     grandperspective
-    hand-mirror
     handbrake
     istat-menus
     iterm2
@@ -95,14 +94,14 @@ brew_cask=(
     wireshark
     zotero
 )
-brew cask install "${brew_cask[@]}"
+brew install "${brew_cask[@]}"
 
 echo "Installing brew cask driver apps"
 brew tap homebrew/cask-drivers
 brew_cask_drivers=(
     saleae-logic
 )
-brew cask install "${brew_cask_drivers[@]}"
+brew install "${brew_cask_drivers[@]}"
 
 #echo "Installing brew cask repair"
 #brew install vitorgalvao/tiny-scripts/cask-repair
@@ -111,10 +110,10 @@ brew cask install "${brew_cask_drivers[@]}"
 #brew tap buo/cask-upgrade
 
 echo "Installing brew fonts"
-brew tap caskroom/fonts
+brew tap homebrew/cask-fonts
 brew_fonts=(
     font-yanone-kaffeesatz
     font-inconsolata
     font-source-code-pro
 )
-brew cask install "${brew_fonts[@]}"
+brew install "${brew_fonts[@]}"

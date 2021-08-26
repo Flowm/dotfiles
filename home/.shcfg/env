@@ -64,6 +64,11 @@ fi
 
 export EDITOR="vim"
 
+# Prepend homebrew to path
+if [ -d "/opt/homebrew/bin" ]; then
+    PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # Add $HOME/bin and all subdirs to the path
 if [ -d "$HOME/bin" ]; then
     for d in "$HOME"/bin/*; do
