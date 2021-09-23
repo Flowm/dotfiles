@@ -94,7 +94,7 @@ brew_cask=(
     wireshark
     zotero
 )
-brew install "${brew_cask[@]}"
+brew install --cask "${brew_cask[@]}"
 
 echo "Installing brew cask driver apps"
 brew tap homebrew/cask-drivers
