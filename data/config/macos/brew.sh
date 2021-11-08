@@ -9,6 +9,7 @@ brew_apps=(
     ansible
     arp-scan
     bpytop
+    brotli
     coreutils
     direnv
     dos2unix
@@ -40,7 +41,6 @@ brew_apps=(
     telnet
     tmux
     unp
-    vim
     watch
     wget
     xz
@@ -62,15 +62,16 @@ brew_cask=(
     bettertouchtool
     coconutbattery
     cyberduck
-    dash
     discord
     docker
     drawio
     dropbox
     firefox
     flux
+    geekbench
     google-chrome
     google-drive-file-stream
+    google-earth-pro
     grandperspective
     handbrake
     istat-menus
@@ -87,6 +88,7 @@ brew_cask=(
     spotify
     steam
     suspicious-package
+    teamviewer
     texpad
     tigervnc-viewer
     visual-studio-code
