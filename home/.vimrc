@@ -55,7 +55,7 @@
 	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'scrooloose/nerdtree'
 	Plugin 'jistr/vim-nerdtree-tabs'
-	Plugin 'benmills/vimux'
+	"Plugin 'benmills/vimux'
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'Lokaltog/vim-easymotion'
