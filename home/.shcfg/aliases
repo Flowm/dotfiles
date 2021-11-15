@@ -26,7 +26,7 @@ alias ssh-nCM='ssh -o ControlMaster=no'
 alias ssh-nPW='ssh -o KbdInteractiveAuthentication=no'
 alias ssh-nKY='ssh -o PubkeyAuthentication=no'
 
-alias httpserver='python -m SimpleHTTPServer'
+alias httpserver='python3 -m http.server'
 alias httptest='wget cachefly.cachefly.net/100mb.test -O /dev/null'
 alias httptest-hetzner='wget speed.hetzner.de/100MB.bin -O /dev/null'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
