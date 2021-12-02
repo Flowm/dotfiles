@@ -52,9 +52,11 @@ alias rsync-synchronize="rsync -avzuhP --delete"
 ########################################################################
 
 cdf() { cd $(dirname $1); }
-hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 gcd() { cd "$(git rev-parse --show-toplevel)/$1"; }
 peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
+
+hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
+function jjq { jq -Rrc --unbuffered ". as \$line | try (fromjson | \"${1:-\(.timestamp) \(.msg)}\") catch \$line"; }
 
 mc-hgrep() { grep -ri "$1" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX; }
 mc-rgrep() { ssh veldt "cd backup/history && git grep -i \"$1\"" | cut -d: -f2- | sort -n | less -FX; }
