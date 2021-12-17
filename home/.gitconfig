@@ -72,6 +72,8 @@
     webstart = instaweb --httpd=webrick --start
     webstop  = instaweb --httpd=webrick --stop
     pullall  = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
+[init]
+    defaultBranch = main
 [color]
     branch = auto
     diff = auto
@@ -86,6 +88,11 @@
     compactionHeuristic = true
 [difftool]
     prompt = false
+[filter "lfs"]
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
 [interactive]
     #diffFilter = diff-highlight
 [merge]
@@ -97,16 +104,11 @@
 [push]
     # Change to simple when only using git 2.0
     default = current
+[pull]
+    ff = only
 [rebase]
     autosquash = true
 [rerere]
     enabled = false
-[filter "lfs"]
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-[pull]
-    ff = only
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
