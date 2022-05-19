@@ -63,14 +63,10 @@
 	Plugin 'sheerun/vim-polyglot'
 	Plugin 'posva/vim-vue'
 	Plugin 'ctrlpvim/ctrlp.vim'
-	Plugin 'majutsushi/tagbar'
 	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'ajh17/VimCompletesMe'
 	Plugin 'loremipsum'
-	if hostname() == "flake" || hostname() == "mars" || hostname() == "app"
-		"Plugin 'ycm-core/YouCompleteMe'
-	endif
 	if hostname() != "spirit"
 		Plugin 'editorconfig/editorconfig-vim'
 	endif
