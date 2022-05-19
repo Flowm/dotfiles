@@ -214,6 +214,11 @@ if [ -d "$RBENV_PATH" ]; then
     eval "$(rbenv init -)"
 fi
 
+GDAL_PATH="/Applications/QGIS.app/Contents/MacOS/bin"
+if [ -d "$GDAL_PATH" ]; then
+    export PATH=$PATH:$GDAL_PATH
+fi
+
 ########################################################################
 # Host specific
 ########################################################################
