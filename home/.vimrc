@@ -65,6 +65,9 @@
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	Plugin 'editorconfig/editorconfig-vim'
+	if hostname() == "mars1p" || hostname() == "spirit-dev"
+		Plugin 'github/copilot.vim'
+	endif
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
@@ -352,6 +355,12 @@
 				endif
 			endfunction
 		" }
+		" Toggle copilot {
+			function ToggleCopilot()
+				echom 'Copilot ' . (b:copilot_enabled ? 'disabled' : 'enabled')
+				let b:copilot_enabled = !b:copilot_enabled
+			endfunction
+		" }
 	" }
 	" Function Keys {
 		" Handling:
@@ -375,17 +384,21 @@
 			map <silent><leader><F6> :call ToggleRelNumber() <CR>
 		" <F7> Toggle line wrap
 			map <silent><F7> :call ToggleWrap() <CR>
-		" <F8> Toggle background
-			map <silent><F8> :call ToggleSolarizedBackground() <CR>
+		" <F8> Toggle copilot
+			map <silent><F8> :call ToggleCopilot() <CR>
+		" <L-F8> Show copilot status
+			map <silent><leader><F8> :Copilot status <CR>
 
 		" Features:
 		" <F9> Toggle spell checking
 			map <silent><F9> :set spell!<CR><Bar>:echo 'Spell check: ' . strpart('OffOn', 3 * &spell, 3)<CR>
+		" <L-F9> Toggle background
+			map <silent><leader><F9> :call ToggleSolarizedBackground() <CR>
 		" <F10> vimux RunCommand make
 			map <silent><F10> :VimuxRunCommand("make") <CR>
 		" <L-F10> vimux RunCommandPromt
 			map <silent><leader><F10> :VimuxPromptCommand <CR>
-		" <F11> Display all custom keybindings
+		" <F12> Display all custom keybindings
 			map <silent><F12> :!egrep '" <([LS]-)?F[1-9][0-2]?> ' ~/.vimrc <CR>
 
 		" Leader mapping:
@@ -421,6 +434,10 @@
 	" }
 	" Tagbar {
 		nnoremap <silent> <leader>b :TagbarToggle<CR>
+	" }
+	" Copilot {
+		" Disable by default
+		let b:copilot_enabled = v:false
 	" }
 " }
 
