@@ -59,17 +59,12 @@
 	Plugin 'airblade/vim-gitgutter'
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'Lokaltog/vim-easymotion'
-	Plugin 'scrooloose/syntastic'
 	Plugin 'sheerun/vim-polyglot'
-	Plugin 'posva/vim-vue'
 	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
-	Plugin 'ajh17/VimCompletesMe'
 	Plugin 'loremipsum'
-	if hostname() != "spirit"
-		Plugin 'editorconfig/editorconfig-vim'
-	endif
+	Plugin 'editorconfig/editorconfig-vim'
 
 	if iCanHazVundle == 0
 		echo "Installing Bundles, please ignore key map error messages"
@@ -427,21 +422,6 @@
 	" Tagbar {
 		nnoremap <silent> <leader>b :TagbarToggle<CR>
 	" }
-	" syntastic {
-		let g:syntastic_cpp_compiler_options = '-std=c++14'
-		let g:syntastic_arduino_checkers=['']
-		let g:syntastic_quiet_messages = {
-			\ "!level": "errors" }
-	" }
-	" YouCompleteMe {
-		"let g:loaded_youcompleteme = 1
-		let g:ycm_show_diagnostics_ui = 1
-		let g:ycm_enable_diagnostic_signs = 0
-		let g:ycm_enable_diagnostic_highlighting = 0
-	" }
-	" vim-vue {
-		let html_no_rendering = 1
-	" }
 " }
 
 " Conditionals {
@@ -450,12 +430,6 @@
 		autocmd!
 		" Filetype detection {
 			au BufRead,BufNewFile Vagrantfile* set ft=ruby
-			au BufRead,BufNewFile *.grub set ft=cfg
-			au BufRead,BufNewFile *.ts set ft=typescript
-			au BufRead,BufNewFile *.vue set ft=vue
-		" }
-		" Filetype settings {
-			"au FileType ruby	set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
 		" }
 		" Other dev {
 			au BufRead,BufNewFile *.README set textwidth=72
