@@ -243,6 +243,13 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
 
 ###############################################################################
+# VS Code
+###############################################################################
+
+# Enable fast key repeat
+defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
