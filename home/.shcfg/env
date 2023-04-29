@@ -175,7 +175,7 @@ if [ -z "$MC_SLOWSYS" ]; then
 fi
 
 ########################################################################
-# Direnv
+# Programm specific
 ########################################################################
 
 if [ -x "$(command -v direnv)" ]; then
@@ -187,8 +187,12 @@ if [ -x "$(command -v direnv)" ]; then
     fi
 fi
 
+if [ -x "$(command -v github-copilot-cli)" ]; then
+    eval "$(github-copilot-cli alias -- "$0")"
+fi
+
 ########################################################################
-# Program specific
+# Program path specific
 ########################################################################
 
 GOPATH="$HOME/Dev/go"
