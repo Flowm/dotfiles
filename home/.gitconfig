@@ -52,7 +52,7 @@
     rbom  = rebase origin/master
     rbi   = rebase -i
     rbiod = rebase -i origin/develop
-    rbiom = rebase -i origin/master
+    rbiom = rebase -i origin/main
     rs    = reset
     rsom  = reset origin/master
     rshod = reset --hard origin/develop
