@@ -219,7 +219,7 @@ if [ -d "$RBENV_PATH" ]; then
 fi
 
 GDAL_PATH="/Applications/QGIS.app/Contents/MacOS/bin"
-if [ -d "$GDAL_PATH" ]; then
+if [ -d "$GDAL_PATH" ] && [ -z "$(command -v gdalinfo)" ]; then
     export PATH=$PATH:$GDAL_PATH
 fi
 
