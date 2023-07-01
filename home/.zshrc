@@ -27,6 +27,9 @@ CASE_SENSITIVE="true"
 # Display red dots when waiting for compltion
 COMPLETION_WAITING_DOTS="true"
 
+# Disable string escaping during paste
+DISABLE_MAGIC_FUNCTIONS=true
+
 # Don't overwrite the title
 DISABLE_AUTO_TITLE="true"
 
@@ -54,7 +57,7 @@ plugins=(
 	zsh-syntax-highlighting
 )
 if [[ -n "$MC_OSX" ]]; then
-	plugins[$(($#plugins+1))]=osx
+	plugins[$(($#plugins+1))]=macos
 fi
 
 source $ZSH/oh-my-zsh.sh
