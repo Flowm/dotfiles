@@ -51,7 +51,6 @@ plugins=(
 	history-substring-search
 	mosh
 	tmuxinator
-	vagrant
 	z
 	zsh-256color
 	zsh-syntax-highlighting
