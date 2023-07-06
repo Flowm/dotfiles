@@ -33,6 +33,9 @@ DISABLE_MAGIC_FUNCTIONS=true
 # Don't overwrite the title
 DISABLE_AUTO_TITLE="true"
 
+# Disable directory permission check
+ZSH_DISABLE_COMPFIX="true"
+
 # Show command execution time after given number of seconds.
 REPORTTIME=30
 
