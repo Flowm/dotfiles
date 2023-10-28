@@ -16,7 +16,7 @@
     co    = checkout
     cob   = checkout -b
     cod   = checkout develop
-    com   = checkout master
+    com   = checkout main
     cp    = cherry-pick
     d     = diff
     dc    = diff --cached
