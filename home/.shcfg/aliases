@@ -14,6 +14,7 @@ alias vimo='vim -O'
 
 alias gr='grep -iIR'
 alias mux='tmuxinator'
+alias aptup='sudo apt update && sudo apt upgrade'
 
 alias du-h='du -h --max-depth=1 |sort -rh'
 alias findh='find . -iname'
