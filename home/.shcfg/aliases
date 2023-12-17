@@ -59,6 +59,7 @@ peek() { tmux split-window -p 33 "$EDITOR" "$@" || exit; }
 
 hl() { perl -pe "s/$1/\e[1;31m$&\e[0m/g"; }
 function jjq { jq -Rrc --unbuffered ". as \$line | try (fromjson | \"${1:-\(.timestamp) \(.msg)}\") catch \$line"; }
+function git-replace { git grep -l "$1" | xargs sed -i '' -e "s/$1/$2/g"; }
 
 mc-hgrep() { grep -ri "$1" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX; }
 mc-rgrep() { ssh veldt "cd backup/history && git grep -i \"$1\"" | cut -d: -f2- | sort -n | less -FX; }
