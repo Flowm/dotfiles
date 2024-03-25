@@ -65,6 +65,7 @@ mc-hgrep() { grep -ri "$1" ~/.myconf/history | cut -d: -f2- | sort -n | less -FX
 mc-rgrep() { ssh veldt "cd backup/history && git grep -i \"$1\"" | cut -d: -f2- | sort -n | less -FX; }
 mc-sshcopyid() { cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh; cat >> .ssh/authorized_keys'; }
 mc-ts() { date +%F-%H-%M-%S; }
+mc-waitfor() { while ! $@; do; done; }
 
 ########################################################################
 # Aliases Conditional
