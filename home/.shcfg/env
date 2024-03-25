@@ -191,6 +191,11 @@ if [ -x "$(command -v github-copilot-cli)" ]; then
     eval "$(github-copilot-cli alias -- "$0")"
 fi
 
+if [ -x "$(command -v gcloud)" ] && [ -d "$(brew --prefix)" ]; then
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+fi
+
 ########################################################################
 # Program path specific
 ########################################################################
