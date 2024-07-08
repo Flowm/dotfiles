@@ -18,6 +18,7 @@ alias aptup='sudo apt update && sudo apt upgrade'
 
 alias du-h='du -h --max-depth=1 |sort -rh'
 alias findh='find . -iname'
+alias w1='watch -n1'
 
 alias vless='/usr/share/vim/vim74/macros/less.sh'
 alias vsyslog='view /var/log/syslog'
@@ -43,6 +44,9 @@ alias mytcpdump='sudo tcpdump not arp and not stp and not ip proto 112 and not p
 alias mypwgen='cat /dev/urandom | tr -dc A-Za-z1-9 | head -c 32 && echo'
 alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pass'
 alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896x1200" -gone "newrez default"'
+
+alias drun='docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):/data'
+alias drun-rclone='drun -v ~/.config/rclone:/config/rclone rclone/rclone'
 
 alias rsync-copy="rsync -avzhP"
 alias rsync-move="rsync -avzhP --remove-source-files"
