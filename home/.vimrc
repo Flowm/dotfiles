@@ -65,7 +65,7 @@
 	Plugin 'powerman/vim-plugin-AnsiEsc'
 	Plugin 'loremipsum'
 	Plugin 'editorconfig/editorconfig-vim'
-	if hostname() == "mars1p" || hostname() == "spirit-dev"
+	if !exists('g:vscode')
 		Plugin 'github/copilot.vim'
 	endif
 
