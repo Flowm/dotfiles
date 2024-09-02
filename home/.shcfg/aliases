@@ -46,6 +46,7 @@ alias mypwcr='read -s pass; echo $pass | md5sum | base64 | cut -c -16 ; unset pa
 alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896x1200" -gone "newrez default"'
 
 alias drun='docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):/cwd -w /cwd'
+alias drun-dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest'
 alias drun-gdal='drun ghcr.io/osgeo/gdal:alpine-small-3.9.1'
 alias drun-rclone='drun -v ~/.config/rclone:/config/rclone rclone/rclone'
 alias drun-shellcheck='drun koalaman/shellcheck:stable'
