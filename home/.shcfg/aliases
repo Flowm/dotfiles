@@ -29,8 +29,8 @@ alias ssh-nPW='ssh -o KbdInteractiveAuthentication=no'
 alias ssh-nKY='ssh -o PubkeyAuthentication=no'
 
 alias httpserver='python3 -m http.server'
-alias httptest-cachefly='wget cachefly.cachefly.net/100mb.test -O /dev/null'
-alias httptest-hetzner='wget speed.hetzner.de/1GB.bin -O /dev/null'
+alias httptest-cachefly='wget --user-agent="curl" cachefly.cachefly.net/100mb.test -O /dev/null'
+alias httptest-hetzner='wget fsn1-speed.hetzner.com/1GB.bin -O /dev/null'
 alias httptest-tele2='wget http://speedtest.tele2.net/1GB.zip -O /dev/null'
 alias iptable-watch="sudo watch -n1 'echo \"Filter:\"; iptables -vL; echo; echo \"NAT:\"; iptables -vL -t nat'"
 alias openports='netstat -antp --udp | grep LISTEN'
