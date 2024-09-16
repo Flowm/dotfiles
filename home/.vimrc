@@ -12,25 +12,23 @@
 " }
 
 " Basic {
-		"Use vim defaults
+		" Use vim defaults
 	set nocompatible
-		"Disable filetype detection during init
+		" Disable filetype detection during init
 	filetype off
-		"Enable Syntax highlighting
+		" Enable Syntax highlighting
 	syntax enable
-		"Explicitly define xterm as environment
-	behave xterm
-		"More screen updates
+		" More screen updates
 	set ttyfast
-		"Disable modelines
+		" Disable modelines
 	set nomodeline
-		"No exec
+		" No exec
 	set secure
-		"Encoding
+		" Encoding
 	set encoding=utf-8
-		"Remove splash screen
+		" Remove splash screen
 	set shortmess+=I
-		"Function of the backspace key
+		" Function of the backspace key
 	set backspace=indent,eol,start
 " }
 
@@ -93,17 +91,17 @@
 		set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
 	" }
 	" Searching {
-			"Highlightsearch
+			" Highlightsearch
 		set hlsearch
-			"Start searching with the first character
+			" Start searching with the first character
 		set incsearch
-			"Ignore case
+			" Ignore case
 		set ignorecase
-			"Match case if searchstring starts with uppercase
+			" Match case if searchstring starts with uppercase
 		set smartcase
-			"Global search by default
+			" Global search by default
 		set gdefault
-			"Treat more characters as special (like in perl) when searching (e.g. . *)
+			" Treat more characters as special (like in perl) when searching (e.g. . *)
 		set magic
 	" }
 	" Spelling {
@@ -118,6 +116,12 @@
 			" Use the best available cryptmethod
 		if has("patch-7.4.399") && !has("nvim")
 			set cryptmethod=blowfish2
+		endif
+			" Better mouse interaction
+		if has("nvim")
+			set mousemodel=extend
+		else
+			behave xterm
 		endif
 	" }
 " }
@@ -142,25 +146,25 @@
 			" darkgrey, lightblue, lightgreen, lightcyan, lightred, lightmagenta, " lightyellow, white
 	" }
 	" Statusbar {
-			"Renaming xterm window
+			" Renaming xterm window
 		set title
-			"Don't show line numbers
+			" Don't show line numbers
 		set nonumber
-			"Always show the status bar
+			" Always show the status bar
 		set laststatus=2
 	" }
 	" Misc Handling {
-			"Always let 5 lines below and above the cursor on the screen
+			" Always let 5 lines below and above the cursor on the screen
 		set scroll=11
 		set scrolloff=5
 		set sidescroll=8
-			"Bracket matching
+			" Bracket matching
 		set showmatch
-			"Show unfinished commands
+			" Show unfinished commands
 		set showcmd
-			"No Bell
+			" No Bell
 		set noerrorbells visualbell
-			"Search tags file in current dir and all parent dir
+			" Search tags file in current dir and all parent dir
 		set tags=./tags;/
 	" }
 " }
@@ -172,26 +176,26 @@
 		"hi SpecialKey ctermbg=4
 	" }
 	" Overlong lines display {
-			"Don't do newlines automatically
+			" Don't do newlines automatically
 		set fo-=t
-			"Scroll right by default instead of breaking the line
+			" Scroll right by default instead of breaking the line
 		set nowrap
-			"Don't stat a new line automatically break lines
+			" Don't stat a new line automatically break lines
 		set wrapmargin=0
-			"But continue with a mark in the next line
+			" But continue with a mark in the next line
 		set showbreak=>>>
 	" }
 	" Indention {
-			"One Tab per indentation level. 4 column wide Tabs.
-			"Intelligently detect current indention level
+			" One Tab per indentation level. 4 column wide Tabs.
+			" Intelligently detect current indention level
 		set autoindent
-			"Size of real Tabs
+			" Size of real Tabs
 		set tabstop=4
-			"Indent amount when using TAB
+			" Indent amount when using TAB
 		set softtabstop=4
-			"Indent amount when using cindent, >>, ..
+			" Indent amount when using cindent, >>, ..
 		set shiftwidth=4
-			"Do not expand tabs to spaces
+			" Do not expand tabs to spaces
 		set expandtab
 	" }
 	" Indention shortcuts {
@@ -201,47 +205,47 @@
 		nmap \S :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 	" }
 	" Folding (disabled) {
-			"Disable folding completely
+			" Disable folding completely
 		"set nofoldenable
-			"Disable folding in the initial view
+			" Disable folding in the initial view
 		set foldlevel=40
-			"Make folding indent sensitive
+			" Make folding indent sensitive
 		set foldmethod=indent
 	" }
 " }
 
 " Mappings and functions {
 	" Misc {
-			"Easier escape
+			" Easier escape
 		inoremap jj <ESC>
 		inoremap jk <ESC>
 		inoremap ,, <ESC>
-			"Match brackets key
+			" Match brackets key
 		nnoremap <tab> %
 		vnoremap <tab> %
-			"Search for selected text in visual mode with //
+			" Search for selected text in visual mode with //
 		vnoremap // y/\V<C-R>"<CR>
-			"Clear highlight
+			" Clear highlight
 		map <silent> <C-l> :silent nohl<CR>
-			"Save as root
+			" Save as root
 		cmap w!! %!sudo tee > /dev/null %
 	" }
 	" Custom Keyset {
 		let mapleader = ","
-			"Reselect just pasted content
+			" Reselect just pasted content
 		nnoremap <leader>v V`]
-			"Split Window and switch over to it
+			" Split Window and switch over to it
 		nnoremap <leader>w <C-w>v<C-w>l
 		nnoremap <leader>w <C-w>h<C-w>l
-			"Single line diffput and diffget
+			" Single line diffput and diffget
 		vnoremap <silent> <leader>dp :diffput<cr>:diffupdate<cr>
 		vnoremap <silent> <leader>do :diffget<cr>:diffupdate<cr>
 	" }
 	" C&P between files via a tempfile {
-			"Copy to buffer
+			" Copy to buffer
 		vnoremap <leader>y :w! ~/.myconf/tmp/.vimbak/vimbuffer<CR>
 		nnoremap <leader>y :.w! ~/.myconf/tmp/.vimbak/vimbuffer<CR>
-			"Paste from buffer
+			" Paste from buffer
 		nnoremap <leader>p :r ~/.myconf/tmp/.vimbak/vimbuffer<CR>
 		nnoremap <leader>P :-r ~/.myconf/tmp/.vimbak/vimbuffer<CR>
 	" }
