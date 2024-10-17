@@ -48,6 +48,7 @@ alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896
 alias drun='docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):/cwd -w /cwd'
 alias drun-dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest'
 alias drun-gdal='drun ghcr.io/osgeo/gdal:alpine-small-3.9.1'
+alias drun-mc='drun -v ~/.mc:/.mc minio/mc:RELEASE.2024-09-16T17-43-14Z'
 alias drun-rclone='drun -v ~/.config/rclone:/config/rclone rclone/rclone'
 alias drun-shellcheck='drun koalaman/shellcheck:stable'
 
