@@ -118,7 +118,7 @@ brew_cask=(
     steam
     # suspicious-package
     # teamviewer
-    # temurin
+    temurin
     # texpad
     # tigervnc-viewer
     # utm
