@@ -228,6 +228,12 @@ if [ -d "$GDAL_PATH" ] && [ -z "$(command -v gdalinfo)" ]; then
     export PATH=$PATH:$GDAL_PATH
 fi
 
+LM_STUDIO_PATH="$HOME/.lmstudio/bin"
+if [ -d "$LM_STUDIO_PATH" ]; then
+    export PATH=$PATH:$LM_STUDIO_PATH
+fi
+
+
 ########################################################################
 # Host specific
 ########################################################################
