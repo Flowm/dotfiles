@@ -47,8 +47,7 @@
 
 	Plugin 'VundleVim/Vundle.vim'
 
-	Plugin 'vim-airline/vim-airline'
-	Plugin 'vim-airline/vim-airline-themes'
+	Plugin 'itchyny/lightline.vim'
 	Plugin 'altercation/vim-colors-solarized'
 	Plugin 'scrooloose/nerdcommenter'
 	Plugin 'scrooloose/nerdtree'
@@ -58,10 +57,8 @@
 	Plugin 'tpope/vim-fugitive'
 	Plugin 'Lokaltog/vim-easymotion'
 	Plugin 'sheerun/vim-polyglot'
-	Plugin 'ctrlpvim/ctrlp.vim'
 	Plugin 'chrisbra/csv.vim'
 	Plugin 'powerman/vim-plugin-AnsiEsc'
-	Plugin 'loremipsum'
 	Plugin 'editorconfig/editorconfig-vim'
 	if !exists('g:vscode')
 		Plugin 'github/copilot.vim'
@@ -107,6 +104,10 @@
 	" Spelling {
 		set spelllang=en,de
 	" }
+	" Performance {
+		" Avoid heavy regex work on very long lines
+		set synmaxcol=200
+	" }
 	" Misc {
 			" Only one whitespace after _J_oining after a dot
 		set nojoinspaces
@@ -133,10 +134,10 @@
 			let t_Co=256
 			let g:solarized_termcolors=256
 		endif
-			" Set colorscheme to solarized
-		colorscheme solarized
 			" Use the dark version of solarized
 		set background=dark
+			" Set colorscheme to solarized
+		colorscheme solarized
 	" }
 	" Color tweaks {
 		"hi Search ctermbg=DarkYellow ctermfg=White
@@ -375,7 +376,11 @@
 		" <F3> Toggle the arrow keys
 			map <silent><F3> :call ToggleArrowKeys() <CR>
 		" <F4> Toggle paste mode
-			set pastetoggle=<F4>
+            if !has('nvim')
+                set pastetoggle=<F4>
+            else
+                nnoremap <F4> :set invpaste paste?<CR>
+            endif
 
 		" Design:
 		" <F5> Toggle whitespace and tab display
@@ -424,8 +429,8 @@
 		" Decrease amount of executions
 		"let g:gitgutter_eager = 0
 	" }
-	" Airline {
-		let g:airline_theme='solarized'
+	" Lightline {
+        let g:lightline = { 'colorscheme': 'solarized' }
 	" }
 	" vimux {
 		"let g:VimuxOrientation = "h"
