@@ -1,0 +1,94 @@
+tap "dagger/tap"
+tap "homebrew/services"
+brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
+brew "xz"                                         # xz: General-purpose data compression with high compression ratio
+brew "zstd"                                       # zstd: Zstandard is a real-time compression algorithm
+brew "arp-scan"                                   # arp-scan: ARP scanning and fingerprinting tool
+brew "bpytop"                                     # bpytop: Linux/OSX/FreeBSD resource monitor
+brew "colima", restart_service: :changed          # colima: Container runtimes on MacOS (and Linux) with minimal setup
+brew "coreutils"                                  # coreutils: GNU File, Shell, and Text utilities
+brew "diff-pdf"                                   # diff-pdf: Visually compare two PDF files
+brew "direnv"                                     # direnv: Load/unload environment variables based on $PWD
+brew "dnscontrol"                                 # dnscontrol: Synchronize your DNS to multiple providers from a simple DSL
+brew "docker-completion"                          # docker-completion: Bash, Zsh and Fish completion for Docker
+brew "docker"                                     # docker: Pack, ship and run any application as a lightweight container
+brew "docker-buildx"                              # docker-buildx: Docker CLI plugin for extended build capabilities with BuildKit
+brew "docker-compose"                             # docker-compose: Isolated development environments using Docker
+brew "dos2unix"                                   # dos2unix: Convert text between DOS, UNIX, and Mac formats
+brew "git"                                        # git: Distributed revision control system
+brew "git-lfs"                                    # git-lfs: Git extension for versioning large files
+brew "gnu-sed"                                    # gnu-sed: GNU implementation of the famous stream editor
+brew "gource"                                     # gource: Version Control Visualization Tool
+brew "htop"                                       # htop: Improved top (interactive process viewer)
+brew "imagemagick"                                # imagemagick: Tools and libraries to manipulate images in many formats
+brew "jq"                                         # jq: Lightweight and flexible command-line JSON processor
+brew "languagetool", restart_service: :changed    # languagetool: Style and grammar checker
+brew "mosh"                                       # mosh: Remote terminal application
+brew "mtr"                                        # mtr: 'traceroute' and 'ping' in a single tool
+brew "ncdu"                                       # ncdu: NCurses Disk Usage
+brew "neovim"                                     # neovim: Ambitious Vim-fork focused on extensibility and agility
+brew "nmap"                                       # nmap: Port scanning utility for large networks
+brew "node"                                       # node: Platform built on V8 to build network applications
+brew "pandoc"                                     # pandoc: Swiss-army knife of markup format conversion
+brew "pv"                                         # pv: Monitor data's progress through a pipe
+brew "pwgen"                                      # pwgen: Password generator
+brew "rename"                                     # rename: Perl-powered file rename script with many helpful built-ins
+brew "ripgrep"                                    # ripgrep: Search tool like grep and The Silver Searcher
+brew "rsync"                                      # rsync: Utility that provides fast incremental file transfer
+brew "sshpass"                                    # sshpass: Non-interactive SSH password auth
+brew "sshuttle"                                   # sshuttle: Proxy server that works as a poor man's VPN
+brew "subfinder"                                  # subfinder: Subdomain discovery tool
+brew "telnet"                                     # telnet: User interface to the TELNET protocol
+brew "tmux"                                       # tmux: Terminal multiplexer
+brew "tmuxai"                                     # tmuxai: AI-powered, non-intrusive terminal assistant
+brew "tmuxinator-completion"                      # tmuxinator-completion: Shell completion for Tmuxinator
+brew "tmuxinator"                                 # tmuxinator: Manage complex tmux sessions easily
+brew "tree"                                       # tree: Display directories as trees (with optional color/HTML output)
+brew "unp"                                        # unp: Unpack everything with one command
+brew "uv"                                         # uv: Extremely fast Python package installer and resolver, written in Rust
+brew "watch"                                      # watch: Executes a program periodically, showing output fullscreen
+brew "wget"                                       # wget: Internet file retriever
+brew "yt-dlp"                                     # yt-dlp: Feature-rich command-line audio/video downloader
+brew "zsh"                                        # zsh: UNIX shell (command interpreter)
+cask "1password"                                  # 1password: Password manager that keeps all passwords secure behind one password
+cask "alfred"                                     # alfred: Application launcher and productivity software
+cask "appcleaner"                                 # appcleaner: Application uninstaller
+cask "arq"                                        # arq: Multi-cloud backup application
+cask "balenaetcher"                               # balenaetcher: Tool to flash OS images to SD cards & USB drives
+cask "bettertouchtool"                            # bettertouchtool: Tool to customise input devices and automate computer systems
+cask "blender"                                    # blender: 3D creation suite
+cask "bruno"                                      # bruno: Open source IDE for exploring and testing APIs
+cask "chromium"                                   # chromium: Free and open-source web browser
+cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
+cask "container-use"                              # container-use: Containerized environments for coding agents
+cask "cyberduck"                                  # cyberduck: Server and cloud storage browser
+cask "deskpad"                                    # deskpad: Virtual monitor for screen sharing
+cask "discord"                                    # discord: Voice and text chat software
+cask "firefox"                                    # firefox: Web browser
+cask "geekbench"                                  # geekbench: Tool to measure the computer system's performance
+cask "google-chrome"                              # google-chrome: Web browser
+cask "google-drive"                               # google-drive: Client for the Google Drive storage service
+cask "google-earth-pro"                           # google-earth-pro: Virtual globe
+cask "grandperspective"                           # grandperspective: Graphically shows disk usage within a file system
+cask "gyroflow"                                   # gyroflow: Video stabilization using gyroscope data
+cask "handbrake-app"                              # handbrake-app: Open-source video transcoder
+cask "insomnia"                                   # insomnia: HTTP and GraphQL Client
+cask "istat-menus"                                # istat-menus: System monitoring app
+cask "iterm2"                                     # iterm2: Terminal emulator as alternative to Apple's Terminal app
+cask "ledger-live"                                # ledger-live: Wallet desktop application to maintain multiple cryptocurrencies
+cask "lm-studio"                                  # lm-studio: Discover, download, and run local LLMs
+cask "losslesscut"                                # losslesscut: Trims video and audio files losslessly
+cask "notion"                                     # notion: App to write, plan, collaborate, and get organised
+cask "obs"                                        # obs: Open-source software for live streaming and screen recording
+cask "obsidian"                                   # obsidian: Knowledge base that works on top of a local folder of plain text Markdown files
+cask "panoply"                                    # panoply: Plot geo-referenced data from netCDF, HDF, and GRIB
+cask "qgis"                                       # qgis: Geographic Information System
+cask "raindropio"                                 # raindropio: All-in-one bookmark manager
+cask "remote-desktop-manager"                     # remote-desktop-manager: Centralises all remote connections on a single platform
+cask "skim"                                       # skim: PDF reader and note-taking application
+cask "spotify"                                    # spotify: Music streaming service
+cask "steam"                                      # steam: Video game digital distribution service
+cask "temurin"                                    # temurin: JDK from the Eclipse Foundation (Adoptium)
+cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
+cask "vlc"                                        # vlc: Multimedia player
+cask "zed"                                        # zed: Multiplayer code editor
