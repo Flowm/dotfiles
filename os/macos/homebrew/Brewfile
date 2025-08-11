@@ -1,3 +1,4 @@
+tap "buo/cask-upgrade"
 tap "dagger/tap"
 tap "homebrew/services"
 brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
@@ -58,7 +59,6 @@ cask "arq"                                        # arq: Multi-cloud backup appl
 cask "balenaetcher"                               # balenaetcher: Tool to flash OS images to SD cards & USB drives
 cask "bettertouchtool"                            # bettertouchtool: Tool to customise input devices and automate computer systems
 cask "blender"                                    # blender: 3D creation suite
-cask "bruno"                                      # bruno: Open source IDE for exploring and testing APIs
 cask "chromium"                                   # chromium: Free and open-source web browser
 cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
 cask "container-use"                              # container-use: Containerized environments for coding agents

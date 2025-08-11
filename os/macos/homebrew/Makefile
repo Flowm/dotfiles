@@ -1,7 +1,7 @@
 # Makefile for managing Homebrew packages with brew bundle
 # https://docs.brew.sh/Manpage#bundle-subcommand
 
-.PHONY: help dump install check cleanup backup restore list-outdated upgrade-all
+.PHONY: help dump install check upgrade upgrade-formula cleanup cleanup-run
 
 export HOMEBREW_BUNDLE_DUMP_NO_VSCODE=false
 
@@ -17,12 +17,20 @@ dump: ## Dump all installed packages to Brewfile
 
 install: ## Install packages from Brewfile
 	brew bundle install --no-upgrade
+	# uv install python
 
 check: ## Check if all packages in Brewfile are installed
 	brew bundle check
 
 upgrade: ## Upgrade all installed packages to latest versions
-	brew bundle upgrade
+	brew outdated --formula
+	brew cu
 
-cleanup: ## Remove packages not listed in Brewfile
+upgrade-formula: ## Upgrade all installed packages to latest versions
+	brew upgrade --formula
+
+cleanup: ## Remove packages not listed in Brewfile (preview)
 	brew bundle cleanup
+
+cleanup-run: ## Remove packages not listed in Brewfile
+	brew bundle cleanup --force
