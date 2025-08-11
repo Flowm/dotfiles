@@ -23,6 +23,7 @@ brew "htop"                                       # htop: Improved top (interact
 brew "imagemagick"                                # imagemagick: Tools and libraries to manipulate images in many formats
 brew "jq"                                         # jq: Lightweight and flexible command-line JSON processor
 brew "languagetool", restart_service: :changed    # languagetool: Style and grammar checker
+brew "mas"                                        # mas: Mac App Store command-line interface
 brew "mosh"                                       # mosh: Remote terminal application
 brew "mtr"                                        # mtr: 'traceroute' and 'ping' in a single tool
 brew "ncdu"                                       # ncdu: NCurses Disk Usage
@@ -92,3 +93,14 @@ cask "temurin"                                    # temurin: JDK from the Eclips
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player
 cask "zed"                                        # zed: Multiplayer code editor
+mas "Affinity Designer 2", id: 1616831348
+mas "Affinity Photo 2", id: 1616822987
+mas "Infuse", id: 1136220934
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "Slack", id: 803453959
+mas "Todoist", id: 585829637
+mas "WiFi Explorer", id: 494803304
+mas "Windows App", id: 1295203466
+mas "Wipr", id: 1662217862
