@@ -60,7 +60,7 @@ if [ ${SUBUP:-} ]; then
 fi
 
 if [ ${PRINT:-} ]; then
-    cat ${conf_dir}/data/instdb/myconf
+    echo "cd && git clone ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -ie ssh -c tmuxa"
 fi
 
 for CONF in "${MYC_CONF[@]}"; do
