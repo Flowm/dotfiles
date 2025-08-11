@@ -6,7 +6,6 @@ MC_OS=`uname`
 case "$MC_OS" in
     Linux)
         MC_LINUX=1
-        MC_GNU_USERLAND=1
         MC_HOST=`uname -n`
         MC_PLATFORM=`uname -m`
         case "$MC_PLATFORM" in
@@ -69,7 +68,7 @@ if [ -d "/opt/homebrew/bin" ]; then
     PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 fi
 
-# Add $HOME/bin and all subdirs to the path
+# Prepend $HOME/bin and all subdirs to the path
 if [ -d "$HOME/bin" ]; then
     for d in "$HOME"/bin/*; do
         if [ -d "$d" ]; then
@@ -79,9 +78,9 @@ if [ -d "$HOME/bin" ]; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# Append $HOME/.local/bin to path
+# Prepend $HOME/.local/bin to path
 if [ -d "$HOME/.local/bin" ]; then
-    PATH="$PATH:$HOME/.local/bin"
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
 if [ -n "$MC_PRIV" ]; then
