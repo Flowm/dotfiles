@@ -78,6 +78,8 @@ setopt autopushd
 setopt pushdignoredups
 # Ignore back to back duplicates in history search
 setopt hist_find_no_dups
+# Trim superfluous spaces
+setopt hist_reduce_blanks
 
 ########################################################################
 # Aliases
