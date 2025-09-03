@@ -84,6 +84,8 @@ cask "obs"                                        # obs: Open-source software fo
 cask "obsidian"                                   # obsidian: Knowledge base that works on top of a local folder of plain text Markdown files
 cask "panoply"                                    # panoply: Plot geo-referenced data from netCDF, HDF, and GRIB
 cask "qgis"                                       # qgis: Geographic Information System
+cask "qlcolorcode"                                # qlcolorcode: Quick Look plug-in that renders source code with syntax highlighting
+cask "qlstephen"                                  # qlstephen: Quick Look plugin for plaintext files without an extension
 cask "raindropio"                                 # raindropio: All-in-one bookmark manager
 cask "remote-desktop-manager"                     # remote-desktop-manager: Centralises all remote connections on a single platform
 cask "skim"                                       # skim: PDF reader and note-taking application
@@ -95,6 +97,7 @@ cask "vlc"                                        # vlc: Multimedia player
 cask "zed"                                        # zed: Multiplayer code editor
 mas "Affinity Designer 2", id: 1616831348
 mas "Affinity Photo 2", id: 1616822987
+mas "FullFocus", id: 6749530383
 mas "Infuse", id: 1136220934
 mas "Microsoft Excel", id: 462058435
 mas "Microsoft PowerPoint", id: 462062816
@@ -104,3 +107,4 @@ mas "Todoist", id: 585829637
 mas "WiFi Explorer", id: 494803304
 mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862
+mas "Xcode", id: 497799835
