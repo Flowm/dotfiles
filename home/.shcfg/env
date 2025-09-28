@@ -232,6 +232,10 @@ if [ -d "$LM_STUDIO_PATH" ]; then
     export PATH=$PATH:$LM_STUDIO_PATH
 fi
 
+PIO_PATH="$HOME/.platformio/penv/bin"
+if [ -d "$PIO_PATH" ]; then
+    export PATH=$PATH:$PIO_PATH
+fi
 
 ########################################################################
 # Host specific
