@@ -138,7 +138,7 @@ ssh() {
 ########################################################################
 
 # Attach tmux immediately if ~/.myc-tmuxa exists
-if [ -e $HOME/.myc-tmuxa ] && [ -z "$TMUX" ]; then
+if [ -e $HOME/.myc-tmuxa ] && [ -z "$TMUX" ] && [[ "$TERM_PROGRAM" != "vscode" ]]; then
     # Also detach immediately if ~/.myc-tmuxad exists
     if [ -e $HOME/.myc-tmuxad ]; then
         tmux new-session -A -s 0 && sleep 1 && exit
