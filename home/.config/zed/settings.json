@@ -9,12 +9,14 @@
 {
   "context_servers": {
     "container-use": {
+      "enabled": false,
       "source": "custom",
       "command": "container-use",
       "args": ["stdio"],
       "env": {}
     },
     "playwright-mcp": {
+      "enabled": false,
       "source": "custom",
       "command": "npx",
       "args": ["@playwright/mcp@latest"],
@@ -26,7 +28,7 @@
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4"
+      "model": "claude-sonnet-4.5"
     },
     "profiles": {
       "container-use": {
@@ -61,5 +63,13 @@
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "never"
+  },
+  "languages": {
+    "YAML": {
+      "format_on_save": "off"
+    },
+    "HTML": {
+      "format_on_save": "off"
+    }
   }
 }
