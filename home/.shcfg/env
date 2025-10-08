@@ -186,6 +186,15 @@ if [ -x "$(command -v direnv)" ]; then
     fi
 fi
 
+if [ -x "$(command -v mise)" ]; then
+    if [ "$MC_BASH" ]; then
+        eval "$(mise activate bash)"
+    fi
+    if [ "$MC_ZSH" ]; then
+        eval "$(mise activate zsh)"
+    fi
+fi
+
 if [ -x "$(command -v github-copilot-cli)" ]; then
     eval "$(github-copilot-cli alias -- "$0")"
 fi
