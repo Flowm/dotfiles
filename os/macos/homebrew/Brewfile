@@ -71,6 +71,7 @@ cask "discord"                                    # discord: Voice and text chat
 cask "excalidrawz"                                # excalidrawz: Excalidraw client
 cask "firefox"                                    # firefox: Web browser
 cask "geekbench"                                  # geekbench: Tool to measure the computer system's performance
+cask "ghostty"                                    # ghostty: Terminal emulator that uses platform-native UI and GPU acceleration
 cask "google-chrome"                              # google-chrome: Web browser
 cask "google-drive"                               # google-drive: Client for the Google Drive storage service
 cask "google-earth-pro"                           # google-earth-pro: Virtual globe
