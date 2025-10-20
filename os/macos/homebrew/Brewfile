@@ -86,6 +86,7 @@ cask "ledger-live"                                # ledger-live: Wallet desktop 
 cask "lm-studio"                                  # lm-studio: Discover, download, and run local LLMs
 cask "losslesscut"                                # losslesscut: Trims video and audio files losslessly
 cask "monitorcontrol"                             # monitorcontrol: Tool to control external monitor brightness & volume
+cask "multiviewer"                                # multiviewer: Unofficial desktop client for F1 TV
 cask "notion"                                     # notion: App to write, plan, collaborate, and get organised
 cask "nvidia-geforce-now"                         # nvidia-geforce-now: Cloud gaming platform
 cask "obs"                                        # obs: Open-source software for live streaming and screen recording
