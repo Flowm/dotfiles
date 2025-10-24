@@ -31,17 +31,14 @@
     gr    = grep
     git   = !exec git
     l     = log --oneline
-    lg    = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=relative --abbrev-commit -10
-    lgl   = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=relative --abbrev-commit
-    lgp   = log -p
+    lg    = lgl -10
+    lgl   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --graph
     lgr   = log --grep
-    lp    = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
+    lp    = lpl -10
     lpl   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    lm    = log --first-parent --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative -10
-    lml   = log --first-parent --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lm    = lml -10
+    lml   = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --first-parent
     lpx   = log --pretty=format:'%s'
-    lol   = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola  = log --graph --decorate --pretty=oneline --abbrev-commit --all
     p     = push
     pf    = push --force-with-lease
     puo   = push -u origin
