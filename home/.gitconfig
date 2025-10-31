@@ -7,6 +7,7 @@
     b     = branch
     ba    = branch -a
     br    = branch --sort=-committerdate
+    brl   = branch --sort=-committerdate --format='%(color:green)%(committerdate:short) %(color:red)%(refname:short)%(color:reset) | %(subject)'
     c     = commit
     ca    = commit --amend
     cane  = commit --amend --no-edit
@@ -33,7 +34,7 @@
     lgr   = log --grep
     # Log
     l     = ll -10
-    ll    = log --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll    = log --pretty=format:'%C(red)%h%C(reset)%C(yellow)%d%C(reset) %s %C(green)(%cr) %C(bold blue)<%an>%C(reset)' --abbrev-commit --date=relative
     lg    = ll --graph -10
     lgl   = ll --graph
     lm    = ll --first-parent -10
