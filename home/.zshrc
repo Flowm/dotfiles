@@ -5,64 +5,69 @@
 [ -e "${HOME}/.shcfg/env" ] && source "${HOME}/.shcfg/env"
 
 ########################################################################
-# OMZ config
+# OMZ and prompt config
 ########################################################################
 
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/.shcfg/.omz-custom
+if ! [ -e "${HOME}/.shcfg/myc-omz-disable" ]; then
+    # OMZ Active
+    export ZSH=$HOME/.oh-my-zsh
+    export ZSH_CUSTOM=$HOME/.shcfg/.omz-custom
 
-ZSH_THEME="mjreese"
-#ZSH_THEME="avit"
+    # Disable oh-my-zsh autoupdate
+    DISABLE_AUTO_UPDATE="true"
 
-########################################################################
-# Plugin config
-########################################################################
+    # Use case-sensitive completion.
+    CASE_SENSITIVE="true"
 
-# Disable oh-my-zsh autoupdate
-DISABLE_AUTO_UPDATE="true"
+    # Display red dots when waiting for compltion
+    COMPLETION_WAITING_DOTS="true"
 
-# Use case-sensitive completion.
-CASE_SENSITIVE="true"
+    # Disable string escaping during paste
+    DISABLE_MAGIC_FUNCTIONS=true
 
-# Display red dots when waiting for compltion
-COMPLETION_WAITING_DOTS="true"
+    # Don't overwrite the title
+    DISABLE_AUTO_TITLE="true"
 
-# Disable string escaping during paste
-DISABLE_MAGIC_FUNCTIONS=true
+    # Disable directory permission check
+    ZSH_DISABLE_COMPFIX="true"
 
-# Don't overwrite the title
-DISABLE_AUTO_TITLE="true"
+    # Show command execution time after given number of seconds.
+    REPORTTIME=30
 
-# Disable directory permission check
-ZSH_DISABLE_COMPFIX="true"
+    # Long history
+    export HISTSIZE=400000
+    export SAVEHIST=$HISTSIZE
 
-# Show command execution time after given number of seconds.
-REPORTTIME=30
+    # Plugins
+    plugins=(
+        vi-mode # Load vi-mode first
+        colored-man-pages
+        extract
+        history-substring-search
+        z
+        zsh-256color
+        zsh-syntax-highlighting
+    )
+    if [[ -n "$MC_OSX" ]]; then
+        plugins[$(($#plugins+1))]=macos
+    fi
 
-# Long history
-export HISTSIZE=400000
-export SAVEHIST=$HISTSIZE
+    # Theme
+    #ZSH_THEME="avit"
+    #ZSH_THEME="mjreese"
+    ZSH_THEME="powerlevel10k/powerlevel10k"
 
-########################################################################
-# Plugins
-########################################################################
-
-plugins=(
-	vi-mode # Load vi-mode first
-	colored-man-pages
-	extract
-	history-substring-search
-	mosh
-	tmuxinator
-	z
-	zsh-256color
-	zsh-syntax-highlighting
-)
-if [[ -n "$MC_OSX" ]]; then
-	plugins[$(($#plugins+1))]=macos
+    source $ZSH/oh-my-zsh.sh
+else
+    # OMZ disabled, only load powerlevel10k
+    [ -d "${HOME}/.shcfg/.omz-custom/themes/powerlevel10k" ] && source "${HOME}/.shcfg/.omz-custom/themes/powerlevel10k/powerlevel10k.zsh-theme"
 fi
 
-source $ZSH/oh-my-zsh.sh
+########################################################################
+# Powerlevel config
+########################################################################
+
+[ -e "${HOME}/.p10k.zsh" ] && source "${HOME}/.p10k.zsh"
 
 ########################################################################
 # ZSH config
