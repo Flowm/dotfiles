@@ -53,6 +53,7 @@ alias drun-mitmproxy='docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmp
 alias drun-rclone='drun -v ~/.config/rclone:/config/rclone rclone/rclone'
 alias drun-shellcheck='drun koalaman/shellcheck:stable'
 alias drun-updatecli='drun ghcr.io/updatecli/updatecli:latest'
+alias drun-go='drun -e GOPATH=/cwd/.go -e GOCACHE=/cwd/.go/cache golang:1.24 go'
 
 alias rsync-copy="rsync -avzhP"
 alias rsync-move="rsync -avzhP --remove-source-files"
