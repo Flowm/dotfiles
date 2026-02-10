@@ -40,8 +40,8 @@ if ! [ -e "${HOME}/.shcfg/myc-omz-disable" ]; then
 
     # Plugins
     plugins=(
-        vi-mode # Load vi-mode first
         colored-man-pages
+        docker
         extract
         history-substring-search
         z
@@ -95,6 +95,9 @@ setopt hist_reduce_blanks
 ########################################################################
 # Keybindings
 ########################################################################
+
+# VI-Mode (add more https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/vi-mode/vi-mode.plugin.zsh)
+bindkey -v
 
 # Only use the local history for the arrow keys
 up-line-or-local-history() {
