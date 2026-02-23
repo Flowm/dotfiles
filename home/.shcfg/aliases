@@ -80,6 +80,17 @@ mc-sshcopyid() { cat ~/.ssh/id_rsa.pub | ssh $1 'mkdir -p .ssh; cat >> .ssh/auth
 mc-ts() { date +%F-%H-%M-%S; }
 mc-waitfor() { while ! $@; do; done; }
 
+scp-open() {
+  [ -z "$1" ] && { echo "Usage: scp-open host:/path/file"; return 1; }
+
+  remote="$1"
+  base="$(basename "$remote")"
+  local_path="$(mktemp "/tmp/XXXXXX-${base}")"
+
+  scp "$remote" "$local_path" || return 1
+  open -- "$local_path"
+}
+
 ########################################################################
 # Aliases Conditional
 ########################################################################
