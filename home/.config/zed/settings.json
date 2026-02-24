@@ -7,26 +7,29 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "context_servers": {
     "container-use": {
       "enabled": false,
       "command": "container-use",
       "args": ["stdio"],
-      "env": {}
+      "env": {},
     },
     "playwright-mcp": {
       "enabled": false,
       "command": "npx",
       "args": ["@playwright/mcp@latest"],
-      "env": {}
-    }
+      "env": {},
+    },
   },
   "agent": {
     "default_profile": "write",
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-opus-4.6"
+      "model": "claude-sonnet-4.6",
     },
     "profiles": {
       "container-use": {
@@ -45,29 +48,26 @@
           "move_path": false,
           "grep": false,
           "edit_file": false,
-          "terminal": false
+          "terminal": false,
         },
-        "enable_all_context_servers": true
-      }
-    }
-  },
-  "features": {
-    "edit_prediction_provider": "copilot"
+        "enable_all_context_servers": true,
+      },
+    },
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false
+    "metrics": false,
   },
   "vim_mode": true,
   "vim": {
-    "use_system_clipboard": "never"
+    "use_system_clipboard": "never",
   },
   "languages": {
     "YAML": {
-      "format_on_save": "off"
+      "format_on_save": "off",
     },
     "HTML": {
-      "format_on_save": "off"
+      "format_on_save": "off",
     },
     "Python": {
       "language_servers": [
@@ -75,8 +75,8 @@
         // use the default configuration.
         "ty",
         "!basedpyright",
-        "..."
-      ]
-    }
-  }
+        "...",
+      ],
+    },
+  },
 }
