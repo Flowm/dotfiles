@@ -63,6 +63,9 @@
     "use_system_clipboard": "never",
   },
   "languages": {
+    "JSON": {
+      "format_on_save": "off",
+    },
     "YAML": {
       "format_on_save": "off",
     },
