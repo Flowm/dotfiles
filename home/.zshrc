@@ -54,8 +54,8 @@ if ! [ -e "${HOME}/.shcfg/myc-omz-disable" ]; then
 
     # Theme
     #ZSH_THEME="avit"
-    #ZSH_THEME="mjreese"
-    ZSH_THEME="powerlevel10k/powerlevel10k"
+    ZSH_THEME="mjreese"
+    #ZSH_THEME="powerlevel10k/powerlevel10k"
 
     source $ZSH/oh-my-zsh.sh
 else
