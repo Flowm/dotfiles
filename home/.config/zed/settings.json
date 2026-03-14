@@ -25,11 +25,28 @@
     },
   },
   "agent": {
+    "tool_permissions": {
+      "tools": {
+        "web_search": {
+          "default": "allow"
+        },
+        "fetch": {
+          "default": "allow"
+        }
+      }
+    },
+    "favorite_models": [
+      {
+        "provider": "copilot_chat",
+        "model": "claude-sonnet-4.6",
+        "enable_thinking": false
+      }
+    ],
     "default_profile": "write",
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "model": "claude-opus-4.6",
     },
     "profiles": {
       "container-use": {
