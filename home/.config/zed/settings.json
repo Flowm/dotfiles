@@ -32,6 +32,9 @@
   "agent": {
     "tool_permissions": {
       "tools": {
+        "search_web": {
+          "default": "allow"
+        },
         "terminal": {
           "always_allow": [
             { "pattern": "^cat\\b" },
@@ -47,9 +50,6 @@
             { "pattern": "^npm\\s+(install|run|build)" },
             { "pattern": "^git\\s+(status|log|diff|branch)" },
           ],
-        },
-        "web_search": {
-          "default": "allow",
         },
         "fetch": {
           "default": "allow",
