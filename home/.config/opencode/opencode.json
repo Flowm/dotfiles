@@ -1,0 +1,55 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "*": "deny",
+    "doom_loop": "ask",
+    "external_directory": "ask",
+    "question": "allow",
+    "lsp": "allow",
+    "glob": "allow",
+    "list": "allow",
+    "grep": "allow",
+    "task": "allow",
+    "skill": "allow",
+    "websearch": "allow",
+    "codesearch": "allow",
+    "webfetch": "allow",
+    "read": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "edit": {
+      "*": "allow",
+      "*.env": "deny",
+      "*.env.*": "deny",
+      "*.env.example": "allow"
+    },
+    "bash": {
+      "*": "ask",
+      "cat *": "allow",
+      "du *": "allow",
+      "echo *": "allow",
+      "find *": "allow",
+      "git branch": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git show *": "allow",
+      "git status": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "ls *": "allow",
+      "npm run build": "allow",
+      "sort *": "allow",
+      "tail *": "allow",
+      "wc *": "allow"
+    }
+  },
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp"
+    }
+  }
+}

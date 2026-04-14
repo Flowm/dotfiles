@@ -33,7 +33,7 @@
     "tool_permissions": {
       "tools": {
         "search_web": {
-          "default": "allow"
+          "default": "allow",
         },
         "terminal": {
           "always_allow": [
@@ -48,7 +48,7 @@
             { "pattern": "^tail\\b" },
             { "pattern": "^wc\\b" },
             { "pattern": "^npm\\s+(install|run|build)" },
-            { "pattern": "^git\\s+(status|log|diff|branch)" },
+            { "pattern": "^git\\s+(show|status|log|diff|branch)" },
           ],
         },
         "fetch": {
