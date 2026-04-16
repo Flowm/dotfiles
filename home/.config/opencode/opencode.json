@@ -2,18 +2,19 @@
   "$schema": "https://opencode.ai/config.json",
   "permission": {
     "*": "ask",
+    "codesearch": "allow",
     "doom_loop": "ask",
     "external_directory": "ask",
-    "question": "allow",
-    "lsp": "allow",
     "glob": "allow",
-    "list": "allow",
     "grep": "allow",
-    "task": "allow",
+    "list": "allow",
+    "lsp": "allow",
+    "question": "allow",
     "skill": "allow",
-    "websearch": "allow",
-    "codesearch": "allow",
+    "task": "allow",
+    "todowrite": "allow",
     "webfetch": "allow",
+    "websearch": "allow",
     "read": {
       "*": "allow",
       "*.env": "deny",
@@ -45,6 +46,21 @@
       "sort *": "allow",
       "tail *": "allow",
       "wc *": "allow"
+    }
+  },
+  "agent": {
+    "sanboxed": {
+      "description": "Skip permissions in sandbox",
+      "permission": {
+        "*": {
+          "*": "allow"
+        },
+        "doom_loop": "ask",
+        "bash": {
+          "*": "allow",
+          "git push *": "deny"
+        }
+      }
     }
   },
   "mcp": {
