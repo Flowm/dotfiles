@@ -28,6 +28,18 @@
       "args": ["@playwright/mcp@latest"],
       "env": {},
     },
+    "grafana-staging": {
+      "enabled": false,
+      "command": "mcp-grafana",
+      "args": [
+        "--enabled-tools",
+        "search,datasource,dashboard,folder,rendering,runpanelquery,sql",
+      ],
+      "env": {
+        "GRAFANA_URL": "http://localhost:3000/",
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "XXX",
+      },
+    },
   },
   "agent": {
     "tool_permissions": {
