@@ -34,7 +34,7 @@ indent_style = tab
 
 # JavaScript
 # https://github.com/feross/standard
-[*.{js,json,jsx}]
+[*.{js,ts,vue,html,json,jsx}]
 indent_size = 2
 indent_style = space
 
