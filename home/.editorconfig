@@ -12,12 +12,13 @@ insert_final_newline = true
 
 # Default indention
 [*]
-indent_size = 4
+indent_size = 2
 indent_style = space
 
 # GNU make
 # https://www.gnu.org/software/make/manual/html_node/Recipe-Syntax.html
 [{Makefile,*.mak}]
+indent_size = 4
 indent_style = tab
 
 # C/C++
@@ -30,11 +31,12 @@ indent_brace_style = K&R
 # Go
 # https://golang.org/cmd/gofmt/
 [*.go]
+indent_size = 4
 indent_style = tab
 
 # JavaScript
 # https://github.com/feross/standard
-[*.{js,ts,vue,html,css,json,jsx}]
+[*.{js,ts,vue,html,css,json,jsonc}]
 indent_size = 2
 indent_style = space
 
