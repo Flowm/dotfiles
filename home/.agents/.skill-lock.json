@@ -96,6 +96,15 @@
       "skillFolderHash": "bd39857ab1524b8d42dd2f546957744049886aad",
       "installedAt": "2026-06-03T02:49:47.388Z",
       "updatedAt": "2026-06-03T02:49:47.388Z"
+    },
+    "typescript-expert": {
+      "source": "sickn33/antigravity-awesome-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills.git",
+      "skillPath": "skills/typescript-expert/SKILL.md",
+      "skillFolderHash": "653b9795fb6a9e1477b8a5a2d857ba6a36544fa7",
+      "installedAt": "2026-06-07T23:13:11.398Z",
+      "updatedAt": "2026-06-07T23:13:11.398Z"
     }
   },
   "dismissed": {
