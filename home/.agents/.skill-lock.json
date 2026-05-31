@@ -87,6 +87,15 @@
       "skillFolderHash": "6d2dbc37eccb5d89902bda605f1a8bdbad7f36d8",
       "installedAt": "2026-05-25T23:18:21.827Z",
       "updatedAt": "2026-05-25T23:18:21.827Z"
+    },
+    "thermo-nuclear-code-quality-review": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "cursor-team-kit/skills/thermo-nuclear-code-quality-review/SKILL.md",
+      "skillFolderHash": "d9c8935dd560b3b6f5941247d04a1843f8c7cc35",
+      "installedAt": "2026-05-30T18:06:57.462Z",
+      "updatedAt": "2026-05-30T18:06:57.462Z"
     }
   },
   "dismissed": {
@@ -105,6 +114,7 @@
     "github-copilot",
     "kimi-cli",
     "opencode",
-    "warp"
+    "warp",
+    "zed"
   ]
 }
