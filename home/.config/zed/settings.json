@@ -9,20 +9,20 @@
 {
   "cli_default_open_behavior": "existing_window",
   "agent_servers": {
-    "codex-acp": {
-      "type": "registry",
+    "opencode": {
+      "type": "registry"
     },
+    "codex-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry"
+    }
   },
   "edit_predictions": {
     "provider": "copilot",
   },
   "context_servers": {
-    "container-use": {
-      "enabled": false,
-      "command": "container-use",
-      "args": ["stdio"],
-      "env": {},
-    },
     "playwright-mcp": {
       "enabled": false,
       "command": "npx",
@@ -77,21 +77,27 @@
       {
         "provider": "copilot_chat",
         "model": "claude-sonnet-4.6",
-        "enable_thinking": false,
+        "enable_thinking": false
       },
       {
         "provider": "copilot_chat",
-        "model": "claude-opus-4.6",
-        "enable_thinking": false,
+        "model": "claude-opus-4.8",
+        "enable_thinking": true
       },
+      {
+        "provider": "openai-subscribed",
+        "model": "gpt-5.5",
+        "enable_thinking": true,
+        "effort": "high"
+      }
     ],
     "default_profile": "write",
     "model_parameters": [],
     "default_model": {
-      "effort": "medium",
+      "effort": "high",
       "enable_thinking": true,
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5",
     },
     "profiles": {
       "container-use": {
