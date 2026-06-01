@@ -9,6 +9,9 @@
 {
   "cli_default_open_behavior": "existing_window",
   "agent_servers": {
+    "gemini": {
+      "type": "registry"
+    },
     "opencode": {
       "type": "registry"
     },
@@ -82,7 +85,8 @@
       {
         "provider": "copilot_chat",
         "model": "claude-opus-4.8",
-        "enable_thinking": true
+        "enable_thinking": true,
+        "effort": "medium"
       },
       {
         "provider": "openai-subscribed",
