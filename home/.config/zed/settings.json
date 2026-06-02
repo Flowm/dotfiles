@@ -23,33 +23,30 @@
     }
   },
   "edit_predictions": {
-    "provider": "copilot",
+    "provider": "copilot"
   },
   "context_servers": {
     "playwright-mcp": {
       "enabled": false,
       "command": "npx",
       "args": ["@playwright/mcp@latest"],
-      "env": {},
+      "env": {}
     },
     "grafana-staging": {
       "enabled": false,
       "command": "mcp-grafana",
-      "args": [
-        "--enabled-tools",
-        "search,datasource,dashboard,folder,rendering,runpanelquery,sql",
-      ],
+      "args": ["--enabled-tools", "search,datasource,dashboard,folder,rendering,runpanelquery,sql"],
       "env": {
         "GRAFANA_URL": "http://localhost:3000/",
-        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "XXX",
-      },
-    },
+        "GRAFANA_SERVICE_ACCOUNT_TOKEN": "XXX"
+      }
+    }
   },
   "agent": {
     "tool_permissions": {
       "tools": {
         "search_web": {
-          "default": "allow",
+          "default": "allow"
         },
         "terminal": {
           "always_allow": [
@@ -64,17 +61,17 @@
             { "pattern": "^tail\\b" },
             { "pattern": "^wc\\b" },
             { "pattern": "^npm\\s+(install|run|build)" },
-            { "pattern": "^git\\s+(show|status|log|diff|branch)" },
-          ],
+            { "pattern": "^git\\s+(show|status|log|diff|branch)" }
+          ]
         },
         "fetch": {
-          "default": "allow",
-        },
-      },
+          "default": "allow"
+        }
+      }
     },
     "thread_summary_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6",
+      "model": "claude-sonnet-4.6"
     },
     "favorite_models": [
       {
@@ -101,7 +98,7 @@
       "effort": "high",
       "enable_thinking": true,
       "provider": "openai-subscribed",
-      "model": "gpt-5.5",
+      "model": "gpt-5.5"
     },
     "profiles": {
       "container-use": {
@@ -120,19 +117,19 @@
           "move_path": false,
           "grep": false,
           "edit_file": false,
-          "terminal": false,
+          "terminal": false
         },
-        "enable_all_context_servers": true,
-      },
-    },
+        "enable_all_context_servers": true
+      }
+    }
   },
   "telemetry": {
     "diagnostics": false,
-    "metrics": false,
+    "metrics": false
   },
   "vim_mode": true,
   "vim": {
-    "use_system_clipboard": "never",
+    "use_system_clipboard": "never"
   },
   "languages": {
     "Python": {
@@ -140,36 +137,36 @@
         // Enable pyrefly, disable basedpyright, inherit from default
         "pyrefly",
         "!basedpyright",
-        "...",
-      ],
+        "..."
+      ]
     },
     "TypeScript": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "JavaScript": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "Vue.js": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "HTML": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "JSON": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "JSONC": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
+      "prettier": { "allowed": false }
     },
     "YAML": {
       "formatter": { "language_server": { "name": "oxfmt" } },
-      "prettier": { "allowed": false },
-    },
-  },
+      "prettier": { "allowed": false }
+    }
+  }
 }
