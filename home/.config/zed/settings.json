@@ -45,6 +45,12 @@
   "agent": {
     "tool_permissions": {
       "tools": {
+        "create_directory": {
+          "default": "allow"
+        },
+        "fetch": {
+          "default": "allow"
+        },
         "search_web": {
           "default": "allow"
         },
@@ -57,15 +63,17 @@
             { "pattern": "^grep\\b" },
             { "pattern": "^head\\b" },
             { "pattern": "^ls\\b" },
+            { "pattern": "^nl\\b" },
             { "pattern": "^sort\\b" },
             { "pattern": "^tail\\b" },
             { "pattern": "^wc\\b" },
-            { "pattern": "^npm\\s+(install|run|build)" },
-            { "pattern": "^git\\s+(show|status|log|diff|branch)" }
-          ]
-        },
-        "fetch": {
-          "default": "allow"
+            { "pattern": "^docker\\s+(ps|images|version|info|manifest)" },
+            { "pattern": "^git(\\s+--no-pager)?\\s+(show|status|log|diff|branch|stash|rev-parse)" },
+            { "pattern": "^go\\s+(build|test|vet|fmt|mod|version)" },
+            { "pattern": "^node\\s+(--version|-v)" },
+            { "pattern": "^npm\\s+(run|build|test|outdated|list)" }
+          ],
+          "always_deny": [{ "pattern": "^find\\b.*-(exec|ok)\\b" }]
         }
       }
     },
