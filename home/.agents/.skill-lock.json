@@ -87,6 +87,15 @@
       "skillFolderHash": "d9c8935dd560b3b6f5941247d04a1843f8c7cc35",
       "installedAt": "2026-05-30T18:06:57.462Z",
       "updatedAt": "2026-05-30T18:06:57.462Z"
+    },
+    "git-commit": {
+      "source": "Flowm/dotfiles",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Flowm/dotfiles.git",
+      "skillPath": "home/.agents/skills/git-commit/SKILL.md",
+      "skillFolderHash": "bd39857ab1524b8d42dd2f546957744049886aad",
+      "installedAt": "2026-06-03T02:49:47.388Z",
+      "updatedAt": "2026-06-03T02:49:47.388Z"
     }
   },
   "dismissed": {
@@ -95,15 +104,14 @@
   "lastSelectedAgents": [
     "amp",
     "antigravity",
+    "antigravity-cli",
     "cline",
     "codex",
     "cursor",
     "deepagents",
-    "dexto",
-    "firebender",
     "gemini-cli",
     "github-copilot",
-    "kimi-cli",
+    "kimi-code-cli",
     "opencode",
     "warp",
     "zed"
