@@ -45,6 +45,9 @@
   "agent": {
     "tool_permissions": {
       "tools": {
+        "skill": {
+          "default": "allow"
+        },
         "create_directory": {
           "default": "allow"
         },
@@ -95,6 +98,12 @@
       },
       {
         "provider": "openai-subscribed",
+        "model": "gpt-5.5",
+        "enable_thinking": true,
+        "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
         "model": "gpt-5.5",
         "enable_thinking": true,
         "effort": "high"
