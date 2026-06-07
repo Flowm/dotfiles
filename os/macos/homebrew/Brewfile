@@ -17,14 +17,18 @@ brew "docker"                                     # docker: Pack, ship and run a
 brew "docker-buildx"                              # docker-buildx: Docker CLI plugin for extended build capabilities with BuildKit
 brew "docker-compose"                             # docker-compose: Isolated development environments using Docker
 brew "dos2unix"                                   # dos2unix: Convert text between DOS, UNIX, and Mac formats
+brew "geos"                                       # geos: Geometry Engine
+brew "gh"                                         # gh: GitHub command-line tool
 brew "git"                                        # git: Distributed revision control system
 brew "git-lfs"                                    # git-lfs: Git extension for versioning large files
 brew "gnu-sed"                                    # gnu-sed: GNU implementation of the famous stream editor
+brew "go"                                         # go: Open source programming language to build simple/reliable/efficient software
 brew "gource"                                     # gource: Version Control Visualization Tool
 brew "htop"                                       # htop: Improved top (interactive process viewer)
-brew "imagemagick"                                # imagemagick: Tools and libraries to manipulate images in many formats
+brew "imagemagick"                                # imagemagick: Tools and libraries to manipulate images in select formats
 brew "jq"                                         # jq: Lightweight and flexible command-line JSON processor
 brew "languagetool", restart_service: :changed    # languagetool: Style and grammar checker
+brew "lnav"                                       # lnav: Curses-based tool for viewing and analyzing log files
 brew "mas"                                        # mas: Mac App Store command-line interface
 brew "mise"                                       # mise: Polyglot runtime manager (asdf rust clone)
 brew "mosh"                                       # mosh: Remote terminal application
@@ -32,8 +36,10 @@ brew "mtr"                                        # mtr: 'traceroute' and 'ping'
 brew "ncdu"                                       # ncdu: NCurses Disk Usage
 brew "neovim"                                     # neovim: Ambitious Vim-fork focused on extensibility and agility
 brew "nmap"                                       # nmap: Port scanning utility for large networks
-brew "node"                                       # node: Platform built on V8 to build network applications
+brew "node"                                       # node: Open-source, cross-platform JavaScript runtime environment
 brew "pandoc"                                     # pandoc: Swiss-army knife of markup format conversion
+brew "pkgconf"                                    # pkgconf: Package compiler and linker metadata toolkit
+brew "platformio"                                 # platformio: Your Gateway to Embedded Software Development Excellence
 brew "pv"                                         # pv: Monitor data's progress through a pipe
 brew "pwgen"                                      # pwgen: Password generator
 brew "rclone"                                     # rclone: Rsync for cloud storage
@@ -57,19 +63,24 @@ brew "yt-dlp"                                     # yt-dlp: Feature-rich command
 brew "zsh"                                        # zsh: UNIX shell (command interpreter)
 cask "1password"                                  # 1password: Password manager that keeps all passwords secure behind one password
 cask "alfred"                                     # alfred: Application launcher and productivity software
+cask "antigravity-cli"                            # antigravity-cli: Terminal interface for Antigravity agents
 cask "appcleaner"                                 # appcleaner: Application uninstaller
 cask "arq"                                        # arq: Multi-cloud backup application
 cask "balenaetcher"                               # balenaetcher: Tool to flash OS images to SD cards & USB drives
 cask "bettertouchtool"                            # bettertouchtool: Tool to customise input devices and automate computer systems
 cask "blender"                                    # blender: 3D creation suite
 cask "chromium"                                   # chromium: Free and open-source web browser
+cask "claude"                                     # claude: Anthropic's official Claude AI desktop app
+cask "claude-code"                                # claude-code: Terminal-based AI coding assistant
 cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
-cask "container-use"                              # container-use: Containerized environments for coding agents
+cask "codex"                                      # codex: OpenAI's coding agent that runs in your terminal
+cask "codex-app"                                  # codex-app: OpenAI's Codex desktop app for managing coding agents
 cask "cyberduck"                                  # cyberduck: Server and cloud storage browser
 cask "deskpad"                                    # deskpad: Virtual monitor for screen sharing
 cask "discord"                                    # discord: Voice and text chat software
 cask "excalidrawz"                                # excalidrawz: Excalidraw client
 cask "firefox"                                    # firefox: Web browser
+cask "font-meslo-for-powerlevel10k"
 cask "geekbench"                                  # geekbench: Tool to measure the computer system's performance
 cask "ghostty"                                    # ghostty: Terminal emulator that uses platform-native UI and GPU acceleration
 cask "google-chrome"                              # google-chrome: Web browser
@@ -82,7 +93,7 @@ cask "insomnia"                                   # insomnia: HTTP and GraphQL C
 cask "istat-menus"                                # istat-menus: System monitoring app
 cask "iterm2"                                     # iterm2: Terminal emulator as alternative to Apple's Terminal app
 cask "itermai"                                    # itermai: Enable generative AI features in iTerm2
-cask "ledger-live"                                # ledger-live: Wallet desktop application to maintain multiple cryptocurrencies
+cask "ledger-wallet"                              # ledger-wallet: Wallet desktop application to maintain multiple cryptocurrencies
 cask "lm-studio"                                  # lm-studio: Discover, download, and run local LLMs
 cask "losslesscut"                                # losslesscut: Trims video and audio files losslessly
 cask "monitorcontrol"                             # monitorcontrol: Tool to control external monitor brightness & volume
@@ -91,6 +102,7 @@ cask "notion"                                     # notion: App to write, plan, 
 cask "nvidia-geforce-now"                         # nvidia-geforce-now: Cloud gaming platform
 cask "obs"                                        # obs: Open-source software for live streaming and screen recording
 cask "obsidian"                                   # obsidian: Knowledge base that works on top of a local folder of plain text Markdown files
+cask "opencode-desktop"                           # opencode-desktop: AI coding agent desktop client
 cask "panoply"                                    # panoply: Plot geo-referenced data from netCDF, HDF, and GRIB
 cask "qgis"                                       # qgis: Geographic Information System
 cask "qlcolorcode"                                # qlcolorcode: Quick Look plug-in that renders source code with syntax highlighting
@@ -98,10 +110,13 @@ cask "qlstephen"                                  # qlstephen: Quick Look plugin
 cask "raindropio"                                 # raindropio: All-in-one bookmark manager
 cask "raspberry-pi-imager"                        # raspberry-pi-imager: Imaging utility to install operating systems to a microSD card
 cask "remote-desktop-manager"                     # remote-desktop-manager: Centralises all remote connections on a single platform
+cask "rustdesk"                                   # rustdesk: Open source virtual/remote desktop application
+cask "signal"                                     # signal: Instant messaging application focusing on security
 cask "skim"                                       # skim: PDF reader and note-taking application
 cask "spotify"                                    # spotify: Music streaming service
 cask "steam"                                      # steam: Video game digital distribution service
 cask "temurin"                                    # temurin: JDK from the Eclipse Foundation (Adoptium)
+cask "unraid-usb-creator-next"                    # unraid-usb-creator-next: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player
 cask "zed"                                        # zed: Multiplayer code editor
@@ -118,3 +133,4 @@ mas "WiFi Explorer", id: 494803304
 mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862
 mas "Xcode", id: 497799835
+go "github.com/flowm/drun/cmd/drun"
