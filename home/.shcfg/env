@@ -208,7 +208,7 @@ fi
 # Program path specific
 ########################################################################
 
-GOPATH="$HOME/Dev/go"
+GOPATH="$HOME/dev/go"
 if [ -d "$GOPATH" ]; then
     export GOPATH
     export GOBIN=$GOPATH/bin
