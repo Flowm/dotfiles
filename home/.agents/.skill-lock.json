@@ -105,6 +105,15 @@
       "skillFolderHash": "653b9795fb6a9e1477b8a5a2d857ba6a36544fa7",
       "installedAt": "2026-06-07T23:13:11.398Z",
       "updatedAt": "2026-06-07T23:13:11.398Z"
+    },
+    "here-now": {
+      "source": "heredotnow/skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/heredotnow/skill.git",
+      "skillPath": "here-now/SKILL.md",
+      "skillFolderHash": "9dd1813f9bc7b1b5bbdb360b7614887b74ccf6b9",
+      "installedAt": "2026-06-09T20:15:43.115Z",
+      "updatedAt": "2026-06-09T20:15:43.115Z"
     }
   },
   "dismissed": {
