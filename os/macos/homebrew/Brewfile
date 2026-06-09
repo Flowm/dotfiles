@@ -1,6 +1,6 @@
 tap "buo/cask-upgrade"
-tap "dagger/tap"
 tap "homebrew/services"
+tap "mm7894215/tokentracker"
 brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
 brew "xz"                                         # xz: General-purpose data compression with high compression ratio
 brew "zstd"                                       # zstd: Zstandard is a real-time compression algorithm
@@ -71,7 +71,7 @@ cask "bettertouchtool"                            # bettertouchtool: Tool to cus
 cask "blender"                                    # blender: 3D creation suite
 cask "chromium"                                   # chromium: Free and open-source web browser
 cask "claude"                                     # claude: Anthropic's official Claude AI desktop app
-cask "claude-code"                                # claude-code: Terminal-based AI coding assistant
+cask "claude-code@latest"                         # claude-code@latest: Terminal-based AI coding assistant
 cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
 cask "codex"                                      # codex: OpenAI's coding agent that runs in your terminal
 cask "codex-app"                                  # codex-app: OpenAI's Codex desktop app for managing coding agents
@@ -116,6 +116,7 @@ cask "skim"                                       # skim: PDF reader and note-ta
 cask "spotify"                                    # spotify: Music streaming service
 cask "steam"                                      # steam: Video game digital distribution service
 cask "temurin"                                    # temurin: JDK from the Eclipse Foundation (Adoptium)
+cask "mm7894215/tokentracker/tokentracker"        # mm7894215/tokentracker/tokentracker: Local-first AI token usage tracker menu bar app
 cask "unraid-usb-creator-next"                    # unraid-usb-creator-next: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player
