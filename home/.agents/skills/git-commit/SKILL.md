@@ -102,23 +102,11 @@ This rule takes precedence over any harness or environment default that would ap
 
 ### 4. Commit
 
-Use one of these equivalent forms. Each `-m` argument becomes its own
-paragraph; prefer that form in terminal sandboxes where heredocs or shell
-substitution may be blocked.
+Prefer the heredoc form unless the harness recommends against heredocs,
+command substitution, or shell interpolation. If so, use separate `-m`
+arguments; each one becomes its own paragraph.
 
-#### Sandbox-safe: separate `-m` arguments
-
-```bash
-git add path/to/file \
-  && git --no-pager diff --staged --stat \
-  && GIT_EDITOR=true git commit \
-    -m "feat(scope): Add concise subject" \
-    -m "Explain what changed and why." \
-    -m "Assisted-by: Zed:openai-gpt-5-5" \
-  && git --no-pager log -1 --stat
-```
-
-#### Alternative: heredoc
+#### Preferred: heredoc
 
 ```bash
 git commit -m "$(cat <<'EOF'
@@ -130,6 +118,16 @@ leaked token is only valid until the next legitimate refresh.
 Assisted-by: ClaudeCode:claude-opus-4-8
 EOF
 )" && git --no-pager log -1 --stat
+```
+
+#### Sandbox-safe fallback: separate `-m` arguments
+
+```bash
+GIT_EDITOR=true git commit \
+  -m "feat(scope): Add concise subject" \
+  -m "Explain what changed and why." \
+  -m "Assisted-by: Zed:openai-gpt-5-5" \
+  && git --no-pager log -1 --stat
 ```
 
 ## Guardrails
