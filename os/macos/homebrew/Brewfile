@@ -1,6 +1,6 @@
 tap "buo/cask-upgrade"
 tap "homebrew/services"
-tap "mm7894215/tokentracker"
+tap "mm7894215/tokentracker", trusted: true
 brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
 brew "xz"                                         # xz: General-purpose data compression with high compression ratio
 brew "zstd"                                       # zstd: Zstandard is a real-time compression algorithm
@@ -116,7 +116,7 @@ cask "skim"                                       # skim: PDF reader and note-ta
 cask "spotify"                                    # spotify: Music streaming service
 cask "steam"                                      # steam: Video game digital distribution service
 cask "temurin"                                    # temurin: JDK from the Eclipse Foundation (Adoptium)
-cask "mm7894215/tokentracker/tokentracker"        # mm7894215/tokentracker/tokentracker: Local-first AI token usage tracker menu bar app
+cask "mm7894215/tokentracker/tokentracker", trusted: true  # mm7894215/tokentracker/tokentracker: Local-first AI token usage tracker menu bar app
 cask "unraid-usb-creator-next"                    # unraid-usb-creator-next: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player

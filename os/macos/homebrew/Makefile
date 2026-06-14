@@ -11,7 +11,7 @@ help: ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2}'
 
 dump: ## Dump all installed packages to Brewfile
-	brew bundle dump --force --describe
+	brew bundle dump --force --no-dump-vscode
 	@python3 format-brewfile.py Brewfile
 	@echo "Brewfile updated with current package state"
 
