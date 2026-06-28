@@ -54,6 +54,33 @@
   "agent": {
     "tool_permissions": {
       "tools": {
+        "mcp:grafana-staging:get_dashboard_property": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:run_panel_query": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:update_dashboard": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:list_table_schemas_sql": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:get_dashboard_summary": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:get_dashboard_by_uid": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:list_datasources": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:search_dashboards": {
+          "default": "allow"
+        },
+        "mcp:grafana-staging:query_sql_datasource": {
+          "default": "allow"
+        },
         "mcp:mcp-orora-space:portal_codemode_execute": {
           "default": "allow"
         },
@@ -125,15 +152,21 @@
         "model": "gpt-5.5",
         "enable_thinking": true,
         "effort": "high"
+      },
+      {
+        "provider": "copilot_chat",
+        "model": "claude-fable-5",
+        "enable_thinking": true,
+        "effort": "high"
       }
     ],
     "default_profile": "write",
     "model_parameters": [],
     "default_model": {
       "effort": "high",
-      "enable_thinking": true,
-      "provider": "openai-subscribed",
-      "model": "gpt-5.5"
+      "enable_thinking": false,
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.6"
     },
     "profiles": {
       "container-use": {
@@ -192,6 +225,7 @@
       "prettier": { "allowed": false }
     },
     "JSON": {
+      "format_on_save": "off",
       "formatter": { "language_server": { "name": "oxfmt" } },
       "prettier": { "allowed": false }
     },
