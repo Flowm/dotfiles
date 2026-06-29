@@ -60,8 +60,8 @@ trailers
   - Use one if the repo does; omit if it'd be noise
 - `subject`
   - Concise summary of what changed
-  - Use imperative, present tense: "Add" not "Added" or "Adds"
-  - Capitalize the first letter of the subject
+  - Use imperative, present tense: "add" not "added" or "adds"
+  - Start the subject with a lowercase letter
   - No period at the end
   - Keep short (aim ≤ 50 chars, hard ceiling ~72)
 
@@ -124,7 +124,7 @@ EOF
 
 ```bash
 GIT_EDITOR=true git commit \
-  -m "feat(scope): Add concise subject" \
+  -m "feat(scope): add concise subject" \
   -m "Explain what changed and why." \
   -m "Assisted-by: Zed:openai-gpt-5-5" \
   && git --no-pager log -1 --stat
