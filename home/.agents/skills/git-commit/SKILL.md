@@ -9,7 +9,7 @@ Turn working changes into clean, well-attributed git commits.
 Two things make a commit produced through this skill recognizable:
 
 1. The **message** follows the Conventional Commits Specification
-   shape: `type(scope): subject`.
+   shape: `type(scope): description`.
 2. The **footer** carries an `Assisted-by:` trailer naming the AI agent and model that helped, so the provenance of the work is honest and auditable.
 
 The attribution convention follows the Linux kernel's AI Coding Assistants policy: AI involvement should be disclosed in the commit, not hidden.
@@ -43,7 +43,7 @@ git --no-pager log --oneline -10
 ### 3. Draft the commit message
 
 ```
-type(scope): subject
+type(scope): description
 
 body
 
@@ -51,17 +51,17 @@ optional footers
 trailers
 ```
 
-#### Subject line (`type(scope): subject`)
+#### Description line (`type(scope): description`)
 
 - `type`
   - Pick the type that best describes the change (see types below)
 - `scope` optional, in parentheses.
   - A short noun for the area touched (`auth`, `api`, `chart`)
   - Use one if the repo does; omit if it'd be noise
-- `subject`
+- `description`
   - Concise summary of what changed
   - Use imperative, present tense: "add" not "added" or "adds"
-  - Start the subject with a lowercase letter
+  - Start the description with a lowercase letter
   - No period at the end
   - Keep short (aim ≤ 50 chars, hard ceiling ~72)
 
@@ -84,7 +84,7 @@ trailers
 #### Body
 
 Explain the *what* and especially the *why*, not the *how* (the diff shows how). Wrap around 72 columns.
-Skip the body for changes that are self-explanatory from the subject.
+Skip the body for changes that are self-explanatory from the description.
 
 #### Breaking changes
 
@@ -124,7 +124,7 @@ EOF
 
 ```bash
 GIT_EDITOR=true git commit \
-  -m "feat(scope): add concise subject" \
+  -m "feat(scope): add concise description" \
   -m "Explain what changed and why." \
   -m "Assisted-by: Zed:openai-gpt-5-5" \
   && git --no-pager log -1 --stat
