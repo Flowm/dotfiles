@@ -37,18 +37,19 @@ shift $(($OPTIND - 1))
 
 conf_dir="$HOME/.myconf"
 conf_hist="$conf_dir/history"
-backup_host="veldt.mauracher.eu"
+backup_host="flow@helix.frcy.org"
+backup_dir=".repos/history"
 
 if [ ${BACKUP:-} ]; then
-	echo "Pushing history to backup srv"
+	echo "Pushing history to ${backup_host}"
 	date=$(date +%F-%H-%M-%S)
 	host=$(hostname)
 	for file in ${conf_hist}/*; do
 		base=$(basename "${file}")
-		scp "$file" $backup_host:"~/backup/history/${base}.new"
-		ssh $backup_host "cd ~/backup/history && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
+		scp "$file" $backup_host:"${backup_dir}/${base}.new"
+		ssh $backup_host "cd ${backup_dir} && cat ${base}* | sort -u > ${base}.up && mv ${base}.up ${base} && rm ${base}.new && git add ${base}"
 	done
-	ssh $backup_host "cd ~/backup/history && git commit -m \"${host} - ${date}\""
+	ssh $backup_host "cd ${backup_dir} && git commit -m \"${host} - ${date}\""
 fi
 
 if [ $# -eq 0 ]; then
@@ -60,7 +61,7 @@ GREP=$1
 OUT=""
 if [ -n "$GREP" ]; then
 	if [ ${REMOTE:-} ]; then
-		OUT=$(ssh $backup_host "cd backup/history && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n)
+		OUT=$(ssh $backup_host "cd ${backup_dir} && git grep -i \"$GREP\"" | cut -d: -f2- | sort -n)
 	else
 		OUT=$(grep -ari "$GREP" ~/.myconf/history | cut -d: -f2- | sort -n)
 	fi

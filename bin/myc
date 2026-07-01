@@ -51,6 +51,9 @@ conf_home="$conf_dir/home"
 conf_hist="$conf_dir/history"
 conf_tools="$conf_dir/tools"
 
+git_host="flow@helix.frcy.org"
+git_dir="/home/flow/.repos"
+
 if [ ${UPDATE:-} ]; then
     cd ${conf_dir} && git pull --ff-only
 fi
@@ -60,7 +63,7 @@ if [ ${SUBUP:-} ]; then
 fi
 
 if [ ${PRINT:-} ]; then
-    echo "cd && git clone ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git && ~/.myconf/bin/myc -ie ssh -c tmuxa"
+    echo "cd && git clone ssh://${git_host}${git_dir}/.myconf.git && ~/.myconf/bin/myc -ie ssh -c tmuxa"
 fi
 
 for CONF in "${MYC_CONF[@]}"; do
@@ -80,8 +83,9 @@ done
 for EXTRA in "${MYC_EXTRA[@]}"; do
     if [ "$EXTRA" == "ssh" ]; then
         echo "Install ssh config"
-        git -C "$conf_home" remote set-url origin ssh://flow@veldt.mauracher.eu/home/flow/.git/.myconf.git
-        git -C "$conf_home/.ssh" pull --ff-only || git clone flow@veldt.mauracher.eu:/home/flow/.git/.ssh.git "$conf_home/.ssh"
+        git -C "$conf_home" remote set-url origin ssh://${git_host}${git_dir}/.myconf.git
+        git -C "$conf_home/.ssh" pull --ff-only || git clone ${git_host}:${git_dir}/.ssh.git "$conf_home/.ssh"
+        git -C "$conf_home/.ssh" remote set-url origin ssh://${git_host}${git_dir}/.ssh.git
         chmod 700 $HOME/.ssh || true
         chmod 600 $HOME/.ssh/config || true
     elif [ "$EXTRA" == "apt-base" ]; then
