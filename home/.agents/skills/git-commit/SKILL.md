@@ -60,8 +60,8 @@ trailers
   - Use one if the repo does; omit if it'd be noise
 - `description`
   - Concise summary of what changed
-  - Use imperative, present tense: "add" not "added" or "adds"
-  - Start the description with a lowercase letter
+  - Use imperative, present tense: "Add" not "Added" or "Adds"
+  - Start the description with an uppercase letter
   - No period at the end
   - Keep short (aim ≤ 50 chars, hard ceiling ~72)
 
@@ -110,7 +110,7 @@ arguments; each one becomes its own paragraph.
 
 ```bash
 git commit -m "$(cat <<'EOF'
-feat(auth): add JWT refresh-token rotation
+feat(auth): Add JWT refresh-token rotation
 
 Refresh tokens are now single-use and rotated on every refresh, so a
 leaked token is only valid until the next legitimate refresh.
@@ -124,7 +124,7 @@ EOF
 
 ```bash
 GIT_EDITOR=true git commit \
-  -m "feat(scope): add concise description" \
+  -m "feat(scope): Add concise description" \
   -m "Explain what changed and why." \
   -m "Assisted-by: Zed:openai-gpt-5-5" \
   && git --no-pager log -1 --stat
@@ -144,7 +144,7 @@ GIT_EDITOR=true git commit \
 ### Simple fix, no scope or body needed:
 
 ```
-fix: prevent crash when forecast list is empty
+fix: Prevent crash when forecast list is empty
 
 Assisted-by: Zed:openai-gpt-5-5
 ```
@@ -152,7 +152,7 @@ Assisted-by: Zed:openai-gpt-5-5
 ### Feature with scope and body
 
 ```
-feat(chart): overlay per-model temperature spread
+feat(chart): Overlay per-model temperature spread
 
 Each model now renders as its own translucent band so users can see
 where the models agree and where they diverge at a glance.
@@ -163,7 +163,7 @@ Assisted-by: ClaudeCode:claude-opus-4-8
 ### Breaking change
 
 ```
-refactor(api)!: drop the deprecated /v1/forecast endpoint
+refactor(api)!: Drop the deprecated /v1/forecast endpoint
 
 BREAKING CHANGE: clients must migrate to /v2/forecast, which returns
 per-model arrays instead of a single averaged series.
