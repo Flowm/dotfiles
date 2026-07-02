@@ -29,19 +29,26 @@
     "playwright-mcp": {
       "enabled": false,
       "command": "npx",
-      "args": ["@playwright/mcp@latest"],
-      "env": {}
+      "args": ["@playwright/mcp"]
     },
-    "mcp-orora-space": {
-      "url": "https://mcp.orora.space/mcp?codemode=search_and_execute",
-      "enabled": false
+    "orora-space-mcp": {
+      "enabled": false,
+      "url": "https://mcp.orora.space/mcp?codemode=search_and_execute"
     },
     "gitlab-mcp": {
       "command": "npx",
       "args": ["mcp-remote", "https://gitlab.com/api/v4/mcp", "--ignore-tool", "manage_pipeline"],
       "enabled": false
     },
-    "grafana-staging": {
+    "wanderlog-mcp": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["wanderlog-mcp"],
+      "env": {
+        "WANDERLOG_COOKIE": "XXX"
+      }
+    },
+    "grafana-local-mcp": {
       "enabled": false,
       "command": "mcp-grafana",
       "args": ["--enabled-tools", "search,datasource,dashboard,folder,rendering,runpanelquery,sql"],
@@ -54,45 +61,6 @@
   "agent": {
     "tool_permissions": {
       "tools": {
-        "mcp:grafana-staging:get_dashboard_property": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:run_panel_query": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:update_dashboard": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:list_table_schemas_sql": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:get_dashboard_summary": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:get_dashboard_by_uid": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:list_datasources": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:search_dashboards": {
-          "default": "allow"
-        },
-        "mcp:grafana-staging:query_sql_datasource": {
-          "default": "allow"
-        },
-        "mcp:mcp-orora-space:portal_codemode_execute": {
-          "default": "allow"
-        },
-        "mcp:mcp-orora-space:portal_codemode_search": {
-          "default": "allow"
-        },
-        "mcp:mcp-orora-space:portal_list_servers": {
-          "default": "allow"
-        },
-        "skill": {
-          "default": "allow"
-        },
         "create_directory": {
           "default": "allow"
         },
@@ -122,6 +90,18 @@
             { "pattern": "^npm\\s+(run|build|test|outdated|list)" }
           ],
           "always_deny": [{ "pattern": "^find\\b.*-(exec|ok)\\b" }]
+        },
+        "mcp:orora-space-mcp:.*": {
+          "default": "allow"
+        },
+        "mcp:wanderlog-mcp:.*": {
+          "default": "allow"
+        },
+        "mcp:grafana-local-mcp:.*": {
+          "default": "allow"
+        },
+        "skill": {
+          "default": "allow"
         }
       }
     },
