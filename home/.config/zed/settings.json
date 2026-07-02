@@ -164,9 +164,9 @@
     "model_parameters": [],
     "default_model": {
       "effort": "high",
-      "enable_thinking": false,
-      "provider": "copilot_chat",
-      "model": "claude-sonnet-4.6"
+      "enable_thinking": true,
+      "provider": "openai-subscribed",
+      "model": "gpt-5.5"
     },
     "profiles": {
       "container-use": {
