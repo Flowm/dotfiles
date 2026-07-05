@@ -6,9 +6,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/vercel-labs/skills.git",
       "skillPath": "skills/find-skills/SKILL.md",
-      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "skillFolderHash": "eb6a23305aea6e340d14b9de3766e721f9f4861b",
       "installedAt": "2026-05-19T15:56:34.080Z",
-      "updatedAt": "2026-05-19T15:56:34.080Z"
+      "updatedAt": "2026-07-05T19:52:25.287Z"
     },
     "karpathy-guidelines": {
       "source": "multica-ai/andrej-karpathy-skills",
@@ -19,15 +19,6 @@
       "pluginName": "andrej-karpathy-skills",
       "installedAt": "2026-05-23T01:10:35.101Z",
       "updatedAt": "2026-05-23T01:10:35.101Z"
-    },
-    "impeccable": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/pbakaus/impeccable.git",
-      "skillPath": "skill/SKILL.md",
-      "skillFolderHash": "6d2dbc37eccb5d89902bda605f1a8bdbad7f36d8",
-      "installedAt": "2026-05-25T23:18:21.827Z",
-      "updatedAt": "2026-05-25T23:18:21.827Z"
     },
     "thermo-nuclear-code-quality-review": {
       "source": "cursor/plugins",
@@ -43,9 +34,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/Flowm/dotfiles.git",
       "skillPath": "home/.agents/skills/git-commit/SKILL.md",
-      "skillFolderHash": "bd39857ab1524b8d42dd2f546957744049886aad",
+      "skillFolderHash": "49cd8f3b04d613551ed60ec3629680c25860b817",
       "installedAt": "2026-06-03T02:49:47.388Z",
-      "updatedAt": "2026-06-03T02:49:47.388Z"
+      "updatedAt": "2026-07-05T19:52:27.593Z"
     },
     "typescript-expert": {
       "source": "sickn33/antigravity-awesome-skills",
@@ -61,9 +52,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/heredotnow/skill.git",
       "skillPath": "here-now/SKILL.md",
-      "skillFolderHash": "9dd1813f9bc7b1b5bbdb360b7614887b74ccf6b9",
+      "skillFolderHash": "e4a10e34c79faa6a5eb8f6021721823bb2745a36",
       "installedAt": "2026-06-09T20:15:43.115Z",
-      "updatedAt": "2026-06-09T20:15:43.115Z"
+      "updatedAt": "2026-07-05T19:52:29.393Z"
     },
     "code-review": {
       "source": "mattpocock/skills",
@@ -110,10 +101,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/mattpocock/skills.git",
       "skillPath": "skills/productivity/grilling/SKILL.md",
-      "skillFolderHash": "ab318c66a36253e872b5d0bd271b3df8f6ef816f",
-      "pluginName": "mattpocock-skills",
+      "skillFolderHash": "8b14ca97479f518f3f1ced6a35bf591554d7e0cb",
       "installedAt": "2026-07-03T04:02:56.346Z",
-      "updatedAt": "2026-07-03T04:02:56.346Z"
+      "updatedAt": "2026-07-05T19:52:31.572Z"
     },
     "handoff": {
       "source": "mattpocock/skills",
