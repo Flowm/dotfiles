@@ -25,7 +25,7 @@ Every project uses:
 | Package manager | pnpm, with `pnpm-workspace.yaml` + catalog even for single-package repos |
 | Hosting | Cloudflare Workers (wrangler) with static assets + SPA fallback |
 | CI | GitHub Actions: lint, test, per-PR preview deploy, deploy on main |
-| Tool versions | `mise.toml` pinning node and pnpm |
+| Tool versions | `mise.toml` pinning node, pnpm, and prek |
 
 Do not pin the specific versions from this document; use current versions.
 
@@ -42,7 +42,8 @@ project/
 ├── .oxlintrc.json
 ├── .oxfmtrc.json
 ├── .editorconfig               # 2-space indent, LF, UTF-8, final newline
-├── .pre-commit-config.yaml     # standard hooks + lint:fix + type-check + test
+├── .pre-commit-config.yaml     # standard hooks + lint:fix + type-check + test (run via prek)
+├── .env.example                # Env var template; all other .env* files are gitignored
 ├── .github/workflows/ci.yml
 ├── public/
 │   ├── logo.svg                # Source for PWA asset generation
@@ -53,6 +54,18 @@ project/
     ├── wrangler.jsonc
     └── src/index.ts
 ```
+
+Only `.env.example` is committed — `.env.development`, `.env.production`, and any other
+`.env*` files stay in `.gitignore`; CI builds receive their values as `VITE_*` secrets.
+
+`pnpm-workspace.yaml` also carries the `allowBuilds` allowlist for dependency build
+scripts (e.g. `esbuild: false`, `sharp: false`, `workerd: true`) and `publicHoistPattern`
+where a dependency needs it (e.g. `workbox-*`).
+
+`mise.toml` pins node, pnpm, and prek, and defines a `[tasks.setup]` task running
+`prek install`. The README contains a setup section walking through `mise trust`,
+`mise install`, and `mise setup`. Architecture decisions worth recording go into
+lightweight ADRs under `docs/adr/`.
 
 ### src/ layout
 
@@ -103,10 +116,17 @@ Conventions:
 }
 ```
 
+With an `injectManifest` service worker (`src/sw.ts`), add
+`"lib": ["DOM", "DOM.Iterable", "ESNext", "WebWorker"]` so the worker globals type-check.
+
 ## Linting & formatting
 
 oxlint and oxfmt replace ESLint and Prettier entirely — they are Rust-based and fast
 enough to run on every commit and in the `lint` script together with vue-tsc.
+
+`pnpm lint` must pass completely clean in every repo — zero errors and zero warnings.
+Fix warnings, or disable the rule with a justification in `.oxlintrc.json`; never leave
+warnings standing.
 
 `.oxlintrc.json` (extend `ignorePatterns` with generated files and directories the web
 lint should not cover, e.g. `worker`, `data`, generated `*.d.ts`):
@@ -184,7 +204,12 @@ import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
 const buildDate = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
-const buildSha = execSync("git rev-parse --short HEAD").toString().trim();
+let buildSha = "dev";
+try {
+  buildSha = execSync("git rev-parse --short HEAD").toString().trim();
+} catch {
+  // not a git checkout (e.g. tarball build)
+}
 
 export default defineConfig({
   plugins: [
@@ -203,7 +228,9 @@ export default defineConfig({
     // Vite runs on Rolldown, where the object form of manualChunks is gone;
     // codeSplitting.groups is its replacement. Captured modules pull in their
     // deps by default. Add groups for heavy deps (charts, icons, sdks) between
-    // vue and analytics, priorities 30-50.
+    // vue and analytics, priorities 30-50. Skip the whole block when no heavy
+    // dep sits in the SPA graph. If a heavy chunk legitimately exceeds the
+    // size warning, bump chunkSizeWarningLimit with a comment justifying it.
     rolldownOptions: {
       output: {
         codeSplitting: {
@@ -236,10 +263,28 @@ transparency; declare them in `vite-env.d.ts`.
   can't express.
 - Self-host fonts with `@fontsource-variable/*` packages.
 - Dark mode: `.dark` class on `<html>`, toggled via a settings store and persisted to
-  localStorage, with `@custom-variant dark (&:where(.dark, .dark *));`.
+  localStorage, with `@custom-variant dark (&:where(.dark, .dark *));`. Single-theme
+  apps (e.g. dark-only) skip the toggle machinery and just hardcode the palette plus
+  `color-scheme: dark`.
 - UI components are custom by default. Some older projects use PrimeVue for form/CRUD-heavy
   UIs — do not use it for new projects because of the licensing change planned for
   PrimeVue 5; build on Tailwind-styled custom components instead.
+
+### @nuxt/ui variation
+
+For component-heavy apps, `@nuxt/ui` v4 is a sanctioned alternative to custom
+components. It changes several defaults at once:
+
+- Tailwind comes through the `ui()` plugin from `@nuxt/ui/vite` — drop `@tailwindcss/vite`;
+  the stylesheet imports `@import "tailwindcss"; @import "@nuxt/ui";`.
+- Theming is configured on the plugin (`ui({ ui: { colors: { ... } } })`) instead of
+  `@theme` tokens; dark mode uses Nuxt UI's color-mode system.
+- Icons come from Iconify (`@iconify-json/fa6-solid` etc., used as `icon="fa6-solid:..."`)
+  instead of fontawesome + `library.add()`.
+- Auto-imports generate `auto-imports.d.ts` and `components.d.ts` — add both to the
+  tsconfig `include` and to the oxlint/oxfmt `ignorePatterns`.
+- Add codeSplitting groups `ui` (priority 50) and `icons` (priority 40) for the
+  Nuxt UI/Reka and Iconify modules.
 
 ## State & routing
 
@@ -251,7 +296,9 @@ Scale state management to the app — don't default to a store:
 3. Multiple domains (settings + data lifecycle, auth + entities) → Pinia, one store per
    domain, setup-style (`ref`/`computed` inside `defineStore`). Use `shallowRef` for
    large immutable datasets to avoid deep-reactivity overhead. IndexedDB for large
-   persisted data; localStorage only for small settings.
+   persisted data; localStorage only for small settings. When the domains are data
+   pipelines rather than interactive entities, composables plus dedicated storage
+   modules (versioned IndexedDB/localStorage stores) are a valid alternative to Pinia.
 
 Routing, similarly: no router for single-view apps. Otherwise vue-router with:
 - Lazy-loaded views (dynamic `import()`), except the landing view.
@@ -268,7 +315,9 @@ Routing, similarly: no router for single-view apps. Otherwise vue-router with:
 
 - `registerType: "prompt"` — the user decides when to update. Pair with a
   `usePWAUpdate` composable exposing `needRefresh` and an update function, and a
-  `PWAUpdateBar` component that shows the prompt.
+  `PWAUpdateBar` component that shows the prompt. For read-only apps (dashboards,
+  viewers) where a mid-session reload can't lose user state,
+  `usePWAUpdate({ autoUpdate: true })` without the bar is acceptable.
 - Assets generated from `public/logo.svg` with the `2023` preset: transparent 64/192/512
   (+ 48px favicon), maskable 512, apple 180 — maskable/apple padded ~0.15 with the theme
   background color.
@@ -297,7 +346,14 @@ enrichment), add a Cloudflare Worker as a separate pnpm workspace package in `wo
   served as static assets.
 - Root scripts delegate via `pnpm --filter <name>-worker`.
 - During development, proxy API paths in the Vite dev server to the local worker
-  (`wrangler dev`, typically port 8787).
+  (`wrangler dev`, typically port 8787). Defaulting the proxy target to the production
+  API (`process.env.API_PROXY ?? "https://<prod-domain>"`) lets `pnpm dev` work without
+  running the worker locally.
+
+Workers can grow beyond proxying: KV bindings for caching, cron `triggers` for scheduled
+refresh, and codegen steps are all fine. Test workers with
+`@cloudflare/vitest-pool-workers`, and give the worker package its own `.oxlintrc.json`
+and `.oxfmtrc.json` (no `vue` plugin, no `sortTailwindcss`).
 
 ## Testing
 
@@ -306,9 +362,16 @@ Environment `jsdom` when tests touch the DOM, `node` otherwise. Focus tests on t
 logic in `lib/`/`api/`/`composables/` — parsing, aggregation, formatting — not on
 component rendering. Colocate as `*.test.ts`.
 
+Two patterns for testing against real data without committing it: a smoke test over
+gitignored local fixtures via `describe.skipIf(<no fixtures present>)`, and a dev-only
+Vite plugin (`apply: "serve"`) that serves sample files from a gitignored `data/`
+directory so the app can be exercised with real inputs during development only.
+
 ## CI/CD & deployment
 
-`.github/workflows/ci.yml` with four jobs (Node 24, `pnpm/action-setup`, `pnpm ci`):
+`.github/workflows/ci.yml` with four jobs (Node 24, `pnpm/action-setup`, `pnpm ci` —
+a real pnpm command since pnpm 11, alias of `clean-install`; don't "correct" it to an
+npm-ism). Pin all actions to commit SHAs with a version comment:
 
 1. **lint** — `pnpm lint` (push + PR)
 2. **test** — `pnpm test` (push + PR)
@@ -332,7 +395,9 @@ Secrets: `CLOUDFLARE_API_TOKEN` plus any `VITE_*` build-time vars (PostHog key e
 
 Pre-commit (`.pre-commit-config.yaml`): standard hygiene hooks (trailing-whitespace,
 end-of-file-fixer, check-merge-conflict, check-added-large-files) plus local hooks
-running `lint:fix`, `type-check`, and `test` on matching file types.
+running `lint:fix`, `type-check`, and `test` on matching file types. Hooks run via
+`prek` (a fast Rust pre-commit reimplementation), pinned in `mise.toml` and installed
+by the `mise setup` task.
 
 ## Default library picks
 
@@ -341,7 +406,7 @@ Reach for these before evaluating alternatives:
 | Need | Library |
 |---|---|
 | Composable utilities | `@vueuse/core` |
-| Charts | `echarts` + `vue-echarts`, theme colors read from CSS variables so charts follow dark mode; keep echarts in its own lazy chunk |
+| Charts | `echarts` + `vue-echarts`; register only the needed modules in a dedicated `echartsSetup.ts` (tree-shaking), theme colors read from CSS variables so charts follow dark mode; keep echarts in its own lazy chunk |
 | Icons | `@fortawesome/*` + `vue-fontawesome`, explicit `library.add()` for tree-shaking |
 | Fonts | `@fontsource-variable/*` |
 | ZIP read/write | `fflate` |
@@ -350,8 +415,9 @@ Reach for these before evaluating alternatives:
 | Analytics | `posthog-js` behind a `usePostHog` composable, key via `VITE_POSTHOG_KEY` |
 | 3D / geospatial | `three` for generic 3D; CesiumJS + `satellite.js` for globes/orbits |
 
-Analytics is opt-in per project; when present, initialize at router level and gate on the
-env key existing so local dev sends nothing.
+Analytics is opt-in per project; when present, initialize at router level and gate on
+both the env key existing and the production hostname, so local dev and preview deploys
+send nothing.
 
 ## Package upgrades
 
