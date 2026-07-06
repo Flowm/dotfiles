@@ -43,7 +43,7 @@ project/
 ├── .oxfmtrc.json
 ├── .editorconfig               # 2-space indent, LF, UTF-8, final newline
 ├── .pre-commit-config.yaml     # standard hooks + lint:fix + type-check + test (run via prek)
-├── .env.example                # Env var template; all other .env* files are gitignored
+├── .env.example                # Env var template (only when env vars exist); other .env* gitignored
 ├── .claude/launch.json         # dev/preview launch configs (pnpm, project ports, autoPort)
 ├── .github/workflows/ci.yml
 ├── public/
@@ -58,15 +58,22 @@ project/
 
 Only `.env.example` is committed — `.env.development`, `.env.production`, and any other
 `.env*` files stay in `.gitignore`; CI builds receive their values as `VITE_*` secrets.
+Projects with no build-time env vars skip `.env*` files entirely.
 
 `pnpm-workspace.yaml` also carries the `allowBuilds` allowlist for dependency build
 scripts (e.g. `esbuild: false`, `sharp: false`, `workerd: true`) and `publicHoistPattern`
 where a dependency needs it (e.g. `workbox-*`).
 
 `mise.toml` pins node, pnpm, and prek, and defines a `[tasks.setup]` task running
-`prek install`. The README contains a setup section walking through `mise trust`,
-`mise install`, and `mise setup`. Architecture decisions worth recording go into
-lightweight ADRs under `docs/adr/`.
+`prek install`. The README contains a setup section with exactly this flow:
+
+```sh
+mise trust && mise install   # toolchain (node, pnpm, prek)
+mise setup                   # install the pre-commit hooks
+pnpm install
+```
+
+Architecture decisions worth recording go into lightweight ADRs under `docs/adr/`.
 
 ### src/ layout
 
@@ -314,12 +321,14 @@ Gitignore the rest of `.claude/` (`.claude/*` + `!.claude/launch.json`).
 For component-heavy apps, `@nuxt/ui` v4 is a sanctioned alternative to custom
 components. It changes several defaults at once:
 
-- Tailwind comes through the `ui()` plugin from `@nuxt/ui/vite` — drop `@tailwindcss/vite`;
-  the stylesheet imports `@import "tailwindcss"; @import "@nuxt/ui";`.
+- Tailwind comes through the `ui()` plugin from `@nuxt/ui/vite` — drop `@tailwindcss/vite`
+  (keep the `tailwindcss` package itself; the CSS import resolves from it); the stylesheet
+  imports `@import "tailwindcss"; @import "@nuxt/ui";`.
 - Theming is configured on the plugin (`ui({ ui: { colors: { ... } } })`) instead of
   `@theme` tokens; dark mode uses Nuxt UI's color-mode system.
 - Icons come from Iconify (`@iconify-json/fa6-solid` etc., used as `icon="fa6-solid:..."`)
-  instead of fontawesome + `library.add()`.
+  instead of fontawesome + `library.add()` — migrate any existing fontawesome usage fully
+  rather than running two icon systems.
 - Auto-imports generate `auto-imports.d.ts` and `components.d.ts` — add both to the
   tsconfig `include` and to the oxlint/oxfmt `ignorePatterns`.
 - Add codeSplitting groups `ui` (priority 50) and `icons` (priority 40) for the
@@ -455,8 +464,9 @@ Reach for these before evaluating alternatives:
 | 3D / geospatial | `three` for generic 3D; CesiumJS + `satellite.js` for globes/orbits |
 
 Analytics is opt-in per project; when present, initialize at router level and gate on
-both the env key existing and the production hostname, so local dev and preview deploys
-send nothing.
+the env key existing plus the URL containing the project name
+(`window.location.href.includes("<project>")`) — local dev sends nothing, while
+production and preview deploys both report.
 
 ## Package upgrades
 
