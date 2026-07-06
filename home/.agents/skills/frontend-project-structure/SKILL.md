@@ -232,6 +232,11 @@ export default defineConfig({
     // dep sits in the SPA graph. If a heavy chunk legitimately exceeds the
     // size warning, bump chunkSizeWarningLimit with a comment justifying it.
     rolldownOptions: {
+      // Silence @vueuse/core's misplaced /* #__PURE__ */ annotation warning
+      onLog(level, log, handler) {
+        if (log.code === "INVALID_ANNOTATION" && log.id?.includes("@vueuse/core")) return;
+        handler(level, log);
+      },
       output: {
         codeSplitting: {
           groups: [
