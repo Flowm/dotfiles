@@ -44,6 +44,7 @@ project/
 ├── .editorconfig               # 2-space indent, LF, UTF-8, final newline
 ├── .pre-commit-config.yaml     # standard hooks + lint:fix + type-check + test (run via prek)
 ├── .env.example                # Env var template; all other .env* files are gitignored
+├── .claude/launch.json         # dev/preview launch configs (pnpm, project ports, autoPort)
 ├── .github/workflows/ci.yml
 ├── public/
 │   ├── logo.svg                # Source for PWA asset generation
@@ -211,7 +212,12 @@ try {
   // not a git checkout (e.g. tarball build)
 }
 
+// The preview harness hands the port chosen in .claude/launch.json to Vite
+const port = process.env.PORT ? Number(process.env.PORT) : undefined;
+
 export default defineConfig({
+  server: { port, strictPort: port !== undefined },
+  preview: { port, strictPort: port !== undefined },
   plugins: [
     vue(),
     tailwindcss(),
@@ -258,6 +264,34 @@ export default defineConfig({
 
 `__BUILD_DATE__` and `__BUILD_SHA__` are shown in the app footer/about for build
 transparency; declare them in `vite-env.d.ts`.
+
+Commit a `.claude/launch.json` so the preview harness can start the app. The harness
+passes the actual port via `PORT`, which the `server`/`preview` blocks above honor with
+`strictPort`. Use project-specific default ports and exactly this format:
+
+```json
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 5183,
+      "autoPort": true
+    },
+    {
+      "name": "preview",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["run", "preview"],
+      "port": 5184,
+      "autoPort": true
+    }
+  ]
+}
+```
+
+Gitignore the rest of `.claude/` (`.claude/*` + `!.claude/launch.json`).
 
 ## Styling
 
