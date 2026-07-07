@@ -256,7 +256,8 @@ export default defineConfig({
             { name: "vue", test: /@vue|vue-router|pinia|@vueuse/, priority: 60 },
             { name: "analytics", test: /posthog/, priority: 20 },
             { name: "vendor", test: /node_modules/, priority: 10 },
-            { name: "app", test: /src/, priority: 1 },
+            // No src catch-all group — it folds lazily-imported views back into
+            // a single chunk, silently defeating route-level code splitting.
           ],
         },
       },
@@ -328,7 +329,9 @@ components. It changes several defaults at once:
   `@theme` tokens; dark mode uses Nuxt UI's color-mode system.
 - Icons come from Iconify (`@iconify-json/fa6-solid` etc., used as `icon="fa6-solid:..."`)
   instead of fontawesome + `library.add()` — migrate any existing fontawesome usage fully
-  rather than running two icon systems.
+  rather than running two icon systems. Note: in Vue-plugin mode Nuxt UI resolves icons
+  at runtime via `api.iconify.design` rather than embedding SVGs in the bundle; the
+  `@iconify-json/*` packages provide names and dev-mode resolution.
 - Auto-imports generate `auto-imports.d.ts` and `components.d.ts` — add both to the
   tsconfig `include` and to the oxlint/oxfmt `ignorePatterns`.
 - Add codeSplitting groups `ui` (priority 50) and `icons` (priority 40) for the
