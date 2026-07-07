@@ -107,6 +107,11 @@
 	" Performance {
 		" Avoid heavy regex work on very long lines
 		set synmaxcol=200
+		" The built-in TypeScript syntax (yats.vim based) trips
+		" 'redrawtime exceeded' with the default auto regex engine: it
+		" backtracks for the full 2s, then disables highlighting. Force the
+		" NFA engine (the fast path) and raise the ceiling as a safety net.
+		set regexpengine=2
 	" }
 	" Misc {
 			" Only one whitespace after _J_oining after a dot
