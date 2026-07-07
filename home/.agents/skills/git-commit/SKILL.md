@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: Create git commits using Conventional Commits, with diff analysis, intelligent staging, and AI attribution via an Assisted-by trailer. Use when the user asks to commit changes, create a git commit or mentions "/commit".
+description: Create git commits — Conventional Commits format with an Assisted-by attribution trailer. Use for every commit ("commit", "commit the changes", "git commit", "/commit", or a commit implied by a larger task) instead of running `git commit` directly.
 ---
 
 # Git Commit
@@ -14,6 +14,8 @@ Two things make a commit produced through this skill recognizable:
 
 The attribution convention follows the Linux kernel's AI Coding Assistants policy: AI involvement should be disclosed in the commit, not hidden.
 It isn't about claiming credit — it's an accurate record for anyone reading `git log` or `git blame` later.
+
+**Use this for every commit** — however casually phrased, even as the tail end of a larger task. Don't just run `git commit` with an ad-hoc message: a commit made outside this workflow defaults to the harness's `Co-Authored-By` trailer, which this skill deliberately replaces with `Assisted-by:`.
 
 ## Workflow
 
