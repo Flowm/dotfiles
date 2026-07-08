@@ -1,6 +1,6 @@
 ---
 name: git-commit
-description: Create git commits — Conventional Commits format with an Assisted-by attribution trailer. Use for every commit ("commit", "commit the changes", "git commit", "/commit", or a commit implied by a larger task) instead of running `git commit` directly.
+description: Use for any request to record work as a git commit, however casual or indirect the wording — "commit", "commit the changes", "git commit", "/commit", "save this to git", "stage everything and commit", or a commit implied by a larger task ("wrap this up and commit"). Always route commits through this skill rather than running `git commit` directly, so the message uses Conventional Commits format with the Assisted-by trailer.
 ---
 
 # Git Commit
