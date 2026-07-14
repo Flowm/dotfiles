@@ -10,9 +10,6 @@
   "diff_view_style": "unified",
   "cli_default_open_behavior": "existing_window",
   "agent_servers": {
-    "gemini": {
-      "type": "registry"
-    },
     "opencode": {
       "type": "registry"
     },
@@ -37,16 +34,17 @@
       "url": "https://mcp.orora.space/mcp?codemode=search_and_execute"
     },
     "gitlab-mcp": {
+      "enabled": false,
       "command": "npx",
       "args": ["mcp-remote", "https://gitlab.com/api/v4/mcp", "--ignore-tool", "manage_pipeline"],
-      "enabled": false
     },
     "gitlab-orbit-mcp": {
-      "enabled": true,
-      "url": "https://gitlab.com/api/v4/orbit/mcp"
+      "enabled": false,
+      "command": "npx",
+      "args": ["mcp-remote", "https://gitlab.com/api/v4/orbit/mcp"],
     },
     "posthog-mcp": {
-      "enabled": true,
+      "enabled": false,
       "url": "https://mcp.posthog.com/mcp?features=dashboards,insights,product_analytics,annotations,web_analytics,customer_analytics,signals,sql,replay,surveys,experiments,llm_analytics,error_tracking,logs,flags,early_access_features,sdk_doctor,cohorts,tracing,events,persons,actions,data_warehouse,endpoints,data_schema,batch_exports,workspace,docs,notebooks,alerts,platform_features"
     },
     "wanderlog-mcp": {
