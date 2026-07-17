@@ -69,6 +69,7 @@
     # Worktree
     wt    = worktree
     wtl   = worktree list
+    wtr   = worktree remove
     # Utils
     alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
     cleanup = !git branch --merged | egrep -v '(^[*+]|master|main|develop|dev)' | xargs -r git branch -d
