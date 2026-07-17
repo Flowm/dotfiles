@@ -43,6 +43,10 @@
       "command": "npx",
       "args": ["mcp-remote", "https://gitlab.com/api/v4/orbit/mcp"],
     },
+    "sentry-mcp": {
+      "enabled": true,
+      "url": "https://mcp.sentry.dev/mcp"
+    },
     "posthog-mcp": {
       "enabled": false,
       "url": "https://mcp.posthog.com/mcp?features=dashboards,insights,product_analytics,annotations,web_analytics,customer_analytics,signals,sql,replay,surveys,experiments,llm_analytics,error_tracking,logs,flags,early_access_features,sdk_doctor,cohorts,tracing,events,persons,actions,data_warehouse,endpoints,data_schema,batch_exports,workspace,docs,notebooks,alerts,platform_features"
