@@ -1,6 +1,7 @@
-tap "buo/cask-upgrade"
+tap "darrylmorley/whatcable"
 tap "homebrew/services"
 tap "mm7894215/tokentracker", trusted: true
+tap "updatecli/updatecli"
 brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
 brew "xz"                                         # xz: General-purpose data compression with high compression ratio
 brew "zstd"                                       # zstd: Zstandard is a real-time compression algorithm
@@ -20,8 +21,11 @@ brew "dos2unix"                                   # dos2unix: Convert text betwe
 brew "geos"                                       # geos: Geometry Engine
 brew "gh"                                         # gh: GitHub command-line tool
 brew "git"                                        # git: Distributed revision control system
+brew "git-filter-repo"                            # git-filter-repo: Quickly rewrite git repository history
 brew "git-lfs"                                    # git-lfs: Git extension for versioning large files
+brew "glab"                                       # glab: Open-source GitLab command-line tool
 brew "gnu-sed"                                    # gnu-sed: GNU implementation of the famous stream editor
+brew "gnu-tar"                                    # gnu-tar: GNU version of the tar archiving utility
 brew "go"                                         # go: Open source programming language to build simple/reliable/efficient software
 brew "gource"                                     # gource: Version Control Visualization Tool
 brew "htop"                                       # htop: Improved top (interactive process viewer)
@@ -46,6 +50,7 @@ brew "rclone"                                     # rclone: Rsync for cloud stor
 brew "rename"                                     # rename: Perl-powered file rename script with many helpful built-ins
 brew "ripgrep"                                    # ripgrep: Search tool like grep and The Silver Searcher
 brew "rsync"                                      # rsync: Utility that provides fast incremental file transfer
+brew "rtk"                                        # rtk: CLI proxy to minimize LLM token consumption
 brew "sshpass"                                    # sshpass: Non-interactive SSH password auth
 brew "sshuttle"                                   # sshuttle: Proxy server that works as a poor man's VPN
 brew "subfinder"                                  # subfinder: Subdomain discovery tool
@@ -59,8 +64,10 @@ brew "unp"                                        # unp: Unpack everything with 
 brew "uv"                                         # uv: Extremely fast Python package installer and resolver, written in Rust
 brew "watch"                                      # watch: Executes a program periodically, showing output fullscreen
 brew "wget"                                       # wget: Internet file retriever
+brew "xcodegen"                                   # xcodegen: Generate your Xcode project from a spec file and your folder structure
 brew "yt-dlp"                                     # yt-dlp: Feature-rich command-line audio/video downloader
 brew "zsh"                                        # zsh: UNIX shell (command interpreter)
+brew "updatecli/updatecli/updatecli", trusted: true  # updatecli/updatecli/updatecli: A declarative update policy engine.
 cask "1password"                                  # 1password: Password manager that keeps all passwords secure behind one password
 cask "alfred"                                     # alfred: Application launcher and productivity software
 cask "antigravity-cli"                            # antigravity-cli: Terminal interface for Antigravity agents
@@ -69,12 +76,12 @@ cask "arq"                                        # arq: Multi-cloud backup appl
 cask "balenaetcher"                               # balenaetcher: Tool to flash OS images to SD cards & USB drives
 cask "bettertouchtool"                            # bettertouchtool: Tool to customise input devices and automate computer systems
 cask "blender"                                    # blender: 3D creation suite
+cask "chatgpt"                                    # chatgpt: OpenAI's official ChatGPT desktop app
 cask "chromium"                                   # chromium: Free and open-source web browser
 cask "claude"                                     # claude: Anthropic's official Claude AI desktop app
 cask "claude-code@latest"                         # claude-code@latest: Terminal-based AI coding assistant
 cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
 cask "codex"                                      # codex: OpenAI's coding agent that runs in your terminal
-cask "codex-app"                                  # codex-app: OpenAI's Codex desktop app for managing coding agents
 cask "cyberduck"                                  # cyberduck: Server and cloud storage browser
 cask "deskpad"                                    # deskpad: Virtual monitor for screen sharing
 cask "discord"                                    # discord: Voice and text chat software
@@ -120,6 +127,7 @@ cask "mm7894215/tokentracker/tokentracker", trusted: true  # mm7894215/tokentrac
 cask "unraid-usb-creator-next"                    # unraid-usb-creator-next: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player
+cask "darrylmorley/whatcable/whatcable", trusted: true  # darrylmorley/whatcable/whatcable: Menu bar app for USB-C cable diagnostics
 cask "zed"                                        # zed: Multiplayer code editor
 mas "Affinity Designer 2", id: 1616831348
 mas "Affinity Photo 2", id: 1616822987
@@ -135,3 +143,4 @@ mas "Windows App", id: 1295203466
 mas "Wipr", id: 1662217862
 mas "Xcode", id: 497799835
 go "github.com/flowm/drun/cmd/drun"
+go "github.com/vektra/mockery/v3"
