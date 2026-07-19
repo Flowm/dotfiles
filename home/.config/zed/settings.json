@@ -192,6 +192,10 @@
     "use_system_clipboard": "never"
   },
   "languages": {
+    "Caddyfile": {
+      "tab_size": 4,
+      "hard_tabs": true
+    },
     "Python": {
       "language_servers": [
         // Enable pyrefly, disable basedpyright, inherit from default
