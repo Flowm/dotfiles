@@ -43,13 +43,13 @@
       "command": "npx",
       "args": ["mcp-remote", "https://gitlab.com/api/v4/orbit/mcp"],
     },
-    "sentry-mcp": {
-      "enabled": true,
-      "url": "https://mcp.sentry.dev/mcp"
-    },
     "posthog-mcp": {
-      "enabled": false,
+      "enabled": true,
       "url": "https://mcp.posthog.com/mcp?features=dashboards,insights,product_analytics,annotations,web_analytics,customer_analytics,signals,sql,replay,surveys,experiments,llm_analytics,error_tracking,logs,flags,early_access_features,sdk_doctor,cohorts,tracing,events,persons,actions,data_warehouse,endpoints,data_schema,batch_exports,workspace,docs,notebooks,alerts,platform_features"
+    },
+    "sentry-mcp": {
+      "enabled": false,
+      "url": "https://mcp.sentry.dev/mcp"
     },
     "wanderlog-mcp": {
       "enabled": false,
@@ -103,6 +103,9 @@
           "always_deny": [{ "pattern": "^find\\b.*-(exec|ok)\\b" }]
         },
         "mcp:orora-space-mcp:.*": {
+          "default": "allow"
+        },
+        "mcp:posthog-mcp:exec": {
           "default": "allow"
         },
         "mcp:wanderlog-mcp:.*": {
