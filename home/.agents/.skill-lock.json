@@ -10,24 +10,6 @@
       "installedAt": "2026-05-30T18:06:57.462Z",
       "updatedAt": "2026-05-30T18:06:57.462Z"
     },
-    "typescript-expert": {
-      "source": "sickn33/antigravity-awesome-skills",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/sickn33/antigravity-awesome-skills.git",
-      "skillPath": "skills/typescript-expert/SKILL.md",
-      "skillFolderHash": "653b9795fb6a9e1477b8a5a2d857ba6a36544fa7",
-      "installedAt": "2026-06-07T23:13:11.398Z",
-      "updatedAt": "2026-06-07T23:13:11.398Z"
-    },
-    "here-now": {
-      "source": "heredotnow/skill",
-      "sourceType": "github",
-      "sourceUrl": "https://github.com/heredotnow/skill.git",
-      "skillPath": "here-now/SKILL.md",
-      "skillFolderHash": "659a7d3bcc37a6cd94464f1b50830db53c8ae113",
-      "installedAt": "2026-06-09T20:15:43.115Z",
-      "updatedAt": "2026-07-10T15:58:27.555Z"
-    },
     "code-review": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -120,9 +102,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/conorbronsdon/avoid-ai-writing.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "af346121e8a73a167eb512ec77b644cca155674d",
+      "skillFolderHash": "27156c7ae69fade80f2a3410e6899b780248709d",
       "installedAt": "2026-07-10T02:15:00.962Z",
-      "updatedAt": "2026-07-17T22:38:47.905Z"
+      "updatedAt": "2026-07-25T22:23:54.669Z"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
