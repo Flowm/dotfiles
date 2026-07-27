@@ -47,6 +47,7 @@ alias myx11vnc='x11vnc -ncache 10 -repeat -loop -usepw -afteraccept "newrez 1896
 
 alias mdrun='docker run --rm -it -u $(id -u):$(id -g) -v $(pwd):/cwd -w /cwd'
 alias mdrun-dive='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock wagoodman/dive:latest'
+alias mdrun-dtop='docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -it ghcr.io/amir20/dtop'
 alias mdrun-gdal='mdrun ghcr.io/osgeo/gdal:alpine-small-3.11.3'
 alias mdrun-mc='mdrun -v ~/.mc:/.mc minio/mc:RELEASE.2024-09-16T17-43-14Z'
 alias mdrun-mitmproxy='docker run --rm -it -v ~/.mitmproxy:/home/mitmproxy/.mitmproxy -p 2080:8080 -p 127.0.0.1:2081:8081 mitmproxy/mitmproxy mitmweb --web-host 0.0.0.0'
