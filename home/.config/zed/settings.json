@@ -44,12 +44,16 @@
       "args": ["mcp-remote", "https://gitlab.com/api/v4/orbit/mcp"],
     },
     "posthog-mcp": {
-      "enabled": true,
+      "enabled": false,
       "url": "https://mcp.posthog.com/mcp?features=dashboards,insights,product_analytics,annotations,web_analytics,customer_analytics,signals,sql,replay,surveys,experiments,llm_analytics,error_tracking,logs,flags,early_access_features,sdk_doctor,cohorts,tracing,events,persons,actions,data_warehouse,endpoints,data_schema,batch_exports,workspace,docs,notebooks,alerts,platform_features"
     },
     "sentry-mcp": {
       "enabled": false,
       "url": "https://mcp.sentry.dev/mcp"
+    },
+    "strava-mcp": {
+      "enabled": false,
+      "url": "https://mcp.strava.com/mcp"
     },
     "wanderlog-mcp": {
       "enabled": false,
@@ -70,6 +74,7 @@
     }
   },
   "agent": {
+    "show_turn_stats": true,
     "tool_permissions": {
       "tools": {
         "create_directory": {
@@ -103,6 +108,9 @@
           "always_deny": [{ "pattern": "^find\\b.*-(exec|ok)\\b" }]
         },
         "mcp:orora-space-mcp:.*": {
+          "default": "allow"
+        },
+        "mcp:sentry-mcp:*": {
           "default": "allow"
         },
         "mcp:posthog-mcp:exec": {
@@ -193,6 +201,9 @@
   "vim_mode": true,
   "vim": {
     "use_system_clipboard": "never"
+  },
+  "markdown_preview": {
+    "limit_content_width": false
   },
   "languages": {
     "Caddyfile": {
