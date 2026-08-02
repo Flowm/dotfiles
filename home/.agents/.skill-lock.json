@@ -135,6 +135,33 @@
       "pluginName": "mattpocock-skills",
       "installedAt": "2026-07-10T15:59:21.277Z",
       "updatedAt": "2026-07-17T22:38:44.425Z"
+    },
+    "ai-seo": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coreyhaines31/marketingskills.git",
+      "skillPath": "skills/ai-seo/SKILL.md",
+      "skillFolderHash": "629a98bd66628997f9365e38d7867c43aafeea60",
+      "installedAt": "2026-08-01T19:48:47.546Z",
+      "updatedAt": "2026-08-01T19:48:47.546Z"
+    },
+    "seo-audit": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coreyhaines31/marketingskills.git",
+      "skillPath": "skills/seo-audit/SKILL.md",
+      "skillFolderHash": "0f1f5e31ce921513828ac8f440f358df6fa0751a",
+      "installedAt": "2026-08-01T19:48:47.547Z",
+      "updatedAt": "2026-08-01T19:48:47.547Z"
+    },
+    "schema": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coreyhaines31/marketingskills.git",
+      "skillPath": "skills/schema/SKILL.md",
+      "skillFolderHash": "23ea18f891aa09456529424f06a046998db04eb4",
+      "installedAt": "2026-08-01T19:48:47.548Z",
+      "updatedAt": "2026-08-01T19:48:47.548Z"
     }
   },
   "dismissed": {
