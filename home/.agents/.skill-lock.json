@@ -102,9 +102,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/conorbronsdon/avoid-ai-writing.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "efc19575bab315e9bcc5f33d0435040c1a6022cd",
+      "skillFolderHash": "ae1ecbebf09f45b67d2cd1e1c902c4b240e770fc",
       "installedAt": "2026-07-10T02:15:00.962Z",
-      "updatedAt": "2026-08-03T00:46:47.205Z"
+      "updatedAt": "2026-08-03T15:06:06.399Z"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -168,9 +168,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/Flowm/skills.git",
       "skillPath": "skills/comment-audit/SKILL.md",
-      "skillFolderHash": "22b3249259cee6079e47f3232524a74ac2ea30f0",
+      "skillFolderHash": "717c9b2052a80d11dc2cc070e4908a672924ee35",
       "installedAt": "2026-08-02T16:04:34.154Z",
-      "updatedAt": "2026-08-03T00:46:44.469Z"
+      "updatedAt": "2026-08-03T15:06:03.418Z"
     }
   },
   "dismissed": {
