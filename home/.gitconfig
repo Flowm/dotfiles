@@ -41,6 +41,10 @@
     lm    = ll --first-parent -10
     lml   = ll --first-parent
     lpx   = log --pretty=format:'%s'
+    # Merge
+    m     = merge
+    ma    = merge --abort
+    mf    = merge --no-ff
     # Push
     p     = push
     pf    = push --force-with-lease
@@ -70,6 +74,7 @@
     # Worktree
     wt    = worktree
     wtl   = worktree list
+    wtp   = worktree prune
     wtr   = worktree remove
     # Utils
     alias = !git config --get-regexp 'alias.*' | colrm 1 6 | sed 's/[ ]/ = /' | sort
