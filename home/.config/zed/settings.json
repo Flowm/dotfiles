@@ -24,6 +24,10 @@
     "provider": "copilot"
   },
   "context_servers": {
+    "context7-mcp": {
+      "enabled": true,
+      "url": "https://mcp.context7.com/mcp"
+    },
     "playwright-mcp": {
       "enabled": false,
       "command": "npx",
