@@ -74,6 +74,10 @@
     }
   },
   "agent": {
+    "sandbox_permissions": {
+      "allow_unsandboxed": false,
+      "write_paths": ["/Users/flow/Library/Application Support/rtk"]
+    },
     "show_turn_stats": true,
     "tool_permissions": {
       "tools": {
