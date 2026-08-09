@@ -99,9 +99,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/conorbronsdon/avoid-ai-writing.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "b72b7c42b196e113d2477c21c62df58061bc804f",
+      "skillFolderHash": "d9fbca05a912aae8b35b56c92d132962c2cf4520",
       "installedAt": "2026-08-07T02:39:29.223Z",
-      "updatedAt": "2026-08-07T02:39:29.223Z"
+      "updatedAt": "2026-08-09T21:58:56.694Z"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -174,6 +174,16 @@
       "skillFolderHash": "06c743d22318251f1743324ea11de832cf38eed5",
       "installedAt": "2026-08-07T02:32:51.614Z",
       "updatedAt": "2026-08-07T02:32:51.614Z"
+    },
+    "writing-for-agents": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "skills/productivity/writing-for-agents/SKILL.md",
+      "skillFolderHash": "bd9c9c4762db0a9a094fd419316ebd4b0444d06e",
+      "pluginName": "mattpocock-skills",
+      "installedAt": "2026-08-08T19:09:28.094Z",
+      "updatedAt": "2026-08-08T19:09:28.094Z"
     }
   },
   "dismissed": {
