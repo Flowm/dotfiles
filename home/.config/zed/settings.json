@@ -55,6 +55,11 @@
       "enabled": false,
       "url": "https://mcp.sentry.dev/mcp"
     },
+    "reddit-mcp": {
+      "enabled": false,
+      "command": "npx",
+      "args": ["github:Kevsosmooth/arctic-shift-mcp"]
+    },
     "strava-mcp": {
       "enabled": false,
       "url": "https://mcp.strava.com/mcp"
@@ -114,6 +119,9 @@
             { "pattern": "^npm\\s+(run|build|test|outdated|list)" }
           ],
           "always_deny": [{ "pattern": "^find\\b.*-(exec|ok)\\b" }]
+        },
+        "mcp:context7-mcp:.*": {
+          "default": "allow"
         },
         "mcp:orora-space-mcp:.*": {
           "default": "allow"
