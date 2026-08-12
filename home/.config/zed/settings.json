@@ -49,7 +49,7 @@
     },
     "posthog-mcp": {
       "enabled": false,
-      "url": "https://mcp.posthog.com/mcp?features=dashboards,insights,product_analytics,annotations,web_analytics,customer_analytics,signals,sql,replay,surveys,experiments,llm_analytics,error_tracking,logs,flags,early_access_features,sdk_doctor,cohorts,tracing,events,persons,actions,data_warehouse,endpoints,data_schema,batch_exports,workspace,docs,notebooks,alerts,platform_features"
+      "url": "https://mcp.posthog.com/mcp?mode=cli"
     },
     "sentry-mcp": {
       "enabled": false,
