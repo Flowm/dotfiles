@@ -24,10 +24,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/mattpocock/skills.git",
       "skillPath": "skills/engineering/domain-modeling/SKILL.md",
-      "skillFolderHash": "959e63161ff78b4b1cd553b2c0e09e0c68418e5f",
-      "pluginName": "mattpocock-skills",
+      "skillFolderHash": "05c3244ec75b7548bbc2b635b0624bb9f70369c3",
       "installedAt": "2026-07-03T04:02:56.344Z",
-      "updatedAt": "2026-07-17T22:38:19.910Z"
+      "updatedAt": "2026-08-14T18:09:41.382Z"
     },
     "grill-me": {
       "source": "mattpocock/skills",
@@ -99,9 +98,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/conorbronsdon/avoid-ai-writing.git",
       "skillPath": "SKILL.md",
-      "skillFolderHash": "d9fbca05a912aae8b35b56c92d132962c2cf4520",
+      "skillFolderHash": "3c0fd8a2668962df97f0a6771dcd57c84a4be568",
       "installedAt": "2026-08-07T02:39:29.223Z",
-      "updatedAt": "2026-08-09T21:58:56.694Z"
+      "updatedAt": "2026-08-14T18:09:46.674Z"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -171,9 +170,9 @@
       "sourceType": "github",
       "sourceUrl": "https://github.com/Flowm/skills.git",
       "skillPath": "skills/comment-cleanup/SKILL.md",
-      "skillFolderHash": "06c743d22318251f1743324ea11de832cf38eed5",
+      "skillFolderHash": "2eaa436a39827825f6083a3f9e53f9396fc74251",
       "installedAt": "2026-08-07T02:32:51.614Z",
-      "updatedAt": "2026-08-07T02:32:51.614Z"
+      "updatedAt": "2026-08-14T18:09:43.598Z"
     },
     "writing-for-agents": {
       "source": "mattpocock/skills",
@@ -202,6 +201,7 @@
     "kimi-code-cli",
     "opencode",
     "warp",
-    "zed"
+    "zed",
+    "claude-code"
   ]
 }
