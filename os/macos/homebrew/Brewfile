@@ -1,7 +1,8 @@
+tap "agavra/tap"
 tap "darrylmorley/whatcable"
 tap "homebrew/services"
-tap "mm7894215/tokentracker", trusted: true
 tap "updatecli/updatecli"
+tap "xiufengsun/tokentracker", "https://github.com/xiufengsun/homebrew-tokentracker.git"
 brew "brotli"                                     # brotli: Generic-purpose lossless compression algorithm by Google
 brew "xz"                                         # xz: General-purpose data compression with high compression ratio
 brew "zstd"                                       # zstd: Zstandard is a real-time compression algorithm
@@ -64,9 +65,11 @@ brew "unp"                                        # unp: Unpack everything with 
 brew "uv"                                         # uv: Extremely fast Python package installer and resolver, written in Rust
 brew "watch"                                      # watch: Executes a program periodically, showing output fullscreen
 brew "wget"                                       # wget: Internet file retriever
+brew "worktrunk"                                  # worktrunk: CLI for Git worktree management, designed for parallel AI agent workflows
 brew "xcodegen"                                   # xcodegen: Generate your Xcode project from a spec file and your folder structure
 brew "yt-dlp"                                     # yt-dlp: Feature-rich command-line audio/video downloader
 brew "zsh"                                        # zsh: UNIX shell (command interpreter)
+brew "agavra/tap/tuicr", trusted: true            # agavra/tap/tuicr: Terminal UI for Code Reviews - review AI-generated diffs like a GitHub PR
 brew "updatecli/updatecli/updatecli", trusted: true  # updatecli/updatecli/updatecli: A declarative update policy engine.
 cask "1password"                                  # 1password: Password manager that keeps all passwords secure behind one password
 cask "alfred"                                     # alfred: Application launcher and productivity software
@@ -74,12 +77,14 @@ cask "antigravity-cli"                            # antigravity-cli: Terminal in
 cask "appcleaner"                                 # appcleaner: Application uninstaller
 cask "arq"                                        # arq: Multi-cloud backup application
 cask "balenaetcher"                               # balenaetcher: Tool to flash OS images to SD cards & USB drives
+cask "betterdisplay"                              # betterdisplay: Display management tool
 cask "bettertouchtool"                            # bettertouchtool: Tool to customise input devices and automate computer systems
 cask "blender"                                    # blender: 3D creation suite
 cask "chatgpt"                                    # chatgpt: OpenAI's official ChatGPT desktop app
 cask "chromium"                                   # chromium: Free and open-source web browser
 cask "claude"                                     # claude: Anthropic's official Claude AI desktop app
 cask "claude-code@latest"                         # claude-code@latest: Terminal-based AI coding assistant
+cask "cmux"                                       # cmux: Ghostty-based terminal with vertical tabs and notifications for AI coding agents
 cask "coconutbattery"                             # coconutbattery: Tool to show live information about the batteries in various devices
 cask "codex"                                      # codex: OpenAI's coding agent that runs in your terminal
 cask "cyberduck"                                  # cyberduck: Server and cloud storage browser
@@ -101,6 +106,7 @@ cask "istat-menus"                                # istat-menus: System monitori
 cask "iterm2"                                     # iterm2: Terminal emulator as alternative to Apple's Terminal app
 cask "itermai"                                    # itermai: Enable generative AI features in iTerm2
 cask "ledger-wallet"                              # ledger-wallet: Wallet desktop application to maintain multiple cryptocurrencies
+cask "libation"                                   # libation: Audible audiobook manager and liberator
 cask "lm-studio"                                  # lm-studio: Discover, download, and run local LLMs
 cask "losslesscut"                                # losslesscut: Trims video and audio files losslessly
 cask "monitorcontrol"                             # monitorcontrol: Tool to control external monitor brightness & volume
@@ -123,8 +129,8 @@ cask "skim"                                       # skim: PDF reader and note-ta
 cask "spotify"                                    # spotify: Music streaming service
 cask "steam"                                      # steam: Video game digital distribution service
 cask "temurin"                                    # temurin: JDK from the Eclipse Foundation (Adoptium)
-cask "mm7894215/tokentracker/tokentracker", trusted: true  # mm7894215/tokentracker/tokentracker: Local-first AI token usage tracker menu bar app
-cask "unraid-usb-creator-next"                    # unraid-usb-creator-next: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
+cask "xiufengsun/tokentracker/tokentracker", trusted: true  # xiufengsun/tokentracker/tokentracker: Local-first AI token usage tracker menu bar app
+cask "unraid-usb-creator"                         # unraid-usb-creator: Home of the Next-Gen Unraid USB Creator, a fork of the Raspberry Pi Imager
 cask "visual-studio-code"                         # visual-studio-code: Open-source code editor
 cask "vlc"                                        # vlc: Multimedia player
 cask "darrylmorley/whatcable/whatcable", trusted: true  # darrylmorley/whatcable/whatcable: Menu bar app for USB-C cable diagnostics
