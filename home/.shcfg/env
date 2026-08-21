@@ -160,16 +160,15 @@ if [ -z "$MC_SLOWSYS" ]; then
     export MC_HISTFILE=~/.myconf/history/$(date +%Y)_${MC_HOST}_eternal_history
     (umask 077; touch $MC_HISTFILE)
 
-    if [ "$MC_BASH" ]; then
-        _log_hist() {
-            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t$(history 1 | sed 's/^ *[0-9]* *//')" >> $MC_HISTFILE &)
-        }
-        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; } _log_hist"
-    fi
     if [ "$MC_ZSH" ]; then
         preexec() {
             ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t${1}" >> $MC_HISTFILE &)
         }
+    elif [ "$MC_BASH" ]; then
+        _log_hist() {
+            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t$(history 1 | sed 's/^ *[0-9]* *//')" >> $MC_HISTFILE &)
+        }
+        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; } _log_hist"
     fi
 fi
 
@@ -177,21 +176,27 @@ fi
 # Programm specific
 ########################################################################
 
-if [ -x "$(command -v direnv)" ]; then
-    if [ "$MC_BASH" ]; then
-        eval "$(direnv hook bash)"
-    fi
+if [ -x "$(command -v mise)" ]; then
     if [ "$MC_ZSH" ]; then
-        eval "$(direnv hook zsh)"
+        eval "$(mise activate zsh)"
+    elif [ "$MC_BASH" ]; then
+        eval "$(mise activate bash)"
     fi
 fi
 
-if [ -x "$(command -v mise)" ]; then
-    if [ "$MC_BASH" ]; then
-        eval "$(mise activate bash)"
-    fi
+if [ -x "$(command -v atuin)" ]; then
     if [ "$MC_ZSH" ]; then
-        eval "$(mise activate zsh)"
+        eval "$(atuin init zsh)"
+    elif [ "$MC_BASH" ]; then
+        eval "$(atuin init bash)"
+    fi
+fi
+
+if [ -x "$(command -v direnv)" ]; then
+    if [ "$MC_ZSH" ]; then
+        eval "$(direnv hook zsh)"
+    elif [ "$MC_BASH" ]; then
+        eval "$(direnv hook bash)"
     fi
 fi
 
