@@ -125,8 +125,5 @@ bindkey -M vicmd 'j' history-substring-search-down
 bindkey '^[[5~' history-substring-search-up
 bindkey '^[[6~' history-substring-search-down
 
-# Allow pattern search with Ctrl-r
-bindkey "^r" history-incremental-pattern-search-backward
-
 # Last argument of previous command with ESC.
 bindkey -M viins '\e.' insert-last-word
