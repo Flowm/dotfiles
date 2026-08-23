@@ -160,13 +160,20 @@ if [ -z "$MC_SLOWSYS" ]; then
     export MC_HISTFILE=~/.myconf/history/$(date +%Y)_${MC_HOST}_eternal_history
     (umask 077; touch $MC_HISTFILE)
 
+    # A newline inside a command becomes 0x1e so that the command stays a single
+    # record, which tools/atuin-import-eternal-history.py turns back into a
+    # newline.  printf rather than echo -e, which would interpret an escape the
+    # command itself contains and cut the record in half at a \n.
     if [ "$MC_ZSH" ]; then
         preexec() {
-            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t${1}" >> $MC_HISTFILE &)
+            local rs=$'\x1e'
+            ([ -w "$MC_HISTFILE" ] && printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$(date +%F-%H-%M-%S)" "${MC_HOST}" "${MC_SHELL}" "$$" "${MC_USER}" "${1//$'\n'/$rs}" >> $MC_HISTFILE &)
         }
     elif [ "$MC_BASH" ]; then
         _log_hist() {
-            ([ -w "$MC_HISTFILE" ] && echo -e "$(date +%F-%H-%M-%S)\t${MC_HOST}\t${MC_SHELL}\t$$\t${MC_USER}\t$(history 1 | sed 's/^ *[0-9]* *//')" >> $MC_HISTFILE &)
+            local rs=$'\x1e' cmd
+            cmd=$(history 1 | sed 's/^ *[0-9]* *//')
+            ([ -w "$MC_HISTFILE" ] && printf '%s\t%s\t%s\t%s\t%s\t%s\n' "$(date +%F-%H-%M-%S)" "${MC_HOST}" "${MC_SHELL}" "$$" "${MC_USER}" "${cmd//$'\n'/$rs}" >> $MC_HISTFILE &)
         }
         PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; } _log_hist"
     fi
