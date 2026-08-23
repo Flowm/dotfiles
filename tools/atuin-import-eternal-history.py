@@ -88,6 +88,8 @@ UNKNOWN_DURATION = 0
 # Rows are written in chunks so that a shell recording into the same database
 # waits milliseconds for the write lock instead of the whole run.
 CHUNK = 50_000
+# Hosts listed in the per host breakdown before the rest is summed up.
+HOST_ROWS = 15
 
 # Columns to write, in atuin's own order.  Which of them exist depends on the
 # atuin version, so the schema decides what is actually used.
@@ -167,7 +169,7 @@ def parse_args(argv):
         metavar="SECONDS",
         help="start a new session after this idle time within one pid (default: %(default)s)",
     )
-    parser.add_argument("--per-host", action="store_true", help="list what was imported per host")
+    parser.add_argument("--per-host", action="store_true", help="list every host, not just the largest ones")
     parser.add_argument("--dry-run", action="store_true", help="report what would be imported, write nothing")
     parser.add_argument("--no-backup", action="store_true", help="do not copy the database before writing to it")
     args = parser.parse_args(argv)
@@ -475,6 +477,24 @@ def drop_recorded_by_atuin(conn, columns, window_seconds, stats):
             stats.recorded_by_atuin += 1
 
 
+def drop_already_imported(conn, stats):
+    """Drop the rows the database already holds, leaving only what is new.
+
+    A row is already there when its id matches, which is what makes a repeated
+    run a no-op, or when it would collide with atuin's unique index on
+    (timestamp, cwd, command).
+    """
+    cursor = conn.execute(
+        """
+        DELETE FROM rows_out WHERE
+            EXISTS (SELECT 1 FROM history h WHERE h.id = rows_out.id)
+            OR EXISTS (SELECT 1 FROM history h WHERE h.timestamp = rows_out.timestamp
+                       AND h.cwd = rows_out.cwd AND h.command = rows_out.command)
+        """
+    )
+    stats.skipped = cursor.rowcount
+
+
 def history_columns(conn):
     """The columns to write, so that older or newer atuin schemas still work."""
     available = {row[1] for row in conn.execute("PRAGMA table_info(history)")}
@@ -542,15 +562,30 @@ def report(conn, stats, args, db_path):
     width = max(len(label) for label, _ in lines)
     for label, value in lines:
         print(f"{label:<{width}}  {value}")
-    if args.per_host:
-        print()
-        rows = conn.execute(
-            "SELECT hostname, count(*), min(timestamp), max(timestamp) FROM rows_out GROUP BY hostname ORDER BY 2 DESC"
-        ).fetchall()
-        width = max((len(hostname) for hostname, *_ in rows), default=0)
-        for hostname, count, low, high in rows:
-            first, last = (datetime.fromtimestamp(value / NS).strftime("%F") for value in (low, high))
-            print(f"  {hostname:<{width}}  {count:>7}  {first} to {last}")
+    report_hosts(conn, args.per_host)
+
+
+def report_hosts(conn, show_all):
+    """Break the rows down by the host that recorded them.
+
+    Which hosts a run brings in is the question the report is asked while atuin
+    is rolled out: the hosts still feeding the eternal history are the ones that
+    do not have atuin yet.
+    """
+    rows = conn.execute(
+        "SELECT hostname, count(*), min(timestamp), max(timestamp) FROM rows_out GROUP BY hostname ORDER BY 2 DESC, 1"
+    ).fetchall()
+    if not rows:
+        return
+    listed = rows if show_all else rows[:HOST_ROWS]
+    print()
+    width = max(len(hostname) for hostname, *_ in listed)
+    for hostname, count, low, high in listed:
+        first, last = (datetime.fromtimestamp(value / NS).strftime("%F") for value in (low, high))
+        print(f"  {hostname:<{width}}  {count:>7}  {first} to {last}")
+    rest = rows[len(listed):]
+    if rest:
+        print(f"  and {len(rest)} more hosts, {sum(count for _, count, *_ in rest)} rows (--per-host lists them)")
 
 
 def main(argv=None):
@@ -575,19 +610,14 @@ def main(argv=None):
     if args.dedup_window:
         drop_recorded_by_atuin(conn, columns, args.dedup_window, stats)
 
+    drop_already_imported(conn, stats)
     collected = conn.execute("SELECT count(*) FROM rows_out").fetchone()[0]
     if args.dry_run:
-        stats.skipped = conn.execute(
-            "SELECT count(*) FROM rows_out r WHERE EXISTS (SELECT 1 FROM history h WHERE h.id = r.id) "
-            "OR EXISTS (SELECT 1 FROM history h WHERE h.timestamp = r.timestamp AND h.cwd = r.cwd "
-            "AND h.command = r.command)"
-        ).fetchone()[0]
-        stats.inserted = collected - stats.skipped
+        stats.inserted = collected
     else:
         if collected and not args.no_backup:
             print(f"Copied the database to {backup(db_path)}")
         insert_rows(conn, columns, stats)
-        stats.skipped = collected - stats.inserted
     report(conn, stats, args, db_path)
     conn.close()
     return 0
