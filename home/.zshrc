@@ -113,6 +113,10 @@ down-line-or-local-history() {
 }
 zle -N down-line-or-local-history
 
+if ! command -v atuin >/dev/null 2>&1; then
+  bindkey "^r" history-incremental-pattern-search-backward
+fi
+
 # Search local history on Arrow Up/Down
 bindkey "${terminfo[kcuu1]}" up-line-or-local-history
 bindkey "${terminfo[kcud1]}" down-line-or-local-history
